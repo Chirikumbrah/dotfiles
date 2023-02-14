@@ -1,0 +1,88 @@
+add_newline = false
+
+[aws]
+disabled = true
+style = "bold #ffb86c"
+
+[terraform]
+disabled = true
+
+[lua]
+disabled = true
+
+[python]
+disabled = true
+
+[c]
+disabled = true
+
+[cmake]
+disabled = true
+
+[java]
+disabled = true
+
+[perl]
+disabled = true
+
+[package]
+disabled = true
+
+[line_break]
+disabled = true
+
+[os]
+disabled = true
+
+[jobs]
+symbol = ' ✦'
+format = '[$symbol$number]($style)'
+
+[character]
+format = ' $symbol '
+error_symbol = "[❯](bold #ff5555)"
+success_symbol = "[❯](bold #50fa7b)"
+# error_symbol = "[](bold #ff5555)"
+# success_symbol = "[](bold #50fa7b)"
+
+[cmd_duration]
+min_time = 10_000
+style = "bold #f1fa8c"
+format = ' [$duration](bold yellow)'
+show_notifications = true
+
+[directory]
+format = '[$path]($style)[$read_only]($read_only_style)'
+style = "bold #50fa7b"
+truncate_to_repo = false
+truncation_length = 5
+truncation_symbol = '.../'
+read_only = ' 卵'
+
+
+[git_branch]
+style = "bold #ff79c6"
+format = ' [$symbol$branch(:$remote_branch)]($style)' 
+
+[git_commit]
+format = ' [\($hash$tag\)]($style)'
+
+[git_status]
+format = '([$all_status$ahead_behind]($style))'
+style = "bold #ff5555"
+modified = ' [!$count](#ffb86c)'
+untracked = ' [?$count](#8be9fd)'
+staged = ' [+$count](#8be9fd)'
+ahead = ' [⇡$count](#50fa7b)'
+stashed = ' [\$$count](#50fa7b)'
+deleted = ' [✘$count](#ff5555)'
+diverged = ' [⇡⇣$count](#ff5555)'
+behind = ' [⇣$count](#ff5555)'
+
+[hostname]
+style = "bold #bd93f9"
+
+[username]
+format = "[$user]($style) "
+style_user = "bold #8be9fd"
+show_always = false
