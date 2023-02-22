@@ -1,0 +1,122 @@
+theme = "dyracula"
+
+[editor]
+cursorline = true
+line-number = "relative"
+scroll-lines = 1
+bufferline = "multiple"
+color-modes = true
+auto-save = true
+auto-info = true
+completion-trigger-len = 1
+idle-timeout = 0
+
+[editor.statusline]
+left = ["mode", "spinner", "diagnostics"]
+center = ["file-name"]
+right = ["file-encoding", "file-type", "total-line-numbers", "position", "position-percentage"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.indent-guides]
+render = false
+character = "┆" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
+
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+"'" = "'"
+'`' = '`'
+
+[editor.file-picker]
+hidden = false
+
+[editor.lsp]
+display-messages = true
+
+### INSERT mode
+[keys.normal]
+# better text navigation
+y = "yank_main_selection_to_clipboard"
+p = "paste_clipboard_after"
+P = "paste_clipboard_before"
+G = "goto_last_line"
+0 = "goto_line_start"
+R = ":clipboard-paste-replace"
+X = "extend_line_above"
+"ret" = ["move_line_down", "goto_first_nonwhitespace"] # Maps the enter key to move to start of next line
+D = "delete_char_backward"
+d = ["yank_main_selection_to_clipboard", "delete_selection"]
+
+# fast format
+F = ":format"
+
+# fast exit
+q = { q = ":q!" }
+
+# fast saving
+C-s = ":w"
+
+# config keys
+C-o = ":config-open"
+C-r = ":config-reload"
+
+# better buffers navigation
+"space" = { q = ":q!", c = ":bc" }
+L = ":bn"
+H = ":bp"
+
+# better windows navigation
+C-l = ["jump_view_right"]
+C-h = ["jump_view_left"]
+C-j = ["jump_view_down"]
+C-k = ["jump_view_up"]
+
+### SELECT mode
+[keys.select]
+# better text navigation
+y = "yank_main_selection_to_clipboard"
+p = "paste_clipboard_after"
+P = "paste_clipboard_before"
+G = "goto_last_line"
+R = ":clipboard-paste-replace"
+C-j = ["open_below", "select_mode"]
+C-k = ["open_above", "select_mode"]
+0 = "goto_line_start"
+D = "delete_char_backward"
+d = ["yank_main_selection_to_clipboard", "delete_selection"]
+
+# fast format
+F = ":format"
+
+# fast exit
+q = { q = ":q!" }
+
+# fast saving
+C-s = ":w"
+
+# config keys
+C-o = ":config-open"
+C-r = ":config-reload"
+
+# better buffers navigation
+"space" = { q = ":q!", c = ":bc" }
+L = ":bn"
+H = ":bp"
+
+### INSERT mode
+[keys.insert]
+j = { k = "normal_mode" } # Maps `jk` to exit insert mode
+C-right = [ "move_next_word_start", "append_mode", "collapse_selection" ]
+C-left = [ "move_prev_word_start", "collapse_selection" ]
+C-s = [ "normal_mode", ":w", "insert_mode"]
