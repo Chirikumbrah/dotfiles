@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # init keyring
-gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh &
+eval "$(gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)"
 
 # export keyring
 export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
