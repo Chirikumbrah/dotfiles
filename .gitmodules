@@ -1,0 +1,3 @@
+[submodule ".config/fish"]
+	path = .config/fish
+	url = git@github.com:Chirikumbrah/fish.git
