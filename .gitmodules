@@ -1,12 +1,12 @@
 [submodule ".config/fish"]
 	path = .config/fish
-	url = git@github.com:Chirikumbrah/fish.git
+	url = https://github.com/Chirikumbrah/fish.git
 [submodule ".scripts"]
 	path = .scripts
-	url = git@github.com:Chirikumbrah/scripts.git
+	url = https://github.com/Chirikumbrah/scripts.git
 [submodule ".config/dwm"]
 	path = .config/dwm
-	url = git@github.com:Chirikumbrah/dwm.git
+	url = https://github.com/Chirikumbrah/dwm.git
 [submodule ".config/libreoffice"]
 	path = .config/libreoffice
-	url = git@github.com:Chirikumbrah/libreoffice.git
+	url = https://github.com/Chirikumbrah/libreoffice.git
