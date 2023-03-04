@@ -26,5 +26,6 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 # exec "$HOME/.scripts/system/sbar.sh" &
 exec dwmblocks &
 exec dbus-run-session dwm
-# exec dwm
 
+# start awesome
+# exec dbus-launch --sh-syntax --exit-with-session awesome
