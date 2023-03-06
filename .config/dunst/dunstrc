@@ -47,7 +47,7 @@
 
     # Set the progress bar height. This includes the frame, so make sure
     # it's at least twice as big as the frame width.
-    progress_bar_height = 10
+    progress_bar_height = 7
 
     # Set the frame width of the progress bar
     progress_bar_frame_width = 1
@@ -294,14 +294,7 @@
     background = "#282a36"
     foreground = "#bd93f9"
     frame_color = "#8be9fd"
-    timeout = 3
-    # Icon for notifications with low urgency, uncomment to enable
-    #new_icon = /path/to/icon
-
-[urgency_normal]
-    background = "#282a36"
-    foreground = "#50fa7b"
-    frame_color = "#8be9fd"
+    highlight = "#8be9fd"
     timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
     #new_icon = /path/to/icon
@@ -310,6 +303,7 @@
     background = "#282a36"
     foreground = "#f8f8f2"
     frame_color = "#bd93f9"
+    highlight = "#8be9fd"
     timeout = 11
     # Icon for notifications with normal urgency, uncomment to enable
     #new_icon = /path/to/icon
@@ -318,6 +312,7 @@
     background = "#ff5555"
     foreground = "#282a36"
     frame_color = "#50fa7b"
+    highlight = "#ff5555"
     timeout = 54
     # Icon for notifications with critical urgency, uncomment to enable
     #new_icon = /path/to/icon
