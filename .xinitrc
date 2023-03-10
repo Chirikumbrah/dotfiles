@@ -12,7 +12,8 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 ### AUTOSTART ###
 
 # Set up monitor and set background
-~/.scripts/system/xrandr.sh &
+xrandr --output eDP1 --output HDMI1 --auto --right-of eDP1
+feh --bg-scale --randomize ~/.yrdata/images/wallpapers/*
 
 # Setup autostart
 ~/.scripts/system/autostart.sh &
@@ -23,9 +24,5 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 # fi
 
 # start dwm
-# exec "$HOME/.scripts/system/sbar.sh" &
 exec dwmblocks &
 exec dbus-run-session dwm
-
-# start awesome
-# exec dbus-launch --sh-syntax --exit-with-session awesome
