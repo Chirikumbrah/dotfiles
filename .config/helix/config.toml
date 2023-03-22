@@ -95,6 +95,7 @@ C-k = ["open_above", "select_mode"]
 0 = "goto_line_start"
 D = "delete_char_backward"
 d = ["yank_main_selection_to_clipboard", "delete_selection"]
+A-z = "normal_mode"
 
 # fast format
 F = ":format"
@@ -116,7 +117,8 @@ H = ":bp"
 
 ### INSERT mode
 [keys.insert]
-j = { k = "normal_mode" } # Maps `jk` to exit insert mode
+# j = { k = "normal_mode" } # Maps `jk` to exit insert mode
+A-z = "normal_mode"
 C-right = [ "move_next_word_start", "append_mode", "collapse_selection" ]
 C-left = [ "move_prev_word_start", "collapse_selection" ]
 C-s = [ "normal_mode", ":w", "insert_mode"]
