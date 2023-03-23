@@ -117,7 +117,7 @@ H = ":bp"
 
 ### INSERT mode
 [keys.insert]
-# j = { k = "normal_mode" } # Maps `jk` to exit insert mode
+j = { k = "normal_mode" } # Maps `jk` to exit insert mode
 A-z = "normal_mode"
 C-right = [ "move_next_word_start", "append_mode", "collapse_selection" ]
 C-left = [ "move_prev_word_start", "collapse_selection" ]
