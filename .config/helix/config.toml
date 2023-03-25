@@ -47,6 +47,7 @@ display-messages = true
 ### INSERT mode
 [keys.normal]
 # better text navigation
+a = ["move_char_right", "insert_mode"]
 y = "yank_main_selection_to_clipboard"
 p = "paste_clipboard_after"
 P = "paste_clipboard_before"
