@@ -1,15 +1,12 @@
 [submodule ".config/fish"]
 	path = .config/fish
-	url = https://github.com/Chirikumbrah/fish.git
+	url = https://notabug.org/Chirikumbrah/fish.git
 [submodule ".scripts"]
 	path = .scripts
-	url = https://github.com/Chirikumbrah/scripts.git
+	url = https://notabug.org/Chirikumbrah/scripts.git
 [submodule ".config/dwm"]
 	path = .config/dwm
-	url = https://github.com/Chirikumbrah/dwm.git
+	url = https://notabug.org/Chirikumbrah/dwm.git
 [submodule ".config/libreoffice"]
 	path = .config/libreoffice
-	url = https://github.com/Chirikumbrah/libreoffice.git
-[submodule ".yrdata/files/PlaysDev/work/test_tasks/appcharge_infra/.config/tmux/plugins/tmux-resurrect"]
-	path = .yrdata/files/PlaysDev/work/test_tasks/appcharge_infra/.config/tmux/plugins/tmux-resurrect
-	url = https://github.com/tmux-plugins/tmux-resurrect.git
+	url = https://notabug.org/Chirikumbrah/libreoffice.git
