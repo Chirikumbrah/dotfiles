@@ -1,3 +1,4 @@
+# theme = "dracula"
 theme = "dyracula"
 
 [editor]
@@ -15,10 +16,10 @@ idle-timeout = 0
 left = ["mode", "spinner", "diagnostics"]
 center = ["file-name"]
 right = ["file-encoding", "file-type", "total-line-numbers", "position", "position-percentage"]
-separator = "│"
-mode.normal = "NORMAL"
-mode.insert = "INSERT"
-mode.select = "SELECT"
+# separator = "│"
+# mode.normal = "NORMAL"
+# mode.insert = "INSERT"
+# mode.select = "SELECT"
 
 [editor.indent-guides]
 render = false
@@ -27,8 +28,10 @@ skip-levels = 1
 
 [editor.cursor-shape]
 normal = "block"
+# insert = "bar"
+# select = "underline"
 insert = "bar"
-select = "underline"
+select = "block"
 
 [editor.auto-pairs]
 '(' = ')'
