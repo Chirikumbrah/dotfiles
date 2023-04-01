@@ -53,7 +53,7 @@ success_symbol = "[❯](bold #50fa7b)"
 # success_symbol = "[](bold #50fa7b)"
 
 [cmd_duration]
-min_time = 10_000
+min_time = 200_000
 style = "bold #f1fa8c"
 format = ' [$duration](bold yellow)'
 show_notifications = true

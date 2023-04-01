@@ -30,6 +30,8 @@
 "ui.cursor.primary" = { fg = "background", bg = "cyan", modifiers = ["dim"] }
 "ui.cursorline.primary" = { bg = "background_dark" }
 "ui.help" = { fg = "foreground", bg = "background_dark" }
+"ui.debug" = { fg = "red" }
+"ui.highlight.frameline" = { fg = "black", bg = "red" }
 "ui.linenr" = { fg = "comment" }
 "ui.linenr.selected" = { fg = "foreground" }
 "ui.menu" = { fg = "foreground", bg = "background_dark" }
@@ -45,7 +47,8 @@
 "ui.text" = { fg = "foreground" }
 "ui.text.focus" = { fg = "cyan" }
 "ui.window" = { fg = "foreground" }
-"ui.virtual.whitespace" = { fg = "comment" }
+"ui.virtual.whitespace" = { fg = "subtle" }
+"ui.virtual.wrap" = { fg = "subtle" }
 "ui.virtual.ruler" = { bg = "background_dark"}
 
 "error" = { fg = "red" }
@@ -55,19 +58,21 @@
 "markup.list" = "cyan"
 "markup.bold" = { fg = "orange", modifiers = ["bold"] }
 "markup.italic" = { fg = "yellow", modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
 "markup.link.url" = "cyan"
 "markup.link.text" = "pink"
 "markup.quote" = { fg = "yellow", modifiers = ["italic"] }
 "markup.raw" = { fg = "foreground" }
 
-"diagnostic.error".underline = { color = "red", style = "curl" }
 "diagnostic".underline = { color = "orange", style = "curl" }
+"diagnostic.error".underline = { color = "red", style = "curl" }
 
 [palette]
 background = "#282a36"
 background_dark = "#21222c"
 primary_highlight = "#800049"
 secondary_highlight = "#4d4f66"
+subtle = "#424450"
 foreground = "#f8f8f2"
 comment = "#6272a4"
 red = "#ff5555"

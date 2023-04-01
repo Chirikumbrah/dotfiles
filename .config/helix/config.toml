@@ -13,8 +13,10 @@ completion-trigger-len = 1
 idle-timeout = 0
 
 [editor.statusline]
+# left = ["mode", "spinner", "diagnostics", "version-control" ]
 left = ["mode", "spinner", "diagnostics"]
-center = ["file-name"]
+center = ["spinner"]
+# center = ["file-name"]
 right = ["file-encoding", "file-type", "total-line-numbers", "position", "position-percentage"]
 # separator = "│"
 # mode.normal = "NORMAL"
@@ -28,8 +30,6 @@ skip-levels = 1
 
 [editor.cursor-shape]
 normal = "block"
-# insert = "bar"
-# select = "underline"
 insert = "bar"
 select = "block"
 
@@ -43,9 +43,12 @@ select = "block"
 
 [editor.file-picker]
 hidden = false
+# follow-links = false
 
 [editor.lsp]
-display-messages = true
+# display-messages = true
+# display-inlay-hints = true
+
 
 ### INSERT mode
 [keys.normal]
