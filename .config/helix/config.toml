@@ -7,6 +7,7 @@ line-number = "relative"
 scroll-lines = 1
 bufferline = "multiple"
 color-modes = true
+true-color = true
 auto-save = true
 auto-info = true
 completion-trigger-len = 1
@@ -15,13 +16,11 @@ idle-timeout = 0
 [editor.statusline]
 # left = ["mode", "spinner", "diagnostics", "version-control" ]
 left = ["mode", "spinner", "diagnostics"]
-center = ["spinner"]
-# center = ["file-name"]
+center = ["file-name"]
 right = ["file-encoding", "file-type", "total-line-numbers", "position", "position-percentage"]
-# separator = "│"
-# mode.normal = "NORMAL"
-# mode.insert = "INSERT"
-# mode.select = "SELECT"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
 
 [editor.indent-guides]
 render = false
@@ -46,7 +45,7 @@ hidden = false
 # follow-links = false
 
 [editor.lsp]
-# display-messages = true
+display-messages = true
 # display-inlay-hints = true
 
 
