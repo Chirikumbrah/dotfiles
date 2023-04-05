@@ -111,7 +111,7 @@ F = ":format"
 q = { q = ":q!" }
 
 # fast saving
-C-s = ":w"
+C-s = ":w!"
 
 # config keys
 C-o = ":config-open"
@@ -128,4 +128,5 @@ j = { k = "normal_mode" } # Maps `jk` to exit insert mode
 A-z = "normal_mode"
 C-right = [ "move_next_word_start", "append_mode", "collapse_selection" ]
 C-left = [ "move_prev_word_start", "collapse_selection" ]
-C-s = [ "normal_mode", ":w", "insert_mode"]
+# C-s = [ "normal_mode", ":w!", "insert_mode"]
+C-s = [ "normal_mode", ":w!"]
