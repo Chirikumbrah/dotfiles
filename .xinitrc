@@ -9,12 +9,6 @@ export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
 # set QT platform theme engine
 export QT_QPA_PLATFORMTHEME="qt5ct"
 
-### AUTOSTART ###
-
-# Set up monitor and set background
-# xrandr --output eDP1 --output HDMI1 --auto --right-of eDP1
-feh --bg-scale --randomize ~/.yrdata/images/wallpapers/*
-
 # Setup autostart
 ~/.scripts/system/autostart.sh &
 

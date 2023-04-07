@@ -1,0 +1,21 @@
+#!/bin/sh
+
+LAPTOP=eDP1
+EXTERNAL=HDMI1
+POSITION=--left-of
+
+TYPE=$1   # keyboard, pointer, display
+DEVICE=$2 # HDMI1, LVDS1, VGA1, etc.
+STATUS=$3 # connected or disconnected
+
+if [ "$DEVICE" = "$EXTERNAL" ]; then
+    if [ "$STATUS" = "disconnected" ]; then
+        xrandr --output $LAPTOP --auto --primary --output "$DEVICE" --off
+        feh --bg-scale --randomize ~/.yrdata/images/wallpapers/
+        exit 0
+    else
+        xrandr --output $LAPTOP --auto --primary --output "$EXTERNAL" --auto $POSITION $LAPTOP
+        feh --bg-scale --randomize ~/.yrdata/images/wallpapers/
+        exit 0
+    fi
+fi
