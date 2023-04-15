@@ -23,7 +23,7 @@ mode.insert = "INSERT"
 mode.select = "SELECT"
 
 [editor.indent-guides]
-render = false
+render = true
 character = "┆" # Some characters that work well: "▏", "┆", "┊", "⸽"
 skip-levels = 1
 
@@ -31,6 +31,11 @@ skip-levels = 1
 normal = "block"
 insert = "block"
 select = "block"
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 25 # increase value to reduce forced mid-word wrapping
+max-indent-retain = 0
 
 [editor.auto-pairs]
 '(' = ')'
