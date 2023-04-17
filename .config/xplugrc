@@ -12,12 +12,12 @@ if [ "$DEVICE" = "$EXTERNAL" ]; then
     if [ "$STATUS" = "disconnected" ]; then
         xrandr --output $LAPTOP --auto --primary --output "$DEVICE" --off
         # feh --bg-scale --randomize ~/.yrdata/images/wallpapers/
-        nitrogen --restore
+        nitrogen --restore &
         exit 0
     else
         xrandr --output $LAPTOP --auto --primary --output "$EXTERNAL" --auto $POSITION $LAPTOP
         # feh --bg-scale --randomize ~/.yrdata/images/wallpapers/
-        nitrogen --restore
+        nitrogen --restore &
         exit 0
     fi
 fi

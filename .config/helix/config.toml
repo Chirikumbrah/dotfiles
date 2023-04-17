@@ -77,7 +77,7 @@ F = ":format"
 q = { q = ":q!" }
 
 # fast saving
-C-s = ":w"
+C-s = ":w!"
 
 # config keys
 C-o = ":config-open"
