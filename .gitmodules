@@ -10,3 +10,6 @@
 [submodule ".config/libreoffice"]
 	path = .config/libreoffice
 	url = https://notabug.org/Chirikumbrah/libreoffice.git
+[submodule ".config/wayland_configs"]
+	path = .config/wayland_configs
+	url = https://notabug.org/Chirikumbrah/wayland_configs.git
