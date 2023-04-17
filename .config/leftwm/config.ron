@@ -1,0 +1,8 @@
+#![enable(implicit_some)]
+(
+    keybind: [
+            (command: Execute, value: "dmenu_run", modifier: ["modkey", "Shift"], key: "Return"),
+            (command: Execute, value: "alacritty", modifier: ["modkey"], key: "Return"),
+            (command: CloseWindow, modifier: ["modkey"], key: "x"),
+    ],
+)
