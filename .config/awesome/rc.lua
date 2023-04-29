@@ -487,6 +487,15 @@ awful.rules.rules = {
   },
 
   -- Floating clients.
+ --  // floating windows
+	-- RULE(.class = "feh",                         .isfloating = 1)
+	-- RULE(.class = "vlc",                         .isfloating = 1)
+	-- RULE(.class = "mpv",                         .isfloating = 1)
+	-- RULE(.class = "ffplay",                      .isfloating = 1)
+	-- RULE(.class = "QjackCtl",                    .isfloating = 1)
+	-- RULE(.class = "Blueman-manager",             .isfloating = 1)
+	-- RULE(.class = "FeatherPad",                  .isfloating = 1)
+	-- RULE(.class = "Nitrogen",                    .isfloating = 1)
   {
     rule_any = {
       instance = {
@@ -526,13 +535,93 @@ awful.rules.rules = {
     properties = { titlebars_enabled = false }
   },
 
-  -- Set Firefox to always map on the tag named "2" on screen 1.
-  { rule = { class = "Firefox" },
-    properties = { screen = 1, tag = "1" } },
+  -- FIRST
   { rule = { class = "Chromium" },
+    properties = { screen = 1, tag = "1" } },
+  { rule = { class = "Thorium-browser-unstable" },
+    properties = { screen = 1, tag = "1" } },
+  { rule = { class = "qutebrowser" },
+    properties = { screen = 1, tag = "1" } },
+  { rule = { class = "Firefox" },
     properties = { screen = 1, tag = "1" } },
   { rule = { class = "librewolf" },
     properties = { screen = 1, tag = "1" } },
+  { rule = { class = "Vieb" },
+    properties = { screen = 1, tag = "1" } },
+  -- SECOND  
+  { rule = { class = "Alacritty" },
+    properties = { screen = 1, tag = "2" } },
+  { rule = { class = "st" },
+    properties = { screen = 1, tag = "2" } },
+  -- THIRD
+  { rule = { class = "ranger" },
+    properties = { screen = 1, tag = "3" } },
+  { rule = { class = "Localsend_app" },
+    properties = { screen = 1, tag = "3" } },
+  { rule = { class = "qBittorrent" },
+    properties = { screen = 1, tag = "3" } },
+  -- FOURTH
+  { rule = { class = "Slack" },
+    properties = { screen = 1, tag = "4" } },
+  -- FIFTH
+  { rule = { class = "Code" },
+    properties = { screen = 1, tag = "5" } },
+  { rule = { class = "jetbrains-pycharm-ce" },
+    properties = { screen = 1, tag = "5" } },
+  { rule = { class = "Lens" },
+    properties = { screen = 1, tag = "5" } },
+  { rule = { class = "Notesnook" },
+    properties = { screen = 1, tag = "5" } },
+  { rule = { class = "Joplin" },
+    properties = { screen = 1, tag = "5" } },
+  { rule = { class = "QOwnNotes" },
+    properties = { screen = 1, tag = "5" } },
+  -- SIXTH
+  { rule = { class = "guitarpro7.exe" },
+    properties = { screen = 1, tag = "6" } },
+  { rule = { class = "transcribe.exe" },
+    properties = { screen = 1, tag = "6" } },
+  { rule = { class = "TuxGuitar" },
+    properties = { screen = 1, tag = "6" } },
+  { rule = { class = "Picard" },
+    properties = { screen = 1, tag = "6" } },
+  { rule = { class = "Gtick" },
+    properties = { screen = 1, tag = "6" } },
+  { rule = { class = "Lingot" },
+    properties = { screen = 1, tag = "6" } },
+  { rule = { class = "Flowblade" },
+    properties = { screen = 1, tag = "6" } },
+  { rule = { class = "java" },
+    properties = { screen = 1, tag = "6" } },
+  -- SEVENTH
+  { rule = { class = "Soffice" },
+    properties = { screen = 1, tag = "7" } },
+  { rule = { class = "libreoffice" },
+    properties = { screen = 1, tag = "7" } },
+  { rule = { class = "kolourpaint" },
+    properties = { screen = 1, tag = "7" } },
+  { rule = { class = "Gimp" },
+    properties = { screen = 1, tag = "7" } },
+  { rule = { class = "DesktopEditors" },
+    properties = { screen = 1, tag = "7" } },
+  { rule = { class = "Rustdesk" },
+    properties = { screen = 1, tag = "7" } },
+  { rule = { class = "Zathura" },
+    properties = { screen = 1, tag = "7" } },
+  -- EIGHTH
+  { rule = { class = "discord" },
+    properties = { screen = 1, tag = "8" } },
+  { rule = { class = "Skype" },
+    properties = { screen = 1, tag = "8" } },
+  { rule = { class = "zoom" },
+    properties = { screen = 1, tag = "8" } },
+  { rule = { class = "Jami" },
+    properties = { screen = 1, tag = "8" } },
+  { rule = { class = "obs" },
+    properties = { screen = 1, tag = "8" } },
+  -- NINTH
+  { rule = { class = "htop" },
+    properties = { screen = 1, tag = "9" } },
 }
 -- }}}
 

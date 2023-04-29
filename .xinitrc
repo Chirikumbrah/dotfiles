@@ -18,9 +18,9 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 # fi
 
 # start dwm
-exec dwmblocks &
-exec dbus-run-session dwm
+# exec dwmblocks &
+# exec dbus-run-session dwm
 
 # start awesome
-# exec dbus-run-session awesome
+exec dbus-run-session awesome
 
