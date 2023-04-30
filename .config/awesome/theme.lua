@@ -25,14 +25,14 @@ theme.font          = "sans 8"
 
 theme.bg_normal     = background
 theme.bg_focus      = background 
-theme.bg_urgent     = red
-theme.bg_minimize   = "#444444"
+theme.bg_urgent     = green
+theme.bg_minimize   = background
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_normal     = foreground
+theme.fg_focus      = foreground
+theme.fg_urgent     = background
+theme.fg_minimize   = comment
 
 theme.useless_gap   = dpi(5)
 theme.border_width  = dpi(2)
@@ -44,14 +44,12 @@ theme.border_marked = pink
 -- taglist_[bg|fg]_[focus|urgent|occupied|empty|volatile]
 theme.taglist_fg_empty = purple
 theme.taglist_bg_empty = background
+theme.taglist_fg_occupied = purple
+theme.taglist_bg_occupied = background
 theme.taglist_fg_focus = background
 theme.taglist_bg_focus = purple
 
 -- titlebar
--- static char titlenormfgcolor[]           = COMMENT;
--- static char titlenormbgcolor[]           = DARK;
--- static char titleselfgcolor[]            = GREEN;
--- static char titleselbgcolor[]            = DARK;
 -- tasklist_[bg|fg]_[focus|urgent]
 theme.tasklist_fg_normal = comment
 theme.tasklist_bg_normal = background
@@ -70,12 +68,12 @@ theme.tasklist_bg_focus = background
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Generate taglist squares:
-local taglist_square_size = dpi(4)
+local taglist_square_size = dpi(0)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, theme.fg_normal
+    taglist_square_size, purple
 )
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-    taglist_square_size, theme.fg_normal
+    taglist_square_size, purple
 )
 
 -- Variables set for theming notifications:
