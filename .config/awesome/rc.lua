@@ -21,7 +21,7 @@ require("awful.hotkeys_popup.keys")
 local theme_path = string.format("%s/.config/awesome/theme.lua", os.getenv("HOME"))
 local scripts_path = string.format("%s/.scripts/system", os.getenv("HOME"))
 local config_path = awful.util.getdir("config")
-pcall(require, config_path .. "scratchpads.lua")
+local scratch = require("scratchpads")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -57,21 +57,23 @@ end
 -- beautiful.init(gears.filesystem.get_configuration_dir() .. "/themes/default/theme.lua")
 beautiful.init(theme_path)
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
-browser = "chromium"
-editor = os.getenv("EDITOR") or "hx"
-editor_cmd = terminal .. " -e " .. editor
+local terminal               = "alacritty"
+local browser                = "chromium"
+local image_viewer           = "qimgv"
+local pdf_viewer             = "qpdfview"
+local editor                 = os.getenv("EDITOR") or "hx"
+local editor_cmd             = terminal .. " -e " .. editor
 
 -- Default modkey.$HOME/.config/awesome"
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod4"
-alt    = "Mod1"
+modkey                 = "Mod4"
+alt                    = "Mod1"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
-awful.layout.layouts = {
+awful.layout.layouts   = {
   awful.layout.suit.tile,
   awful.layout.suit.floating,
   -- awful.layout.suit.tile.left,
@@ -93,7 +95,7 @@ awful.layout.layouts = {
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
-myawesomemenu = {
+myawesomemenu          = {
   { "hotkeys",     function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
   { "manual",      terminal .. " -e man awesome" },
   { "edit config", editor_cmd .. " " .. awesome.conffile },
@@ -101,13 +103,13 @@ myawesomemenu = {
   { "quit",        function() awesome.quit() end },
 }
 
-mymainmenu = awful.menu({
+mymainmenu             = awful.menu({
   items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
     { "open terminal", terminal }
   }
 })
 
-mylauncher = awful.widget.launcher({
+mylauncher             = awful.widget.launcher({
   image = beautiful.awesome_icon,
   menu = mymainmenu
 })
@@ -117,14 +119,14 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+mykeyboardlayout       = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock            = wibox.widget.textclock()
 
 -- Create a wibox for each screen and add it
-local taglist_buttons = gears.table.join(
+local taglist_buttons  = gears.table.join(
   awful.button({}, 1, function(t) t:view_only() end),
   awful.button({ modkey }, 1, function(t)
     if client.focus then
@@ -316,7 +318,21 @@ globalkeys = gears.table.join(
   -- Custom program
   awful.key({ modkey, "Shift" }, "w", function() awful.spawn(browser) end,
     { description = "open a browser", group = "launcher" }),
-  
+
+  -- Scratchpads
+  awful.key({ modkey, "Shift" }, "Return", function() scratch.toggle("alacritty --class spterm,spterm --config-file /home/yr/.config/alacritty/alacritty-scrathcpad.yml", { class = "spterm" }) end),
+  awful.key({ modkey, "Shift" }, "p", function() scratch.toggle("KeePassXC", { class = "KeePassXC" }) end),
+  awful.key({ modkey, "Shift" }, "m", function() scratch.toggle("audacious", { class = "Audacious" }) end),
+  awful.key({ modkey, "Shift" }, "g", function() scratch.toggle("galculator", { class = "Galculator" }) end),
+  awful.key({ modkey, "Shift" }, "c", function() scratch.toggle("orage", { class = "Orage" }) end),
+  awful.key({ modkey, "Shift" }, "i", function() scratch.toggle(image_viewer, { class = image_viewer }) end),
+  awful.key({ modkey, "Shift" }, "n", function() scratch.toggle("nm-connection-editor", { class = "Nm-connection-editor" }) end),
+  awful.key({ modkey, "Shift" }, "b", function() scratch.toggle("blueman-manager", { class = "blueman-manager" }) end),
+  awful.key({ modkey, "Shift" }, "d", function() scratch.toggle(pdf_viewer, { class = pdf_viewer }) end),
+  awful.key({ modkey, "Shift" }, "t", function() scratch.toggle("telegram-desktop", { class = "Telegram" }) end),
+  awful.key({ modkey, "Shift" }, "f", function() scratch.toggle("pcmanfm-qt", { class = "pcmanfm-qt" }) end),
+  awful.key({ modkey, "Shift" }, "e", function() scratch.toggle("element-desktop", { class = "Element" }) end),
+  awful.key({ modkey, "Shift" }, "v", function() scratch.toggle("pavucontrol-qt", { class = "Pavucontrol-qt" }) end),
 
   awful.key({ modkey, "Control" }, "n",
     function()
@@ -331,8 +347,8 @@ globalkeys = gears.table.join(
     { description = "restore minimized", group = "client" }),
 
   -- Prompt
-  awful.key({ modkey, "Shift"  }, "r", function() awful.screen.focused().mypromptbox:run() end,
-    { description = "run prompt", group = "launcher" }),
+  -- awful.key({ modkey, "Shift" }, "r", function() awful.screen.focused().mypromptbox:run() end,
+  --   { description = "run prompt", group = "launcher" }),
 
   -- TEMP
   -- awful.key({ modkey }, "qa",
@@ -346,11 +362,11 @@ globalkeys = gears.table.join(
   --   end,
   --   { description = "lua execute prompt", group = "awesome" }),
   -- Menubar
-  awful.key({ modkey }, "space", function () awful.util.spawn_with_shell(scripts_path .. "/dmenu-scripts.sh apps") end,
+  awful.key({ modkey }, "space", function() awful.util.spawn_with_shell(scripts_path .. "/dmenu-scripts.sh apps") end,
     { description = "show the menubar", group = "launcher" }),
-  awful.key({ alt }, "space", function () awful.util.spawn_with_shell(scripts_path .. "/dmenu-scripts.sh clipmenu") end,
+  awful.key({ alt }, "space", function() awful.util.spawn_with_shell(scripts_path .. "/dmenu-scripts.sh clipmenu") end,
     { description = "show the menubar", group = "launcher" }),
-  awful.key({ alt }, "x", function () awful.util.spawn_with_shell(scripts_path .. "/dmenu-scripts.sh powermenu") end,
+  awful.key({ alt }, "x", function() awful.util.spawn_with_shell(scripts_path .. "/dmenu-scripts.sh powermenu") end,
     { description = "show the menubar", group = "launcher" })
 )
 
@@ -363,7 +379,7 @@ clientkeys = gears.table.join(
     { description = "toggle fullscreen", group = "client" }),
   awful.key({ modkey, }, "x", function(c) c:kill() end,
     { description = "close", group = "client" }),
-  awful.key({ modkey,  }, "Tab", awful.client.floating.toggle,
+  awful.key({ modkey, }, "Tab", awful.client.floating.toggle,
     { description = "toggle floating", group = "client" }),
   awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end,
     { description = "move to master", group = "client" }),
@@ -485,17 +501,16 @@ awful.rules.rules = {
       placement = awful.placement.no_overlap + awful.placement.no_offscreen
     }
   },
-
+  -- scratchpads
   -- Floating clients.
- --  // floating windows
-	-- RULE(.class = "feh",                         .isfloating = 1)
-	-- RULE(.class = "vlc",                         .isfloating = 1)
-	-- RULE(.class = "mpv",                         .isfloating = 1)
-	-- RULE(.class = "ffplay",                      .isfloating = 1)
-	-- RULE(.class = "QjackCtl",                    .isfloating = 1)
-	-- RULE(.class = "Blueman-manager",             .isfloating = 1)
-	-- RULE(.class = "FeatherPad",                  .isfloating = 1)
-	-- RULE(.class = "Nitrogen",                    .isfloating = 1)
+  -- RULE(.class = "feh",                         .isfloating = 1)
+  -- RULE(.class = "vlc",                         .isfloating = 1)
+  -- RULE(.class = "mpv",                         .isfloating = 1)
+  -- RULE(.class = "ffplay",                      .isfloating = 1)
+  -- RULE(.class = "QjackCtl",                    .isfloating = 1)
+  -- RULE(.class = "Blueman-manager",             .isfloating = 1)
+  -- RULE(.class = "FeatherPad",                  .isfloating = 1)
+  -- RULE(.class = "Nitrogen",                    .isfloating = 1)
   {
     rule_any = {
       instance = {
@@ -504,8 +519,30 @@ awful.rules.rules = {
         "pinentry",
       },
       class = {
+      -- scratchpads
+      	"spterm",
+        "Telegram",
+      	"KeePassXC",
+      	"Audacious",
+      	"Galculator",
+      	"Orage",
+      	image_viewer, 
+      	"Nm-connection-editor",
+      	"blueman-manager",
+      	pdf_viewer, 
+      	"pcmanfm-qt",
+      	"Element",
+      	"Pavucontrol-qt",
+      -- other
+      	"feh",
+      	"vlc",
+      	"mpv",
+      	"ffplay",
+      	"QjackCtl",
+      	"Blueman-manager",
+      	"FeatherPad",
+      	"Nitrogen",
         "Arandr",
-        "Blueman-manager",
         "Gpick",
         "Kruler",
         "MessageWin",  -- kalarm.
@@ -536,92 +573,170 @@ awful.rules.rules = {
   },
 
   -- FIRST
-  { rule = { class = "Chromium" },
-    properties = { screen = 1, tag = "1" } },
-  { rule = { class = "Thorium-browser-unstable" },
-    properties = { screen = 1, tag = "1" } },
-  { rule = { class = "qutebrowser" },
-    properties = { screen = 1, tag = "1" } },
-  { rule = { class = "Firefox" },
-    properties = { screen = 1, tag = "1" } },
-  { rule = { class = "librewolf" },
-    properties = { screen = 1, tag = "1" } },
-  { rule = { class = "Vieb" },
-    properties = { screen = 1, tag = "1" } },
-  -- SECOND  
-  { rule = { class = "Alacritty" },
-    properties = { screen = 1, tag = "2" } },
-  { rule = { class = "st" },
-    properties = { screen = 1, tag = "2" } },
+  {
+    rule = { class = "Chromium" },
+    properties = { screen = 1, tag = "1" }
+  },
+  {
+    rule = { class = "Thorium-browser-unstable" },
+    properties = { screen = 1, tag = "1" }
+  },
+  {
+    rule = { class = "qutebrowser" },
+    properties = { screen = 1, tag = "1" }
+  },
+  {
+    rule = { class = "Firefox" },
+    properties = { screen = 1, tag = "1" }
+  },
+  {
+    rule = { class = "librewolf" },
+    properties = { screen = 1, tag = "1" }
+  },
+  {
+    rule = { class = "Vieb" },
+    properties = { screen = 1, tag = "1" }
+  },
+  -- SECOND
+  {
+    rule = { class = "Alacritty" },
+    properties = { screen = 1, tag = "2" }
+  },
+  {
+    rule = { class = "st" },
+    properties = { screen = 1, tag = "2" }
+  },
   -- THIRD
-  { rule = { class = "ranger" },
-    properties = { screen = 1, tag = "3" } },
-  { rule = { class = "Localsend_app" },
-    properties = { screen = 1, tag = "3" } },
-  { rule = { class = "qBittorrent" },
-    properties = { screen = 1, tag = "3" } },
+  {
+    rule = { class = "ranger" },
+    properties = { screen = 1, tag = "3" }
+  },
+  {
+    rule = { class = "Localsend_app" },
+    properties = { screen = 1, tag = "3" }
+  },
+  {
+    rule = { class = "qBittorrent" },
+    properties = { screen = 1, tag = "3" }
+  },
   -- FOURTH
-  { rule = { class = "Slack" },
-    properties = { screen = 1, tag = "4" } },
+  {
+    rule = { class = "Slack" },
+    properties = { screen = 1, tag = "4" }
+  },
   -- FIFTH
-  { rule = { class = "Code" },
-    properties = { screen = 1, tag = "5" } },
-  { rule = { class = "jetbrains-pycharm-ce" },
-    properties = { screen = 1, tag = "5" } },
-  { rule = { class = "Lens" },
-    properties = { screen = 1, tag = "5" } },
-  { rule = { class = "Notesnook" },
-    properties = { screen = 1, tag = "5" } },
-  { rule = { class = "Joplin" },
-    properties = { screen = 1, tag = "5" } },
-  { rule = { class = "QOwnNotes" },
-    properties = { screen = 1, tag = "5" } },
+  {
+    rule = { class = "Code" },
+    properties = { screen = 1, tag = "5" }
+  },
+  {
+    rule = { class = "jetbrains-pycharm-ce" },
+    properties = { screen = 1, tag = "5" }
+  },
+  {
+    rule = { class = "Lens" },
+    properties = { screen = 1, tag = "5" }
+  },
+  {
+    rule = { class = "Notesnook" },
+    properties = { screen = 1, tag = "5" }
+  },
+  {
+    rule = { class = "Joplin" },
+    properties = { screen = 1, tag = "5" }
+  },
+  {
+    rule = { class = "QOwnNotes" },
+    properties = { screen = 1, tag = "5" }
+  },
   -- SIXTH
-  { rule = { class = "guitarpro7.exe" },
-    properties = { screen = 1, tag = "6" } },
-  { rule = { class = "transcribe.exe" },
-    properties = { screen = 1, tag = "6" } },
-  { rule = { class = "TuxGuitar" },
-    properties = { screen = 1, tag = "6" } },
-  { rule = { class = "Picard" },
-    properties = { screen = 1, tag = "6" } },
-  { rule = { class = "Gtick" },
-    properties = { screen = 1, tag = "6" } },
-  { rule = { class = "Lingot" },
-    properties = { screen = 1, tag = "6" } },
-  { rule = { class = "Flowblade" },
-    properties = { screen = 1, tag = "6" } },
-  { rule = { class = "java" },
-    properties = { screen = 1, tag = "6" } },
+  {
+    rule = { class = "guitarpro7.exe" },
+    properties = { screen = 1, tag = "6" }
+  },
+  {
+    rule = { class = "transcribe.exe" },
+    properties = { screen = 1, tag = "6" }
+  },
+  {
+    rule = { class = "TuxGuitar" },
+    properties = { screen = 1, tag = "6" }
+  },
+  {
+    rule = { class = "Picard" },
+    properties = { screen = 1, tag = "6" }
+  },
+  {
+    rule = { class = "Gtick" },
+    properties = { screen = 1, tag = "6" }
+  },
+  {
+    rule = { class = "Lingot" },
+    properties = { screen = 1, tag = "6" }
+  },
+  {
+    rule = { class = "Flowblade" },
+    properties = { screen = 1, tag = "6" }
+  },
+  {
+    rule = { class = "java" },
+    properties = { screen = 1, tag = "6" }
+  },
   -- SEVENTH
-  { rule = { class = "Soffice" },
-    properties = { screen = 1, tag = "7" } },
-  { rule = { class = "libreoffice" },
-    properties = { screen = 1, tag = "7" } },
-  { rule = { class = "kolourpaint" },
-    properties = { screen = 1, tag = "7" } },
-  { rule = { class = "Gimp" },
-    properties = { screen = 1, tag = "7" } },
-  { rule = { class = "DesktopEditors" },
-    properties = { screen = 1, tag = "7" } },
-  { rule = { class = "Rustdesk" },
-    properties = { screen = 1, tag = "7" } },
-  { rule = { class = "Zathura" },
-    properties = { screen = 1, tag = "7" } },
+  {
+    rule = { class = "Soffice" },
+    properties = { screen = 1, tag = "7" }
+  },
+  {
+    rule = { class = "libreoffice" },
+    properties = { screen = 1, tag = "7" }
+  },
+  {
+    rule = { class = "kolourpaint" },
+    properties = { screen = 1, tag = "7" }
+  },
+  {
+    rule = { class = "Gimp" },
+    properties = { screen = 1, tag = "7" }
+  },
+  {
+    rule = { class = "DesktopEditors" },
+    properties = { screen = 1, tag = "7" }
+  },
+  {
+    rule = { class = "Rustdesk" },
+    properties = { screen = 1, tag = "7" }
+  },
+  {
+    rule = { class = "Zathura" },
+    properties = { screen = 1, tag = "7" }
+  },
   -- EIGHTH
-  { rule = { class = "discord" },
-    properties = { screen = 1, tag = "8" } },
-  { rule = { class = "Skype" },
-    properties = { screen = 1, tag = "8" } },
-  { rule = { class = "zoom" },
-    properties = { screen = 1, tag = "8" } },
-  { rule = { class = "Jami" },
-    properties = { screen = 1, tag = "8" } },
-  { rule = { class = "obs" },
-    properties = { screen = 1, tag = "8" } },
+  {
+    rule = { class = "discord" },
+    properties = { screen = 1, tag = "8" }
+  },
+  {
+    rule = { class = "Skype" },
+    properties = { screen = 1, tag = "8" }
+  },
+  {
+    rule = { class = "zoom" },
+    properties = { screen = 1, tag = "8" }
+  },
+  {
+    rule = { class = "Jami" },
+    properties = { screen = 1, tag = "8" }
+  },
+  {
+    rule = { class = "obs" },
+    properties = { screen = 1, tag = "8" }
+  },
   -- NINTH
-  { rule = { class = "htop" },
-    properties = { screen = 1, tag = "9" } },
+  {
+    rule = { class = "htop" },
+    properties = { screen = 1, tag = "9" }
+  },
 }
 -- }}}
 
