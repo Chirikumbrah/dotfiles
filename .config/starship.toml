@@ -41,6 +41,9 @@ disabled = true
 [os]
 disabled = true
 
+[dotnet]
+disabled = true
+
 [jobs]
 symbol = ' ✦'
 format = '[$symbol$number]($style)'
