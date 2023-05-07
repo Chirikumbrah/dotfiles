@@ -54,6 +54,8 @@ display-messages = true
 display-inlay-hints = true
 snippets = true
 
+# [editor.whitespace]
+# render = "all"
 
 ### INSERT mode
 [keys.normal]
