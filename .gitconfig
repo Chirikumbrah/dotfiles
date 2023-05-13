@@ -1,0 +1,37 @@
+[user]
+	email = basslo@protonmail.com
+	name = Chirikumbrah
+[core]
+	editor = $EDITOR
+    pager = delta
+[alias]
+	co = checkout
+	cfg = config
+	cl = clone
+	unstage = reset HEAD --
+	last = log -1 HEAD --stat
+	aliases = config --get-regexp alias
+	cm = commit -m
+	ll = log --oneline
+	st = status -sb
+	rv = remote -v
+	gl = config --global -l
+[help]
+	autocorrect = 20
+[pull]
+	rebase = true
+[hooks]
+    mailinglist = "basslo@protonmail.com"
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	side-by-side = true
+	pager = "less -RF --mouse"
+	line-numbers = true
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
