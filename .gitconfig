@@ -31,7 +31,8 @@
 	pager = "less -RF --mouse"
 	line-numbers = true
 [merge]
-    conflictstyle = diff3
+	conflictstyle = diff3
+	tool = vimdiff
 
 [diff]
     colorMoved = default
