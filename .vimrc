@@ -77,4 +77,7 @@ set mouse=a         " Abilita l'uso del mouse.
 filetype plugin indent on
 syntax on
 set background=dark
-colorscheme solarized
+
+packadd! dracula
+syntax enable
+colorscheme dracula

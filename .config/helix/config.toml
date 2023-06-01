@@ -1,5 +1,4 @@
-# theme = "dracula"
-theme = "dyracula"
+theme = "dracula"
 
 [editor]
 cursorline = true
@@ -15,8 +14,8 @@ idle-timeout = 0
 
 [editor.statusline]
 left = ["mode", "separator", "spinner", "separator", "diagnostics", "version-control"]
-center = ["file-name"]
-right = ["file-encoding", "file-type", "total-line-numbers", "position", "position-percentage"]
+center = ["file-name", "file-modification-indicator"] 
+right = ["file-encoding", "file-type", "file-encoding", "total-line-numbers", "position", "position-percentage"]
 separator = " "
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
@@ -89,6 +88,8 @@ C-r = ":config-reload"
 "space" = { q = ":q!", c = ":bc" }
 L = ":bn"
 H = ":bp"
+"pagedown" = ":bn"
+"pageup" = ":bp"
 
 # better windows navigation
 C-l = ["jump_view_right"]
