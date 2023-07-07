@@ -1,9 +1,0 @@
-[Desktop Entry]
-Comment=Launcher and package manager for RVGL
-Terminal=false
-Name=RVGL Launcher
-Type=Application
-Categories=Game;
-Path=~/.yrdata/files/apps/games/revolt
-Exec="/bin/python3" "~/.yrdata/files/apps/games/revolt/rvgl_launcher.py"
-Icon=~/.yrdata/files/apps/games/revolt/icons/icon.png
