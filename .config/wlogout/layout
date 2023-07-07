@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "~/.scripts/system/wayland/lock.sh",
+    "action" : "~/.config/hypr/scripts/lock.sh",
     "text" : "(L)ock",
     "keybind" : "l"
 }

@@ -1,10 +1,10 @@
 daemonize
 show-failed-attempts
 clock
-image=~/.config/swaylock/dracula-wallpaper.svg
+image=~/Pictures/wallpapers/chainsaw-man.jpg
 effect-blur=5x1
 effect-vignette=0.5:0.5
-font="Inter"
+font="JetBrainsMono"
 indicator
 indicator-radius=200
 indicator-thickness=20
