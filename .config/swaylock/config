@@ -1,0 +1,55 @@
+daemonize
+show-failed-attempts
+clock
+image=~/.config/swaylock/dracula-wallpaper.svg
+effect-blur=5x1
+effect-vignette=0.5:0.5
+font="Inter"
+indicator
+indicator-radius=200
+indicator-thickness=20
+grace=2
+grace-no-mouse
+grace-no-touch
+datestr=%a, %B %e
+timestr=%I:%M %p
+fade-in=0.2
+ignore-empty-password
+
+separator-color=00000000
+
+# background
+color=282a36
+
+# foreground
+text-color=f8f8f2
+layout-text-color=f8f8f2
+text-caps-lock-color=f8f8f2
+
+# purple
+ring-color=bd93f9
+ring-ver-color=bd93f9
+inside-ver-color=bd93f9
+
+# green
+key-hl-color=50fa7b
+
+# dark
+line-ver-color=1F202A
+text-ver-color=1F202A
+text-clear-color=1F202A
+line-clear-color=1F202A
+line-color=1F202A
+inside-color=1F202A
+text-wrong-color=1F202A
+line-wrong-color=1F202A
+layout-bg-color=00000000
+
+# red
+bs-hl-color=ff5555
+ring-wrong-color=ff5555
+inside-wrong-color=ff5555
+
+# comment
+inside-clear-color=6272a4
+ring-clear-color=6272a4
