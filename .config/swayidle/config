@@ -1,3 +1,5 @@
+timeout 1620 'swaylock'
 timeout 3240 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
-timeout 3240 'swaylock'
-before-sleep 'swaylock'
+
+# timeout when screen is clocked
+timeout 11 'if pgrep swaylock; then hyprctl dispatch dpms off; fi' resume 'if pgrep swaylock; then hyprctl dispatch dpms on; fi'
