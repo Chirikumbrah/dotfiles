@@ -9,16 +9,15 @@
   "modules-left": [
     "wlr/workspaces",
   ],
-  "modules-center": [
-    "clock"
-  ],
+  "modules-center": [],
   "modules-right": [
+    "pulseaudio",
+    "backlight",
     "temperature",
     "battery",
-    "backlight",
-    "pulseaudio",
     "hyprland/language",
-    "tray"
+    "tray",
+    "clock"
   ],
   "hyprland/window": {
     "format": "{}",
@@ -32,7 +31,7 @@
     "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
   },
   "wlr/workspaces": {
-    "disable-scroll": true,
+    "disable-scroll": false,
     "all-outputs": true,
     "on-click": "activate",
     "persistent_workspaces": {
@@ -49,11 +48,11 @@
     }
   },
   "tray": {
-    "icon-size": 18,
+    "icon-size": 20,
     "spacing": 10
   },
   "clock": {
-    "format": "{: %H:%M   %a, %b %d}",
+    "format": "{: %H:%M  %a, %b %d}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "on-click": "orage"
   },
@@ -65,8 +64,8 @@
       "󰃟",
       "󰃠"
     ],
-    "on-scroll-up": "brightnessctl set 1%+",
-    "on-scroll-down": "brightnessctl set 1%-",
+    "on-scroll-up": "backlight_control +1",
+    "on-scroll-down": "backlight_control -1",
     "min-length": 6
   },
   "battery": {
@@ -98,8 +97,8 @@
     "tooltip": false,
     "format-muted": " Mut",
     "on-click": "pamixer -t",
-    "on-scroll-up": "pamixer -i 5",
-    "on-scroll-down": "pamixer -d 5",
+    "on-scroll-up": "pamixer -i 1",
+    "on-scroll-down": "pamixer -d 1",
     "scroll-step": 5,
     "format-icons": {
       "headphone": "",
