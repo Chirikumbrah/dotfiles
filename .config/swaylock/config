@@ -1,6 +1,7 @@
 daemonize
 show-failed-attempts
 clock
+# screenshot
 image=~/Pictures/wallpapers/chainsaw-man.jpg
 effect-blur=5x1
 effect-vignette=0.5:0.5
@@ -8,12 +9,12 @@ font="JetBrainsMono"
 indicator
 indicator-radius=200
 indicator-thickness=20
-grace=2
+grace=3
 grace-no-mouse
 grace-no-touch
 datestr=%a, %B %e
 timestr=%I:%M %p
-fade-in=0.2
+fade-in=0.5
 ignore-empty-password
 
 separator-color=00000000
