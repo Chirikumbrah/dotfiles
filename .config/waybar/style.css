@@ -86,7 +86,7 @@ tooltip {
 
 #tray {
   margin-right: 5px;
-  border-color: #f8f8f2;
+  border-color: #ff5555;
 }
 
 #workspaces {
@@ -107,8 +107,8 @@ tooltip {
 #window {}
 
 #clock {
-  color: #bd93f9;
-  border-color: #bd93f9;
+  color: #f8f8f2;
+  border-color: #f8f8f2;
   margin-right: 10px;
 }
 

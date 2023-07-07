@@ -15,9 +15,9 @@
     "backlight",
     "temperature",
     "battery",
+    "clock",
     "hyprland/language",
-    "tray",
-    "clock"
+    "tray"
   ],
   "hyprland/window": {
     "format": "{}",
