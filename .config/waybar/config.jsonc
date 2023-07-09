@@ -7,15 +7,17 @@
   "gtk-layer-shell": true,
   "height": 50,
   "modules-left": [
+    "clock",
     "wlr/workspaces",
   ],
-  "modules-center": [],
+  "modules-center": [
+    "hyprland/window"
+  ],
   "modules-right": [
     "pulseaudio",
     "backlight",
     "temperature",
     "battery",
-    "clock",
     "hyprland/language",
     "tray"
   ],
