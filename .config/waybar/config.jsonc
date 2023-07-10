@@ -5,14 +5,12 @@
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
-  "height": 50,
+  "height": 40,
   "modules-left": [
     "clock",
     "wlr/workspaces",
   ],
-  "modules-center": [
-    "hyprland/window"
-  ],
+  "modules-center": [],
   "modules-right": [
     "pulseaudio",
     "pulseaudio#microphone",
@@ -23,8 +21,7 @@
     "tray"
   ],
   "hyprland/window": {
-    "format": "{}",
-    "separate-outputs": true
+    "format": "{}"
   },
   "hyprland/language": {
     "format": "{}",
