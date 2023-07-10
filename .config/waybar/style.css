@@ -72,30 +72,19 @@ tooltip {
   border-radius: 10px;
 }
 
-#temperature {
-  color: #8be9fd;
-  background: #282a36;
-  border-color: #8be9fd;
-  margin-right: 10px;
-}
-
-#temperature.critical {
-  color: #ff5555;
-  background: #282a36;
-  border-color: #ff5555;
-}
-
-#backlight {
-  color: #f1fa8c;
-  background: #282a36;
-  border-color: #f1fa8c;
-  margin-right: 10px;
-}
-
-#tray {
+#clock {
+  color: #f8f8f2;
   background: #282a36;
   border-color: #bd93f9;
   margin-right: 10px;
+  margin-left: 10px;
+}
+
+#workspaces {
+  border-color: #bd93f9;
+  background: #282a36;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
 #window {
@@ -106,46 +95,96 @@ tooltip {
   margin-right: 60px;
 }
 
-#workspaces {
-  border-color: #bd93f9;
-  background: #282a36;
-  padding-right: 0px;
-  padding-left: 0px;
-}
-
-#language {
-  color: #50fa7b;
-  background: #282a36;
-  border-color: #50fa7b;
-  min-width: 30px;
-  margin-right: 10px;
-}
-
-#clock {
-  color: #bd93f9;
-  background: #282a36;
-  border-color: #bd93f9;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
 #pulseaudio {
   color: #ffb86c;
   background: #282a36;
-  border-color: #ffb86c;
-  margin-right: 10px;
+  padding-right: 5px;
+  border-color: #bd93f9;
+  border-right: none;
+  border-radius: 10px 0px 0px 10px;
 }
 
 #pulseaudio.microphone {
   color: #ffb86c;
   background: #282a36;
-  border-left: 0px;
-  border-right: 0px;
-  margin-right: 10px;
+  padding-right: 5px;
+  border-color: #bd93f9;
+  border-right: none;
+  border-left: none;
+  border-radius: 0px;
+}
+
+#backlight {
+  color: #f1fa8c;
+  background: #282a36;
+  padding-right: 5px;
+  border-color: #bd93f9;
+  border-right: none;
+  border-left: none;
+  border-radius: 0px;
+}
+
+#temperature {
+  color: #8be9fd;
+  background: #282a36;
+  padding-right: 5px;
+  border-color: #bd93f9;
+  border-right: none;
+  border-left: none;
+  border-radius: 0px;
+}
+
+#temperature.critical {
+  color: #ff5555;
+  background: #282a36;
+  padding-right: 5px;
+  border-color: #bd93f9;
+  border-right: none;
+  border-left: none;
+  border-radius: 0px;
 }
 
 #battery {
   color: #ff79c6;
   background: #282a36;
+  padding-right: 5px;
+  border-color: #bd93f9;
+  border-right: none;
+  border-left: none;
+  border-radius: 0px;
+}
+
+#battery.warning {
+  color: #ffb86c;
+  background: #282a36;
+  padding-right: 5px;
+  border-color: #bd93f9;
+  border-right: none;
+  border-left: none;
+  border-radius: 0px;
+}
+
+#battery.critical {
+  color: #ff5555;
+  background: #282a36;
+  padding-right: 5px;
+  border-color: #bd93f9;
+  border-right: none;
+  border-left: none;
+  border-radius: 0px;
+}
+
+#language {
+  color: #50fa7b;
+  background: #282a36;
+  border-color: #bd93f9;
+  margin-right: 10px;
+  border-left: none;
+  border-radius: 0px 10px 10px 0px;
+}
+
+#tray {
+  background: #282a36;
+  border-color: #bd93f9;
   margin-right: 10px;
 }
