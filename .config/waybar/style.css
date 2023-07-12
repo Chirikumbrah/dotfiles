@@ -60,6 +60,7 @@ tooltip {
 #temperature,
 #workspaces,
 #tray,
+#custom-notification,
 #language,
 #backlight {
   background: #282a36;
@@ -172,4 +173,11 @@ tooltip {
 #tray {
   border-color: #bd93f9;
   margin-right: 10px;
+}
+
+#custom-notification {
+  color: #f8f8f2;
+  border-color: #bd93f9;
+  margin-right: 10px;
+  padding-right: 15px;
 }
