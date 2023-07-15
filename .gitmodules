@@ -13,3 +13,6 @@
 [submodule ".config/wayland_configs"]
 	path = .config/wayland_configs
 	url = https://notabug.org/Chirikumbrah/wayland_configs.git
+[submodule ".config/gtklock/modules/gtklock-powerbar-module"]
+	path = .config/gtklock/modules/gtklock-powerbar-module
+	url = https://github.com/jovanlanik/gtklock-powerbar-module.git
