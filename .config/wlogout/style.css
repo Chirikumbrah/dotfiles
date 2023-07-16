@@ -1,28 +1,44 @@
 * {
-  background-color: transparent;
+  font-family: JetBrains Mono;
+  font-size: 20px;
+  transition-property: background-color;
+  transition-duration: 0.7s;
+  background-image: none;
 }
 
 window {
-  background-color: rgba(49, 49, 58, 0.8);
+  background-color: rgba(11, 11, 11, 0.5);
+  border-radius: 0px;
 }
 
 button {
-  color: #f8f8f2;
-  background-color: transparent;
-  border: 2px solid #bd93f9;
-  border-radius: 10px;
+  color: #bd93f9;
+  border-color: #282a36;
+  background-color: #282a36;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 120px;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 25%;
-  padding: 100px;
+  background-size: 20%;
+  padding: 20px;
+  padding-top: 140px;
+  margin: 20px;
 }
 
-button:focus,
 button:active,
+button:focus {
+  color: #50fa7b;
+  border: 2px solid #50fa7b;
+  background-color: #282a36;
+  outline-style: none;
+}
+
 button:hover {
   background-color: #44475a;
   outline-style: none;
 }
+
 
 #lock {
   background-image: image(url("./icons/lock.png"));
