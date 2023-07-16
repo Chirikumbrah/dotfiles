@@ -2,7 +2,7 @@
     "label" : "lock",
     "action" : "gtklock",
     "text" : "(L)ock",
-    "keybind" : "l"
+    "keybind" : "l",
 }
 {
     "label" : "logout",
