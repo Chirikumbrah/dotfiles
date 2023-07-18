@@ -19,7 +19,6 @@
     "battery",
     "hyprland/language",
     "tray",
-    "custom/notification"
   ],
   "hyprland/window": {
     "format": "{}"
@@ -44,8 +43,7 @@
       "6": [],
       "7": [],
       "8": [],
-      "9": [],
-      "10": []
+      "9": []
     }
   },
   "tray": {
