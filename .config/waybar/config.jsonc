@@ -51,7 +51,7 @@
     "spacing": 10
   },
   "clock": {
-    "format": "{: %H:%M |  %a, %b %d}",
+    "format": "{: %a, %b %d |  %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "on-click": "orage"
   },
