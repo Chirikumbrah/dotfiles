@@ -75,7 +75,7 @@ d = ["yank_main_selection_to_clipboard", "delete_selection"]
 F = ":format"
 
 # fast exit
-q = { q = ":q!" }
+q = { q = ":q!", w = ":wq!" }
 
 # fast saving
 C-s = ":w!"
@@ -85,17 +85,20 @@ C-o = ":config-open"
 C-r = ":config-reload"
 
 # better buffers navigation
-"space" = { q = ":q!", c = ":bc" }
 L = ":bn"
 H = ":bp"
 "pagedown" = ":bn"
 "pageup" = ":bp"
+
+"space" = { w = ":w!", q = ":q!", c = ":bc" }
 
 # better windows navigation
 C-l = ["jump_view_right"]
 C-h = ["jump_view_left"]
 C-j = ["jump_view_down"]
 C-k = ["jump_view_up"]
+
+
 
 ### SELECT mode
 [keys.select]
@@ -116,7 +119,7 @@ A-z = "normal_mode"
 F = ":format"
 
 # fast exit
-q = { q = ":q!" }
+q = { q = ":q!", w = ":wq!" }
 
 # fast saving
 C-s = ":w!"
@@ -126,9 +129,14 @@ C-o = ":config-open"
 C-r = ":config-reload"
 
 # better buffers navigation
-"space" = { q = ":q!", c = ":bc" }
 L = ":bn"
 H = ":bp"
+"pagedown" = ":bn"
+"pageup" = ":bp"
+
+"space" = { w = ":w!", q = ":q!", c = ":bc" }
+
+
 
 ### INSERT mode
 [keys.insert]
@@ -136,5 +144,4 @@ j = { k = "normal_mode" } # Maps `jk` to exit insert mode
 A-z = "normal_mode"
 C-right = [ "move_next_word_start", "append_mode", "collapse_selection" ]
 C-left = [ "move_prev_word_start", "collapse_selection" ]
-# C-s = [ "normal_mode", ":w!", "insert_mode"]
 C-s = [ "normal_mode", ":w!"]
