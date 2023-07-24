@@ -28,6 +28,13 @@ indent = { tab-width = 4, unit = "\t" }
 roots = []
 
 [[language]]
+name = "python"
+
+# In case you'd like to use ruff alongside black for code formatting:
+formatter = { command = "black", args = ["--quiet", "-"] }
+auto-format = true
+
+[[language]]
 name = "bash"
 indent = { tab-width = 4, unit = "    " }
 formatter = { command = 'shfmt', args = ["-i", "4"] }
