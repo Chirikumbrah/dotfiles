@@ -29,8 +29,9 @@ roots = []
 
 [[language]]
 name = "python"
-
-# In case you'd like to use ruff alongside black for code formatting:
+roots = ["setup.py", "setup.cfg", "pyproject.toml"]
+language-server = { command = "pyright-langserver", args = ["--stdio"] }
+config = {}
 formatter = { command = "black", args = ["--quiet", "-"] }
 auto-format = false
 
