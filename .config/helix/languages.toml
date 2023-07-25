@@ -32,7 +32,7 @@ name = "python"
 
 # In case you'd like to use ruff alongside black for code formatting:
 formatter = { command = "black", args = ["--quiet", "-"] }
-auto-format = true
+auto-format = false
 
 [[language]]
 name = "bash"
