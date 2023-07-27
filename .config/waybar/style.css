@@ -13,9 +13,9 @@ window#waybar {
 }
 
 tooltip {
-  color: #f8f8f2;
+  color: #bd93f9;
   background: #282a36;
-  border-color: #f8f8f2;
+  border-color: #bd93f9;
   border-radius: 10px;
   border-width: 2px;
   border-style: solid;
@@ -74,14 +74,15 @@ tooltip {
 #clock {
   color: #f1fa8c;
   border-color: #bd93f9;
-  margin-right: 10px;
-  margin-left: 10px;
+  margin-right: 60px;
+  margin-left: 60px;
 }
 
 #workspaces {
   border-color: #bd93f9;
   padding-right: 0px;
   padding-left: 0px;
+  margin-left: 10px;
 }
 
 #window {
@@ -172,7 +173,7 @@ tooltip {
 
 #tray {
   border-color: #bd93f9;
-  margin-right: 10px;
+  margin-left: 10px;
 }
 
 #custom-notification {
