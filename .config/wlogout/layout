@@ -5,7 +5,7 @@
     "keybind" : "l",
 }
 {
-    "label" : "logout",
+    "label" : "exit",
     "action" : "loginctl terminate-user $USER",
     "text" : "(E)xit",
     "keybind" : "e"
@@ -17,8 +17,20 @@
     "keybind" : "s"
 }
 {
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text" : "S(u)spend",
+    "keybind" : "u"
+}
+{
     "label" : "reboot",
     "action" : "systemctl reboot",
     "text" : "(R)eboot",
     "keybind" : "r"
+}
+{
+    "label" : "hibernate",
+    "action" : "systemctl hibernate",
+    "text" : "(H)ibernate",
+    "keybind" : "h"
 }
