@@ -24,7 +24,7 @@ file-types = [
 ]
 injection-regex = "ini"
 comment-token = "#"
-indent = { tab-width = 4, unit = "\t" }
+indent = { tab-width = 4, unit = "    " }
 roots = []
 
 [[language]]
