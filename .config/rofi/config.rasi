@@ -1,0 +1,131 @@
+/* shift + del -> del most used */
+
+configuration {
+  show-icons: true;
+  terminal: "foot";
+  // matching: "fuzzy";
+  hover-select: true;
+
+  timeout {
+    action: "kb-cancel";
+    delay: 5;
+  }
+}
+
+* {
+  font: "DejaVuSansM Nerd Font 12";
+  foreground: #f8f8f2;
+  background: #282a36;
+  red: #ff5555;
+  green: #50fa7b;
+  purple: #bd93f9;
+  comment: #6272a4;
+  currentline: #44475a;
+}
+
+window {
+  border: 2px;
+  border-color: @purple;
+  border-radius: 10;
+  padding: 4;
+  width: 40%;
+}
+
+mainbox {
+  border: 0;
+  padding: 0;
+}
+
+listview {
+  lines: 8;
+  columns: 1;
+  border: 0px 0px 0px 0px;
+  spacing: 4px;
+  scrollbar: false;
+  padding: 0px 8px 8px;
+}
+
+element {
+  border: 0;
+  padding: 11px;
+}
+
+element normal.normal {
+  background-color: @background;
+  text-color: @purple;
+}
+
+element alternate.normal {
+  background-color: @background;
+  text-color: @purple;
+}
+
+element normal.urgent {
+  background-color: @red;
+  text-color: @background;
+}
+
+element normal.active {
+  background-color: @purple;
+  text-color: @background;
+}
+
+element selected.normal {
+  background-color: @purple;
+  text-color: @background;
+  border-radius: 10;
+}
+
+element selected.urgent {
+  background-color: @red;
+  text-color: @background;
+}
+
+element selected.active {
+  background-color: @purple;
+  text-color: @background;
+}
+
+element alternate.urgent {
+  background-color: @purple;
+  text-color: @background;
+}
+
+element alternate.active {
+  background-color: @purple;
+  text-color: @background;
+}
+
+element-text {
+  cursor: inherit;
+  highlight: @red;
+  text-color: inherit;
+}
+
+element-icon {
+  size: 1.0em;
+  cursor: inherit;
+  text-color: inherit;
+}
+
+entry {
+  spacing: 0;
+  padding: 8px;
+  text-color: @purple;
+  placeholder: "Search";
+  placeholder-color: @currentline;
+}
+
+prompt {
+  padding: 0px 0px;
+  text-color: @foreground;
+}
+
+inputbar {
+  background-color: @background;
+  margin: 0px 0px 0px 0px;
+  border: 8px;
+  border-radius: 6px;
+  border-color: @background;
+  children: [entry];
+}

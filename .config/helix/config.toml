@@ -15,7 +15,7 @@ idle-timeout = 0
 [editor.statusline]
 left = ["mode", "separator", "spinner", "separator", "diagnostics", "version-control"]
 center = ["file-name", "file-modification-indicator"] 
-right = ["file-encoding", "file-type", "file-encoding", "total-line-numbers", "position", "position-percentage"]
+right = ["file-encoding", "file-type", "selections", "file-encoding", "total-line-numbers", "position", "position-percentage"]
 separator = " "
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
