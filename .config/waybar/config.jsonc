@@ -7,7 +7,6 @@
   "gtk-layer-shell": true,
   "height": 40,
   "modules-left": [
-    "tray",
     "wlr/workspaces",
   ],
   "modules-center": [
@@ -20,6 +19,7 @@
     "temperature",
     "battery",
     "hyprland/language",
+    "tray",
   ],
   "hyprland/window": {
     "format": "{class}"
@@ -36,6 +36,7 @@
     "disable-scroll": false,
     "all-outputs": true,
     "on-click": "activate",
+    "sort-by-number": true,
     "persistent_workspaces": {
       "1": [],
       "2": [],
@@ -45,7 +46,8 @@
       "6": [],
       "7": [],
       "8": [],
-      "9": []
+      "9": [],
+      "10": []
     }
   },
   "tray": {
@@ -53,7 +55,8 @@
     "spacing": 10
   },
   "clock": {
-    "format": "{: %a, %b %d |  %H:%M}",
+    "format": "{: %H:%M}",
+    "format-alt": "{: %a, %b %d |  %H:%M}",
     "tooltip-format": "<tt><big>{calendar}</big></tt>",
     "calendar": {
       "mode": "month",
@@ -68,7 +71,7 @@
     },
     "actions": {
       "on-click-right": "shift_up",
-      "on-click": "shift_down",
+      "on-click-middle": "shift_down",
     }
   },
   "backlight": {
@@ -86,8 +89,8 @@
   "battery": {
     "states": {
       "good": 83,
-      "warning": 39,
-      "critical": 15
+      "warning": 43,
+      "critical": 23
     },
     "format": "{icon} {capacity}%",
     "format-charging": " {capacity}%",
@@ -114,7 +117,7 @@
     "on-click": "pamixer -t",
     "on-scroll-up": "pamixer -i 1",
     "on-scroll-down": "pamixer -d 1",
-    "scroll-step": 5,
+    "scroll-step": 1,
     "format-icons": {
       "headphone": "",
       "hands-free": "",
@@ -134,15 +137,16 @@
     "format-source": " {volume}%",
     "format-source-muted": "󰍭",
     "on-click": "pamixer --default-source -t",
-    "on-scroll-up": "pamixer --default-source -i 5",
-    "on-scroll-down": "pamixer --default-source -d 5",
-    "scroll-step": 5
+    "on-scroll-up": "pamixer --default-source -i 1",
+    "on-scroll-down": "pamixer --default-source -d 1",
+    "scroll-step": 1
   },
   "temperature": {
     "thermal-zone": 1,
     "format": " {temperatureC}°C",
-    "critical-threshold": 80,
-    "format-critical": " {temperatureC}°C"
+    "format-critical": " {temperatureC}°C",
+    "critical-threshold": 70,
+    "tooltip": false,
   },
   "custom/notification": {
     "layer": "bottom",
