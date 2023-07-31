@@ -74,8 +74,8 @@ tooltip {
 #clock {
   color: #f1fa8c;
   border-color: #bd93f9;
-  margin-right: 60px;
-  margin-left: 60px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 #workspaces {

@@ -47,6 +47,8 @@ max-indent-retain = 0
 [editor.file-picker]
 hidden = false
 follow-symlinks = false
+git-ignore = false
+git-global = false
 
 [editor.lsp]
 display-messages = true
@@ -90,7 +92,7 @@ H = ":bp"
 "pagedown" = ":bn"
 "pageup" = ":bp"
 
-"space" = { w = ":w!", q = ":q!", c = ":bc" }
+"space" = { w = ":w!", q = ":q!", c = ":bc", t = ":sh ~/.config/helix/scripts/hemux.sh" }
 
 # better windows navigation
 C-l = ["jump_view_right"]
