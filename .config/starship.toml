@@ -12,7 +12,9 @@ disabled = true
 disabled = true
 
 [python]
-disabled = true
+disabled = false
+format = ' [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+python_binary = ['./venv/bin/python', 'python', 'python3', 'python2']
 
 [c]
 disabled = true

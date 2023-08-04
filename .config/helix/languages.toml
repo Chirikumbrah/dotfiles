@@ -29,7 +29,7 @@ roots = []
 
 [[language]]
 name = "python"
-roots = ["setup.py", "setup.cfg", "pyproject.toml"]
+roots = ["requirements.txt", "setup.py", "setup.cfg", "pyproject.toml"]
 language-server = { command = "pyright-langserver", args = ["--stdio"] }
 config = {}
 formatter = { command = "black", args = ["--quiet", "-"] }

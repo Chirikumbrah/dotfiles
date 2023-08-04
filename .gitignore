@@ -1,3 +1,7 @@
 .config/mpv/watch_later/
 .config/qimgv/savedState.conf
 .config/gtk-3.0/bookmarks
+.local/share/applications/_usr_lib*
+.local/share/applications/chrome*
+.local/share/applications/io.element*
+.local/share/applications/mimeinfo*
