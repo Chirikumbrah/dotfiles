@@ -8,10 +8,9 @@
   "height": 40,
   "modules-left": [
     "wlr/workspaces",
-  ],
-  "modules-center": [
     "clock",
   ],
+  "modules-center": [],
   "modules-right": [
     "pulseaudio",
     "pulseaudio#microphone",
