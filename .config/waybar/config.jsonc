@@ -32,13 +32,9 @@
     "on-click-right": "hyprctl switchxkblayout at-translated-set-2-keyboard prev"
   },
   "hyprland/workspaces": {
-    // "disable-scroll": false,
-    // "all-outputs": true,
-    // "on-click": "activate",
-    // "sort-by-number": true,
-    // "persistent_workspaces": {
-    //   "*": 10,
-    // }
+    "persistent_workspaces": {
+      "*": 4,
+    }
   },
   "tray": {
     "icon-size": 20,

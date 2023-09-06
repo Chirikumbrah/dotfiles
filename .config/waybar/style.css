@@ -22,7 +22,7 @@ tooltip {
 }
 
 #workspaces button {
-  color: #44475a;
+  color: #6272a4;
   background: #282a36;
   margin-right: 0px;
   margin-left: 0px;
@@ -35,13 +35,18 @@ tooltip {
   border-radius: 10px;
 }
 
-#workspaces button.focused {
-  color: #bd93f9;
+#workspaces button.visible {
+  color: #50fa7b;
   border-radius: 10px;
 }
 
-#workspaces button.urgent {
-  color: #50fa7b;
+#workspaces button.persistent {
+  color: #44475a;
+  border-radius: 10px;
+}
+
+#workspaces button.empty {
+  color: #44475a;
   border-radius: 10px;
 }
 
