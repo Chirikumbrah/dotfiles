@@ -89,8 +89,8 @@ C-r = ":config-reload"
 # better buffers navigation
 L = ":bn"
 H = ":bp"
-"pagedown" = ":bn"
-"pageup" = ":bp"
+"C-pagedown" = ":bn"
+"C-pageup" = ":bp"
 
 "space" = { w = ":w!", q = ":q!", c = ":bc", t = ":sh ~/.config/helix/scripts/hemux.sh" }
 
