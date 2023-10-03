@@ -56,7 +56,7 @@
     },
     "actions": {
       "on-click-right": "shift_down",
-      "on-click-left": "shift_up",
+      "on-click-middle": "shift_up",
     }
   },
   "backlight": {

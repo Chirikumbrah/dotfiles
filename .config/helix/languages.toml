@@ -29,11 +29,26 @@ roots = []
 
 [[language]]
 name = "python"
-roots = ["requirements.txt", "setup.py", "setup.cfg", "pyproject.toml"]
+scope = "source.python"
+injection-regex = "python"
+file-types = ["py"]
+shebangs = ["python"]
+roots = [
+  "pyproject.toml",
+  "main.py",
+  "setup.py",
+  "setup.cfg",
+  "requirements.txt",
+  "Pipfile",
+  "pyrightconfig.json",
+  "Poetry.lock",
+]
 language-server = { command = "pyright-langserver", args = ["--stdio"] }
-config = {}
+comment-token = "#"
 formatter = { command = "black", args = ["--quiet", "-"] }
+indent = { tab-width = 4, unit = "    " }
 auto-format = false
+config = {}
 
 [[language]]
 name = "bash"

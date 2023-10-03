@@ -1,6 +1,9 @@
 add_newline = false
 command_timeout = 10000
 
+[line_break]
+disabled = true
+
 [aws]
 disabled = true
 style = "bold #ffb86c"
@@ -13,7 +16,7 @@ disabled = true
 
 [python]
 disabled = false
-format = ' [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+format = ' [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\))]($style)'
 python_binary = ['./venv/bin/python', 'python', 'python3', 'python2']
 
 [c]
@@ -42,9 +45,6 @@ disabled = true
 
 [package]
 disabled = true
-
-[line_break]
-disabled = false
 
 [os]
 disabled = true
