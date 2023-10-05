@@ -51,6 +51,12 @@ auto-format = false
 config = {}
 
 [[language]]
+name = "yaml"
+file-types = ["yaml", "yml"]
+formatter = { command = 'prettier', args = ["--parser", "yaml"] }
+auto-format = false
+
+[[language]]
 name = "bash"
 indent = { tab-width = 4, unit = "    " }
 formatter = { command = 'shfmt', args = ["-i", "4"] }
