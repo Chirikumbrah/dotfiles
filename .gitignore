@@ -7,3 +7,4 @@
 .local/share/applications/mimeinfo*
 .local/share/applications/kite-copilot.desktop
 .local/share/applications/kite.desktop
+.DS_Store
