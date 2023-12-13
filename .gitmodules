@@ -16,3 +16,6 @@
 [submodule ".config/gtklock/modules/gtklock-powerbar-module"]
 	path = .config/gtklock/modules/gtklock-powerbar-module
 	url = https://github.com/jovanlanik/gtklock-powerbar-module.git
+[submodule "vim-config"]
+	path = vim-config
+	url = https://github.com/Chirikumbrah/vim-config.git
