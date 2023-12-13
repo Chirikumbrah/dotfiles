@@ -75,7 +75,7 @@ style = "bold #50fa7b"
 truncate_to_repo = false
 truncation_length = 5
 truncation_symbol = '.../'
-read_only = ' 卵'
+read_only = ' √'
 
 
 [git_branch]

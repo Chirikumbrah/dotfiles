@@ -1,5 +1,5 @@
 [user]
-	email = basslo@protonmail.com
+	email = yarik.bond98@gmail.com
 	name = Chirikumbrah
 [core]
 	editor = $EDITOR
@@ -32,7 +32,11 @@
 	line-numbers = true
 [merge]
 	conflictstyle = diff3
-	tool = vimdiff
-
+	tool = vscode
 [diff]
     colorMoved = default
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --new-window --wait --diff $LOCAL $REMOTE
+[mergetool "vscode"]
+	cmd = code --new-window --wait $MERGED

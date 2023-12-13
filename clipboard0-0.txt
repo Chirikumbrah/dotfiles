@@ -1,1 +1,0 @@
-Chirikumbrah/vim-config.git

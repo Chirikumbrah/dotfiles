@@ -1,6 +1,0 @@
-timeout 1500 'gtklock'
-timeout 1800 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
-before-sleep 'gtklock'
-
-# timeout 11 seconds when screen is clocked
-timeout 11 'if pgrep gtklock; then hyprctl dispatch dpms off; fi' resume 'if pgrep gtklock; then hyprctl dispatch dpms on; fi'
