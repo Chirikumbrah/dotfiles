@@ -28,6 +28,9 @@ disabled = true
 [rust]
 disabled = true
 
+[docker_context]
+disabled = true
+
 [cmake]
 disabled = true
 
