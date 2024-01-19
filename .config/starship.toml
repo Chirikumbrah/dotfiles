@@ -70,7 +70,7 @@ success_symbol = "[](bold #50fa7b)"
 min_time = 200_000
 style = "bold #f1fa8c"
 format = ' [$duration](bold yellow)'
-show_notifications = true
+show_notifications = false
 
 [directory]
 format = '[$path]($style)[$read_only]($read_only_style)'
