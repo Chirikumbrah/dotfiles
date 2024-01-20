@@ -14,6 +14,9 @@ disabled = true
 [lua]
 disabled = true
 
+[battery]
+disabled = true
+
 [python]
 disabled = false
 format = ' [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\))]($style)'
