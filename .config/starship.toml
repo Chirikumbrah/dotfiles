@@ -66,8 +66,8 @@ format = '[$symbol$number]($style)'
 format = ' $symbol '
 # error_symbol = "[❯](bold #ff5555)"
 # success_symbol = "[❯](bold #50fa7b)"
-error_symbol = "[](bold #ff5555)"
-success_symbol = "[](bold #50fa7b)"
+error_symbol = "[󰈺](bold #ff5555)"
+success_symbol = "[󰈺](bold #50fa7b)"
 
 [cmd_duration]
 min_time = 200_000
