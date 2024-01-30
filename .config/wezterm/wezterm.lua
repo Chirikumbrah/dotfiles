@@ -16,9 +16,6 @@ local act = wezterm.action
 local mux = wezterm.mux
 
 local config = {
-	colors = {
-		background = "#282a36"
-	},
 
 	line_height = 1.1,
 	font = wezterm.font 'JetBrainsMono Nerd Font',
@@ -36,7 +33,7 @@ local config = {
 	},
 	font_size = 15,
 
-	color_scheme = 'Dracula',
+	color_scheme = 'Dracula (Official)',
 
 	-- window_background_opacity = 1.0,
 	window_padding = {
@@ -59,12 +56,50 @@ local config = {
 	adjust_window_size_when_changing_font_size = false,
 	disable_default_key_bindings = false,
 	debug_key_events = false,
-	enable_tab_bar = true,
-	tab_bar_at_bottom = true,
+	default_workspace = "mux",
 	native_macos_fullscreen_mode = false,
 	scrollback_lines = 5000,
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE",
+
+	-- cursor config
+	default_cursor_style = 'BlinkingBlock',
+	-- animation_fps = 1,
+	-- cursor_blink_ease_in = 'Constant',
+	-- cursor_blink_ease_out = 'Constant',
+
+	-- tab bar options
+	enable_tab_bar = true,
+	use_fancy_tab_bar = false,
+	tab_bar_at_bottom = true,
+	show_new_tab_button_in_tab_bar = false,
+	show_tab_index_in_tab_bar = false,
+	-- hide_tab_bar_if_only_one_tab = true,
+	tab_max_width = 11,
+	colors = {
+		tab_bar = {
+			active_tab = {
+				bg_color = '#282a36',
+				fg_color = '#bd93f9',
+				intensity = 'Bold',
+			},
+			inactive_tab = {
+				bg_color = '#282a36',
+				fg_color = '#6272a4',
+			},
+			inactive_tab_hover = {
+				bg_color = '#282a36',
+				fg_color = '#6272b9',
+				intensity = 'Bold',
+			},
+		},
+	},
+
+	-- dim inactive panes
+	inactive_pane_hsb = {
+		saturation = 1.0,
+		brightness = 0.5,
+	},
 
 	-- keys
 	keys = {
@@ -74,6 +109,16 @@ local config = {
 			mods = "CMD",
 			key = "s",
 			action = act.SendKey({ mods = "CTRL", key = "s" })
+		},
+		{
+			mods = "CMD",
+			key = "u",
+			action = act.SendKey({ mods = "CTRL", key = "u" })
+		},
+		{
+			mods = "CMD",
+			key = "d",
+			action = act.SendKey({ mods = "CTRL", key = "d" })
 		},
 		{
 			mods = "CMD|SHIFT",
@@ -86,6 +131,16 @@ local config = {
 			action = act.SendKey({ mods = "CTRL|SHIFT", key = "x" })
 		},
 
+		{
+			mods = "CMD|SHIFT",
+			key = "t",
+			action = act.ShowTabNavigator
+		},
+		{
+			mods = "CMD|SHIFT",
+			key = "w",
+			action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" })
+		},
 		-- split panes
 		{
 			mods = "CMD",
@@ -143,6 +198,34 @@ local config = {
 		},
 
 	},
+}
+
+local process_icons = {
+	['docker'] = wezterm.nerdfonts.linux_docker,
+	['docker-compose'] = wezterm.nerdfonts.linux_docker,
+	['psql'] = '󱤢',
+	['usql'] = '󱤢',
+	['kuberlr'] = wezterm.nerdfonts.linux_docker,
+	['kubectl'] = wezterm.nerdfonts.linux_docker,
+	['stern'] = wezterm.nerdfonts.linux_docker,
+	['nvim'] = wezterm.nerdfonts.custom_vim,
+	['make'] = wezterm.nerdfonts.seti_makefile,
+	['vim'] = wezterm.nerdfonts.dev_vim,
+	['node'] = wezterm.nerdfonts.mdi_hexagon,
+	['go'] = wezterm.nerdfonts.seti_go,
+	['zsh'] = wezterm.nerdfonts.dev_terminal,
+	['bash'] = wezterm.nerdfonts.cod_terminal_bash,
+	['btm'] = wezterm.nerdfonts.mdi_chart_donut_variant,
+	['htop'] = wezterm.nerdfonts.mdi_chart_donut_variant,
+	['cargo'] = wezterm.nerdfonts.dev_rust,
+	['sudo'] = wezterm.nerdfonts.fa_hashtag,
+	['lazydocker'] = wezterm.nerdfonts.linux_docker,
+	['git'] = wezterm.nerdfonts.dev_git,
+	['lua'] = wezterm.nerdfonts.seti_lua,
+	['wget'] = wezterm.nerdfonts.mdi_arrow_down_box,
+	['curl'] = wezterm.nerdfonts.mdi_flattr,
+	['gh'] = wezterm.nerdfonts.dev_github_badge,
+	['ruby'] = wezterm.nerdfonts.cod_ruby,
 }
 
 return config
