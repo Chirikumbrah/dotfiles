@@ -13,6 +13,7 @@ local k = require("utils/keys")
 
 local wezterm = require("wezterm")
 local act = wezterm.action
+local mux = wezterm.mux
 
 local config = {
 	colors = {
@@ -56,166 +57,92 @@ local config = {
 
 	-- general options
 	adjust_window_size_when_changing_font_size = false,
+	disable_default_key_bindings = false,
 	debug_key_events = false,
-	enable_tab_bar = false,
+	enable_tab_bar = true,
+	tab_bar_at_bottom = true,
 	native_macos_fullscreen_mode = false,
+	scrollback_lines = 5000,
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE",
 
 	-- keys
 	keys = {
-		k.cmd_key(".", k.multiple_actions(":ZenMode")),
-		k.cmd_key("[", act.SendKey({ mods = "CTRL", key = "o" })),
-		k.cmd_key("]", act.SendKey({ mods = "CTRL", key = "i" })),
-		k.cmd_key("f", k.multiple_actions(":Grep")),
-		-- k.cmd_key("H", act.SendKey({ mods = "CTRL", key = "h" })),
-		k.cmd_key("i", k.multiple_actions(":SmartGoTo")),
-		-- k.cmd_key("J", act.SendKey({ mods = "CTRL", key = "j" })),
-		-- k.cmd_key("K", act.SendKey({ mods = "CTRL", key = "k" })),
-		-- k.cmd_key("K", act.SendKey({ mods = "CTRL", key = "k" })),
-		-- k.cmd_key("L", act.SendKey({ mods = "CTRL", key = "l" })),
-		k.cmd_key("P", k.multiple_actions(":GoToCommand")),
-		k.cmd_key("p", k.multiple_actions(":GoToFile")),
-		k.cmd_key("j", k.multiple_actions(":GoToFile")),
-		k.cmd_key("q", k.multiple_actions(":qa!")),
-		k.cmd_to_tmux_prefix("1", "1"),
-		k.cmd_to_tmux_prefix("2", "2"),
-		k.cmd_to_tmux_prefix("3", "3"),
-		k.cmd_to_tmux_prefix("4", "4"),
-		k.cmd_to_tmux_prefix("5", "5"),
-		k.cmd_to_tmux_prefix("6", "6"),
-		k.cmd_to_tmux_prefix("7", "7"),
-		k.cmd_to_tmux_prefix("8", "8"),
-		k.cmd_to_tmux_prefix("9", "9"),
-		k.cmd_to_tmux_prefix("`", "n"),
-		k.cmd_to_tmux_prefix("b", "B"),
-		k.cmd_to_tmux_prefix("C", "C"),
-		k.cmd_to_tmux_prefix("d", "D"),
-		k.cmd_to_tmux_prefix("G", "G"),
-		k.cmd_to_tmux_prefix("g", "g"),
-		k.cmd_to_tmux_prefix("K", "T"),
-		k.cmd_to_tmux_prefix("k", "K"),
-		k.cmd_to_tmux_prefix("l", "L"),
-		k.cmd_to_tmux_prefix("n", '"'),
-		k.cmd_to_tmux_prefix("N", "%"),
-		k.cmd_to_tmux_prefix("o", "u"),
-		k.cmd_to_tmux_prefix("T", "!"),
-		k.cmd_to_tmux_prefix("t", "c"),
-		k.cmd_to_tmux_prefix("w", "x"),
-		k.cmd_to_tmux_prefix("z", "z"),
-		k.cmd_to_tmux_prefix("Z", "Z"),
 
-		k.cmd_key(
-			"R",
-			act.Multiple({
-				act.SendKey({ key = "\x1b" }), -- escape
-				k.multiple_actions(":source %"),
-			})
-		),
-
-		k.cmd_key(
-			"s",
-			act.Multiple({
-				act.SendKey({ key = "\x1b" }), -- escape
-				k.multiple_actions(":w"),
-			})
-		),
-
-		{
-			mods = "CMD|SHIFT",
-			key = "}",
-			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "b" }),
-				act.SendKey({ key = "n" }),
-			}),
-		},
-		{
-			mods = "CMD|SHIFT",
-			key = "{",
-			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "b" }),
-				act.SendKey({ key = "p" }),
-			}),
-		},
-
-		{
-			mods = "CTRL",
-			key = "Tab",
-			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "b" }),
-				act.SendKey({ key = "n" }),
-			}),
-		},
-
-		{
-			mods = "CTRL|SHIFT",
-			key = "Tab",
-			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "b" }),
-				act.SendKey({ key = "n" }),
-			}),
-		},
-
-		-- FIX: disable binding
-		-- {
-		-- 	mods = "CMD",
-		-- 	key = "`",
-		-- 	action = act.Multiple({
-		-- 		act.SendKey({ mods = "CTRL", key = "b" }),
-		-- 		act.SendKey({ key = "n" }),
-		-- 	}),
-		-- },
-
+		-- convinient helix usage
 		{
 			mods = "CMD",
-			key = "~",
-			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "b" }),
-				act.SendKey({ key = "p" }),
-			}),
+			key = "s",
+			action = act.SendKey({ mods = "CTRL", key = "s" })
 		},
+		{
+			mods = "CMD|SHIFT",
+			key = "a",
+			action = act.SendKey({ mods = "CTRL|SHIFT", key = "a" })
+		},
+		{
+			mods = "CMD|SHIFT",
+			key = "x",
+			action = act.SendKey({ mods = "CTRL|SHIFT", key = "x" })
+		},
+
+		-- split panes
+		{
+			mods = "CMD",
+			key = "e",
+			action = act.SplitVertical
+		},
+		{
+			mods = "CMD|SHIFT",
+			key = "e",
+			action = act.SplitHorizontal
+		},
+
+		-- switch between panes
+		{
+			mods = "CMD",
+			key = "LeftArrow",
+			action = act.ActivatePaneDirection("Left")
+		},
+		{
+			mods = "CMD",
+			key = "RightArrow",
+			action = act.ActivatePaneDirection("Right")
+		},
+		{
+			mods = "CMD",
+			key = "UpArrow",
+			action = act.ActivatePaneDirection("Up")
+		},
+		{
+			mods = "CMD",
+			key = "DownArrow",
+			action = act.ActivatePaneDirection("Down")
+		},
+
+		-- resize panes
+		{
+			mods = "CMD|SHIFT",
+			key = "LeftArrow",
+			action = act.AdjustPaneSize({ "Left", 5 })
+		},
+		{
+			mods = "CMD|SHIFT",
+			key = "RightArrow",
+			action = act.AdjustPaneSize({ "Right", 5 })
+		},
+		{
+			mods = "CMD|SHIFT",
+			key = "UpArrow",
+			action = act.AdjustPaneSize({ "Up", 2 })
+		},
+		{
+			mods = "CMD|SHIFT",
+			key = "DownArrow",
+			action = act.AdjustPaneSize({ "Down", 2 })
+		},
+
 	},
 }
-
-wezterm.on("user-var-changed", function(window, pane, name, value)
-	-- local appearance = window:get_appearance()
-	-- local is_dark = appearance:find("Dark")
-	local overrides = window:get_config_overrides() or {}
-	wezterm.log_info("name", name)
-	wezterm.log_info("value", value)
-
-	if name == "ZEN_MODE" then
-		local incremental = value:find("+")
-		local number_value = tonumber(value)
-		if incremental ~= nil then
-			while number_value > 0 do
-				window:perform_action(wezterm.action.IncreaseFontSize, pane)
-				number_value = number_value - 1
-			end
-		elseif number_value < 0 then
-			window:perform_action(wezterm.action.ResetFontSize, pane)
-			overrides.font_size = nil
-		else
-			overrides.font_size = number_value
-		end
-	end
-	if name == "DIFF_VIEW" then
-		local incremental = value:find("+")
-		local number_value = tonumber(value)
-		if incremental ~= nil then
-			while number_value > 0 do
-				window:perform_action(wezterm.action.DecreaseFontSize, pane)
-				number_value = number_value - 1
-			end
-		elseif number_value < 0 then
-			window:perform_action(wezterm.action.ResetFontSize, pane)
-			-- overrides.background = nil
-			overrides.font_size = nil
-		else
-			overrides.font_size = number_value
-		end
-	end
-	window:set_config_overrides(overrides)
-end)
 
 return config
