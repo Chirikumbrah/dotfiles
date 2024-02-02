@@ -49,6 +49,7 @@ M.tmux = {
 	-- helpers.cmd_to_tmux_prefix("z", "z"),
 	-- helpers.cmd_to_tmux_prefix("Z", "Z"),
 
+	-- switching tabs
 	{
 		mods = "CMD|SHIFT",
 		key = "}",
