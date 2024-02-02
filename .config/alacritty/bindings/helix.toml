@@ -1,4 +1,5 @@
-[[keyboard.bindings]]
-chars = "\u0013"
-key = "S"
-mods = "Command"
+[keyboard]
+bindings = [
+  { chars = "\u0013", key = "S", mods = "Command" },
+  { chars = "^u", key = "u", mods = "Command" },
+]

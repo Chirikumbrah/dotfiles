@@ -3,6 +3,7 @@ import = [
   "~/.config/alacritty/bindings/general.toml",
   "~/.config/alacritty/bindings/tmux.toml",
   "~/.config/alacritty/bindings/helix.toml",
+  "~/.config/alacritty/font.toml",
 ]
 live_config_reload = true
 
@@ -24,33 +25,6 @@ persistent_logging = false
 print_events = false
 render_timer = false
 
-[font]
-size = 15.0
-
-[font.bold]
-family = "JetBrainsMono Nerd Font"
-style = "Bold"
-
-[font.bold_italic]
-family = "JetBrainsMono Nerd Font"
-style = "Bold Italic"
-
-[font.glyph_offset]
-x = 0
-y = 0
-
-[font.italic]
-family = "JetBrainsMono Nerd Font"
-style = "Italic"
-
-[font.normal]
-family = "JetBrainsMono Nerd Font"
-style = "Regular"
-
-[font.offset]
-x = 0
-y = 0
-
 [mouse]
 hide_when_typing = true
 
@@ -59,13 +33,13 @@ action = "PasteSelection"
 mouse = "Middle"
 
 [[hints.enabled]]
-command = "open"                                                                                                                                          # On macOS
+command = "open"                          # On macOS
 hyperlinks = true
 post_processing = true
 persist = false
 mouse.enabled = true
 binding = { key = "U", mods = "Command" }
-regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+# regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
 
 # [mouse.hints]
 # modifiers = "Command"
