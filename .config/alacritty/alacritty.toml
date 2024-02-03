@@ -1,7 +1,7 @@
 import = ["~/.config/alacritty/themes/dracula.toml"]
 
 [debug]
-log_level = "OFF"
+log_level = "Off"
 
 [font]
 size = 15.0
@@ -17,7 +17,8 @@ program = "/usr/local/bin/fish"
 [window]
 decorations = "none"
 startup_mode = "Maximized"
-option_as_alt ="Both"
+option_as_alt = "Both"
+padding = { x = 1, y = 0 }
 
 [keyboard]
 bindings = [
