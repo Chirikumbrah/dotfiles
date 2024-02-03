@@ -1,9 +1,0 @@
-[font]
-size = 15.0
-bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
-bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
-italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
-normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
-
-glyph_offset = { x = 0, y = 0 }
-offset = { x = 0, y = 0 }
