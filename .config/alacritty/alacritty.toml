@@ -4,11 +4,8 @@ import = ["~/.config/alacritty/themes/dracula.toml"]
 log_level = "Off"
 
 [font]
-size = 15.0
-bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
-bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
-italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
-normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 18
+normal = { family = "UbuntuMono Nerd Font" }
 
 [shell]
 args = ["-l", "-c", "tmux attach || tmux new -s tmux"]
