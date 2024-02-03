@@ -1,13 +1,11 @@
 theme = "dyracula"
 
 [editor]
-auto-save = true
 bufferline = "never"
 color-modes = true
 cursorcolumn = true
 cursorline = true
 line-number = "relative"
-# mouse = false
 shell = ["bash", "-c"]
 idle-timeout = 0
 completion-trigger-len = 1
@@ -40,27 +38,11 @@ skip-levels = 1
 
 [editor.soft-wrap]
 enable = true
-max-wrap = 25         # increase value to reduce forced mid-word wrapping
-max-indent-retain = 0
-
-[editor.auto-pairs]
-'(' = ')'
-'{' = '}'
-'[' = ']'
-'"' = '"'
-"'" = "'"
-'`' = '`'
 
 [editor.file-picker]
 hidden = false
-follow-symlinks = true
 git-ignore = false
 git-global = false
-
-[editor.lsp]
-display-messages = true
-display-inlay-hints = true
-
 
 [editor.whitespace.render]
 space = "all"
@@ -74,12 +56,11 @@ space = "·"
 tab = "→"
 tabpad = "·"
 
-
 ### NORMAL mode
 [keys.normal]
 "#" = "toggle_comments"
 q = { w = ":wq!", q = ":q!" } # fast exit
-"space" = { W = ":w!", q = ":q!", c = ":bc!", t = ":sh ~/.config/helix/scripts/hemux.sh" }
+"space" = { W = ":w!", q = ":q!", c = ":bc!" }
 C-j = [
   "extend_to_line_bounds",
   "delete_selection",
@@ -91,10 +72,6 @@ C-k = [
   "move_line_up",
   "paste_before",
 ] # move line up
-C-n = ["move_line_down", "scroll_down"]
-C-o = ":config-open" # open config
-C-p = ["move_line_up", "scroll_up"]
-C-r = ":config-reload" # reload config
 C-s = ":w!" # fast saving
 D = "delete_char_backward"
 F = ":format" # fast format
@@ -102,12 +79,9 @@ G = "goto_last_line"
 X = "extend_line_above"
 esc = ["collapse_selection", "keep_primary_selection"]
 
-
 ### SELECT mode
 [keys.select]
-"#" = "toggle_comments"
-q = { w = ":wq!", q = ":q!" } # fast exit
-"space" = { W = ":w!", q = ":q!", c = ":bc!", t = ":sh ~/.config/helix/scripts/hemux.sh" }
+"space" = { W = ":w!", q = ":q!", c = ":bc!" }
 C-j = [
   "extend_to_line_bounds",
   "delete_selection",
@@ -124,7 +98,6 @@ D = "delete_char_backward"
 F = ":format" # fast format
 G = "goto_last_line"
 X = "extend_line_above"
-
 
 ### INSERT mode
 [keys.insert]
