@@ -34,12 +34,12 @@ bind -x '"\el":l'
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 
-# env variables
 export EDITOR=hx
 export VISUAL=$EDITOR
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export GREP_OPTIONS="-n --color"
 
 # ~~~~~~~~~~~~~~~ Path configuration ~~~~~~~~~~~~~~~~~~~~~~~~
 
