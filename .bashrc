@@ -1,6 +1,3 @@
-#
-# ~/.bashrc
-#
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -12,6 +9,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 # ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
 
 __save_last_path() {
@@ -22,8 +22,6 @@ __save_last_path() {
 if [ -f ~/.cache/.last_bash_dir ]; then
     cd "$(cat ~/.cache/.last_bash_dir)" || __save_last_path
 fi
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
 
 # Set to superior editing mode
 set -o vi
@@ -45,8 +43,6 @@ export GREP_OPTIONS="-n --color"
 
 PATH="${PATH:+${PATH}:}:$HOME/.local/bin:/opt/homebrew/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Library/Frameworks/Python.framework/Versions/3.12/bin" # appending
 
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
 # ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
 
 export HISTFILE=~/.cache/.bash_history
@@ -59,7 +55,6 @@ export HISTCONTROL=ignorespace
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
-# Explicitly unset color (default anyhow). Use 1 to set it.
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_DESCRIBE_STYLE="branch"
 export GIT_PS1_SHOWUPSTREAM="auto git"
@@ -67,7 +62,6 @@ export GIT_PS1_SHOWUPSTREAM="auto git"
 # colorized prompt
 RESET='\[\e[0m\]'
 PINK="\[\e[35m\]"
-PURPLE="\[\e[31;34m\]"
 GREEN='\[\e[38;5;10m\]'
 RED="\[\033[31;1m\]"
 OK="${GREEN}\$${RESET}"
@@ -87,12 +81,11 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 # ls
-alias l='ls -lah --color=always'
-alias ls='ls -ah --color=always'
-alias la='ls -lathr --color=always'
-# alias l='eza --git -alb --icons --classify || ls -lah --color=always'
-# alias ls='eza --git -alb --icons --classify || ls -lah --color=always'
-# alias lt='eza --git -Talb --icons --classify || tree || echo Please install "tree" or "eza"'
+# alias l='ls -lah --color=always'
+# alias ls='ls -lah --color=always'
+alias l='eza --git -alb --icons --classify'
+alias ls='eza --git -alb --icons --classify'
+alias lt='eza --git -Talb --icons --classify'
 
 # finds all files recursively and sorts by last modification, ignore hidden files
 alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
@@ -102,8 +95,10 @@ alias t='tmux'
 alias q='exit'
 
 # git
-alias gp='git push'
 alias gco='git checkout'
+alias gcaa="git add . && git commit -v -a --amend --no-edit"
+alias gp='git push'
+alias gpf='git push --force-with-lease'
 alias gup='git pull'
 alias gupa='git pull --rebase --verbose --autostash'
 alias gs='git status'
@@ -111,6 +106,9 @@ alias gst='git stash'
 alias glg='git log --stat'
 alias grh='git reset --hard'
 alias gt='gitui'
+
+# python
+alias pip="pip3"
 
 # ricing
 alias eb='v ~/.bashrc'
