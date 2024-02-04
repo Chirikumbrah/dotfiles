@@ -3,8 +3,13 @@
 #
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  # needed for brew
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+    [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+    # echo "I'm on Mac!"
+
+    # brew bash completion
+    [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -139,29 +144,4 @@ alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}
 # search for a file with fzf and open it in vim
 alias vf='$EDITOR $(fp)'
 
-# sourcing
-# source "$HOME/.privaterc"
-
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-    # echo "I'm on Mac!"
-
-    # brew bash completion
-    [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
-
-else
-    #	source /usr/share/fzf/key-bindings.bash
-    #	source /usr/share/fzf/completion.bash
-    [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-fi
-
 eval "$(zoxide init bash)"
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-# export PATH="/Users/yr/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
-# Only needed for npm install on WSL
-#export NVM_DIR="$HOME/.config/nvm"
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
