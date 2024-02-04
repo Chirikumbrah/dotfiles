@@ -62,7 +62,7 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 # Explicitly unset color (default anyhow). Use 1 to set it.
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_DESCRIBE_STYLE="branch"
-# export GIT_PS1_SHOWUPSTREAM="auto git"
+export GIT_PS1_SHOWUPSTREAM="auto git"
 
 # colorized prompt
 RESET='\[\e[0m\]'
@@ -70,11 +70,11 @@ PINK="\[\e[35m\]"
 PURPLE="\[\e[31;34m\]"
 GREEN='\[\e[38;5;10m\]'
 RED="\[\033[31;1m\]"
-SMILEY="${GREEN}:)${NORMAL}"
-FROWNY="${RED}:(${NORMAL}"
-STATUS="if [ \$? = 0 ]; then echo \"${SMILEY}\"; else echo \"${FROWNY}\"; fi"
+OK="${GREEN}\$${RESET}"
+ERR="${RED}\$${RESET}"
+STATUS="if [ \$? = 0 ]; then echo \"${OK}\"; else echo \"${ERR}\"; fi"
 
-PROMPT_COMMAND="__save_last_path && __git_ps1 '${PINK}\w${RESET}' ' \`${STATUS}\` ${PURPLE}>${RESET} '"
+PROMPT_COMMAND="__save_last_path && __git_ps1 '${PINK}\w${RESET}' ' \`${STATUS}\` '"
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
