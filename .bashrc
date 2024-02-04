@@ -26,7 +26,7 @@ fi
 [[ $- != *i* ]] && return
 
 # Set to superior editing mode
-# set -o vi
+set -o vi
 
 # keybinds
 bind -x '"\C-l":clear'
@@ -113,10 +113,10 @@ alias t='tmux'
 alias q='exit'
 
 # git
-alias g='git'
 alias gp='git push'
 alias gco='git checkout'
-alias gpu='git pull'
+alias gup='git pull'
+alias gupa='git pull --rebase --verbose --autostash'
 alias gs='git status'
 alias gst='git stash'
 alias glg='git log --stat'
