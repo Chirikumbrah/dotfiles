@@ -64,31 +64,17 @@ export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_DESCRIBE_STYLE="branch"
 # export GIT_PS1_SHOWUPSTREAM="auto git"
 
-# if [ -f ~/.cache/.git-prompt.sh ]; then
-#     . ~/.cache/.git-prompt.sh
-# else
-#     curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.cache/.git-prompt.sh
-#     . ~/.cache/.git-prompt.sh
-# fi
-
-# # git completions
-# if [ -f ~/.cache/.git-completion.bash ]; then
-#     . ~/.cache/.git-completion.bash
-# else
-#     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.cache/.git-completion.bash
-#     . ~/.cache/.git-completion.bash
-# fi
-
 # colorized prompt
 RESET='\[\e[0m\]'
-BOLD='\[\e[1m\]'
-BLUE="\[\e[34m\]"
 PINK="\[\e[35m\]"
 PURPLE="\[\e[31;34m\]"
-YELLOW="\[\e[33m\]"
 GREEN='\[\e[38;5;10m\]'
-ORANGE='\[\e[31;33m\]'
-PROMPT_COMMAND='__save_last_path && __git_ps1 "$PINK\w$RESET" " $PURPLE\$$RESET "'
+RED="\[\033[31;1m\]"
+SMILEY="${GREEN}:)${NORMAL}"
+FROWNY="${RED}:(${NORMAL}"
+STATUS="if [ \$? = 0 ]; then echo \"${SMILEY}\"; else echo \"${FROWNY}\"; fi"
+
+PROMPT_COMMAND="__save_last_path && __git_ps1 '${PINK}\w${RESET}' ' \`${STATUS}\` ${PURPLE}>${RESET} '"
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
