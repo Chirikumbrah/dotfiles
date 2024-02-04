@@ -82,6 +82,9 @@ alias v="$EDITOR"
 
 # cd
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 # ls
 alias l='ls -lah --color=always'
