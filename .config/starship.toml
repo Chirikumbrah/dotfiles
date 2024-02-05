@@ -66,8 +66,12 @@ format = '[$symbol$number]($style)'
 format = ' $symbol '
 # error_symbol = "[❯](bold #ff5555)"
 # success_symbol = "[❯](bold #50fa7b)"
-error_symbol = "[󰈺](bold #ff5555)"
-success_symbol = "[󰈺](bold #50fa7b)"
+error_symbol = "[󰈺 ](#ff5555)"
+success_symbol = "[󰈺 ](#50fa7b)"
+vimcmd_symbol = "[󰈺 ](#bd93f9)"
+vimcmd_visual_symbol = "[󰈺 ](#8BE9FD)"
+vimcmd_replace_symbol = "[󰈺 ](#F1FA8C)"
+vimcmd_replace_one_symbol = "[󰈺 ](#F1FA8C)"
 
 [cmd_duration]
 min_time = 200_000
@@ -86,7 +90,7 @@ read_only = ' √'
 
 [git_branch]
 style = "bold #ff79c6"
-format = ' [$symbol$branch(:$remote_branch)]($style)' 
+format = ' [$symbol$branch(:$remote_branch)]($style)'
 
 [git_commit]
 format = ' [\($hash$tag\)]($style)'
