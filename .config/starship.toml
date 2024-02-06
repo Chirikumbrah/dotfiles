@@ -6,7 +6,7 @@ disabled = true
 
 [aws]
 disabled = true
-style = "bold #ffb86c"
+style = "#ffb86c"
 
 [terraform]
 disabled = true
@@ -64,8 +64,8 @@ format = '[$symbol$number]($style)'
 
 [character]
 format = ' $symbol '
-# error_symbol = "[❯](bold #ff5555)"
-# success_symbol = "[❯](bold #50fa7b)"
+# error_symbol = "[❯](#ff5555)"
+# success_symbol = "[❯](#50fa7b)"
 error_symbol = "[󰈺 ](#ff5555)"
 success_symbol = "[󰈺 ](#50fa7b)"
 vimcmd_symbol = "[󰈺 ](#bd93f9)"
@@ -89,7 +89,7 @@ read_only = ' √'
 
 
 [git_branch]
-style = "bold #ff79c6"
+style = "#ff79c6"
 format = ' [$symbol$branch(:$remote_branch)]($style)'
 
 [git_commit]
@@ -97,7 +97,7 @@ format = ' [\($hash$tag\)]($style)'
 
 [git_status]
 format = '([$all_status$ahead_behind]($style))'
-style = "bold #ff5555"
+style = "#ff5555"
 modified = ' [!$count](#ffb86c)'
 untracked = ' [?$count](#8be9fd)'
 staged = ' [+$count](#8be9fd)'
