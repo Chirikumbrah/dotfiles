@@ -4,7 +4,7 @@ import = ["~/.config/alacritty/themes/dracula.toml"]
 log_level = "Off"
 
 [font]
-size = 18
+size = 17
 normal = { family = "UbuntuMono Nerd Font" }
 
 [shell]
