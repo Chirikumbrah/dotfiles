@@ -81,7 +81,7 @@ show_notifications = false
 
 [directory]
 format = '[$path]($style)[$read_only]($read_only_style)'
-style = "bold #50fa7b"
+style = "#50fa7b"
 truncate_to_repo = false
 truncation_length = 5
 truncation_symbol = '.../'
