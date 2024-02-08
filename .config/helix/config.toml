@@ -1,7 +1,7 @@
 theme = "dyracula"
 
 [editor]
-bufferline = "never"
+bufferline = "multiple"
 color-modes = true
 cursorcolumn = true
 cursorline = true
