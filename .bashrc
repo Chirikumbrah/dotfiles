@@ -1,10 +1,12 @@
-
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+    . source ~/.fzf.bash 2>/dev/null || :
     # echo "I'm on Mac!"
 
     # brew bash completion
-    [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+    . "/opt/homebrew/etc/profile.d/bash_completion.sh" 2> /dev/null || :
+
+    # Added by OrbStack: command-line tools and integration
+    . "${HOME}/.orbstack/shell/init.bash" 2>/dev/null || :
 
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
@@ -28,7 +30,7 @@ set -o vi
 
 # keybinds
 bind -x '"\C-l":clear'
-bind -x '"\el":l'
+bind -x '"\el":ls -lah'
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -38,6 +40,7 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export GREP_OPTIONS="-n --color"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # ~~~~~~~~~~~~~~~ Path configuration ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -57,7 +60,7 @@ export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_DESCRIBE_STYLE="branch"
-export GIT_PS1_SHOWUPSTREAM="auto git"
+# export GIT_PS1_SHOWUPSTREAM="auto git"
 
 # colorized prompt
 RESET='\[\e[0m\]'
@@ -80,32 +83,24 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+# directories
+alias dot="cd ~/Projects/mine/dotfiles"
+
 # ls
-# alias l='ls -lah --color=always'
-# alias ls='ls -lah --color=always'
-alias l='eza --git -alb --icons --classify'
-alias ls='eza --git -alb --icons --classify'
-alias lt='eza --git -Talb --icons --classify'
+alias l='ls -lah --color=always'
+alias ls='ls -lah --color=always'
 
 # finds all files recursively and sorts by last modification, ignore hidden files
 alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 
 alias se='sudo -e'
 alias t='tmux'
-alias q='exit'
 
 # git
-alias gco='git checkout'
-alias gcaa="git add . && git commit -v -a --amend --no-edit"
 alias gp='git push'
-alias gpf='git push --force-with-lease'
 alias gup='git pull'
-alias gupa='git pull --rebase --verbose --autostash'
 alias gs='git status'
-alias gst='git stash'
-alias glg='git log --stat'
-alias grh='git reset --hard'
-alias gt='gitui'
+alias lg='lazygit'
 
 # python
 alias pip="pip3"
@@ -120,8 +115,8 @@ alias tp='terraform plan'
 # kubectl
 alias k='kubectl'
 # source <(kubectl completion bash)
-# complete -o default -F __start_kubectl k
 alias kgp='kubectl get pods'
+# complete -o default -F __start_kubectl k
 alias kc='kubectx'
 alias kn='kubens'
 
