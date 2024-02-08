@@ -7,3 +7,4 @@
 .DS_Store
 qBittorrent/
 fish_variables
+.config/lazygit/state.yml
