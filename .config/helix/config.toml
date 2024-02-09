@@ -14,10 +14,11 @@ completion-trigger-len = 1
 left = [
   "mode",
   "separator",
-  "spinner",
+  "version-control",
   "separator",
   "diagnostics",
-  "version-control",
+  "separator",
+  "spinner",
 ]
 center = ["file-name", "file-modification-indicator"]
 right = [
@@ -26,9 +27,9 @@ right = [
   "register",
   "selections",
   "file-encoding",
-  "total-line-numbers",
   "position",
   "position-percentage",
+  "total-line-numbers",
 ]
 separator = " "
 
@@ -44,21 +45,11 @@ hidden = false
 git-ignore = false
 git-global = false
 
-[editor.whitespace.render]
-space = "all"
-newline = "all"
-tab = "all"
-
-[editor.whitespace.characters]
-nbsp = "⍽"
-newline = "⏎"
-space = "·"
-tab = "→"
-tabpad = "·"
+[editor.whitespace]
+render = "all"
 
 ### NORMAL mode
 [keys.normal]
-"#" = "toggle_comments"
 q = { w = ":wq!", q = ":q!" } # fast exit
 "space" = { W = ":w!", q = ":q!", c = ":bc!" }
 C-j = [
