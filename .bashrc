@@ -3,7 +3,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # echo "I'm on Mac!"
 
     # brew bash completion
-    . "/opt/homebrew/etc/profile.d/bash_completion.sh" 2> /dev/null || :
+    [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh" || :
 
     # Added by OrbStack: command-line tools and integration
     . "${HOME}/.orbstack/shell/init.bash" 2>/dev/null || :
@@ -39,7 +39,6 @@ export VISUAL=$EDITOR
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export GREP_OPTIONS="-n --color"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # ~~~~~~~~~~~~~~~ Path configuration ~~~~~~~~~~~~~~~~~~~~~~~~
