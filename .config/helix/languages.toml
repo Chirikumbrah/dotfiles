@@ -57,8 +57,13 @@ roots = [
   "Poetry.lock",
 ]
 language-servers = [
-  { name = "ruff-lsp", only-features = ["format", "diagnostics"] },
-  { name = "pyright", except-features = ["format"] },
+  { name = "ruff-lsp", only-features = [
+    "format",
+    "diagnostics",
+  ] },
+  { name = "pyright", except-features = [
+    "format",
+  ] },
 ]
 
 [language-server.ruff-lsp]
