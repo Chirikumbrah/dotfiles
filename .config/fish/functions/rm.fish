@@ -7,7 +7,7 @@ function rm
                 -tf -td \
                 --exclude "*venv" \
                 --exclude ".git" \
-                --color=always | fzf --ansi -m --preview '~/.config/fish/scripts/fzf-preview.sh {}' | xargs -I {} rm -fr {}
+                --color=always | fzf --ansi -m --preview '~/.config/scripts/fzf-preview {}' | xargs -I {} rm -fr {}
         else
             command rm -rf $argv
         end
@@ -18,6 +18,6 @@ function rm
             -tf -td \
             --exclude "*venv" \
             --exclude ".git" \
-            --color=always | fzf --ansi -m --preview '~/.config/fish/scripts/fzf-preview.sh {}' | xargs -I {} rm -fr {}
+            --color=always | fzf --ansi -m --preview '~/.config/scripts/fzf-preview {}' | xargs -I {} rm -fr {}
     end
 end

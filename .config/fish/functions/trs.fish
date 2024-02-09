@@ -7,7 +7,7 @@ function trs
                 -tf -td \
                 --exclude "*venv" \
                 --exclude ".git" \
-                --color=always | fzf --ansi -m --preview '~/.config/fish/scripts/fzf-preview.sh {}' | xargs -I {} trash {}
+                --color=always | fzf --ansi -m --preview '~/.config/scripts/fzf-preview {}' | xargs -I {} trash {}
         else
             trash $argv
         end
@@ -18,6 +18,6 @@ function trs
             -tf -td \
             --exclude "*venv" \
             --exclude ".git" \
-            --color=always | fzf --ansi -m --preview '~/.config/fish/scripts/fzf-preview.sh {}' | xargs -I {} trash {}
+            --color=always | fzf --ansi -m --preview '~/.config/scripts/fzf-preview {}' | xargs -I {} trash {}
     end
 end
