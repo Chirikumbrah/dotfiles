@@ -50,7 +50,6 @@ render = "all"
 
 ### NORMAL mode
 [keys.normal]
-q = { w = ":wq!", q = ":q!" } # fast exit
 "space" = { W = ":w!", q = ":q!", c = ":bc!" }
 C-j = [
   "extend_to_line_bounds",
