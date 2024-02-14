@@ -9,3 +9,4 @@ qBittorrent/
 fish_variables
 .config/lazygit/state.yml
 .config/nvim/lazy-lock.json
+.config/nvim/.luarc.json

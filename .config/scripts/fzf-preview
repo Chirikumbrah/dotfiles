@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILE="$1"
+FILE=$1
 
 if [[ -d "$FILE" ]]; then
     eza --git -alb --icons --classify "$FILE"

@@ -1,0 +1,34 @@
+return {
+--     "nvimtools/none-ls.nvim",
+--     config = function()
+--         local null_ls = require("null-ls")
+--         null_ls.setup({
+--             sources = {
+--                 -- formatting
+--                 null_ls.builtins.formatting.stylua.with({
+--                     params = {
+--                         indent_type = "Spaces",
+--                     },
+--                 }),
+--                 null_ls.builtins.formatting.ruff_format.with({}),
+--                 null_ls.builtins.formatting.shfmt.with({
+--                     extra_filetypes = { "dockerfile" },
+--                     extra_args = { "-i", "4", "-ci" },
+--                 }),
+--                 null_ls.builtins.formatting.prettier,
+--                 null_ls.builtins.formatting.fish_indent,
+--                 null_ls.builtins.formatting.sql_formatter,
+-- 
+--                 -- diagnostics
+--                 null_ls.builtins.diagnostics.fish,
+--                 null_ls.builtins.diagnostics.eslint,
+-- 
+--                 -- completions
+--                 null_ls.builtins.completion.spell,
+--             },
+--         })
+-- 
+--         local opts = { noremap = true, silent = true }
+--         vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, opts)
+--     end,
+}
