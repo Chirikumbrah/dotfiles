@@ -60,6 +60,7 @@ language-servers = [
   { name = "ruff-lsp", only-features = [
     "format",
     "diagnostics",
+    "code-action",
   ] },
   { name = "pyright", except-features = [
     "format",
@@ -99,7 +100,7 @@ auto-format = false
 [[language]]
 name = "bash"
 indent = { tab-width = 4, unit = "    " }
-formatter = { command = 'shfmt', args = ["-i", "4"] }
+formatter = { command = 'shfmt', args = ["-i", "4", "-ci"] }
 auto-format = false
 
 [[language]]
