@@ -28,9 +28,9 @@ set -gx VISUAL $EDITOR
 set -U SHELL /usr/local/bin/fish
 
 # Set PATH
-set --universal fish_user_paths $fish_user_paths /opt/homebrew/bin "/Applications/Postgres.app/Contents/Versions/latest/bin" "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$HOME/.config/scripts"
+set --universal fish_user_paths $fish_user_paths /opt/homebrew/bin "/Applications/Postgres.app/Contents/Versions/latest/bin" "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$HOME/.config/scripts" "$HOME/.cargo/bin"
 
-# Initioalize other apps
+# Initialize other apps
 eval "$(/opt/homebrew/bin/brew shellenv)"
 zoxide init fish | source
 starship init fish | source

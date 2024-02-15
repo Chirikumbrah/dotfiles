@@ -126,3 +126,4 @@ alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}
 alias vf='$EDITOR $(fp)'
 
 eval "$(zoxide init bash)"
+. "$HOME/.cargo/env"
