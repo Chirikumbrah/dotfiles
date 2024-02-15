@@ -10,6 +10,7 @@ return {
                 markdown = { "prettier" },
                 html = { "prettier" },
                 css = { "prettier" },
+                xml = { "prettier" },
                 json = { "prettier" },
                 javascript = { "prettier" },
                 javascriptreact = { "prettier" },
@@ -21,11 +22,7 @@ return {
                 sh = { "shfmt" },
             },
             formatters = {
-                sh = {
-                    command = "shfmt",
-                    prepend_args = { "-i", "4", "-ci" },
-                },
-                dockerfile = {
+                shfmt = {
                     command = "shfmt",
                     prepend_args = { "-i", "4", "-ci" },
                 },
@@ -36,7 +33,7 @@ return {
             conform.format({
                 lsp_fallback = true,
                 async = false,
-                timeout_ms = 500,
+                timeout_ms = 1000,
             })
         end, { noremap = true, silent = true, desc = "Format file or range (in visual mode)" })
     end,

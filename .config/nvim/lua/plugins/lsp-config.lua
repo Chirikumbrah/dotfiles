@@ -10,39 +10,29 @@ return {
         config = function()
             require('mason-tool-installer').setup({
                 ensure_installed = {
+                    "bash-language-server",
+                    "docker-compose-language-service",
+                    "dockerfile-language-server",
+                    "helm-ls",
+                    "hadolint",
+                    "html-lsp",
+                    "json-lsp",
+                    "lua-language-server",
+                    "marksman",
                     "prettier",
                     "ruff",
+                    "ruff-lsp",
                     "shfmt",
-                    "taplo",
-                    "stylua",
                     "sql-formatter",
+                    "sqlls",
+                    "stylua",
+                    "taplo",
+                    "tflint",
+                    "typescript-language-server",
+                    "yaml-language-server",
                 },
                 start_delay = 3000,
             })
-        end
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        config = function()
-            require("mason-lspconfig").setup {
-                ensure_installed = {
-                    "bashls",
-                    "docker_compose_language_service",
-                    "dockerls",
-                    "helm_ls",
-                    "html",
-                    "jsonls",
-                    "lua_ls",
-                    "marksman",
-                    "ruff_lsp",
-                    "sqlls",
-                    "tailwindcss",
-                    "taplo",
-                    "tflint",
-                    "tsserver",
-                    "yamlls",
-                },
-            }
         end
     },
     {
