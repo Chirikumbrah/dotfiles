@@ -20,6 +20,7 @@ return {
                 toml = { "taplo" },
                 dockerfile = { "shfmt" },
                 sh = { "shfmt" },
+                fish = { "fish_indent" },
             },
             formatters = {
                 shfmt = {
