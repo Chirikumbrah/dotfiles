@@ -1,7 +1,11 @@
 return {
     {
+        "windwp/nvim-ts-autotag",
+        opts = {},
+    },
+    {
         "echasnovski/mini.pairs",
-        event = { "InsertEnter","VeryLazy", },
+        event = { "InsertEnter", "VeryLazy" },
         opts = {},
         keys = {
             {
