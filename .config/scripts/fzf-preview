@@ -2,7 +2,7 @@
 
 FILE=$1
 
-if [[ -d "$FILE" ]]; then
+if [[ -d $FILE ]]; then
     eza --git -alb --icons --classify "$FILE"
 elif [[ $(file --mime "$FILE") =~ binary ]]; then
     if [[ $(file --mime "$FILE") =~ "image/" ]]; then

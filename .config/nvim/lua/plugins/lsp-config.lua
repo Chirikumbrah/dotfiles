@@ -7,14 +7,15 @@ return {
     },
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
+        event = { "VeryLazy" },
         config = function()
             require("mason-tool-installer").setup({
                 ensure_installed = {
                     "bash-language-server",
                     "docker-compose-language-service",
                     "dockerfile-language-server",
-                    "helm-ls",
                     "hadolint",
+                    "helm-ls",
                     "html-lsp",
                     "json-lsp",
                     "lua-language-server",
@@ -46,23 +47,6 @@ return {
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             local lspconfig = require("lspconfig")
-            local servers = {
-                "bashls",
-                "docker_compose_language_service",
-                "dockerls",
-                "helm_ls",
-                "html",
-                "jsonls",
-                "lua_ls",
-                "marksman",
-                "pyright",
-                "ruff_lsp",
-                "sqlls",
-                "taplo",
-                "tflint",
-                "tsserver",
-                "yamlls",
-            }
 
             lspconfig.bashls.setup({
                 capabilities = capabilities,
@@ -115,12 +99,13 @@ return {
             vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
             vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
             vim.keymap.set("n", "<leader>do", vim.diagnostic.open_float, opts)
-            vim.keymap.set("n", "<leader>dd", ":Telescope diagnostics<CR>", opts)
+            vim.keymap.set("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", opts)
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
             vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
             vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
             vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+            vim.keymap.set({ "n", "v" }, "<leader>cl", "<cmd>LspInfo<cr>", opts)
             vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
             vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, opts)
         end,

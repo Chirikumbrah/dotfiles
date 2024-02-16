@@ -25,6 +25,7 @@ set -gx LC_ALL $LANG
 set -gx EDITOR hx
 set -gx GIT_EDITOR $EDITOR
 set -gx VISUAL $EDITOR
+set -gx XDG_CONFIG_HOME $HOME/.config
 set -U SHELL /usr/local/bin/fish
 
 # Set PATH

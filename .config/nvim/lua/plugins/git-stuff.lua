@@ -11,12 +11,15 @@ return {
     },
     {
         "kdheepak/lazygit.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
+        dependencies =  {
+            "nvim-telescope/telescope.nvim",
+            "nvim-lua/plenary.nvim"
         },
-        config = function ()
+        config = function()
+            require("telescope").load_extension("lazygit")
             local opts = { noremap = true, silent = true }
             vim.keymap.set({ "n", "v" }, "<leader>gg", ":LazyGitCurrentFile<CR>", opts)
-        end
+            vim.keymap.set({ "n", "v" }, "<leader>gl", ":Telescope lazygit<CR>", opts)
+        end,
     },
 }

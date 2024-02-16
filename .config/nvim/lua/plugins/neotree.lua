@@ -23,6 +23,7 @@ return {
             },
         })
         local opts = { noremap = true, silent = true }
-        vim.keymap.set("n", "<leader>e", ":Neotree reveal filesystem left<CR>", opts)
+        vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", opts)
+        -- vim.keymap.set("n", "<leader>e", ":Neotree reveal filesystem left<CR>", opts)
     end,
 }
