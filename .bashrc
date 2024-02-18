@@ -34,13 +34,13 @@ export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_DESCRIBE_STYLE="branch"
-# export GIT_PS1_SHOWUPSTREAM="auto git"
+export GIT_PS1_SHOWUPSTREAM="auto git"
 
 # colorized prompt
 RESET='\[\e[0m\]'
 PINK="\[\e[35m\]"
 GREEN='\[\e[38;5;10m\]'
-RED="\[\033[31;1m\]"
+RED="\[\033[31;10m\]"
 OK="${GREEN}\$${RESET}"
 ERR="${RED}\$${RESET}"
 STATUS="if [ \$? = 0 ]; then echo \"${OK}\"; else echo \"${ERR}\"; fi"
@@ -57,10 +57,6 @@ alias ..="cd .."
 # directories
 alias dot="cd ~/Projects/mine/dotfiles"
 
-# ls
-# alias l='ls -lah --color=always'
-# alias ls='ls -lah --color=always'
-
 # finds all files recursively and sorts by last modification, ignore hidden files
 alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 
@@ -72,9 +68,6 @@ alias gp='git push'
 alias gup='git pull'
 alias gs='git status'
 alias lg='lazygit'
-
-# python
-alias pip="pip3"
 
 # ricing
 alias eb='v ~/.bashrc'
