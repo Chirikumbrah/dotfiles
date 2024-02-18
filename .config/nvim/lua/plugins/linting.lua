@@ -3,7 +3,6 @@ return {
   opts = {
     linters_by_ft = {
       fish = { "fish" },
-      sh = { "shellcheck" },
     },
   },
 }
