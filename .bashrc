@@ -4,6 +4,12 @@ set -o vi
 # keybinds
 bind -x '"\C-l":clear'
 
+# ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
+
+function lk {
+	cd "$(walk "$@")" || exit
+}
+
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 
 export EDITOR=nvim
@@ -14,12 +20,9 @@ export LANG=en_US.UTF-8
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # ~~~~~~~~~~~~~~~ Path configuration ~~~~~~~~~~~~~~~~~~~~~~~~
-#
-# https://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path
-# PATH="${PATH:+${PATH}:}~/opt/bin"   # appending
-# PATH="~/opt/bin${PATH:+:${PATH}}"   # prepending
 
-PATH="${PATH:+${PATH}:}:$HOME/.local/bin:/opt/homebrew/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Library/Frameworks/Python.framework/Versions/3.12/bin" # appending
+PATH="$PATH:$HOME/.local/bin:$HOME/.config/scripts:$HOME/.cargo/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Library/Frameworks/Python.framework/Versions/3.12/bin"
+
 # ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
 
 export HISTFILE=~/.cache/.bash_history
@@ -37,15 +40,18 @@ export GIT_PS1_DESCRIBE_STYLE="branch"
 export GIT_PS1_SHOWUPSTREAM="auto git"
 
 # colorized prompt
-RESET='\[\e[0m\]'
-PINK="\[\e[35m\]"
-GREEN='\[\e[38;5;10m\]'
-RED="\[\033[31;10m\]"
-OK="${GREEN}\$${RESET}"
-ERR="${RED}\$${RESET}"
+RESET='\[\033[0m\]'
+RED="\[\033[31m\]"
+GREEN='\[\033[32m\]'
+YELLOW='\[\033[33m\]'
+PINK="\[\033[35m\]"
+CYAN="\[\033[36m\]"
+PURPLE='\033[0;34m'
+OK="${GREEN}\$"
+ERR="${RED}\$"
 STATUS="if [ \$? = 0 ]; then echo \"${OK}\"; else echo \"${ERR}\"; fi"
 
-PROMPT_COMMAND="__git_ps1 '${PINK}\w${RESET}' ' \`${STATUS}\` '"
+PROMPT_COMMAND="__git_ps1 '$PINK\u$CYAN@$PURPLE\h:$YELLOW\w' ' \`$STATUS\`$RESET '"
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -60,9 +66,6 @@ alias dot="cd ~/Projects/mine/dotfiles"
 # finds all files recursively and sorts by last modification, ignore hidden files
 alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 
-alias se='sudo -e'
-alias t='tmux'
-
 # git
 alias gp='git push'
 alias gup='git pull'
@@ -70,7 +73,8 @@ alias gs='git status'
 alias lg='lazygit'
 
 # ricing
-alias eb='v ~/.bashrc'
+alias eb='$EDITOR ~/.bashrc'
+alias et='$EDITOR ~/.tmux.conf'
 alias sbr='source ~/.bashrc'
 
 # terraform
@@ -93,16 +97,16 @@ alias vf='$EDITOR $(fp)'
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    # . source ~/.fzf.bash 2>/dev/null || :
-    # echo "I'm on Mac!"
+	# . source ~/.fzf.bash 2>/dev/null || :
+	# echo "I'm on Mac!"
 
-    # brew bash completion
-    [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh" || :
+	# brew bash completion
+	[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh" || :
 
-    # Added by OrbStack: command-line tools and integration
-    . "${HOME}/.orbstack/shell/init.bash" 2>/dev/null || :
+	# Added by OrbStack: command-line tools and integration
+	. "${HOME}/.orbstack/shell/init.bash" 2>/dev/null || :
 
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 . "$XDG_CONFIG_HOME/bash/git-prompt.sh"
