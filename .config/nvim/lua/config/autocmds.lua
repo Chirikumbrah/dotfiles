@@ -7,3 +7,11 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     require("lint").try_lint()
   end,
 })
+
+-- Disable autoformat for all files
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "*" },
+  callback = function()
+    vim.b.autoformat = false
+  end,
+})
