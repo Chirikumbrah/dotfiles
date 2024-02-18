@@ -1,14 +1,3 @@
-# complete until the end of common prefix before cycling through possible completions
-set menu-complete-display-prefix on
-# show possible completions if more than one completions are possible
-set show-all-if-ambiguous on
-set show-all-if-unmodified on
-# do not duplicate characters after the cursor if they consist partially of possbile completion
-set skip-completed-text on
-# display colors when doing completion as `ls` does
-set colored-stats on
-# color tab-completion matched prefix part
-set colored-completion-prefix on
 set show-mode-in-prompt on
 set vi-ins-mode-string \1\033[1;32m\2ins \1\033[m\2
 set vi-cmd-mode-string \1\e[1;31;34m\2cmd \1\033[m\2

@@ -63,6 +63,10 @@ alias ..="cd .."
 # directories
 alias dot="cd ~/Projects/mine/dotfiles"
 
+# ls
+alias ls='ls --color=auto'
+alias la='ls -lah --color=auto'
+
 # finds all files recursively and sorts by last modification, ignore hidden files
 alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 
