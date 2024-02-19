@@ -1,7 +1,7 @@
 theme = "dyracula"
 
 [editor]
-bufferline = "never"
+bufferline = "multiple"
 color-modes = true
 cursorcolumn = true
 cursorline = true
@@ -50,7 +50,7 @@ render = "all"
 
 ### NORMAL mode
 [keys.normal]
-"space" = { W = ":w!", q = ":q!", c = ":bc!" }
+"space" = { q = ":q!", c = ":bc!" }
 D = "delete_char_backward"
 F = ":format"                                          # fast format
 X = "extend_line_above"
@@ -58,7 +58,7 @@ esc = ["collapse_selection", "keep_primary_selection"]
 
 ### SELECT mode
 [keys.select]
-"space" = { W = ":w!", q = ":q!", c = ":bc!" }
+"space" = { q = ":q!", c = ":bc!" }
 D = "delete_char_backward"
 F = ":format"                                  # fast format
 X = "extend_line_above"
