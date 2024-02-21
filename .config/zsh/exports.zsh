@@ -11,7 +11,3 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
 export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.12/bin"
 
-export HISTSIZE=25000
-export SAVEHIST=25000
-
-

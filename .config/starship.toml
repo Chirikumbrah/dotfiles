@@ -66,22 +66,22 @@ format = '[$symbol$number]($style)'
 format = ' $symbol '
 # error_symbol = "[❯](#ff5555)"
 # success_symbol = "[❯](#50fa7b)"
-error_symbol = "[󰈺 ](#ff5555)"
-success_symbol = "[󰈺 ](#50fa7b)"
+error_symbol = "[󰈺 ](red)"
+success_symbol = "[󰈺 ](green)"
 vimcmd_symbol = "[󰈺 ](#bd93f9)"
 vimcmd_visual_symbol = "[󰈺 ](#8BE9FD)"
-vimcmd_replace_symbol = "[󰈺 ](#F1FA8C)"
-vimcmd_replace_one_symbol = "[󰈺 ](#F1FA8C)"
+vimcmd_replace_symbol = "[󰈺 ](yellow)"
+vimcmd_replace_one_symbol = "[󰈺 ](yellow)"
 
 [cmd_duration]
 min_time = 200_000
-style = "bold #f1fa8c"
+style = "bold yellow"
 format = ' [$duration](bold yellow)'
 show_notifications = false
 
 [directory]
 format = '[$path]($style)[$read_only]($read_only_style)'
-style = "#50fa7b"
+style = "green"
 truncate_to_repo = false
 truncation_length = 5
 truncation_symbol = '.../'

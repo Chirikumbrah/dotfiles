@@ -1,4 +1,4 @@
-alias v="$EDITOR"
+alias v="nvim"
 
 # cd
 alias ..="cd .."
