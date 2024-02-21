@@ -19,39 +19,12 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# ~~~~~~~~~~~~~~~ Path configuration ~~~~~~~~~~~~~~~~~~~~~~~~
+export PATH="$PATH:$HOME/.local/bin:$HOME/.config/scripts:$HOME/.cargo/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Library/Frameworks/Python.framework/Versions/3.12/bin"
 
-PATH="$PATH:$HOME/.local/bin:$HOME/.config/scripts:$HOME/.cargo/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Library/Frameworks/Python.framework/Versions/3.12/bin"
-
-# ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
-
-export HISTFILE=~/.cache/.bash_history
+export HISTFILE=~/.config/zsh/.zsh_history
 export HISTSIZE=25000
 export SAVEHIST=25000
 export HISTCONTROL=ignorespace
-
-# ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
-
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWSTASHSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-export GIT_PS1_SHOWCOLORHINTS=1
-export GIT_PS1_DESCRIBE_STYLE="branch"
-export GIT_PS1_SHOWUPSTREAM="auto git"
-
-# colorized prompt
-RESET='\[\033[0m\]'
-RED="\[\033[31m\]"
-GREEN='\[\033[32m\]'
-YELLOW='\[\033[33m\]'
-PINK="\[\033[35m\]"
-CYAN="\[\033[36m\]"
-PURPLE='\033[0;34m'
-OK="${GREEN}\$"
-ERR="${RED}\$"
-STATUS="if [ \$? = 0 ]; then echo \"${OK}\"; else echo \"${ERR}\"; fi"
-
-PROMPT_COMMAND="__git_ps1 '$PINK\u$CYAN@$PURPLE\h:$YELLOW\w' ' \`$STATUS\`$RESET '"
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -20,9 +20,7 @@ end
 set -U fish_greeting
 
 # Set other variables
-set -gx LANG 'en_US.UTF-8'
-set -gx LC_ALL $LANG
-set -gx EDITOR hx
+set -gx EDITOR nvim
 set -gx GIT_EDITOR $EDITOR
 set -gx VISUAL $EDITOR
 set -gx XDG_CONFIG_HOME $HOME/.config

@@ -10,3 +10,6 @@ fish_variables
 .config/lazygit/state.yml
 .config/nvim/lazy-lock.json
 .config/nvim/.luarc.json
+.config/zsh/.zsh_history
+.config/zsh/.zcompdump
+.config/zsh/.zcompcache
