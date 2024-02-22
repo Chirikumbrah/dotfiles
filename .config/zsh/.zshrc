@@ -18,7 +18,6 @@ autoload -Uz compinit
 compinit
 
 eval "$(zoxide init zsh)"
-# eval "$(starship init zsh)"
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 # zprof

@@ -12,19 +12,41 @@ function lk {
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 
-export EDITOR=nvim
+export EDITOR=hx
 export VISUAL=$EDITOR
 export BASH_SILENCE_DEPRECATION_WARNING=1
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
 export XDG_CONFIG_HOME="$HOME/.config"
 
 export PATH="$PATH:$HOME/.local/bin:$HOME/.config/scripts:$HOME/.cargo/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Library/Frameworks/Python.framework/Versions/3.12/bin"
+export PATH="$PATH:$HOME/.orbstack/bin"
 
-export HISTFILE=~/.config/zsh/.zsh_history
+export HISTFILE=$HOME/.config/bash/.bash_history
 export HISTSIZE=25000
 export SAVEHIST=25000
 export HISTCONTROL=ignorespace
+
+# ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
+
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWCOLORHINTS=1
+export GIT_PS1_DESCRIBE_STYLE="branch"
+export GIT_PS1_SHOWUPSTREAM="auto git"
+
+# colorized prompt
+RESET='\[\033[0m\]'
+RED="\[\033[31m\]"
+GREEN='\[\033[32m\]'
+YELLOW='\[\033[33m\]'
+PINK="\[\033[35m\]"
+CYAN="\[\033[36m\]"
+PURPLE='\033[0;34m'
+OK="${GREEN}\$"
+ERR="${RED}\$"
+STATUS="if [ \$? = 0 ]; then echo \"${OK}\"; else echo \"${ERR}\"; fi"
+
+PROMPT_COMMAND="__git_ps1 '$PINK\u$CYAN@$PURPLE\h:$YELLOW\w' ' \`$STATUS\`$RESET '"
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -52,7 +74,7 @@ alias lg='lazygit'
 # ricing
 alias eb='$EDITOR ~/.bashrc'
 alias et='$EDITOR ~/.tmux.conf'
-alias sbr='source ~/.bashrc'
+alias sb='source ~/.bashrc'
 
 # terraform
 alias tp='terraform plan'
@@ -74,19 +96,15 @@ alias vf='$EDITOR $(fp)'
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	# . source ~/.fzf.bash 2>/dev/null || :
-	# echo "I'm on Mac!"
 
 	# brew bash completion
 	[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh" || :
 
-	# Added by OrbStack: command-line tools and integration
-	. "${HOME}/.orbstack/shell/init.bash" 2>/dev/null || :
-
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-. "$XDG_CONFIG_HOME/bash/git-prompt.sh"
-. "$XDG_CONFIG_HOME/bash/git-completion.bash"
-. "$HOME/.cargo/env"
+source "$XDG_CONFIG_HOME/bash/git-prompt.sh"
+source "$XDG_CONFIG_HOME/bash/completions/git.bash"
+source "$XDG_CONFIG_HOME/bash/completions/pip.bash"
+source "$HOME/.cargo/env"
 eval "$(zoxide init bash)"
