@@ -6,13 +6,19 @@ bind -x '"\C-l":clear'
 
 # ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
 
-function lk {
-	cd "$(walk "$@")" || exit
+lfcd() {
+	tmp="$(mktemp -uq)"
+	trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM EXIT'
+	lf -last-dir-path="$tmp" "$@"
+	if [ -f "$tmp" ]; then
+		dir="$(cat "$tmp")"
+		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir" || :
+	fi
 }
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 
-export EDITOR=hx
+export EDITOR=nvim
 export VISUAL=$EDITOR
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -20,33 +26,29 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$PATH:$HOME/.local/bin:$HOME/.config/scripts:$HOME/.cargo/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Library/Frameworks/Python.framework/Versions/3.12/bin"
 export PATH="$PATH:$HOME/.orbstack/bin"
 
-export HISTFILE=$HOME/.config/bash/.bash_history
-export HISTSIZE=25000
-export SAVEHIST=25000
-export HISTCONTROL=ignorespace
+export HISTSIZE=50000
+export SAVEHIST=50000
+export HISTCONTROL=ignoreboth
+export HISTFILESIZE=10000
+shopt -s histappend
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWSTASHSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-export GIT_PS1_SHOWCOLORHINTS=1
-export GIT_PS1_DESCRIBE_STYLE="branch"
-export GIT_PS1_SHOWUPSTREAM="auto git"
+__ps1() {
+	local BRANCH \
+		red='\[\e[31m\]' green='\[\e[32m\]' \
+		yellow='\[\e[33m\]' blue='\[\e[34m\]' magenta='\[\e[35m\]' \
+		cyan='\[\e[36m\]' reset='\[\e[0m\]'
 
-# colorized prompt
-RESET='\[\033[0m\]'
-RED="\[\033[31m\]"
-GREEN='\[\033[32m\]'
-YELLOW='\[\033[33m\]'
-PINK="\[\033[35m\]"
-CYAN="\[\033[36m\]"
-PURPLE='\033[0;34m'
-OK="${GREEN}\$"
-ERR="${RED}\$"
-STATUS="if [ \$? = 0 ]; then echo \"${OK}\"; else echo \"${ERR}\"; fi"
+	LAST_CMD_STATUS="if [ \$? = 0 ]; then echo \"$reset\$\"; else echo \"$red\$\"; fi"
+	BRANCH=$(git branch --show-current 2>/dev/null)
 
-PROMPT_COMMAND="__git_ps1 '$PINK\u$CYAN@$PURPLE\h:$YELLOW\w' ' \`$STATUS\`$RESET '"
+	[[ -n "$BRANCH" ]] && BRANCH="$cyan($BRANCH)"
+
+	PS1="$green\u@\h$reset:$blue\w$BRANCH$blue\`$LAST_CMD_STATUS\`$reset "
+}
+
+PROMPT_COMMAND="__ps1"
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -59,33 +61,28 @@ alias ..="cd .."
 alias dot="cd ~/Projects/mine/dotfiles"
 
 # ls
-alias ls='ls --color=auto'
-alias la='ls -lah --color=auto'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -halF'
+alias ls='ls -h --color=auto'
 
-# finds all files recursively and sorts by last modification, ignore hidden files
-alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
+# grep
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 # git
 alias gp='git push'
 alias gup='git pull'
 alias gs='git status'
-alias lg='lazygit'
+alias gt='gitui'
 
 # ricing
 alias eb='$EDITOR ~/.bashrc'
-alias et='$EDITOR ~/.tmux.conf'
 alias sb='source ~/.bashrc'
 
-# terraform
-alias tp='terraform plan'
-
-# kubectl
-alias k='kubectl'
-# source <(kubectl completion bash)
-alias kgp='kubectl get pods'
-# complete -o default -F __start_kubectl k
-alias kc='kubectx'
-alias kn='kubens'
+# finds all files recursively and sorts by last modification, ignore hidden files
+alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 
 # fzf aliases
 # use fp to do a fzf search and preview the files
@@ -94,17 +91,21 @@ alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}
 alias vf='$EDITOR $(fp)'
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
-
 if [[ "$OSTYPE" == "darwin"* ]]; then
-
-	# brew bash completion
+	# brew install bas-completion@2 git
 	[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh" || :
-
 	eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+	[[ -r /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion ||
+		[[ -f /etc/bash_completion ]] && . /etc/bash_completion || :
 fi
 
-source "$XDG_CONFIG_HOME/bash/git-prompt.sh"
-source "$XDG_CONFIG_HOME/bash/completions/git.bash"
-source "$XDG_CONFIG_HOME/bash/completions/pip.bash"
+_pip_completion() {
+	COMPREPLY=($(COMP_WORDS="${COMP_WORDS[*]}" \
+		COMP_CWORD=$COMP_CWORD \
+		PIP_AUTO_COMPLETE=1 $1 2>/dev/null))
+}
+complete -o default -F _pip_completion pip3
+
 source "$HOME/.cargo/env"
 eval "$(zoxide init bash)"

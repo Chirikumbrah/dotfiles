@@ -1,3 +1,6 @@
 set show-mode-in-prompt on
-set vi-ins-mode-string \1\033[1;32m\2ins \1\033[m\2
-set vi-cmd-mode-string \1\e[1;31;34m\2cmd \1\033[m\2
+# particularly useful for psql
+set editing-mode vi
+set enable-bracketed-paste on
+#set bell-style none          # MAKE IT STOP!!
+set keymap vi
