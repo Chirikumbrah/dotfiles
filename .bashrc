@@ -43,7 +43,7 @@ __ps1() {
 	last_cmd_status="if [ \$? = 0 ]; then echo \"$reset$sign\"; else echo \"$red$sign\"; fi"
 	branch=$(git branch --show-current 2>/dev/null)
 	[[ -n "$branch" ]] && branch="$reset:$yellow$branch"
-  PS1="$magenta\u$cyan@$green\h$reset:$blue\w$branch\`$last_cmd_status\`$reset "
+	PS1="$magenta\u$cyan@$green\h$reset:$blue\w$branch\`$last_cmd_status\`$reset "
 }
 
 PROMPT_COMMAND="__ps1"
@@ -89,18 +89,19 @@ alias vf='$EDITOR $(fp)'
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	# brew install bash-completion@2 fzf
+	# brew install bash-completion@2 fzf zoxide
 	[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] &&
 		. "/opt/homebrew/etc/profile.d/bash_completion.sh" || :
 	[[ -r "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash" ]] &&
 		. "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash" || :
-  [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+	# /opt/homebrew/opt/fzf/install
+	[ -f "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash" || :
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 else
-	[[ -r /usr/share/bash-completion/bash_completion ]] && . \
-		/usr/share/bash-completion/bash_completion ||
-		[[ -f /etc/bash_completion ]] &&
-		. /etc/bash_completion || :
+	[[ -r "/usr/share/bash-completion/bash_completion" ]] && . \
+		"/usr/share/bash-completion/bash_completion" ||
+		[[ -f "/etc/bash_completion" ]] &&
+		. "/etc/bash_completion" || :
 fi
 
 _pip_completion() {
