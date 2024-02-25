@@ -1,4 +1,4 @@
-theme = "dyracula"
+theme = "gruvbox"
 
 [editor]
 bufferline = "multiple"

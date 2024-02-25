@@ -1,9 +1,12 @@
 return {
-  { "Mofiqul/dracula.nvim" },
+  -- add gruvbox
+  { "wittyjudge/gruvbox-material.nvim" },
+
+  -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "dracula",
+      colorscheme = "gruvbox-material",
     },
   },
 }
