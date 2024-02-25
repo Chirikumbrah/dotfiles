@@ -39,13 +39,11 @@ __ps1() {
 		red='\[\033[31m\]' green='\[\033[32m\]' \
 		yellow='\[\033[33m\]' blue='\[\033[34m\]' magenta='\[\033[35m\]' \
 		cyan='\[\033[36m\]' reset='\[\033[0m\]'
-
 	[[ $EUID == 0 ]] && sign='#' || sign='$' # root/user sign
 	last_cmd_status="if [ \$? = 0 ]; then echo \"$reset$sign\"; else echo \"$red$sign\"; fi"
 	branch=$(git branch --show-current 2>/dev/null)
 	[[ -n "$branch" ]] && branch="$reset:$yellow$branch"
-
-  PS1="$green\u@\h$reset:$blue\w$branch\`$last_cmd_status\`$reset "
+  PS1="$magenta\u$cyan@$green\h$reset:$blue\w$branch\`$last_cmd_status\`$reset "
 }
 
 PROMPT_COMMAND="__ps1"
@@ -91,11 +89,12 @@ alias vf='$EDITOR $(fp)'
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	# brew install bash-completion@2
+	# brew install bash-completion@2 fzf
 	[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] &&
 		. "/opt/homebrew/etc/profile.d/bash_completion.sh" || :
 	[[ -r "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash" ]] &&
 		. "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash" || :
+  [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 else
 	[[ -r /usr/share/bash-completion/bash_completion ]] && . \
@@ -112,4 +111,4 @@ _pip_completion() {
 complete -o default -F _pip_completion pip3
 
 source "$HOME/.cargo/env"
-eval "$(zoxide init bash)"
+eval "$(zoxide init posix --hook prompt)"
