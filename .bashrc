@@ -33,22 +33,19 @@ export HISTFILESIZE=10000
 shopt -s histappend
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
-PROMPT_LONG=20
-PROMPT_MAX=95
 
 __ps1() {
 	local branch \
-		red='\[\e[31m\]' green='\[\033[32m\]' \
-		yellow='\[\e[33m\]' blue='\[\e[34m\]' magenta='\[\e[35m\]' \
-		cyan='\[\e[36m\]' reset='\[\e[0m\]'
+		red='\[\033[31m\]' green='\[\033[32m\]' \
+		yellow='\[\033[33m\]' blue='\[\033[34m\]' magenta='\[\033[35m\]' \
+		cyan='\[\033[36m\]' reset='\[\033[0m\]'
 
 	[[ $EUID == 0 ]] && sign='#' || sign='$' # root/user sign
 	last_cmd_status="if [ \$? = 0 ]; then echo \"$reset$sign\"; else echo \"$red$sign\"; fi"
 	branch=$(git branch --show-current 2>/dev/null)
-	[[ -n "$branch" ]] && branch="$reset:$cyan$branch"
+	[[ -n "$branch" ]] && branch="$reset:$yellow$branch"
 
-	PS1="$green\u@\h$reset:$blue\w$branch$blue\`$last_cmd_status\`$reset "
-
+  PS1="$green\u@\h$reset:$blue\w$branch\`$last_cmd_status\`$reset "
 }
 
 PROMPT_COMMAND="__ps1"
@@ -65,7 +62,6 @@ alias dot="cd ~/Projects/mine/dotfiles"
 
 # ls
 alias l='ls -CF'
-alias la='ls -A'
 alias ll='ls -halF'
 alias ls='ls -h --color=auto'
 
