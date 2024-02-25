@@ -33,19 +33,22 @@ export HISTFILESIZE=10000
 shopt -s histappend
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
+PROMPT_LONG=20
+PROMPT_MAX=95
 
 __ps1() {
-	local BRANCH \
-		red='\[\e[31m\]' green='\[\e[32m\]' \
+	local branch \
+		red='\[\e[31m\]' green='\[\033[32m\]' \
 		yellow='\[\e[33m\]' blue='\[\e[34m\]' magenta='\[\e[35m\]' \
 		cyan='\[\e[36m\]' reset='\[\e[0m\]'
 
-	LAST_CMD_STATUS="if [ \$? = 0 ]; then echo \"$reset\$\"; else echo \"$red\$\"; fi"
-	BRANCH=$(git branch --show-current 2>/dev/null)
+	[[ $EUID == 0 ]] && sign='#' || sign='$' # root/user sign
+	last_cmd_status="if [ \$? = 0 ]; then echo \"$reset$sign\"; else echo \"$red$sign\"; fi"
+	branch=$(git branch --show-current 2>/dev/null)
+	[[ -n "$branch" ]] && branch="$reset:$cyan$branch"
 
-	[[ -n "$BRANCH" ]] && BRANCH="$cyan($BRANCH)"
+	PS1="$green\u@\h$reset:$blue\w$branch$blue\`$last_cmd_status\`$reset "
 
-	PS1="$green\u@\h$reset:$blue\w$BRANCH$blue\`$LAST_CMD_STATUS\`$reset "
 }
 
 PROMPT_COMMAND="__ps1"
@@ -92,18 +95,23 @@ alias vf='$EDITOR $(fp)'
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	# brew install bas-completion@2 git
-	[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh" || :
+	# brew install bash-completion@2
+	[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] &&
+		. "/opt/homebrew/etc/profile.d/bash_completion.sh" || :
+	[[ -r "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash" ]] &&
+		. "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash" || :
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 else
-	[[ -r /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion ||
-		[[ -f /etc/bash_completion ]] && . /etc/bash_completion || :
+	[[ -r /usr/share/bash-completion/bash_completion ]] && . \
+		/usr/share/bash-completion/bash_completion ||
+		[[ -f /etc/bash_completion ]] &&
+		. /etc/bash_completion || :
 fi
 
 _pip_completion() {
-	COMPREPLY=($(COMP_WORDS="${COMP_WORDS[*]}" \
+	COMPREPLY="($(COMP_WORDS="${COMP_WORDS[*]}" \
 		COMP_CWORD=$COMP_CWORD \
-		PIP_AUTO_COMPLETE=1 $1 2>/dev/null))
+		PIP_AUTO_COMPLETE=1 $1 2>/dev/null))"
 }
 complete -o default -F _pip_completion pip3
 
