@@ -1,0 +1,44 @@
+import = ["~/.config/alacritty/gruvbox-dark.toml"]
+
+[debug]
+log_level = "Off"
+
+[font]
+size = 17
+normal = { family = "UbuntuMono Nerd Font" }
+
+[shell]
+program = "bash"
+args = ["-l", "-c", "tmux attach || tmux"]
+
+[window]
+decorations = "none"
+startup_mode = "Maximized"
+option_as_alt = "Both"
+padding = { x = 1, y = 0 }
+
+# gruvbox-dark colorscheme
+[colors.bright]
+black = "#928374"
+blue = "#7daea3"
+cyan = "#89b482"
+green = "#a9b665"
+magenta = "#d3869b"
+red = "#ea6962"
+white = "#dfbf8e"
+yellow = "#e3a84e"
+
+[colors.normal]
+black = "#665c54"
+blue = "#7daea3"
+cyan = "#89b482"
+green = "#a9b665"
+magenta = "#d3869b"
+red = "#ea6962"
+white = "#dfbf8e"
+yellow = "#e78a4e"
+
+[colors.primary]
+background = "#282828"
+foreground = "#dfbf8e"
+
