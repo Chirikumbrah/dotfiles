@@ -43,7 +43,8 @@ __ps1() {
 	last_cmd_status="if [ \$? = 0 ]; then echo \"$reset$sign\"; else echo \"$red$sign\"; fi"
 	branch=$(git branch --show-current 2>/dev/null)
 	[[ -n "$branch" ]] && branch="$reset:$yellow$branch"
-	PS1="$magenta\u$cyan@$green\h$reset:$blue\w$branch\`$last_cmd_status\`$reset "
+	[[ -n "$VIRTUAL_ENV" ]] && venv="$magenta$(basename "$VIRTUAL_ENV")$reset:"
+	PS1="$venv$green\u@\h$reset:$blue\w$branch\`$last_cmd_status\`$reset "
 }
 
 PROMPT_COMMAND="__ps1"
@@ -59,7 +60,7 @@ alias ..="cd .."
 alias dot="cd ~/Projects/mine/dotfiles"
 
 # ls
-alias l='ls -CF'
+alias l='ls --color=auto'
 alias ll='ls -halF'
 alias ls='ls -h --color=auto'
 
@@ -105,9 +106,9 @@ else
 fi
 
 _pip_completion() {
-	COMPREPLY="($(COMP_WORDS="${COMP_WORDS[*]}" \
+	COMPREPLY=($(COMP_WORDS="${COMP_WORDS[*]}" \
 		COMP_CWORD=$COMP_CWORD \
-		PIP_AUTO_COMPLETE=1 $1 2>/dev/null))"
+		PIP_AUTO_COMPLETE=1 $1 2>/dev/null))
 }
 complete -o default -F _pip_completion pip3
 
