@@ -90,6 +90,7 @@ alias vf='$EDITOR $(fp)'
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 if [[ "$OSTYPE" == "darwin"* ]]; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 	# brew install bash-completion@2 fzf zoxide
 	[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] &&
 		. "/opt/homebrew/etc/profile.d/bash_completion.sh" || :
@@ -97,7 +98,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 		. "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash" || :
 	# /opt/homebrew/opt/fzf/install
 	[ -f "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash" || :
-	eval "$(/opt/homebrew/bin/brew shellenv)"
 else
 	[[ -r "/usr/share/bash-completion/bash_completion" ]] && . \
 		"/usr/share/bash-completion/bash_completion" ||
