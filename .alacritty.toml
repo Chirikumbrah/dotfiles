@@ -1,5 +1,3 @@
-import = ["~/.config/alacritty/gruvbox-dark.toml"]
-
 [debug]
 log_level = "Off"
 
