@@ -37,10 +37,10 @@ syntax on
 syntax enable
 
 if v:version < 802
-    packadd! dracula
+    packadd! gruvbox
 endif
 set background=dark
-colorscheme dracula
+colorscheme gruvbox
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
 
