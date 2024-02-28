@@ -113,4 +113,4 @@ _pip_completion() {
 complete -o default -F _pip_completion pip3
 
 source "$HOME/.cargo/env"
-eval "$(zoxide init posix --hook prompt)"
+eval "$(zoxide init bash)"
