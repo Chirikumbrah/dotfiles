@@ -12,3 +12,4 @@ fish_variables
 .config/nvim/.luarc.json
 .*_history*
 .zcomp*
+.netrwhist

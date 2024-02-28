@@ -28,7 +28,7 @@ export PATH="$PATH:$HOME/.orbstack/bin"
 
 export HISTSIZE=50000
 export SAVEHIST=50000
-export HISTCONTROL=ignoreboth
+export HISTCONTROL=ignoreboth:erasedups
 export HISTFILESIZE=10000
 shopt -s histappend
 
