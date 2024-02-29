@@ -45,7 +45,7 @@ __ps1() {
 	branch=$(git branch --show-current 2>/dev/null)
 	[[ -n "$branch" ]] && branch="$reset:$yellow$branch"
 	[[ -n "$VIRTUAL_ENV" ]] && venv="$magenta$(basename "$VIRTUAL_ENV")$reset:"
-	PS1="$venv$green\u@\h$reset:$blue\w$branch\`$last_cmd_status\`$reset "
+	PS1="$venv$green\u@\h$reset:$blue\W$branch\`$last_cmd_status\`$reset "
 }
 
 PROMPT_COMMAND="history -a && __ps1"
