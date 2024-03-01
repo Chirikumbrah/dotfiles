@@ -6,14 +6,22 @@ bind -x '"\C-l":clear'
 
 # ~~~~~~~~~~~~~~~ Options ~~~~~~~~~~~~~~~~~~~~~~~~
 
+shopt -s checkwinsize # enables $COLUMNS and $ROWS
+shopt -s expand_aliases
+shopt -s globstar
+shopt -s dotglob
+shopt -s extglob
 shopt -s histappend
 shopt -s autocd
 
 # ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
 
+_is_cmd_exist() { type "$1" &>/dev/null; }
+_source_if_exist() { [[ -r "$1" ]] && source "$1"; }
+
 lfcd() {
-	command -v z 2 &>/dev/null && cmd="z" || cmd="cd"
-	$cmd "$(command lf -print-last-dir "$@")"
+	_is_cmd_exist z && cmd="z" || cmd="cd"
+	_is_cmd_exist lf && $cmd "$(command lf -print-last-dir "$@")" || echo "Please install lf."
 }
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -93,17 +101,13 @@ alias vf='$EDITOR $(fp)'
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 	# brew install bash-completion@2 fzf zoxide
-	[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] &&
-		. "/opt/homebrew/etc/profile.d/bash_completion.sh" || :
-	[[ -r "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash" ]] &&
-		. "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash" || :
+	_source_if_exist "/opt/homebrew/etc/profile.d/bash_completion.sh"
+	_source_if_exist "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
 	# /opt/homebrew/opt/fzf/install
-	[ -f "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash" || :
+	_source_if_exist "$HOME/.fzf.bash"
 else
-	[[ -r "/usr/share/bash-completion/bash_completion" ]] && . \
-		"/usr/share/bash-completion/bash_completion" ||
-		[[ -f "/etc/bash_completion" ]] &&
-		. "/etc/bash_completion" || :
+	_source_if_exist "/usr/share/bash-completion/bash_completion" &&
+		_source_if_exist "/etc/bash_completion"
 fi
 
 # ~~~~~~~~~~~~~~~ Completions ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -115,5 +119,5 @@ _pip_completion() {
 }
 complete -o default -F _pip_completion pip3
 
-source "$HOME/.cargo/env"
-eval "$(zoxide init bash)"
+_source_if_exist "$HOME/.cargo/env"
+_is_cmd_exist zoxide && eval "$(zoxide init bash)"
