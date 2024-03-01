@@ -12,6 +12,7 @@ return {
         "json-lsp",
         "lua-language-server",
         "marksman",
+        "markdownlint",
         "prettier",
         "ruff",
         "ruff-lsp",
