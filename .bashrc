@@ -4,16 +4,16 @@ set -o vi
 # keybinds
 bind -x '"\C-l":clear'
 
+# ~~~~~~~~~~~~~~~ Options ~~~~~~~~~~~~~~~~~~~~~~~~
+
+shopt -s histappend
+shopt -s autocd
+
 # ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
 
 lfcd() {
-	tmp="$(mktemp -uq)"
-	trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM EXIT'
-	lf -last-dir-path="$tmp" "$@"
-	if [ -f "$tmp" ]; then
-		dir="$(cat "$tmp")"
-		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir" || :
-	fi
+	command -v z 2 &>/dev/null && cmd="z" || cmd="cd"
+	$cmd "$(command lf -print-last-dir "$@")"
 }
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -31,7 +31,6 @@ export SAVEHIST=50000
 export HISTCONTROL=ignoreboth:erasedups
 export HISTFILESIZE=10000
 export HISTIGNORE="&:ls:[bf]g:eb:gp:z:v:dot:exit"
-shopt -s histappend
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -89,7 +88,8 @@ alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}
 # search for a file with fzf and open it in vim
 alias vf='$EDITOR $(fp)'
 
-# ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 	# brew install bash-completion@2 fzf zoxide
@@ -105,6 +105,8 @@ else
 		[[ -f "/etc/bash_completion" ]] &&
 		. "/etc/bash_completion" || :
 fi
+
+# ~~~~~~~~~~~~~~~ Completions ~~~~~~~~~~~~~~~~~~~~~~~~
 
 _pip_completion() {
 	COMPREPLY=($(COMP_WORDS="${COMP_WORDS[*]}" \
