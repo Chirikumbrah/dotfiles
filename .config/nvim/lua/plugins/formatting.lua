@@ -21,17 +21,17 @@ return {
         -- xml = { "xmlformat" },
         -- python = { "ruff_format" },
         -- toml = { "taplo" },
-        -- sh = { "shfmt" },
+        sh = { "shfmt" },
         -- fish = { "fish_indent" },
       },
       -- The options you set here will be merged with the builtin formatters.
       -- You can also define any custom formatters here.
       ---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
-      formatters = {
-        shfmt = {
-          prepend_args = { "-i", "4", "-ci" },
-        },
-      },
+      -- formatters = {
+      --   shfmt = {
+      --     prepend_args = { "-i", "4", "-ci" },
+      --   },
+      -- },
     }
     return opts
   end,

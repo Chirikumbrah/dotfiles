@@ -38,13 +38,12 @@ export HISTSIZE=50000
 export SAVEHIST=50000
 export HISTCONTROL=ignoreboth:erasedups
 export HISTFILESIZE=10000
-export HISTIGNORE="&:ls:[bf]g:eb:gp:z:v:dot:exit"
+export HISTIGNORE="&:ls:[bf]g:eb:gp:z:v:dot:exit:history"
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
 __ps1() {
-	local branch \
-		red='\[\033[31m\]' green='\[\033[32m\]' \
+	local red='\[\033[31m\]' green='\[\033[32m\]' \
 		yellow='\[\033[33m\]' blue='\[\033[34m\]' magenta='\[\033[35m\]' \
 		cyan='\[\033[36m\]' reset='\[\033[0m\]'
 	[[ $EUID == 0 ]] && sign='#' || sign='$' # root/user sign
@@ -55,7 +54,7 @@ __ps1() {
 	PS1="$venv$green\u@\h$reset:$blue\W$branch\`$last_cmd_status\`$reset "
 }
 
-PROMPT_COMMAND="history -a && __ps1"
+PROMPT_COMMAND="history -a ; __ps1"
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -102,7 +101,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 	# brew install bash-completion@2 fzf zoxide
 	_source_if_exist "/opt/homebrew/etc/profile.d/bash_completion.sh"
+	# on mac you don't need to install new git version with brew 'cause needed files are exist :)
 	_source_if_exist "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
+	_source_if_exist "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
 	# /opt/homebrew/opt/fzf/install
 	_source_if_exist "$HOME/.fzf.bash"
 else
