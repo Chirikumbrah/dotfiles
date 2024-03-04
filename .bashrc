@@ -6,11 +6,8 @@ bind -x '"\C-l":clear'
 
 # ~~~~~~~~~~~~~~~ Options ~~~~~~~~~~~~~~~~~~~~~~~~
 
-shopt -s checkwinsize # enables $COLUMNS and $ROWS
-shopt -s expand_aliases
 shopt -s globstar
 shopt -s dotglob
-shopt -s extglob
 shopt -s histappend
 shopt -s autocd
 
