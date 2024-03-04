@@ -5,3 +5,6 @@
 -- gitsigns
 vim.keymap.set({ "n", "v" }, "<leader>ghl", "<cmd>Gitsigns toggle_current_line_blame<cr>",
   { desc = "Toggle Current Line Blame" })
+
+-- telescope emoji symbols
+vim.keymap.set("n", "<leader>fs", "<cmd>Telescope symbols<cr>", { desc = "Find Emoji Symbols" })
