@@ -11,3 +11,13 @@ vim.opt.listchars:append({
   trail = space,
   nbsp = space,
 })
+
+-- line numbers
+vim.opt.number = false
+vim.opt.relativenumber = false
+
+-- scrolling
+vim.opt.scrolloff = 11
+
+-- markdown preview
+vim.g.mkdp_browser = "/Applications/Safari.app/Contents/MacOS/Safari"
