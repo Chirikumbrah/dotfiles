@@ -59,7 +59,7 @@ PROMPT_COMMAND="history -a ; __ps1"
 alias v="$EDITOR"
 
 # cd
-alias ..="cd .."
+# alias ..="cd .."
 
 # directories
 alias dot="cd ~/Projects/mine/dotfiles"
@@ -75,23 +75,23 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # git
-alias gp='git push'
-alias gup='git pull'
-alias gs='git status'
-alias gt='gitui'
+# alias gp='git push'
+# alias gup='git pull'
+# alias gs='git status'
+# alias gt='gitui'
 
 # ricing
 alias eb='$EDITOR ~/.bashrc'
 alias sb='source ~/.bashrc'
 
 # finds all files recursively and sorts by last modification, ignore hidden files
-alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
+# alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 
 # fzf aliases
 # use fp to do a fzf search and preview the files
-alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+# alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 # search for a file with fzf and open it in vim
-alias vf='$EDITOR $(fp)'
+# alias vf='$EDITOR $(fp)'
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
