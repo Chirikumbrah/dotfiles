@@ -4,96 +4,68 @@ command_timeout = 10000
 [line_break]
 disabled = true
 
-[aws]
-disabled = true
+# [aws]
+# disabled = true
 
-[terraform]
-disabled = true
+# [terraform]
+# disabled = true
 
-[lua]
-disabled = true
+# [lua]
+# disabled = true
 
-[battery]
-disabled = true
+# [battery]
+# disabled = true
 
-[python]
+# [python]
 # disabled = false
-# format = ' [${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
-# python_binary = ['./.venv/bin/python', './venv/bin/python', 'python', 'python3', 'python2']
 
-[c]
-disabled = true
+# [c]
+# disabled = true
 
-[nodejs]
-disabled = true
+# [nodejs]
+# disabled = true
 
-[rust]
-disabled = true
+# [rust]
+# disabled = true
 
-[docker_context]
-disabled = true
+# [docker_context]
+# disabled = true
 
-[cmake]
-disabled = true
+# [cmake]
+# disabled = true
 
-[java]
-disabled = true
+# [java]
+# disabled = true
 
-[gradle]
-disabled = true
+# [gradle]
+# disabled = true
 
-[kotlin]
-disabled = true
+# [kotlin]
+# disabled = true
 
-[perl]
-disabled = true
+# [perl]
+# disabled = true
 
-[package]
-disabled = true
+# [package]
+# disabled = true
 
-[os]
-disabled = true
+# [os]
+# disabled = true
 
-[dotnet]
-disabled = true
-
-[jobs]
-symbol = ' ✦'
-format = '[$symbol$number]($style)'
-
-[character]
-# format = ' $symbol '
-# error_symbol = "[❯](red)"
-# success_symbol = "[❯](green)"
-# error_symbol = "[󰈺 ](red)"
-# success_symbol = "[󰈺 ](green)"
-# vimcmd_symbol = "[󰈺 ](purple)"
-# vimcmd_visual_symbol = "[󰈺 ](cyan)"
-# vimcmd_replace_symbol = "[󰈺 ](yellow)"
-# vimcmd_replace_one_symbol = "[󰈺 ](yellow)"
+# [dotnet]
+# disabled = true
 
 [cmd_duration]
 min_time = 200_000
-# style = "bold yellow"
-# format = ' [$duration](bold yellow)'
-# show_notifications = false
+
+# [git_commit]
+# format = ' [\($hash$tag\)]($style)'
 
 [directory]
-# format = '[$path]($style)[$read_only]($read_only_style)'
-# truncate_to_repo = false
-# truncation_length = 5
-# truncation_symbol = '.../'
-# read_only = ' √'
-
-[git_branch]
-# format = ' [$symbol$branch(:$remote_branch)]($style)'
-
-[git_commit]
-format = ' [\($hash$tag\)]($style)'
+truncate_to_repo = false
+truncation_symbol = '.../'
 
 [git_status]
-# format = '([$all_status$ahead_behind]($style))'
-# style = "red"
 ahead = '[⇡$count](green)'
 behind = '[⇣$count](red)'
 conflicted = '[=$count](red)'
@@ -104,12 +76,3 @@ renamed = '[»$count](yellow)'
 staged = '[+$count](cyan)'
 stashed = '[\$$count](green)'
 untracked = '[?$count](cyan)'
-
-[hostname]
-# style = "bold purple"
-
-[username]
-# format = "[$user]($style) "
-# style_user = "bold cyan"
-# show_always = false
-
