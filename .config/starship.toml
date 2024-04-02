@@ -17,9 +17,9 @@ disabled = true
 disabled = true
 
 [python]
-disabled = false
-format = ' [${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
-python_binary = ['./.venv/bin/python', './venv/bin/python', 'python', 'python3', 'python2']
+# disabled = false
+# format = ' [${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
+# python_binary = ['./.venv/bin/python', './venv/bin/python', 'python', 'python3', 'python2']
 
 [c]
 disabled = true
@@ -62,7 +62,7 @@ symbol = ' ✦'
 format = '[$symbol$number]($style)'
 
 [character]
-format = ' $symbol '
+# format = ' $symbol '
 # error_symbol = "[❯](red)"
 # success_symbol = "[❯](green)"
 # error_symbol = "[󰈺 ](red)"
@@ -74,39 +74,42 @@ format = ' $symbol '
 
 [cmd_duration]
 min_time = 200_000
-style = "bold yellow"
-format = ' [$duration](bold yellow)'
-show_notifications = false
+# style = "bold yellow"
+# format = ' [$duration](bold yellow)'
+# show_notifications = false
 
 [directory]
-format = '[$path]($style)[$read_only]($read_only_style)'
-truncate_to_repo = false
-truncation_length = 5
-truncation_symbol = '.../'
-read_only = ' √'
+# format = '[$path]($style)[$read_only]($read_only_style)'
+# truncate_to_repo = false
+# truncation_length = 5
+# truncation_symbol = '.../'
+# read_only = ' √'
 
 [git_branch]
-format = ' [$symbol$branch(:$remote_branch)]($style)'
+# format = ' [$symbol$branch(:$remote_branch)]($style)'
 
 [git_commit]
 format = ' [\($hash$tag\)]($style)'
 
 [git_status]
-format = '([$all_status$ahead_behind]($style))'
-style = "red"
-modified = ' [!$count](yellow)'
-untracked = ' [?$count](cyan)'
-staged = ' [+$count](cyan)'
-ahead = ' [⇡$count](green)'
-stashed = ' [\$$count](green)'
-deleted = ' [✘$count](red)'
-diverged = ' [⇡⇣$count](red)'
-behind = ' [⇣$count](red)'
+# format = '([$all_status$ahead_behind]($style))'
+# style = "red"
+ahead = '[⇡$count](green)'
+behind = '[⇣$count](red)'
+conflicted = '[=$count](red)'
+deleted = '[✘$count](red)'
+diverged = '[⇡⇣$count](red)'
+modified = '[!$count](yellow)'
+renamed = '[»$count](yellow)'
+staged = '[+$count](cyan)'
+stashed = '[\$$count](green)'
+untracked = '[?$count](cyan)'
 
 [hostname]
-style = "bold purple"
+# style = "bold purple"
 
 [username]
-format = "[$user]($style) "
-style_user = "bold cyan"
-show_always = false
+# format = "[$user]($style) "
+# style_user = "bold cyan"
+# show_always = false
+

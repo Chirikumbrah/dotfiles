@@ -14,7 +14,7 @@
 # You can see this palette here: https://camo.githubusercontent.com/72015eab40bd7a696e2802810d7519480d51a2fba75f0f873dc23b990eb860f8/687474703a2f2f692e696d6775722e636f6d2f776136363678672e706e67
 set -l foreground a89984
 set -l selection 504945
-set -l comment 928374
+set -l comment 665c54
 set -l red cc241d
 set -l orange d65d0e
 set -l yellow d79921
