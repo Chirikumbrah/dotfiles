@@ -6,7 +6,7 @@ size = 17
 normal = { family = "UbuntuMono Nerd Font" }
 
 [shell]
-program = "/opt/homebrew/bin/bash"
+program = "/usr/local/bin/fish"
 args = ["-l", "-c", "tmux attach || tmux"]
 
 [window]
