@@ -6,7 +6,6 @@ disabled = true
 
 [aws]
 disabled = true
-style = "#ffb86c"
 
 [terraform]
 disabled = true
@@ -19,8 +18,8 @@ disabled = true
 
 [python]
 disabled = false
-format = ' [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\))]($style)'
-python_binary = ['./venv/bin/python', 'python', 'python3', 'python2']
+format = ' [${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
+python_binary = ['./.venv/bin/python', './venv/bin/python', 'python', 'python3', 'python2']
 
 [c]
 disabled = true
@@ -64,14 +63,14 @@ format = '[$symbol$number]($style)'
 
 [character]
 format = ' $symbol '
-# error_symbol = "[❯](#ff5555)"
-# success_symbol = "[❯](#50fa7b)"
-error_symbol = "[󰈺 ](red)"
-success_symbol = "[󰈺 ](green)"
-vimcmd_symbol = "[󰈺 ](#bd93f9)"
-vimcmd_visual_symbol = "[󰈺 ](#8BE9FD)"
-vimcmd_replace_symbol = "[󰈺 ](yellow)"
-vimcmd_replace_one_symbol = "[󰈺 ](yellow)"
+# error_symbol = "[❯](red)"
+# success_symbol = "[❯](green)"
+# error_symbol = "[󰈺 ](red)"
+# success_symbol = "[󰈺 ](green)"
+# vimcmd_symbol = "[󰈺 ](purple)"
+# vimcmd_visual_symbol = "[󰈺 ](cyan)"
+# vimcmd_replace_symbol = "[󰈺 ](yellow)"
+# vimcmd_replace_one_symbol = "[󰈺 ](yellow)"
 
 [cmd_duration]
 min_time = 200_000
@@ -81,15 +80,12 @@ show_notifications = false
 
 [directory]
 format = '[$path]($style)[$read_only]($read_only_style)'
-style = "green"
 truncate_to_repo = false
 truncation_length = 5
 truncation_symbol = '.../'
 read_only = ' √'
 
-
 [git_branch]
-style = "#ff79c6"
 format = ' [$symbol$branch(:$remote_branch)]($style)'
 
 [git_commit]
@@ -97,20 +93,20 @@ format = ' [\($hash$tag\)]($style)'
 
 [git_status]
 format = '([$all_status$ahead_behind]($style))'
-style = "#ff5555"
-modified = ' [!$count](#ffb86c)'
-untracked = ' [?$count](#8be9fd)'
-staged = ' [+$count](#8be9fd)'
-ahead = ' [⇡$count](#50fa7b)'
-stashed = ' [\$$count](#50fa7b)'
-deleted = ' [✘$count](#ff5555)'
-diverged = ' [⇡⇣$count](#ff5555)'
-behind = ' [⇣$count](#ff5555)'
+style = "red"
+modified = ' [!$count](yellow)'
+untracked = ' [?$count](cyan)'
+staged = ' [+$count](cyan)'
+ahead = ' [⇡$count](green)'
+stashed = ' [\$$count](green)'
+deleted = ' [✘$count](red)'
+diverged = ' [⇡⇣$count](red)'
+behind = ' [⇣$count](red)'
 
 [hostname]
-style = "bold #bd93f9"
+style = "bold purple"
 
 [username]
 format = "[$user]($style) "
-style_user = "bold #8be9fd"
+style_user = "bold cyan"
 show_always = false

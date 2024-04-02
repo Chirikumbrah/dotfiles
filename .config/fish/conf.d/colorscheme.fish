@@ -1,14 +1,27 @@
-# Dracula Color Palette
-set -l foreground f8f8f2
-set -l selection 44475a
-set -l comment 6272a4
-set -l red ff5555
-set -l orange ffb86c
-set -l yellow f1fa8c
-set -l green 50fa7b
-set -l purple bd93f9
-set -l cyan 8be9fd
-set -l pink ff79c6
+# # Dracula Color Palette
+# set -l foreground f8f8f2
+# set -l selection 44475a
+# set -l comment 6272a4
+# set -l red ff5555
+# set -l orange ffb86c
+# set -l yellow f1fa8c
+# set -l green 50fa7b
+# set -l purple bd93f9
+# set -l cyan 8be9fd
+# set -l pink ff79c6
+
+# Gruvbox Color Palette
+# You can see this palette here: https://camo.githubusercontent.com/72015eab40bd7a696e2802810d7519480d51a2fba75f0f873dc23b990eb860f8/687474703a2f2f692e696d6775722e636f6d2f776136363678672e706e67
+set -l foreground a89984
+set -l selection 504945
+set -l comment 928374
+set -l red cc241d
+set -l orange d65d0e
+set -l yellow d79921
+set -l green 98971a
+set -l purple b16286
+set -l cyan 689d6a # aqua
+set -l blue 458588
 
 # Syntax Highlighting Colors
 set -gx fish_color_normal $foreground

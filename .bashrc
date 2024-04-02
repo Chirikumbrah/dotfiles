@@ -52,7 +52,8 @@ __ps1() {
 	PS1="$venv$green\u@\h$reset:$blue\W$branch\`$last_cmd_status\`$reset "
 }
 
-PROMPT_COMMAND="history -a ; __ps1"
+# PROMPT_COMMAND="history -a ; __ps1"
+_is_cmd_exist starship && eval "$(starship init bash)"
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
