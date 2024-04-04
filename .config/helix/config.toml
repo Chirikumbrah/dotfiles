@@ -1,4 +1,5 @@
 theme = "gruvbox"
+# theme = "dracula"
 
 [editor]
 bufferline = "multiple"
