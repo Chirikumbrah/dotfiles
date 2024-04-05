@@ -17,13 +17,13 @@ _is_cmd_exist() { type "$1" &>/dev/null; }
 _source_if_exist() { [[ -r "$1" ]] && source "$1"; }
 
 lfcd() {
-	_is_cmd_exist z && cmd="z" || cmd="cd"
-	_is_cmd_exist lf && $cmd "$(command lf -print-last-dir "$@")" || echo "Please install lf."
+    _is_cmd_exist z && cmd="z" || cmd="cd"
+    _is_cmd_exist lf && $cmd "$(command lf -print-last-dir "$@")" || echo "Please install lf."
 }
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 
-export EDITOR=nvim
+export EDITOR=hx
 export VISUAL=$EDITOR
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -40,20 +40,20 @@ export HISTIGNORE="&:ls:[bf]g:eb:gp:z:v:dot:exit:history"
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
 __ps1() {
-	local red='\[\033[31m\]' green='\[\033[32m\]' \
-		yellow='\[\033[33m\]' blue='\[\033[34m\]' magenta='\[\033[35m\]' \
-		cyan='\[\033[36m\]' reset='\[\033[0m\]'
-	[[ $EUID == 0 ]] && sign='#' || sign='$' # root/user sign
-	last_cmd_status="if [ \$? = 0 ]; then echo \"$reset$sign\"; else echo \"$red$sign\"; fi"
-	branch=$(git branch --show-current 2>/dev/null)
-	venv=$(basename "$VIRTUAL_ENV")
-	[[ -n "$branch" ]] && branch="$reset:$yellow$branch"
-	[[ -n "$venv" ]] && venv="$cyan$venv$reset:"
-	PS1="$venv$green\u@\h$reset:$blue\W$branch\`$last_cmd_status\`$reset "
+    local red='\[\033[31m\]' green='\[\033[32m\]' \
+        yellow='\[\033[33m\]' blue='\[\033[34m\]' magenta='\[\033[35m\]' \
+        cyan='\[\033[36m\]' reset='\[\033[0m\]'
+    [[ $EUID == 0 ]] && sign='#' || sign='$' # root/user sign
+    last_cmd_status="if [ \$? = 0 ]; then echo \"$reset$sign\"; else echo \"$red$sign\"; fi"
+    branch=$(git branch --show-current 2>/dev/null)
+    venv=$(basename "$VIRTUAL_ENV")
+    [[ -n "$branch" ]] && branch="$reset:$yellow$branch"
+    [[ -n "$venv" ]] && venv="$cyan$venv$reset:"
+    PS1="$venv$green\u@\h$reset:$blue\W$branch\`$last_cmd_status\`$reset "
 }
 
-# PROMPT_COMMAND="history -a ; __ps1"
-_is_cmd_exist starship && eval "$(starship init bash)"
+PROMPT_COMMAND="history -a ; __ps1"
+# _is_cmd_exist starship && eval "$(starship init bash)"
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -97,25 +97,25 @@ alias sb='source ~/.bashrc'
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	eval "$(/opt/homebrew/bin/brew shellenv)"
-	# brew install bash-completion@2 fzf zoxide
-	_source_if_exist "/opt/homebrew/etc/profile.d/bash_completion.sh"
-	# on mac you don't need to install new git version with brew 'cause needed files are exist :)
-	_source_if_exist "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
-	_source_if_exist "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
-	# /opt/homebrew/opt/fzf/install
-	_source_if_exist "$HOME/.fzf.bash"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    # brew install bash-completion@2 fzf zoxide
+    _source_if_exist "/opt/homebrew/etc/profile.d/bash_completion.sh"
+    # on mac you don't need to install new git version with brew 'cause needed files are exist :)
+    _source_if_exist "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
+    _source_if_exist "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
+    # /opt/homebrew/opt/fzf/install
+    _source_if_exist "$HOME/.fzf.bash"
 else
-	_source_if_exist "/usr/share/bash-completion/bash_completion" &&
-		_source_if_exist "/etc/bash_completion"
+    _source_if_exist "/usr/share/bash-completion/bash_completion" &&
+        _source_if_exist "/etc/bash_completion"
 fi
 
 # ~~~~~~~~~~~~~~~ Completions ~~~~~~~~~~~~~~~~~~~~~~~~
 
 _pip_completion() {
-	COMPREPLY=($(COMP_WORDS="${COMP_WORDS[*]}" \
-		COMP_CWORD=$COMP_CWORD \
-		PIP_AUTO_COMPLETE=1 $1 2>/dev/null))
+    COMPREPLY=($(COMP_WORDS="${COMP_WORDS[*]}" \
+        COMP_CWORD=$COMP_CWORD \
+        PIP_AUTO_COMPLETE=1 $1 2>/dev/null))
 }
 complete -o default -F _pip_completion pip3
 
