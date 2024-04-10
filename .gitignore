@@ -13,3 +13,5 @@ fish_variables
 .*_history*
 .zcomp*
 .netrwhist
+.config/helm
+.config/mdless
