@@ -1,5 +1,4 @@
-theme = "gruvbox"
-# theme = "dracula"
+theme = "gryvbox"
 
 [editor]
 bufferline = "multiple"
@@ -24,7 +23,7 @@ left = [
   "separator",
   "spinner",
 ]
-center = ["file-absolute-path", "file-modification-indicator"]
+center = ["file-name", "file-modification-indicator"]
 right = [
   "read-only-indicator",
   "file-encoding",
@@ -67,7 +66,7 @@ render = "all"
   ":redraw",
   ":reload",
 ] }
-"C-r" = ":reload"
+"C-r" = [":reload", ":redraw"]
 "C-g" = [
   ":new",
   ":insert-output lazygit",
@@ -99,7 +98,7 @@ esc = ["collapse_selection", "keep_primary_selection"]
   ":buffer-close!",
   ":redraw",
 ] }
-"C-r" = ":reload"
+"C-r" = [":reload", ":redraw"]
 "C-g" = [
   ":new",
   ":insert-output lazygit",

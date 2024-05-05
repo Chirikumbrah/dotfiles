@@ -1,10 +1,6 @@
 ### languages
 
-[[language]]
-name = "dockerfile"
-formatter = { command = 'shfmt', args = ["-i", "2", "-ci"] }
-
-### PYTHON ###
+# ### PYTHON ###
 [[language]]
 name = "python"
 scope = "source.python"
@@ -61,6 +57,10 @@ args = ["-m", "debugpy.adapter"]
 name = "yaml"
 file-types = ["yaml", "yml"]
 formatter = { command = 'prettier', args = ["--parser", "yaml"] }
+auto-format = false
+
+[[language]]
+name = "json"
 auto-format = false
 
 ### BASH
