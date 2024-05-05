@@ -16,8 +16,11 @@ disabled = true
 # [battery]
 # disabled = true
 
-# [python]
-# disabled = false
+[python]
+disabled = true
+
+[rust]
+disabled = true
 
 # [c]
 # disabled = true
@@ -28,8 +31,14 @@ disabled = true
 # [rust]
 # disabled = true
 
-# [docker_context]
-# disabled = true
+[docker_context]
+disabled = true
+
+[helm]
+disabled = true
+
+[package]
+disabled = true
 
 # [cmake]
 # disabled = true
@@ -44,9 +53,6 @@ disabled = true
 # disabled = true
 
 # [perl]
-# disabled = true
-
-# [package]
 # disabled = true
 
 # [os]
