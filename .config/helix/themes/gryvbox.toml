@@ -109,7 +109,6 @@
 "ui.cursor.primary.normal" = { fg = "bg1", bg = "fg3" }
 "ui.cursor.primary.select" = { fg = "bg1", bg = "orange1" }
 
-# TODO cursorline colors
 "ui.cursorline" = { bg = "bg0_s" }
 "ui.cursorline.primary" = { bg = "bg1" }
 

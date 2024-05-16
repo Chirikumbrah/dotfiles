@@ -25,11 +25,8 @@ disabled = true
 # [c]
 # disabled = true
 
-# [nodejs]
-# disabled = true
-
-# [rust]
-# disabled = true
+[nodejs]
+disabled = true
 
 [docker_context]
 disabled = true
