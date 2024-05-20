@@ -76,6 +76,10 @@ formatter = { command = "fish_indent" }
 auto-format = false
 
 [[language]]
+name = "html"
+auto-format = false
+
+[[language]]
 name = "javascript"
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = false
