@@ -13,7 +13,7 @@ vim.opt.listchars:append({
 })
 
 -- line numbers
-vim.opt.number = false
+vim.opt.number = true
 vim.opt.relativenumber = false
 
 -- scrolling

@@ -4,8 +4,8 @@ return {
     ---@class ConformOpts
     local opts = {
       formatters_by_ft = {
-        markdown = { "prettier" },
-        sh = { "shfmt" },
+        -- markdown = { "prettier" },
+        -- sh = { "shfmt" },
         toml = { "taplo" },
       },
     }
