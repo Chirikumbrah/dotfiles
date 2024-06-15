@@ -27,7 +27,7 @@ set -gx XDG_CONFIG_HOME $HOME/.config
 # set -U SHELL /usr/local/bin/fish
 
 # Set PATH
-set --universal fish_user_paths $fish_user_paths /opt/homebrew/bin "/Applications/Postgres.app/Contents/Versions/latest/bin" "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$HOME/.config/scripts" "$HOME/.cargo/bin"
+set --universal fish_user_paths $fish_user_paths /opt/homebrew/bin "/Applications/Postgres.app/Contents/Versions/latest/bin" "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$HOME/.config/scripts" "$HOME/.cargo/bin" $HOME/.krew/bin
 
 # Initialize other apps
 eval "$(/opt/homebrew/bin/brew shellenv)"
