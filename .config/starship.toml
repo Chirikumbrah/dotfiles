@@ -40,8 +40,8 @@ disabled = true
 # [cmake]
 # disabled = true
 
-# [java]
-# disabled = true
+[java]
+disabled = true
 
 # [gradle]
 # disabled = true

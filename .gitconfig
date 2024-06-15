@@ -1,6 +1,6 @@
 [user]
-  email = yarik.bond98@gmail.com
-  name = Chirikumbrah
+	email = yarik.bond98@gmail.com
+	name = Chirikumbrah
 [core]
   editor = $EDITOR
   pager = delta
