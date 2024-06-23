@@ -4,11 +4,22 @@ local function augroup(name)
     return vim.api.nvim_create_augroup("yr_autocmd_" .. name, { clear = true })
 end
 
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    callback = function()
+        if require("nvim-treesitter.parsers").has_parser() then
+            vim.opt.foldmethod = "expr"
+            vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+        else
+            vim.opt.foldmethod = "indent"
+        end
+    end,
+})
+
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = augroup("highlight_yank"),
     callback = function()
-        vim.highlight.on_yank({higroup="Visual", timeout=400})
+        vim.highlight.on_yank({ higroup = "Visual", timeout = 400 })
     end,
 })
 

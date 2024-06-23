@@ -1,7 +1,7 @@
 return {
     {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v3.x',
+        "VonHeikemen/lsp-zero.nvim",
+        branch = "v3.x",
         lazy = true,
         config = false,
         init = function()
@@ -11,47 +11,47 @@ return {
         end,
     },
     {
-        'williamboman/mason.nvim',
+        "williamboman/mason.nvim",
         lazy = false,
         config = true,
     },
 
     -- Autocompletion
     {
-        'hrsh7th/nvim-cmp',
-        event = 'InsertEnter',
+        "hrsh7th/nvim-cmp",
+        event = "InsertEnter",
         dependencies = {
-            {'L3MON4D3/LuaSnip'},
+            { "L3MON4D3/LuaSnip" },
         },
         config = function()
             -- Here is where you configure the autocompletion settings.
-            local lsp_zero = require('lsp-zero')
+            local lsp_zero = require("lsp-zero")
             lsp_zero.extend_cmp()
 
             -- And you can configure cmp even more, if you want to.
-            local cmp = require('cmp')
+            local cmp = require("cmp")
             local cmp_action = lsp_zero.cmp_action()
 
             cmp.setup({
-                formatting = lsp_zero.cmp_format({details = true}),
+                formatting = lsp_zero.cmp_format({ details = true }),
                 mapping = cmp.mapping.preset.insert({
-                    ['<C-Space>'] = cmp.mapping.complete(),
-                    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-                    ['<C-d>'] = cmp.mapping.scroll_docs(4),
-                    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-                    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-                    ['<C-y>'] = cmp.mapping.confirm({select = false}),
-                    ['<C-e>'] = cmp.mapping.abort(),
-                    ['<C-n>'] = cmp.mapping(function()
-                    if cmp.visible() then
-                            cmp.select_next_item({behavior = 'insert'})
+                    ["<C-Space>"] = cmp.mapping.complete(),
+                    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+                    ["<C-d>"] = cmp.mapping.scroll_docs(4),
+                    ["<C-f>"] = cmp_action.luasnip_jump_forward(),
+                    ["<C-b>"] = cmp_action.luasnip_jump_backward(),
+                    ["<C-y>"] = cmp.mapping.confirm({ select = false }),
+                    ["<C-e>"] = cmp.mapping.abort(),
+                    ["<C-n>"] = cmp.mapping(function()
+                        if cmp.visible() then
+                            cmp.select_next_item({ behavior = "insert" })
                         else
                             cmp.complete()
                         end
                     end),
-                    ['<C-p>'] = cmp.mapping(function()
-                    if cmp.visible() then
-                            cmp.select_prev_item({behavior = 'insert'})
+                    ["<C-p>"] = cmp.mapping(function()
+                        if cmp.visible() then
+                            cmp.select_prev_item({ behavior = "insert" })
                         else
                             cmp.complete()
                         end
@@ -59,25 +59,25 @@ return {
                 }),
                 snippet = {
                     expand = function(args)
-                        require('luasnip').lsp_expand(args.body)
+                        require("luasnip").lsp_expand(args.body)
                     end,
                 },
             })
-        end
+        end,
     },
 
     -- LSP
     {
-        'neovim/nvim-lspconfig',
-        cmd = {'LspInfo', 'LspInstall', 'LspStart'},
-        event = {'BufReadPre', 'BufNewFile'},
+        "neovim/nvim-lspconfig",
+        cmd = { "LspInfo", "LspInstall", "LspStart" },
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
-            {'hrsh7th/cmp-nvim-lsp'},
-            {'williamboman/mason-lspconfig.nvim'},
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "williamboman/mason-lspconfig.nvim" },
         },
         config = function()
             -- This is where all the LSP shenanigans will live
-            local lsp_zero = require('lsp-zero')
+            local lsp_zero = require("lsp-zero")
             lsp_zero.extend_lspconfig()
 
             --- if you want to know more about lsp-zero and mason.nvim
@@ -85,34 +85,38 @@ return {
             lsp_zero.on_attach(function(client, bufnr)
                 -- see :help lsp-zero-keybindings
                 -- to learn the available actions
-                local opts = {buffer = bufnr}
+                local opts = { buffer = bufnr }
+
                 lsp_zero.default_keymaps(opts)
+
+                vim.keymap.set("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", opts)
+                -- vim.keymap.set('n', '<leader>cf', ":lua vim.lsp.buf.format()<CR>", opts)
             end)
 
-            require('mason-lspconfig').setup({
+            require("mason-lspconfig").setup({
                 handlers = {
                     -- this first function is the "default handler"
                     -- it applies to every language server without a "custom handler"
                     function(server_name)
-                        require('lspconfig')[server_name].setup({})
+                        require("lspconfig")[server_name].setup({})
                     end,
-                }
+                },
             })
-        end
+        end,
     },
     {
-        'WhoIsSethDaniel/mason-tool-installer.nvim',
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
         requires = {
-            'williamboman/mason.nvim',
+            "williamboman/mason.nvim",
         },
         config = function()
-            require('mason-tool-installer').setup({
+            require("mason-tool-installer").setup({
                 start_delay = 3000,
                 ensure_installed = {
-                    'bashls',
-                    'cspell',
-                    'prettierd',
-                    'stylua',
+                    "bashls",
+                    "cspell",
+                    "prettierd",
+                    "stylua",
                     "ansiblels",
                     "bashls",
                     "clangd",
@@ -128,7 +132,7 @@ return {
                     "lemminx",
                     "lua_ls",
                     "marksman",
-                    -- "ruff_lsp",
+                    "ruff_lsp",
                     "taplo",
                     -- "terraformls",
                     "tflint",
@@ -138,4 +142,3 @@ return {
         end,
     },
 }
-

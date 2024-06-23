@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 vim.opt.guicursor = ""
 
 vim.opt.number = true
@@ -30,7 +28,7 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "80"
+-- vim.opt.colorcolumn = "80"
 
 vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 vim.opt.completeopt = "menu,menuone,noselect"
@@ -38,7 +36,7 @@ vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.autowrite = true
 
 vim.opt.cursorline = true
-vim.opt.confirm = true 
+-- vim.opt.confirm = true
 
 vim.opt.ignorecase = true
 
@@ -53,24 +51,29 @@ vim.opt.listchars:append({
     nbsp = space,
 })
 
-vim.opt.fillchars = {
-    foldopen = "",
-    foldclose = "",
-    fold = " ",
-    foldsep = " ",
-    diff = "╱",
-    eob = " ",
-}
+vim.opt.smoothscroll = true
 
-if vim.fn.has("nvim-0.10") == 1 then
-    vim.opt.smoothscroll = true
-    -- vim.opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
-    vim.opt.foldmethod = "expr"
-    vim.opt.foldtext = ""
-else
-    vim.opt.foldmethod = "indent"
-    vim.opt.foldtext = "v:lua.require'lazyvim.util'.ui.foldtext()"
-end
+-- Folding
+vim.opt.foldlevel = 99
+vim.opt.foldcolumn = "1"
+vim.wo.foldnestmax = 1
+vim.wo.foldminlines = 1
+vim.opt.foldenable = true
+vim.opt.foldlevelstart = 1
+vim.opt.foldtext =
+    [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').' ... ' . '(' . (v:foldend - v:foldstart + 1) . ' lines)']]
+vim.wo.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.fillchars = {
+    vert = "│", -- alternatives ▕
+    fold = " ",
+    eob = " ", -- suppress ~ at EndOfBuffer
+    diff = "╱", -- alternatives = ⣿ ░ ─
+    msgsep = "‾",
+    foldopen = "▾",
+    foldsep = "│",
+    foldclose = "▸",
+}
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
