@@ -89,8 +89,6 @@ return {
 
                 lsp_zero.default_keymaps(opts)
 
-                vim.keymap.set("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", opts)
-                -- vim.keymap.set('n', '<leader>cf', ":lua vim.lsp.buf.format()<CR>", opts)
             end)
 
             require("mason-lspconfig").setup({
