@@ -3,6 +3,13 @@ return {
     main = "ibl",
     opts = {},
     config = function()
-        require("ibl").setup()
+        require("ibl").setup({
+            indent = {
+                smart_indent_cap = true,
+            },
+            scope = {
+                show_start = false,
+            },
+        })
     end,
 }

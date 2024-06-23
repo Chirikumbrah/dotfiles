@@ -55,10 +55,10 @@ vim.opt.smoothscroll = true
 
 -- Folding
 vim.opt.foldlevel = 99
-vim.opt.foldcolumn = "1"
-vim.wo.foldnestmax = 1
+vim.opt.foldcolumn = "0"
+vim.wo.foldnestmax = 4
 vim.wo.foldminlines = 1
-vim.opt.foldenable = true
+vim.opt.foldenable = false
 vim.opt.foldlevelstart = 1
 vim.opt.foldtext =
     [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').' ... ' . '(' . (v:foldend - v:foldstart + 1) . ' lines)']]
