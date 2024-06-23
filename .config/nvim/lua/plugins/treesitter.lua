@@ -6,14 +6,22 @@ return {
 
 		configs.setup({
 			ensure_installed = {
+				"bash",
 				"c",
+				"dockerfile",
+				"helm",
+				"html",
+				"javascript",
+				"json",
 				"lua",
+				"python",
+				"query",
+				"regex",
+				"tmux",
+				"toml",
 				"vim",
 				"vimdoc",
-				"query",
-				"javascript",
-				"html",
-				"json",
+				"yaml",
 			},
 			auto_install = true,
 			sync_install = false,
@@ -33,6 +41,7 @@ return {
 					"yaml",
 				}
 			},  
+			additional_vim_regex_highlighting = false,
 		})
 	end
 }

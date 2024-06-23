@@ -9,7 +9,7 @@ return {
 
 		local vimgrep_arguments = { unpack(config.values.vimgrep_arguments) }
 
-		-- Falling back to find_files if git_files can't find a .git directory
+		-- Falling back to find_files if git_files can't find a .git directory --
 		-- We cache the results of "git rev-parse"
 		-- Process creation is expensive in Windows, so this reduces latency
 		local is_inside_work_tree = {}
@@ -31,7 +31,7 @@ return {
 		end
 
 
-		-- File and text search in hidden files and directories
+		-- File and text search in hidden files and directories --
 		-- I want to search in hidden/dot files.
 		table.insert(vimgrep_arguments, "--hidden")
 		-- I don't want to search in the `.git` directory.
