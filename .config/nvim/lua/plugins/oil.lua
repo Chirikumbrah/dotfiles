@@ -8,6 +8,6 @@ return {
             -- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
             default_file_explorer = true,
         })
-        vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open Parent Directory" })
+        vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open Parent Directory" })
     end,
 }
