@@ -1,3 +1,5 @@
+import = ["~/.config/alacritty/themes/solarized_dark.toml"]
+
 [debug]
 log_level = "Off"
 
@@ -7,7 +9,7 @@ normal = { family = "UbuntuMono Nerd Font" }
 
 [shell]
 # program = "/usr/local/bin/fish"
-program = "/bin/bash"
+program = "/bin/zsh"
 args = ["-l", "-c", "tmux attach || tmux"]
 
 [window]
@@ -16,31 +18,31 @@ startup_mode = "Maximized"
 option_as_alt = "Both"
 padding = { x = 1, y = 0 }
 
-# gruvbox-dark colorscheme
-[colors.primary]
-# hard contrast background = '#1d2021'
-background = '#282828'
-# soft contrast background = '#32302f'
-foreground = '#ebdbb2'
-
-# Normal colors
-[colors.normal]
-black   = '#282828'
-red     = '#cc241d'
-green   = '#98971a'
-yellow  = '#d79921'
-blue    = '#458588'
-magenta = '#b16286'
-cyan    = '#689d6a'
-white   = '#a89984'
-
-# Bright colors
-[colors.bright]
-black   = '#928374'
-red     = '#fb4934'
-green   = '#b8bb26'
-yellow  = '#fabd2f'
-blue    = '#83a598'
-magenta = '#d3869b'
-cyan    = '#8ec07c'
-white   = '#ebdbb2'
+# # gruvbox-dark colorscheme
+# [colors.primary]
+# # hard contrast background = '#1d2021'
+# background = '#282828'
+# # soft contrast background = '#32302f'
+# foreground = '#ebdbb2'
+# 
+# # Normal colors
+# [colors.normal]
+# black   = '#282828'
+# red     = '#cc241d'
+# green   = '#98971a'
+# yellow  = '#d79921'
+# blue    = '#458588'
+# magenta = '#b16286'
+# cyan    = '#689d6a'
+# white   = '#a89984'
+# 
+# # Bright colors
+# [colors.bright]
+# black   = '#928374'
+# red     = '#fb4934'
+# green   = '#b8bb26'
+# yellow  = '#fabd2f'
+# blue    = '#83a598'
+# magenta = '#d3869b'
+# cyan    = '#8ec07c'
+# white   = '#ebdbb2'
