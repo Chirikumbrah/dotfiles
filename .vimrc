@@ -1,21 +1,20 @@
 " Settings
 filetype plugin indent on
 set cursorline
-set foldmethod=expr
+set foldmethod=indent
+set nofoldenable
 set gp=git\ grep\ -n
 set hidden
 set hlsearch
 set ignorecase
 set incsearch
 set number
-set relativenumber
 set ruler
 set shiftwidth=4 smarttab
 set smartcase
 set spell
 set tabstop=4
 set undofile
-set wildignore=*.exe,*.dll,*.pdb
 set wildmenu
 syntax on
 
@@ -40,8 +39,8 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 
 " Autocompletion
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 " Colorscheme
 Plug 'altercation/vim-colors-solarized'
@@ -49,8 +48,7 @@ Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
 
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-
+"""""" Functions """""
 function! OnLspBufferEnabled() abort
 	setlocal omnifunc=lsp#complete
 	setlocal signcolumn=yes
@@ -62,6 +60,37 @@ function! OnLspBufferEnabled() abort
 	nmap <buffer> <f2> <plug>(lsp-rename)
 	nmap <buffer> <S-K> <plug>(lsp-hover)
 endfunction
+
+function! FlashYankedText()
+	if (!exists('g:yankedTextMatches'))
+		let g:yankedTextMatches = []
+	endif
+
+	let matchId = matchadd('IncSearch', ".\\%>'\\[\\_.*\\%<']..")
+	let windowId = winnr()
+
+	call add(g:yankedTextMatches, [windowId, matchId])
+	call timer_start(300, 'DeleteTemporaryMatch')
+endfunction
+
+function! DeleteTemporaryMatch(timerId)
+	while !empty(g:yankedTextMatches)
+		let match = remove(g:yankedTextMatches, 0)
+		let windowID = match[0]
+		let matchID = match[1]
+
+		try
+			call matchdelete(matchID, windowID)
+		endtry
+	endwhile
+endfunction
+
+
+"""""" Autocommands """""
+augroup highlightYankedText
+	autocmd!
+	autocmd TextYankPost * call FlashYankedText()
+augroup END
 
 augroup lsp_install
 	au!
