@@ -1,11 +1,16 @@
 vim.opt.guicursor = ""
+vim.opt.background = "dark"
 
 vim.opt.number = true
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 
 vim.opt.wrap = true
 
 vim.opt.smartindent = true
+
+vim.g.loaded_matchparen = true
+vim.g.loaded_matchbracket = true
+vim.opt.laststatus = 3
 
 vim.opt.termguicolors = true
 vim.opt.incsearch = true
@@ -28,6 +33,12 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
+-- Improve the file browser
+vim.g.netrw_banner = false
+vim.g.netrw_altv = true -- open splits to the right
+vim.g.netrw_preview = true -- preview split to the right
+vim.g.netrw_liststyle = 3 -- tree view
+
 -- vim.opt.colorcolumn = "80"
 
 -- vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
@@ -36,7 +47,6 @@ vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.autowrite = true
 
 vim.opt.cursorline = true
--- vim.opt.confirm = true
 
 vim.opt.ignorecase = true
 
@@ -51,7 +61,7 @@ vim.opt.listchars:append({
     nbsp = space,
 })
 
-vim.opt.smoothscroll = true
+-- vim.opt.smoothscroll = true
 
 -- Folding
 vim.opt.foldlevel = 99
