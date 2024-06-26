@@ -21,7 +21,12 @@ return {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
         dependencies = {
-            { "L3MON4D3/LuaSnip" },
+            {
+                "L3MON4D3/LuaSnip",
+                "FelipeLema/cmp-async-path",
+                "hrsh7th/cmp-buffer",
+                "hrsh7th/cmp-vsnip",
+            },
         },
         config = function()
             -- Here is where you configure the autocompletion settings.
@@ -34,6 +39,13 @@ return {
 
             cmp.setup({
                 formatting = lsp_zero.cmp_format({ details = true }),
+                sources = {
+                    { name = "nvim_lsp" },
+                    { name = "luasnip" },
+                    { name = "buffer" },
+                    { name = "async_path" },
+                    { name = "vsnip" },
+                },
                 mapping = cmp.mapping.preset.insert({
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-u>"] = cmp.mapping.scroll_docs(-4),
@@ -41,6 +53,7 @@ return {
                     ["<C-f>"] = cmp_action.luasnip_jump_forward(),
                     ["<C-b>"] = cmp_action.luasnip_jump_backward(),
                     ["<C-y>"] = cmp.mapping.confirm({ select = false }),
+                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
                     ["<C-e>"] = cmp.mapping.abort(),
                     ["<C-n>"] = cmp.mapping(function()
                         if cmp.visible() then
@@ -93,7 +106,7 @@ return {
             lsp_zero.set_sign_icons({
                 error = " ",
                 warn = " ",
-                hint = " ",
+                hint = "",
                 info = " ",
             })
 
@@ -105,6 +118,16 @@ return {
                         require("lspconfig")[server_name].setup({})
                     end,
                 },
+            })
+            vim.diagnostic.config({
+                underline = true,
+                update_in_insert = false,
+                virtual_text = {
+                    spacing = 4,
+                    source = "if_many",
+                    prefix = "●",
+                },
+                severity_sort = true,
             })
         end,
     },
@@ -144,5 +167,25 @@ return {
                 },
             })
         end,
+    },
+    {
+        "nvimdev/lspsaga.nvim",
+        config = function()
+            require("lspsaga").setup({
+                symbol_in_winbar = { enable = false },
+                lightbulb = { enable = false },
+            })
+            vim.keymap.set("n", "<leader>ca", "<CMD>Lspsaga code_action<CR>")
+            vim.keymap.set("n", "<leader>cr", "<CMD>Lspsaga rename<CR>")
+            vim.keymap.set("n", "<leader>pd", "<CMD>Lspsaga peek_definition<CR>")
+            vim.keymap.set("n", "<leader>pi", "<CMD>Lspsaga finder imp<CR>")
+            vim.keymap.set("n", "<leader>t", "<CMD>Lspsaga term_toggle<CR>")
+            vim.keymap.set("n", "<leader>k", "<cmd>Lspsaga hover_doc<CR>")
+        end,
+        event = "LspAttach",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter", -- optional
+            "nvim-tree/nvim-web-devicons", -- optional
+        },
     },
 }
