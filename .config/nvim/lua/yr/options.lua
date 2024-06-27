@@ -1,15 +1,18 @@
 vim.opt.guicursor = ""
 vim.opt.background = "dark"
 
-vim.opt.number = true
+vim.opt.number = false
 -- vim.opt.relativenumber = true
 
 vim.opt.wrap = true
 
 vim.opt.smartindent = true
 
-vim.g.loaded_matchparen = true
-vim.g.loaded_matchbracket = true
+-- https://vi.stackexchange.com/a/5318/7339
+vim.g.matchparen_timeout = 20
+vim.g.matchparen_insert_timeout = 20
+
+
 vim.opt.laststatus = 3
 
 vim.opt.termguicolors = true
@@ -39,8 +42,6 @@ vim.g.netrw_altv = true -- open splits to the right
 vim.g.netrw_preview = true -- preview split to the right
 vim.g.netrw_liststyle = 3 -- tree view
 
--- vim.opt.colorcolumn = "80"
-
 vim.opt.completeopt = "menu,menuone,noselect"
 
 vim.opt.autowrite = true
@@ -59,8 +60,6 @@ vim.opt.listchars:append({
     trail = space,
     nbsp = space,
 })
-
--- vim.opt.smoothscroll = true
 
 -- Folding
 vim.opt.foldlevel = 99
