@@ -4,6 +4,13 @@ local function augroup(name)
     return vim.api.nvim_create_augroup("yr_autocmd_" .. name, { clear = true })
 end
 
+-- Remove Trailing whitespace
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern = { "*" },
+    command = [[%s/\s\+$//e]],
+})
+
+-- Find Files on startup
 vim.api.nvim_create_autocmd("VimEnter", {
     callback = function()
         if vim.fn.argv(0) == "" then

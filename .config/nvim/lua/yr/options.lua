@@ -41,7 +41,6 @@ vim.g.netrw_liststyle = 3 -- tree view
 
 -- vim.opt.colorcolumn = "80"
 
--- vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 vim.opt.completeopt = "menu,menuone,noselect"
 
 vim.opt.autowrite = true
@@ -87,3 +86,4 @@ vim.opt.fillchars = {
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+vim.g.mkdp_browser = "Brave Browser"
