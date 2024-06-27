@@ -10,8 +10,8 @@ disabled = true
 # [terraform]
 # disabled = true
 
-# [lua]
-# disabled = true
+[lua]
+disabled = true
 
 # [battery]
 # disabled = true
