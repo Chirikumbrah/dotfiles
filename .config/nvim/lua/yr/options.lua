@@ -1,7 +1,7 @@
 vim.opt.guicursor = ""
 vim.opt.background = "dark"
 
-vim.opt.number = false
+vim.opt.number = true
 -- vim.opt.relativenumber = true
 
 vim.opt.wrap = true
