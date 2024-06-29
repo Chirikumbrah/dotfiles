@@ -1,6 +1,13 @@
 vim.opt.guicursor = ""
 vim.opt.background = "dark"
 
+vim.opt.clipboard = "unnamedplus"
+vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.autowrite = true
+vim.opt.cursorline = true
+vim.opt.ignorecase = true
+
+
 vim.opt.number = true
 -- vim.opt.relativenumber = true
 
@@ -11,7 +18,6 @@ vim.opt.smartindent = true
 -- https://vi.stackexchange.com/a/5318/7339
 vim.g.matchparen_timeout = 20
 vim.g.matchparen_insert_timeout = 20
-
 
 vim.opt.laststatus = 3
 
@@ -42,14 +48,6 @@ vim.g.netrw_altv = true -- open splits to the right
 vim.g.netrw_preview = true -- preview split to the right
 vim.g.netrw_liststyle = 3 -- tree view
 
-vim.opt.completeopt = "menu,menuone,noselect"
-
-vim.opt.autowrite = true
-
-vim.opt.cursorline = true
-
-vim.opt.ignorecase = true
-
 local space = "·"
 vim.opt.list = true
 vim.opt.listchars:append({
@@ -66,11 +64,17 @@ vim.opt.foldlevel = 99
 vim.opt.foldcolumn = "0"
 vim.wo.foldminlines = 1
 vim.opt.foldenable = false
+  vim.opt.smoothscroll = true
 vim.opt.foldlevelstart = 1
 vim.g.markdown_folding = 1
 vim.opt.foldtext =
     [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').' ... ' . '(' . (v:foldend - v:foldstart + 1) . ' lines)']]
-vim.wo.foldmethod = "indent"
+if vim.fn.has("nvim-0.10") == 1 then
+  vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+  vim.opt.foldmethod = "expr"
+else
+  vim.opt.foldmethod = "indent"
+end
 vim.opt.fillchars = {
     vert = "│", -- alternatives ▕
     fold = " ",

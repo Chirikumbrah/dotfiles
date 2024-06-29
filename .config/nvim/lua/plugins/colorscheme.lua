@@ -13,6 +13,7 @@ return {
             },
             overrides = {
                 SignColumn = { bg = "#282828" },
+                FoldColumn = { bg = "#282828" },
             },
         })
         vim.cmd("colorscheme gruvbox")
