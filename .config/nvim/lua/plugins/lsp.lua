@@ -131,43 +131,43 @@ return {
             })
         end,
     },
-    {
-        "WhoIsSethDaniel/mason-tool-installer.nvim",
-        requires = {
-            "williamboman/mason.nvim",
-        },
-        config = function()
-            require("mason-tool-installer").setup({
-                start_delay = 3000,
-                ensure_installed = {
-                    "bashls",
-                    "cspell",
-                    "prettierd",
-                    "stylua",
-                    "ansiblels",
-                    "bashls",
-                    "clangd",
-                    -- "cmake",
-                    "cssls",
-                    "docker_compose_language_service",
-                    "dockerls",
-                    -- "gitlab_ci_ls",
-                    "stylua",
-                    "jsonls",
-                    "shfmt",
-                    "shellcheck",
-                    "lemminx",
-                    "lua_ls",
-                    "marksman",
-                    "ruff_lsp",
-                    "taplo",
-                    -- "terraformls",
-                    "tflint",
-                    "yamlls",
-                },
-            })
-        end,
-    },
+--     {
+--         "WhoIsSethDaniel/mason-tool-installer.nvim",
+--         requires = {
+--             "williamboman/mason.nvim",
+--         },
+--         config = function()
+--             require("mason-tool-installer").setup({
+--                 start_delay = 3000,
+--                 ensure_installed = {
+--                     "bashls",
+--                     "cspell",
+--                     "prettierd",
+--                     "stylua",
+--                     "ansiblels",
+--                     "bashls",
+--                     "clangd",
+--                     -- "cmake",
+--                     "cssls",
+--                     "docker_compose_language_service",
+--                     "dockerls",
+--                     -- "gitlab_ci_ls",
+--                     "stylua",
+--                     "jsonls",
+--                     "shfmt",
+--                     "shellcheck",
+--                     "lemminx",
+--                     "lua_ls",
+--                     "marksman",
+--                     "ruff_lsp",
+--                     "taplo",
+--                     -- "terraformls",
+--                     "tflint",
+--                     "yamlls",
+--                 },
+--             })
+--         end,
+--     },
     {
         "nvimdev/lspsaga.nvim",
         config = function()

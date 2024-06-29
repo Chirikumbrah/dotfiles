@@ -64,14 +64,13 @@ vim.opt.listchars:append({
 -- Folding
 vim.opt.foldlevel = 99
 vim.opt.foldcolumn = "0"
-vim.wo.foldnestmax = 4
 vim.wo.foldminlines = 1
 vim.opt.foldenable = false
 vim.opt.foldlevelstart = 1
+vim.g.markdown_folding = 1
 vim.opt.foldtext =
     [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').' ... ' . '(' . (v:foldend - v:foldstart + 1) . ' lines)']]
-vim.wo.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.wo.foldmethod = "indent"
 vim.opt.fillchars = {
     vert = "│", -- alternatives ▕
     fold = " ",
