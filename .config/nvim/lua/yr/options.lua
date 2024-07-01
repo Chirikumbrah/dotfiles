@@ -7,13 +7,13 @@ vim.opt.autowrite = true
 vim.opt.cursorline = true
 vim.opt.ignorecase = true
 
-
 vim.opt.number = true
 -- vim.opt.relativenumber = true
 
 vim.opt.wrap = true
 
 vim.opt.smartindent = true
+vim.opt.path:append("**")
 
 -- https://vi.stackexchange.com/a/5318/7339
 vim.g.matchparen_timeout = 20
@@ -39,6 +39,7 @@ vim.opt.undodir = os.getenv("HOME") .. "/.cache/nvim/undodir"
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
+vim.opt.smoothscroll = true
 
 vim.opt.updatetime = 50
 
@@ -64,16 +65,15 @@ vim.opt.foldlevel = 99
 vim.opt.foldcolumn = "0"
 vim.wo.foldminlines = 1
 vim.opt.foldenable = false
-  vim.opt.smoothscroll = true
 vim.opt.foldlevelstart = 1
 vim.g.markdown_folding = 1
 vim.opt.foldtext =
     [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').' ... ' . '(' . (v:foldend - v:foldstart + 1) . ' lines)']]
 if vim.fn.has("nvim-0.10") == 1 then
-  vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-  vim.opt.foldmethod = "expr"
+    vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+    vim.opt.foldmethod = "expr"
 else
-  vim.opt.foldmethod = "indent"
+    vim.opt.foldmethod = "indent"
 end
 vim.opt.fillchars = {
     vert = "│", -- alternatives ▕
