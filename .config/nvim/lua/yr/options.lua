@@ -1,8 +1,8 @@
 vim.opt.guicursor = ""
 vim.opt.background = "dark"
 
-vim.opt.clipboard = "unnamedplus"
-vim.opt.completeopt = "menu,menuone,noselect"
+-- vim.opt.clipboard = "unnamedplus"
+-- vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.autowrite = true
 vim.opt.cursorline = true
 vim.opt.ignorecase = true
@@ -14,6 +14,7 @@ vim.opt.wrap = true
 
 vim.opt.smartindent = true
 vim.opt.path:append("**")
+vim.opt.wildmenu = true
 
 -- https://vi.stackexchange.com/a/5318/7339
 vim.g.matchparen_timeout = 20

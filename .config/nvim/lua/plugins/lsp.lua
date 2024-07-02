@@ -23,8 +23,8 @@ return {
         dependencies = {
             {
                 "L3MON4D3/LuaSnip",
-                "FelipeLema/cmp-async-path",
-                "hrsh7th/cmp-buffer",
+                -- "FelipeLema/cmp-async-path",
+                -- "hrsh7th/cmp-buffer",
                 "hrsh7th/cmp-vsnip",
             },
         },
@@ -40,10 +40,10 @@ return {
             cmp.setup({
                 formatting = lsp_zero.cmp_format({ details = true }),
                 sources = {
-                    { name = "nvim_lsp" },
+                    -- { name = "nvim_lsp" },
                     { name = "luasnip" },
                     { name = "buffer" },
-                    { name = "async_path" },
+                    -- { name = "async_path" },
                     { name = "vsnip" },
                 },
                 mapping = cmp.mapping.preset.insert({

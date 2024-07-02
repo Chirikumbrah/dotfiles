@@ -11,13 +11,13 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 -- Find Files on startup
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        if vim.fn.argv(0) == "" then
-            require("telescope.builtin").find_files()
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--     callback = function()
+--         if vim.fn.argv(0) == "" then
+--             require("telescope.builtin").find_files()
+--         end
+--     end,
+-- })
 
 -- Set fold method
 -- vim.api.nvim_create_autocmd({ "FileType" }, {
