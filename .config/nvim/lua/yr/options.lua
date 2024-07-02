@@ -1,9 +1,5 @@
-vim.opt.guicursor = ""
 vim.opt.background = "dark"
 
--- vim.opt.clipboard = "unnamedplus"
--- vim.opt.completeopt = "menu,menuone,noselect"
-vim.opt.autowrite = true
 vim.opt.cursorline = true
 vim.opt.ignorecase = true
 
@@ -31,15 +27,12 @@ vim.opt.shiftwidth = 4
 vim.opt.shiftround = true
 vim.opt.expandtab = true
 
-vim.opt.backup = false
-vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.undodir = os.getenv("HOME") .. "/.cache/nvim/undodir"
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
 vim.opt.smoothscroll = true
 
 vim.opt.updatetime = 50

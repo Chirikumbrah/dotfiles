@@ -31,8 +31,12 @@
   pager = "less -RF --mouse"
   line-numbers = true
 [merge]
-  conflictstyle = diff3
-  tool = vimdiff
+	tool = "nvim"
+[mergetool]
+	keepBackup = false
+	prompt = false
+[mergetool "nvim"]
+	cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
 [diff]
 	tool = vimdiff
 [difftool]

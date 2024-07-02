@@ -7,12 +7,11 @@ set gp=git\ grep\ -n
 set hidden
 set hlsearch
 set ignorecase
-set encoding=utf8
-set t_Co=256
 set incsearch
 set nocompatible
 set number
 set ruler
+set lazyredraw
 set shiftwidth=4 smarttab
 set smartcase
 set spell
@@ -20,8 +19,8 @@ set tabstop=4
 set wildmenu
 set ambw=double
 set path+=**
+set timeoutlen=20
 syntax on
-" фывфывфывфвы
 
 
 " Let's save undo info!
