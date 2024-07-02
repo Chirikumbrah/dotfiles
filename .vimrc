@@ -17,7 +17,6 @@ set smartcase
 set spell
 set tabstop=4
 set wildmenu
-set ambw=double
 set path+=**
 set timeoutlen=20
 syntax on
