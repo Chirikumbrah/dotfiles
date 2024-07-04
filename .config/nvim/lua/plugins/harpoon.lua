@@ -1,3 +1,4 @@
+if true then return {} end
 return {
     "ThePrimeagen/harpoon",
     dependencies = {
@@ -18,4 +19,3 @@ return {
         vim.keymap.set("n", "<leader>5", function() ui.nav_file(5) end)
     end,
 }
-
