@@ -23,7 +23,7 @@ lfcd() {
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 
-export EDITOR=hx
+export EDITOR=vim
 export VISUAL=$EDITOR
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -121,3 +121,4 @@ complete -o default -F _pip_completion pip3
 
 _source_if_exist "$HOME/.cargo/env"
 _is_cmd_exist zoxide && eval "$(zoxide init bash)"
+# _is_cmd_exist starship && eval "$(starship init bash)"
