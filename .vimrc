@@ -84,8 +84,6 @@ call InitPlugins()
 " to start it
 function g:StartLsp()
     function! OnLspBufferEnabled() abort
-        let g:lsp_diagnostics_virtual_text_enabled=0
-        let g:lsp_diagnostics_highlights_enabled=0
         setlocal omnifunc=lsp#complete
         nmap <buffer> gi <plug>(lsp-definition)
         nmap <buffer> gd <plug>(lsp-declaration)
@@ -107,6 +105,8 @@ function g:StartLsp()
     augroup END
 endfunction
 
+let g:lsp_diagnostics_virtual_text_enabled=0
+let g:lsp_diagnostics_highlights_enabled=0
 call StartLsp()
 
 set background=dark
