@@ -2,7 +2,8 @@
 
 # Default colors
 [colors.primary]
-background = '#002b36'
+# background = '#002b36' # default color from alacritty-themes
+background = '#002732' # guibg color from vim solarized colorscheme
 foreground = '#839496'
 
 # Normal colors
