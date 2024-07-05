@@ -33,6 +33,8 @@ set wildmenu
 if (has("termguicolors"))
     set termguicolors
 endif
+set list lcs=tab:»·,eol:↵,multispace:·,lead:·,trail:·,nbsp:·
+
 syntax on
 
 " NetRW options
@@ -109,7 +111,8 @@ let g:lsp_diagnostics_virtual_text_enabled=0
 let g:lsp_diagnostics_highlights_enabled=0
 call StartLsp()
 
-set background=dark
+set background=light
 " silent! colorscheme gruvbox
 " highlight clear SignColumn
 silent! colorscheme solarized
+hi SpecialKey guibg=NONE
