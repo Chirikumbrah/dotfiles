@@ -103,8 +103,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # on mac you don't need to install new git version with brew 'cause needed files are exist :)
     _source_if_exist "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
     _source_if_exist "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
-    # /opt/homebrew/opt/fzf/install
-    _source_if_exist "$HOME/.fzf.bash"
 else
     _source_if_exist "/usr/share/bash-completion/bash_completion" &&
         _source_if_exist "/etc/bash_completion"
@@ -121,4 +119,5 @@ complete -o default -F _pip_completion pip3
 
 _source_if_exist "$HOME/.cargo/env"
 _is_cmd_exist zoxide && eval "$(zoxide init bash)"
+_is_cmd_exist fzf && eval "$(fzf --bash)"
 # _is_cmd_exist starship && eval "$(starship init bash)"
