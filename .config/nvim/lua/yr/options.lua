@@ -1,5 +1,3 @@
-vim.opt.background = "dark"
-
 vim.opt.cursorline = true
 vim.opt.ignorecase = true
 

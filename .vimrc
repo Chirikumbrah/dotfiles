@@ -87,7 +87,7 @@ augroup END
 
 
 """""" Colorscheme """""
-set background=dark
+set background=light
 silent! colorscheme solarized
 if &background == "dark" && exists('g:colors_name') && g:colors_name ==# 'solarized'
     hi SpecialKey guibg=NONE guifg=#374549

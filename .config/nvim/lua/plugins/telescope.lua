@@ -1,4 +1,3 @@
-if true then return {} end
 return {
     {
         "nvim-telescope/telescope.nvim",
@@ -18,9 +17,6 @@ return {
             end
             local vimgrep_arguments = { unpack(config.values.vimgrep_arguments) }
 
-            -- Falling back to find_files if git_files can't find a .git directory --
-            -- We cache the results of "git rev-parse"
-            -- Process creation is expensive in Windows, so this reduces latency
             local is_inside_work_tree = {}
 
             local project_files = function()
@@ -39,10 +35,7 @@ return {
                 end
             end
 
-            -- File and text search in hidden files and directories --
-            -- I want to search in hidden/dot files.
             table.insert(vimgrep_arguments, "--hidden")
-            -- I don't want to search in the `.git` directory.
             table.insert(vimgrep_arguments, "--glob")
             table.insert(vimgrep_arguments, "!**/.git/*")
 
@@ -51,17 +44,14 @@ return {
                 extensions = {
                     ["ui-select"] = {
                         require("telescope.themes").get_dropdown({
-                            -- even more opts
                         }),
                     },
                 },
                 defaults = {
-                    -- `hidden = true` is not supported in text grep commands.
                     vimgrep_arguments = vimgrep_arguments,
                 },
                 pickers = {
                     find_files = {
-                        -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
                         find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
                     },
                 },

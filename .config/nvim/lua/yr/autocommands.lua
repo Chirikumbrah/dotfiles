@@ -4,6 +4,16 @@ local function augroup(name)
     return vim.api.nvim_create_augroup("yr_autocmd_" .. name, { clear = true })
 end
 
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--     group = augroup('UserLspConfig'),
+--     callback = function(ev)
+--         -- Enable completion triggered by <c-x><c-o>
+--         vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+--     end
+-- })
+
 -- Remove Trailing whitespace
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = { "*" },
@@ -11,13 +21,13 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 -- Find Files on startup
--- vim.api.nvim_create_autocmd("VimEnter", {
---     callback = function()
---         if vim.fn.argv(0) == "" then
---             require("telescope.builtin").find_files()
---         end
---     end,
--- })
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        if vim.fn.argv(0) == "" then
+            require("telescope.builtin").find_files()
+        end
+    end,
+})
 
 -- Set fold method
 -- vim.api.nvim_create_autocmd({ "FileType" }, {
