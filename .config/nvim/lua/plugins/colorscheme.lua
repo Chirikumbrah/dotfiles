@@ -30,7 +30,12 @@ return {
                     comments = { italic = true, bold = false },
                     functions = { italic = false },
                     variables = { italic = false },
-                }
+                    numbers = { italic = false },
+                    constants = { italic = false },
+                    parameters = { italic = false },
+                    keywords = { italic = false },
+                    types = { italic = false },
+                },
             })
             vim.o.background = "light" -- or 'light'
             vim.cmd.colorscheme("solarized")
