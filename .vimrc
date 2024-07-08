@@ -6,7 +6,7 @@ set guioptions-=T guioptions-=m guioptions-=r
 set hidden
 set incsearch hlsearch ignorecase
 set lazyredraw
-set list lcs=tab:»·,eol:↵,multispace:·,lead:·,trail:·,nbsp:·
+silent! set list lcs=tab:»·,eol:↵,multispace:·,lead:·,trail:·,nbsp:·
 set nocompatible
 set foldmethod=indent nofoldenable
 set number relativenumber
