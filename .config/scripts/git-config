@@ -1,0 +1,22 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+    read -p "Enter your Git Username: " NAME
+else
+    NAME=$1
+fi
+if [ -z "$2" ]; then
+    read -p "Enter your Git Email: " EMAIL
+else
+    EMAIL=$2
+fi
+if [ -z "$3" ]; then
+    read -p "Enter your SSH Key Path: " KEY_PATH
+else
+    KEY_PATH=$3
+fi
+
+git config --local user.name "$NAME"
+git config --local user.email "$EMAIL"
+git config --local core.sshCommand "ssh -i $KEY_PATH"
+
+git config --local -l
