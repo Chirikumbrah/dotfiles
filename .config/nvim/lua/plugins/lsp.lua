@@ -103,13 +103,6 @@ return {
                 lsp_zero.default_keymaps(opts)
             end)
 
-            lsp_zero.set_sign_icons({
-                error = " ",
-                warn = " ",
-                hint = "",
-                info = " ",
-            })
-
             require("mason-lspconfig").setup({
                 handlers = {
                     -- this first function is the "default handler"
@@ -152,4 +145,3 @@ return {
         },
     },
 }
-

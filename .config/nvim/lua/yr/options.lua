@@ -42,7 +42,7 @@ vim.g.netrw_preview = true -- preview split to the right
 vim.g.netrw_liststyle = 3 -- tree view
 
 local space = "·"
-vim.opt.list = true
+vim.opt.list = false
 vim.opt.listchars:append({
     -- tab = "⇥", -- this one conflicts with plugins for indent line
     eol = "↵",

@@ -37,7 +37,7 @@ return {
                     types = { italic = false },
                 },
             })
-            vim.o.background = "light" -- or 'light'
+            vim.o.background = "dark" -- or 'light'
             vim.cmd.colorscheme("solarized")
         end,
     },
