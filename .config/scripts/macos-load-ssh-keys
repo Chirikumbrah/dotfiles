@@ -1,0 +1,5 @@
+#!/bin/bash
+
+### load ssh keys
+grep -slR "PRIVATE" ~/.ssh | xargs ssh-add --apple-use-keychain
+ssh-add --apple-load-keychain

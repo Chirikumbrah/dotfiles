@@ -1,5 +1,6 @@
 #!/bin/bash
 
+### remap keys
 # https://hidutil-generator.netlify.app
 
 hidutil property --set '
@@ -23,3 +24,4 @@ hidutil property --set '
 
 # DND            F17
 # 0x10000009B    0x70000006C
+
