@@ -23,7 +23,7 @@ lfcd() {
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 
-export EDITOR=vim
+export EDITOR=nvim
 export VISUAL=$EDITOR
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export XDG_CONFIG_HOME="$HOME/.config"
