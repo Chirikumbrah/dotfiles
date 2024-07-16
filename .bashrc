@@ -53,17 +53,10 @@ __ps1() {
 }
 
 PROMPT_COMMAND="history -a ; __ps1"
-# _is_cmd_exist starship && eval "$(starship init bash)"
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
 alias v="$EDITOR"
-
-# cd
-# alias ..="cd .."
-
-# directories
-alias dot="cd ~/Projects/mine/dotfiles"
 
 # ls
 alias l='ls --color=auto'
@@ -74,16 +67,6 @@ alias ls='ls -h --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
-# git
-# alias gp='git push'
-# alias gup='git pull'
-# alias gs='git status'
-# alias gt='gitui'
-
-# ricing
-alias eb='$EDITOR ~/.bashrc'
-alias sb='source ~/.bashrc'
 
 # finds all files recursively and sorts by last modification, ignore hidden files
 # alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
@@ -120,4 +103,3 @@ complete -o default -F _pip_completion pip3
 _source_if_exist "$HOME/.cargo/env"
 _is_cmd_exist zoxide && eval "$(zoxide init bash)"
 _is_cmd_exist fzf && eval "$(fzf --bash)"
-# _is_cmd_exist starship && eval "$(starship init bash)"

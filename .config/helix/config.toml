@@ -1,4 +1,4 @@
-theme = "gryvbox"
+theme = "solarized_dark"
 
 [editor]
 bufferline = "multiple"
@@ -8,7 +8,7 @@ cursorcolumn = true
 cursorline = true
 idle-timeout = 0
 insert-final-newline = true
-# line-number = "relative"
+line-number = "relative"
 popup-border = "all"
 shell = ["bash", "-c"]
 undercurl = true
@@ -67,24 +67,7 @@ render = "all"
   ":reload",
 ] }
 "C-r" = [":reload", ":redraw"]
-"C-g" = [
-  ":new",
-  ":insert-output lazygit",
-  ":buffer-close!",
-  ":redraw",
-  ":reload",
-]
-"C-t" = [
-  ":new",
-  ":insert-output tmux popup -d \"#{pane_current_path}\" -xC -yC -w80% -h80% -E $SHELL",
-  ":buffer-close!",
-  ":redraw",
-  ":reload",
-]
-D = "delete_char_backward"
 F = ":format" # fast format
-X = "extend_line_above"
-esc = ["collapse_selection", "keep_primary_selection"]
 
 ### SELECT mode
 [keys.select]
@@ -99,20 +82,4 @@ esc = ["collapse_selection", "keep_primary_selection"]
   ":redraw",
 ] }
 "C-r" = [":reload", ":redraw"]
-"C-g" = [
-  ":new",
-  ":insert-output lazygit",
-  ":buffer-close!",
-  ":redraw",
-  ":reload",
-]
-"C-t" = [
-  ":new",
-  ":insert-output tmux popup -d \"#{pane_current_path}\" -xC -yC -w80% -h80% -E $SHELL",
-  ":buffer-close!",
-  ":redraw",
-  ":reload",
-]
-D = "delete_char_backward"
 F = ":format" # fast format
-X = "extend_line_above"
