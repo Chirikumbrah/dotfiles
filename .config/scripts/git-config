@@ -11,12 +11,16 @@ else
 fi
 if [ -z "$3" ]; then
     read -p "Enter your SSH Key Path: " KEY_PATH
+    if [ -z "$KEY_PATH" ]; then
+        echo "No SSH Key Path provided."
+    else
+        git config --local core.sshCommand "ssh -i $KEY_PATH"
+    fi
 else
-    KEY_PATH=$3
+    git config --local core.sshCommand "ssh -i $3"
 fi
 
 git config --local user.name "$NAME"
 git config --local user.email "$EMAIL"
-git config --local core.sshCommand "ssh -i $KEY_PATH"
 
 git config --local -l
