@@ -1,43 +1,42 @@
 [user]
-	email = yarik.bond98@gmail.com
-	name = Chirikumbrah
+    email = dvps4k@gmail.com
+    name = Chirikumbrah
 [core]
-  editor = $EDITOR
-  pager = delta
+    editor = $EDITOR
+    pager = delta
 [alias]
-  co = checkout
-  cfg = config
-  cl = clone
-  unstage = reset HEAD --
-  last = log -1 HEAD --stat
-  aliases = config --get-regexp alias
-  cm = commit -m
-  ll = log --oneline
-  st = status -sb
-  rv = remote -v
-  gl = config --global -l
+    co = checkout
+    cfg = config
+    cl = clone
+    unstage = reset HEAD --
+    last = log -1 HEAD --stat
+    aliases = config --get-regexp alias
+    cm = commit -m
+    ll = log --oneline
+    st = status -sb
+    rv = remote -v
+    gl = config --global -l
 [help]
-  autocorrect = 20
+    autocorrect = 20
 [pull]
-  rebase = true
+    rebase = true
 [hooks]
-  mailinglist = "basslo@protonmail.com"
+    mailinglist = "dvps4k@gmail.com"
 [interactive]
-  diffFilter = delta --color-only
+    diffFilter = delta --color-only
 [delta]
-  navigate = true    # use n and N to move between diff sections
-  light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
-  side-by-side = true
-  pager = "less -RF --mouse"
-  line-numbers = true
-# [merge]
-# 	tool = "nvim"
-# [mergetool]
-# 	keepBackup = false
-# 	prompt = false
-# [mergetool "nvim"]
-# 	cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
-# [diff]
-# 	tool = vimdiff
-# [difftool]
-# 	prompt = false
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    side-by-side = true
+    pager = "less -RF --mouse"
+    line-numbers = true
+[merge]
+	tool = "vimdiff"
+[mergetool]
+	keepBackup = false
+	prompt = false
+	tool = "vimdiff"
+[diff]
+	tool = "vimdiff"
+[difftool]
+	prompt = false

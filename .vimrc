@@ -30,8 +30,8 @@ let g:netrw_banner=0
 let g:netrw_altv=1 " open splits to the right
 let g:netrw_preview=1 " preview split to the right
 let g:netrw_liststyle=3 " tree view
-let g:lsp_diagnostics_virtual_text_enabled=0
-let g:lsp_diagnostics_highlights_enabled=0
+let g:lsp_diagnostics_virtual_text_enabled=1
+let g:lsp_diagnostics_highlights_enabled=1
 
 " Undofile Options
 if !isdirectory($HOME."/.cache/vim-undodir")
