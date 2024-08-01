@@ -10,7 +10,7 @@ normal = { family = "UbuntuMono Nerd Font" }
 
 [shell]
 # program = "/usr/local/bin/fish"
-program = "/bin/bash"
+program = "/opt/homebrew/bin/bash"
 args = ["-l", "-c", "tmux attach || tmux"]
 
 [window]
