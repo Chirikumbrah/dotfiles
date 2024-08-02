@@ -1,37 +1,23 @@
 " Settings
-set autochdir
 set cursorline
 set gp=git\ grep\ -n
 set guioptions-=T guioptions-=m guioptions-=r
 set hidden
 set incsearch hlsearch ignorecase
-set lazyredraw
 set nocompatible
-set foldmethod=indent nofoldenable
 set number relativenumber
 set path+=**
 set ruler
-set sidescrolloff=11 scrolloff=11
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4 smarttab
 set signcolumn=yes
 set smartcase
-set splitbelow splitright
 set timeoutlen=20
 set wildmenu
-if (has("termguicolors"))
-    set termguicolors
-endif
+set termguicolors
+set spell
 
 syntax on
 filetype plugin indent on
-
-" Global Variables
-let g:netrw_banner=0
-let g:netrw_altv=1 " open splits to the right
-let g:netrw_preview=1 " preview split to the right
-let g:netrw_liststyle=3 " tree view
-let g:lsp_diagnostics_virtual_text_enabled=1
-let g:lsp_diagnostics_highlights_enabled=1
 
 " Undofile Options
 if !isdirectory($HOME."/.cache/vim-undodir")
@@ -40,8 +26,17 @@ endif
 set undodir=~/.cache/vim-undodir
 set undofile
 
+"""""" Autocommands """""
 " Remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
+
+" Detect Helm templates as helm filetype
+autocmd BufRead,BufNewFile */templates/*.y*ml,*/templates/*.tpl set filetype=helm
+" Define syntax and indentation for helm filetype
+augroup helm_syntax
+  autocmd!
+  autocmd FileType helm setlocal syntax=yaml
+augroup END
 
 """""" Plugins """""
 packadd! matchit
@@ -88,10 +83,3 @@ augroup END
 """""" Colorscheme """""
 set background=dark
 silent! colorscheme solarized
-if &background == "dark" && exists('g:colors_name') && g:colors_name ==# 'solarized'
-    hi SpecialKey guibg=NONE guifg=#374549
-    hi NonText guibg=NONE guifg=#374549
-else
-    hi SpecialKey guibg=NONE guifg=#D6D0BF
-    hi NonText guibg=NONE guifg=#D6D0BF
-endif
