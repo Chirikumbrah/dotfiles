@@ -1,0 +1,37 @@
+# maximize a window
+alt - f : yabai -m window --toggle zoom-fullscreen
+
+# change window focus within space
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - h : yabai -m window --focus west
+alt - l : yabai -m window --focus east
+
+# toggle sticky
+alt - s : yabai -m window --toggle sticky
+
+# center window
+alt - c : yabai -m window --grid 4:4:1:1:2:2
+
+# move window to space #
+shift + alt - 1 : yabai -m window --space 1;
+shift + alt - 2 : yabai -m window --space 2;
+shift + alt - 3 : yabai -m window --space 3;
+shift + alt - 4 : yabai -m window --space 4;
+shift + alt - 5 : yabai -m window --space 5;
+shift + alt - 6 : yabai -m window --space 6;
+shift + alt - 7 : yabai -m window --space 7;
+shift + alt - 8 : yabai -m window --space 8;
+
+# restart yabai and skhd
+shift + alt - r : yabai --restart-service && skhd --restart-service
+
+# launch apps
+alt - return : open -a /Applications/Alacritty.app
+shift + alt - t : open -a /Applications/Telegram.app
+shift + alt - e : open -a /System/Library/CoreServices/Finder.app
+shift + alt - c : open -a /System/Applications/Calculator.app
+shift + alt - s : open -a /Applications/Simplenote.app
+shift + alt - b : open -a /Applications/Bitwarden.app
+shift + alt - d : open -a /Applications/iTranslate.app
+shift + alt - w : open -a /Applications/Brave\ Browser.app

@@ -1,0 +1,29 @@
+# bsp or float (default: float, options: float, bsp)
+yabai -m config layout bsp
+
+# set mouse follows focus mode (default: off)
+yabai -m config mouse_follows_focus on
+
+# set names to spaces
+yabai -m space 1 --label web
+yabai -m space 2 --label term
+yabai -m space 3 --label dev
+yabai -m space 4 --label social
+
+# apps settings
+yabai -m rule --add app="^Alacritty$" space=term
+yabai -m rule --add app="^ChatGPT$" space=dev
+yabai -m rule --add app="^WireGuard$" space=dev
+yabai -m rule --add app="^DBeaver$" space=dev
+
+# float apps
+yabai -m rule --add app="^System Settings$" manage=off sticky=on
+yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" manage=off space=dev
+yabai -m rule --add app="^Music$" manage=off sticky=on
+yabai -m rule --add app="^Calendar$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off sticky=on
+yabai -m rule --add app="^Finder$" manage=off sticky=on
+yabai -m rule --add app="^Brave Browser$" manage=off space=web
+yabai -m rule --add app="*OpenVPN Connect$" manage=off space=dev
+yabai -m rule --add app="^Telegram$" manage=off grid=6:6:1:1:4:4 space=social
+
