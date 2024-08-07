@@ -14,7 +14,9 @@ set smartcase
 set timeoutlen=20
 set wildmenu
 set termguicolors
-set spell
+" set spell
+
+let g:lsp_diagnostics_virtual_text_align = "right"
 
 syntax on
 filetype plugin indent on
