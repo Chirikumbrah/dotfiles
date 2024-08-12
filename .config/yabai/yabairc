@@ -24,6 +24,6 @@ yabai -m rule --add app="^Calendar$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off sticky=on
 yabai -m rule --add app="^Finder$" manage=off sticky=on
 yabai -m rule --add app="^Brave Browser$" manage=off space=web
-yabai -m rule --add app="*OpenVPN Connect$" manage=off space=dev
+yabai -m rule --add app="^OpenVPN Connect$" manage=off space=dev
 yabai -m rule --add app="^Telegram$" manage=off grid=6:6:1:1:4:4 space=social
 
