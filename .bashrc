@@ -49,7 +49,7 @@ __ps1() {
     venv=$(basename "$VIRTUAL_ENV")
     [[ -n "$branch" ]] && branch="$reset:$yellow$branch"
     [[ -n "$venv" ]] && venv="$cyan$venv$reset:"
-    PS1="$venv$green\u@\h$reset:$blue\W$branch\`$last_cmd_status\`$reset "
+    PS1="$venv$green\u@\h$reset:$blue\w$branch\`$last_cmd_status\`$reset "
 }
 
 PROMPT_COMMAND="history -a ; __ps1"
