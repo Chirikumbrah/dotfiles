@@ -9,12 +9,15 @@ yabai -m space 1 --label web
 yabai -m space 2 --label term
 yabai -m space 3 --label dev
 yabai -m space 4 --label social
+yabai -m space 5 --label meet
+yabai -m space 6 --label other
 
 # apps settings
 yabai -m rule --add app="^Alacritty$" space=term
 yabai -m rule --add app="^ChatGPT$" space=dev
 yabai -m rule --add app="^WireGuard$" space=dev
 yabai -m rule --add app="^DBeaver$" space=dev
+yabai -m rule --add app="^Yandex Telemost$" space=meet
 
 # float apps
 yabai -m rule --add app="^System Settings$" manage=off sticky=on

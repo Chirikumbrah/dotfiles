@@ -17,7 +17,16 @@ shift + alt - l : yabai -m window --swap east
 alt - s : yabai -m window --toggle sticky
 
 # center window
-alt - c : yabai -m window --grid 4:4:1:1:2:2
+alt - c : yabai -m window --grid 8:8:1:1:6:6
+
+# resize window
+fn + cmd - h : yabai -m window --resize left:-20:0
+fn + cmd - l : yabai -m window --resize left:20:0
+fn + cmd - k : yabai -m window --resize top:0:-20
+fn + cmd - j : yabai -m window --resize top:0:20
+
+# balance size of windows
+fn + cmd - 0 : yabai -m space --balance
 
 # move window to space #
 shift + alt - 1 : yabai -m window --space 1;
@@ -31,6 +40,13 @@ shift + alt - 8 : yabai -m window --space 8;
 
 # restart yabai and skhd
 shift + alt - r : yabai --restart-service && skhd --restart-service
+
+# float / unfloat window and center on screen
+shift + alt - f : yabai -m window --toggle float;\
+          yabai -m window --grid 8:8:1:1:6:6
+
+# rotate tree
+alt - r : yabai -m space --rotate 90
 
 # launch apps
 alt - return : open -a /Applications/Alacritty.app
