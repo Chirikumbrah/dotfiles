@@ -59,7 +59,7 @@ return {
             telescope.load_extension("ui-select")
 
             -- Keymaps
-            vim.keymap.set("n", "<leader><space>", builtin.find_files, {})
+            -- vim.keymap.set("n", "<leader><space>", builtin.find_files, {})
             vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
             vim.keymap.set("n", "<leader>fp", project_files, {})
             vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
