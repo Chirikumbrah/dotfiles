@@ -5,7 +5,7 @@ yabai -m config layout bsp
 yabai -m config mouse_follows_focus on
 
 # set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
-yabai -m config focus_follows_mouse autofocus
+yabai -m config focus_follows_mouse autoraise
 
 # set names to spaces
 yabai -m space 1 --label web
