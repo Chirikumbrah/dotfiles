@@ -27,6 +27,7 @@ yabai -m rule --add app="^System Settings$" manage=off sticky=on
 yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" manage=off space=dev
 yabai -m rule --add app="^Music$" manage=off sticky=on
 yabai -m rule --add app="^Calendar$" manage=off
+yabai -m rule --add app="^Ente Auth$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off sticky=on
 yabai -m rule --add app="^Finder$" manage=off sticky=on
 yabai -m rule --add app="^Brave Browser$" manage=off space=web
