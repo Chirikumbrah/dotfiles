@@ -22,6 +22,7 @@ yabai -m rule --add app="^WireGuard$" space=dev
 yabai -m rule --add app="^DBeaver$" space=dev
 yabai -m rule --add app="^Ollama$" space=dev
 yabai -m rule --add app="^Yandex Telemost$" space=meet
+yabai -m rule --add app="^qBittorrent$" space=other
 
 # float apps
 yabai -m rule --add app="^System Settings$" manage=off sticky=on
