@@ -14,25 +14,26 @@ yabai -m space 3 --label dev
 yabai -m space 4 --label social
 yabai -m space 5 --label meet
 yabai -m space 6 --label other
+yabai -m space 7 --label vpn
 
 # apps settings
 yabai -m rule --add app="^Alacritty$" space=term
 yabai -m rule --add app="^ChatGPT$" space=dev
-yabai -m rule --add app="^WireGuard$" space=dev
 yabai -m rule --add app="^DBeaver$" space=dev
 yabai -m rule --add app="^Ollama$" space=dev
 yabai -m rule --add app="^Yandex Telemost$" space=meet
 yabai -m rule --add app="^qBittorrent$" space=other
+yabai -m rule --add app="^WireGuard$" space=vpn
 
 # float apps
 yabai -m rule --add app="^System Settings$" manage=off sticky=on
-yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" manage=off space=dev
+yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" manage=off space=vpn
 yabai -m rule --add app="^Music$" manage=off sticky=on
 yabai -m rule --add app="^Calendar$" manage=off
 yabai -m rule --add app="^Ente Auth$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off sticky=on
 yabai -m rule --add app="^Finder$" manage=off sticky=on
 yabai -m rule --add app="^Brave Browser$" manage=off space=web
-yabai -m rule --add app="^OpenVPN Connect$" manage=off space=dev
+yabai -m rule --add app="^OpenVPN Connect$" manage=off space=vpn
 yabai -m rule --add app="^Telegram$" manage=off grid=6:6:1:1:4:4 space=social
 
