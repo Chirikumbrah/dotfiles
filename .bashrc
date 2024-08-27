@@ -16,11 +16,6 @@ shopt -s autocd
 _is_cmd_exist() { type "$1" &>/dev/null; }
 _source_if_exist() { [[ -r "$1" ]] && source "$1"; }
 
-lfcd() {
-    _is_cmd_exist z && cmd="z" || cmd="cd"
-    _is_cmd_exist lf && $cmd "$(command lf -print-last-dir "$@")" || echo "Please install lf."
-}
-
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 
 export EDITOR=nvim
@@ -56,8 +51,6 @@ PROMPT_COMMAND="history -a ; __ps1"
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
-alias v="$EDITOR"
-
 # ls
 alias l='ls --color=auto'
 alias ll='ls -halF'
@@ -67,15 +60,6 @@ alias ls='ls -h --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
-# finds all files recursively and sorts by last modification, ignore hidden files
-# alias last='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
-
-# fzf aliases
-# use fp to do a fzf search and preview the files
-# alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-# search for a file with fzf and open it in vim
-# alias vf='$EDITOR $(fp)'
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
