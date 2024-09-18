@@ -227,6 +227,10 @@ run = ['layout floating', 'move-node-to-workspace 7']
 if.app-id = 'org.qbittorrent.qBittorrent'
 run = 'move-node-to-workspace 8'
 
+[[on-window-detected]]
+if.app-id = 'com.apple.Preview'
+run = 'move-node-to-workspace 8'
+
 
 # Workspace 10
 [[on-window-detected]]
