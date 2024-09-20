@@ -1,7 +1,7 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    config = function () 
+    config = function ()
         local configs = require("nvim-treesitter.configs")
 
         configs.setup({
@@ -15,6 +15,7 @@ return {
                 "json",
                 "lua",
                 "python",
+                "nginx",
                 "query",
                 "regex",
                 "tmux",
@@ -40,7 +41,7 @@ return {
                 disable = {
                     "yaml",
                 }
-            },  
+            },
             additional_vim_regex_highlighting = false,
         })
     end
