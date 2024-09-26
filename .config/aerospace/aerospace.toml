@@ -191,6 +191,10 @@ run = 'move-node-to-workspace 3'
 if.app-id = 'ru.keepcoder.Telegram'
 run = ['layout floating', 'move-node-to-workspace 4']
 
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = 'move-node-to-workspace 4'
+
 
 # Workspace 5
 [[on-window-detected]]
