@@ -152,6 +152,14 @@ if.app-id = 'com.apple.garageband10'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'is.gtmetronome'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'de.naiv.MacOSTuner'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.calculator'
 run = 'layout floating'
 
