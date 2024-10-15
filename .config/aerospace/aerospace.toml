@@ -148,7 +148,7 @@ if.app-id = 'io.ente.auth.mac'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-id = 'com.jpsim.zen.tuner'
+if.app-id = 'com.apple.garageband10'
 run = 'layout floating'
 
 [[on-window-detected]]
