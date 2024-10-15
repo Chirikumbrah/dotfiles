@@ -148,6 +148,10 @@ if.app-id = 'io.ente.auth.mac'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.jpsim.zen.tuner'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.calculator'
 run = 'layout floating'
 

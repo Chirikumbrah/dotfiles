@@ -10,6 +10,7 @@ fish_variables
 .config/lazygit/state.yml
 .config/nvim/lazy-lock.json
 .config/nvim/.luarc.json
+.config/tmux/sessions
 .*_history*
 .zcomp*
 .netrwhist
