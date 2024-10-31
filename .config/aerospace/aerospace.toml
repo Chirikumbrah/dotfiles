@@ -251,6 +251,13 @@ run = 'move-node-to-workspace 8'
 if.app-id = 'com.apple.Preview'
 run = 'move-node-to-workspace 8'
 
+[[on-window-detected]]
+if.app-id = 'notion.id'
+run = 'move-node-to-workspace 8'
+
+[[on-window-detected]]
+if.app-id = 'com.automattic.SimplenoteMac'
+run = 'move-node-to-workspace 8'
 
 # Workspace 10
 [[on-window-detected]]
