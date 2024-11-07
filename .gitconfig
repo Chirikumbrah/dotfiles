@@ -1,21 +1,9 @@
 [user]
     email = dvps4k@gmail.com
-	name = git-sync-sa
+	name = Chirikumbrah
 [core]
     editor = $EDITOR
     pager = delta
-[alias]
-    co = checkout
-    cfg = config
-    cl = clone
-    unstage = reset HEAD --
-    last = log -1 HEAD --stat
-    aliases = config --get-regexp alias
-    cm = commit -m
-    ll = log --oneline
-    st = status -sb
-    rv = remote -v
-    gl = config --global -l
 [help]
     autocorrect = 20
 [pull]
