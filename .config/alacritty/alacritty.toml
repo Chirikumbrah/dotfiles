@@ -8,7 +8,7 @@ normal = { family = "UbuntuMono Nerd Font" }
 
 [terminal.shell]
 program = "/opt/homebrew/bin/bash"
-args = ["-l", "-c", "tmux attach || tmux"]
+args = ["-l", "-c", "tmux attach || tmux new-session -s $USER"]
 
 [window]
 decorations = "none"
