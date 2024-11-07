@@ -65,7 +65,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
     # brew install bash-completion@2 fzf zoxide orbstack
     _source_if_exist "/opt/homebrew/etc/profile.d/bash_completion.sh"
-    _source_if_exist $XDG_CONFIG_HOME/scripts/completions/*
     # on mac you don't need to install new git version with brew 'cause needed files are exist :)
     _source_if_exist "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
     #_source_if_exist "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
@@ -74,6 +73,15 @@ else
         _source_if_exist "/etc/bash_completion"
 fi
 
+_pip_completion()
+{
+    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
+                   COMP_CWORD=$COMP_CWORD \
+                   PIP_AUTO_COMPLETE=1 $1 2>/dev/null ) )
+}
+_is_cmd_exist pip3 && complete -o default -F _pip_completion pip3
+
 _source_if_exist "$HOME/.cargo/env"
 _is_cmd_exist zoxide && eval "$(zoxide init bash)"
 _is_cmd_exist fzf && eval "$(fzf --bash)"
+_is_cmd_exist orbctl && eval "$(orbctl completion bash)"
