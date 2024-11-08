@@ -1,7 +1,0 @@
-os:
-  edit: 'hx {{filename}}'
-  editAtLine: 'hx --line={{line}} {{filename}}'
-  editAtLineAndWait: 'hx --block --line={{line}} {{filename}}'
-  editInTerminal: true
-  openDirInEditor: 'hx {{dir}}'
-promptToReturnFromSubprocess: false
