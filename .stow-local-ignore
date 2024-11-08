@@ -1,0 +1,13 @@
+.git
+.gitignore
+.DS_Store
+
+README.md
+
+.config/lazygit
+
+brew-apps.txt
+
+# zsh configs
+.zshrc
+.zprofile
