@@ -1,0 +1,14 @@
+argocd
+bash-completion@2
+fzf
+helm
+jq
+k9s
+kubernetes-cli
+mas
+neovim
+node
+ripgrep
+stow
+tmux
+zoxide
