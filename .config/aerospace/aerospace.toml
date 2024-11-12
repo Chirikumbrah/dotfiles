@@ -40,10 +40,10 @@ outer.right =      0
 alt-enter = 'exec-and-forget open /Applications/Alacritty.app'
 alt-shift-w = 'exec-and-forget open -a /Applications/Brave\ Browser.app'
 alt-shift-t = 'exec-and-forget open -a /Applications/Telegram.app'
-alt-shift-n = 'exec-and-forget open -a /Applications/Simplenote.app'
+alt-shift-s = 'exec-and-forget open -a /Applications/Simplenote.app'
 alt-shift-c = 'exec-and-forget open -a /System/Applications/Calculator.app'
 alt-shift-e = 'exec-and-forget open -a /System/Library/CoreServices/Finder.app'
-alt-shift-p = 'exec-and-forget open -a /Applications/Bitwarden.app'
+alt-shift-b = 'exec-and-forget open -a /Applications/Bitwarden.app'
 alt-shift-d = 'exec-and-forget open -a /Applications/iTranslate.app'
 
 
@@ -65,8 +65,11 @@ alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
 
-alt-n = 'workspace next'
-alt-p= 'workspace prev'
+alt-shift-n = 'workspace next'
+alt-shift-p = 'workspace prev'
+
+alt-n = ['focus-monitor next', 'move-mouse window-force-center']
+alt-p = ['focus-monitor prev', 'move-mouse window-force-center']
 
 alt-r = 'mode resize'
 
@@ -96,6 +99,16 @@ alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-0 = 'workspace 10'
+cmd-alt-1 = 'workspace 11'
+cmd-alt-2 = 'workspace 12'
+cmd-alt-3 = 'workspace 13'
+cmd-alt-4 = 'workspace 14'
+cmd-alt-5 = 'workspace 15'
+cmd-alt-6 = 'workspace 16'
+cmd-alt-7 = 'workspace 17'
+cmd-alt-8 = 'workspace 18'
+cmd-alt-9 = 'workspace 19'
+cmd-alt-0 = 'workspace 20'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -108,6 +121,28 @@ alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-0 = 'move-node-to-workspace 10'
+cmd-alt-shift-1 = 'move-node-to-workspace 11'
+cmd-alt-shift-2 = 'move-node-to-workspace 12'
+cmd-alt-shift-3 = 'move-node-to-workspace 13'
+cmd-alt-shift-4 = 'move-node-to-workspace 14'
+cmd-alt-shift-5 = 'move-node-to-workspace 15'
+cmd-alt-shift-6 = 'move-node-to-workspace 16'
+cmd-alt-shift-7 = 'move-node-to-workspace 17'
+cmd-alt-shift-8 = 'move-node-to-workspace 18'
+cmd-alt-shift-9 = 'move-node-to-workspace 19'
+cmd-alt-shift-0 = 'move-node-to-workspace 20'
+
+[workspace-to-monitor-force-assignment]
+11 = 'secondary'
+12 = 'secondary'
+13 = 'secondary'
+14 = 'secondary'
+15 = 'secondary'
+16 = 'secondary'
+17 = 'secondary'
+18 = 'secondary'
+19 = 'secondary'
+20 = 'secondary'
 
 [mode.resize.binding]
 h = 'resize width +50'
