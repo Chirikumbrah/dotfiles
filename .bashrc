@@ -29,6 +29,7 @@ export SAVEHIST=50000
 export HISTCONTROL=ignoreboth:erasedups
 export HISTFILESIZE=10000
 export HISTIGNORE="&:ls:[bf]g:eb:gp:z:v:dot:exit:history"
+export HISTTIMEFORMAT="%F %T "
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
