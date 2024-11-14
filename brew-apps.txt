@@ -1,11 +1,13 @@
 argocd
 bash-completion@2
 fzf
+git-delta
 helm
 jq
 k9s
 kubernetes-cli
 mas
+mdcat
 neovim
 node
 ripgrep
