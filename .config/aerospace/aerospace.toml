@@ -65,11 +65,11 @@ alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
 
-alt-shift-n = 'workspace next'
-alt-shift-p = 'workspace prev'
+alt-n = 'workspace next'
+alt-p = 'workspace prev'
 
-alt-n = ['focus-monitor next', 'move-mouse window-force-center']
-alt-p = ['focus-monitor prev', 'move-mouse window-force-center']
+alt-shift-n = ['focus-monitor next', 'move-mouse window-force-center']
+alt-shift-p = ['focus-monitor prev', 'move-mouse window-force-center']
 
 alt-r = 'mode resize'
 
