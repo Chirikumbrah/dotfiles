@@ -1,11 +1,16 @@
 argocd
 bash-completion@2
+clipboard
+cowsay
 fzf
 git-delta
+glab
 helm
+int128/kubelogin/kubelogin
 jq
 k9s
-kubernetes-cli
+kubectx
+macos-trash
 mas
 mdcat
 neovim
@@ -13,4 +18,5 @@ node
 ripgrep
 stow
 tmux
+watch
 zoxide
