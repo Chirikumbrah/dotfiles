@@ -1,19 +1,23 @@
 " Settings
 set cursorline
 set gp=git\ grep\ -n
-set guioptions-=T guioptions-=m guioptions-=r
-set hidden
-set incsearch hlsearch ignorecase
-set nocompatible
-set number relativenumber
 set path+=**
+set hidden
+set incsearch hlsearch
+set ignorecase
+set nocompatible
+set number "relativenumber
 set ruler
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4 smarttab
 set signcolumn=yes
 set smartcase
 set timeoutlen=20
 set wildmenu
+set wildignore=*.o,*.tgz,*.pyc
 set termguicolors
+set noswapfile nowritebackup
+set paste
+set laststatus=2
 " set spell
 
 let g:lsp_diagnostics_virtual_text_align = "right"
@@ -27,6 +31,9 @@ if !isdirectory($HOME."/.cache/vim-undodir")
 endif
 set undodir=~/.cache/vim-undodir
 set undofile
+
+"""""" Mappings """""
+map <silent> <esc> :noh <CR>
 
 """""" Autocommands """""
 " Remove trailing whitespace
