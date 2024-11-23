@@ -91,4 +91,5 @@ augroup END
 
 """""" Colorscheme """""
 set background=dark
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 silent! colorscheme solarized
