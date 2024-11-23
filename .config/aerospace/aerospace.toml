@@ -55,9 +55,8 @@ alt-s = 'layout v_accordion' # 'layout stacking' in i3
 alt-w = 'layout h_accordion' # 'layout tabbed' in i3
 alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
 
-alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
-
 alt-o = 'layout floating tiling'
+alt-t = 'layout tiling'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 alt-h = 'focus left'
@@ -99,50 +98,27 @@ alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-0 = 'workspace 10'
-cmd-alt-1 = 'workspace 11'
-cmd-alt-2 = 'workspace 12'
-cmd-alt-3 = 'workspace 13'
-cmd-alt-4 = 'workspace 14'
-cmd-alt-5 = 'workspace 15'
-cmd-alt-6 = 'workspace 16'
-cmd-alt-7 = 'workspace 17'
-cmd-alt-8 = 'workspace 18'
-cmd-alt-9 = 'workspace 19'
-cmd-alt-0 = 'workspace 20'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = 'move-node-to-workspace 1'
-alt-shift-2 = 'move-node-to-workspace 2'
-alt-shift-3 = 'move-node-to-workspace 3'
-alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-5 = 'move-node-to-workspace 5'
-alt-shift-6 = 'move-node-to-workspace 6'
-alt-shift-7 = 'move-node-to-workspace 7'
-alt-shift-8 = 'move-node-to-workspace 8'
-alt-shift-9 = 'move-node-to-workspace 9'
-alt-shift-0 = 'move-node-to-workspace 10'
-cmd-alt-shift-1 = 'move-node-to-workspace 11'
-cmd-alt-shift-2 = 'move-node-to-workspace 12'
-cmd-alt-shift-3 = 'move-node-to-workspace 13'
-cmd-alt-shift-4 = 'move-node-to-workspace 14'
-cmd-alt-shift-5 = 'move-node-to-workspace 15'
-cmd-alt-shift-6 = 'move-node-to-workspace 16'
-cmd-alt-shift-7 = 'move-node-to-workspace 17'
-cmd-alt-shift-8 = 'move-node-to-workspace 18'
-cmd-alt-shift-9 = 'move-node-to-workspace 19'
-cmd-alt-shift-0 = 'move-node-to-workspace 20'
+alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
+alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
+alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
+alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
+alt-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
+alt-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
+alt-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
+alt-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
+alt-shift-9 = 'move-node-to-workspace 9 --focus-follows-window'
+alt-shift-0 = 'move-node-to-workspace 10 --focus-follows-window'
+
+alt-tab = 'workspace-back-and-forth'
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 [workspace-to-monitor-force-assignment]
-11 = 'secondary'
-12 = 'secondary'
-13 = 'secondary'
-14 = 'secondary'
-15 = 'secondary'
-16 = 'secondary'
-17 = 'secondary'
-18 = 'secondary'
-19 = 'secondary'
-20 = 'secondary'
+7 = 'secondary'
+8 = 'secondary'
+9 = 'secondary'
+10 = 'secondary'
 
 [mode.resize.binding]
 h = 'resize width +50'
@@ -204,6 +180,10 @@ run = 'layout floating'
 if.app-id = 'com.brave.Browser'
 run = ['layout floating', 'move-node-to-workspace 1']
 
+[[on-window-detected]]
+if.app-id = 'com.apple.Safari'
+run = ['layout floating', 'move-node-to-workspace 1']
+
 
 # Workspace 2
 [[on-window-detected]]
@@ -230,7 +210,23 @@ run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'dev.kdrag0n.MacVirt'
-run = 'move-node-to-workspace 3'
+run = ['layout floating', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-id = 'org.openvpn.client.app'
+run = ['layout floating', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-id = 'com.cisco.anyconnect.gui'
+run = ['layout floating', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-id = 'com.wireguard.macos'
+run = ['layout floating', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-id = 'com.bitwarden.desktop'
+run = ['layout floating', 'move-node-to-workspace 3']
 
 
 # Workspace 4
@@ -244,61 +240,40 @@ run = ['move-node-to-workspace 4']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
-run = 'move-node-to-workspace 5'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'ru.yandex.desktop.telemost'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run = 'move-node-to-workspace 4'
 
 
 # Workspace 5
 [[on-window-detected]]
-if.app-id = 'ru.yandex.desktop.telemost'
+if.app-id = 'com.apple.Music'
 run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
-if.app-id = 'us.zoom.xos'
+if.app-id = 'com.apple.garageband9'
 run = 'move-node-to-workspace 5'
 
 
 # Workspace 6
 [[on-window-detected]]
-if.app-id = 'com.apple.Music'
-run = 'move-node-to-workspace 6'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.garageband10'
-run = 'move-node-to-workspace 6'
-
-
-# Workspace 7
-[[on-window-detected]]
-if.app-id = 'org.openvpn.client.app'
-run = ['layout floating', 'move-node-to-workspace 7']
-
-[[on-window-detected]]
-if.app-id = 'com.cisco.anyconnect.gui'
-run = ['layout floating', 'move-node-to-workspace 7']
-
-[[on-window-detected]]
-if.app-id = 'com.wireguard.macos'
-run = ['layout floating', 'move-node-to-workspace 7']
-
-
-# Workspace 8
-[[on-window-detected]]
 if.app-id = 'org.qbittorrent.qBittorrent'
-run = 'move-node-to-workspace 8'
+run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Preview'
-run = 'move-node-to-workspace 8'
+run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'notion.id'
-run = 'move-node-to-workspace 8'
+run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'com.automattic.SimplenoteMac'
-run = 'move-node-to-workspace 8'
-
-# Workspace 10
-[[on-window-detected]]
-if.app-id = 'com.bitwarden.desktop'
-run = ['layout floating', 'move-node-to-workspace 10']
+run = 'move-node-to-workspace 6'
