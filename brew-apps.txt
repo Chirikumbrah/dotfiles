@@ -4,7 +4,6 @@ clipboard
 cowsay
 fzf
 git-delta
-glab
 helm
 int128/kubelogin/kubelogin
 jq

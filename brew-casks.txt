@@ -1,0 +1,10 @@
+aerospace
+alacritty
+appcleaner
+chatgpt
+ente-auth
+font-ubuntu-mono-nerd-font
+httpie
+notion
+ollama
+orbstack
