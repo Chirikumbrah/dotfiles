@@ -84,5 +84,5 @@ _is_cmd_exist pip3 && complete -o default -F _pip_completion pip3
 
 _source_if_exist "$HOME/.cargo/env"
 _is_cmd_exist zoxide && eval "$(zoxide init bash)"
-_is_cmd_exist fzf && eval "$(fzf --bash)"
-_is_cmd_exist orbctl && eval "$(orbctl completion bash)"
+#_is_cmd_exist fzf && eval "$(fzf --bash)"
+#_is_cmd_exist orbctl && eval "$(orbctl completion bash)"
