@@ -25,7 +25,7 @@ filetype plugin indent on
 
 " Undofile Options
 if !isdirectory($HOME."/.cache/vim-undodir")
-    call mkdir($HOME."/.cache/vim-undodir", "", 0700)
+    call mkdir($HOME."/.cache/vim-undodir", "p", 0700)
 endif
 set undodir=~/.cache/vim-undodir
 set undofile
