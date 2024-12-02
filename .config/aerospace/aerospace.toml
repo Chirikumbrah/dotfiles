@@ -39,12 +39,7 @@ outer.right =      0
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 alt-enter = 'exec-and-forget open /Applications/Alacritty.app'
 alt-shift-w = 'exec-and-forget open -a /Applications/Brave\ Browser.app'
-alt-shift-t = 'exec-and-forget open -a /Applications/Telegram.app'
-alt-shift-s = 'exec-and-forget open -a /Applications/Simplenote.app'
-alt-shift-c = 'exec-and-forget open -a /System/Applications/Calculator.app'
 alt-shift-e = 'exec-and-forget open -a /System/Library/CoreServices/Finder.app'
-alt-shift-b = 'exec-and-forget open -a /Applications/Bitwarden.app'
-alt-shift-d = 'exec-and-forget open -a /Applications/iTranslate.app'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
@@ -262,6 +257,10 @@ run = 'move-node-to-workspace 5'
 
 
 # Workspace 6
+[[on-window-detected]]
+if.app-id = 'com.eltima.Folx3'
+run = 'move-node-to-workspace 6'
+
 [[on-window-detected]]
 if.app-id = 'org.qbittorrent.qBittorrent'
 run = 'move-node-to-workspace 6'
