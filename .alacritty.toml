@@ -16,6 +16,3 @@ startup_mode = "Maximized"
 option_as_alt = "Both"
 padding = { x = 1, y = 0 }
 
-[general]
-# import = ["~/.config/alacritty/themes/gruvbox_dark.toml"]
-import = ["~/.config/alacritty/themes/solarized_dark.toml"]
