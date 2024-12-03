@@ -38,7 +38,7 @@ map <silent> <esc> :noh <CR>
 """""" Autocommands """""
 " Remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
-autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+"autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 
 " Detect Helm templates as helm filetype
 autocmd BufRead,BufNewFile */templates/*.y*ml,*/templates/*.tpl set filetype=helm
@@ -53,20 +53,20 @@ augroup END
 """""" Plugins """""
 packadd! matchit
 
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+" let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+" if empty(glob(data_dir . '/autoload/plug.vim'))
+"     silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+"     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
 
-call plug#begin()
+" call plug#begin()
 
 " Colorscheme
-Plug 'ericbn/vim-solarized'
+" Plug 'ericbn/vim-solarized'
 
-call plug#end()
+" call plug#end()
 
 
 """""" Colorscheme """""
-set background=dark
-silent! colorscheme solarized
+"set background=dark
+silent! colorscheme habamax
