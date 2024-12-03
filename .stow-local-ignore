@@ -6,7 +6,8 @@ README.md
 
 .config/lazygit
 
-brew-apps.txt
+brew-*
+mas-*
 
 # zsh configs
 .zshrc
