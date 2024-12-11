@@ -1,13 +1,11 @@
 .git
-.gitignore
 .DS_Store
 
 README.md
 
 .config/lazygit
 
-brew-*
-mas-*
+other
 
 # zsh configs
 .zshrc

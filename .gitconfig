@@ -4,6 +4,7 @@
 [core]
     editor = $EDITOR
     pager = delta
+	excludesFile = ~/.gitignore
 [help]
     autocorrect = 20
 [pull]

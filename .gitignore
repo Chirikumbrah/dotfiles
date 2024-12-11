@@ -1,9 +1,3 @@
-.local/share/applications/_usr_lib*
-.local/share/applications/chrome*
-.local/share/applications/io.element*
-.local/share/applications/mimeinfo*
-.local/share/applications/kite-copilot.desktop
-.local/share/applications/kite.desktop
 .DS_Store
 qBittorrent/
 fish_variables
@@ -17,3 +11,5 @@ fish_variables
 .config/helm
 .config/mdless
 .config/argocd
+
+tags
