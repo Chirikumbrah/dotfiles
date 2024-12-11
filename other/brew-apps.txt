@@ -1,7 +1,6 @@
 argocd
 bash-completion@2
 clipboard
-cowsay
 fzf
 git-delta
 helm
@@ -11,11 +10,14 @@ k9s
 kubectx
 macos-trash
 mas
+md5sha1sum
 mdcat
 neovim
 node
 ripgrep
 stow
 tmux
+universal-ctags
 watch
+yq
 zoxide
