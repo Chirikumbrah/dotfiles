@@ -8,12 +8,10 @@ set incsearch hlsearch
 set laststatus=2
 set list listchars=tab:»\ ,nbsp:·,trail:·
 set nocompatible
-set nolangremap
 set noswapfile nowritebackup
 set number
 set path+=**
 set ruler
-set scrolloff=11
 set showcmd
 set smartcase
 set splitbelow splitright
@@ -26,14 +24,12 @@ filetype plugin indent on
 
 let c_comment_strings=1 " Highlighting strings inside C comments.
 let g:netrw_banner=0        " disable annoying banner
-let g:netrw_browse_split=4  " open in prior window
-let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 " Clear highlights with ESC
-map <silent> <esc> :noh <CR>
+map <silent> <esc> :noh<CR>
 
 " When editing a file, always jump to the last known cursor position.
 augroup vimStartup
@@ -53,13 +49,13 @@ set undodir=~/.vim/undodir
 set undofile
 
 autocmd BufWritePre * silent! %s/\s\+$//e " Remove trailing whitespace
-autocmd BufWritePre * silent! %s/^\(\s*\)#\(\S\)/\1# \2/g " Insert space after first '#' sign in the line
-autocmd BufWritePre * silent! %s/^\(\s*\)-\(\S\)/\1- \2/g " Insert space after first dash in the line
 
 augroup yamlcmds
     autocmd BufRead,BufNewFile */templates/*.y*ml,*/templates/*.tpl set filetype=helm " Detect Helm templates as helm filetype
     autocmd FileType helm setlocal syntax=yaml " Define syntax and indentation for helm filetype
     autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufWritePre *.yml,*.yaml,*.tpl silent! %s/^\(\s*\)#\(\S\)/\1# \2/g " Insert space after first '#' sign in the line
+    autocmd BufWritePre *.yml,*.yaml,*.tpl silent! %s/^\(\s*\)-\(\S\)/\1- \2/g " Insert space after first dash in the line
 augroup END
 
 packadd! matchit
