@@ -3,6 +3,7 @@ alacritty
 appcleaner
 chatgpt
 ente-auth
+folx
 font-ubuntu-mono-nerd-font
 httpie
 notion

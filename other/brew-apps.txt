@@ -3,6 +3,7 @@ bash-completion@2
 clipboard
 fzf
 git-delta
+go
 helm
 int128/kubelogin/kubelogin
 jq
@@ -15,6 +16,7 @@ mdcat
 neovim
 node
 ripgrep
+sl
 stow
 tmux
 universal-ctags
