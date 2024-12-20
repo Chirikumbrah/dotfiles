@@ -2,8 +2,7 @@ set autoindent expandtab tabstop=4 softtabstop=4 shiftwidth=4 smarttab
 set backspace=indent,eol,start
 set cursorline cursorcolumn
 set gp=git\ grep\ -n
-set hidden
-set ignorecase
+set hidden ignorecase
 set incsearch hlsearch
 set laststatus=2
 set list listchars=tab:»\ ,nbsp:·,trail:·
