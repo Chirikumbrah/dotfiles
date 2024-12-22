@@ -1,4 +1,4 @@
-if true then return {} end
+-- if true then return {} end
 return {
     "stevearc/conform.nvim",
     opts = {},
@@ -7,7 +7,7 @@ return {
     keys = {
         {
             -- Customize or remove this keymap to your liking
-            "<leader>cf",
+            "<leader>=",
             function()
                 require("conform").format({ async = true, lsp_format = "fallback" })
             end,
@@ -18,13 +18,19 @@ return {
     config = function()
         require("conform").setup({
             formatters_by_ft = {
+                css = { "prettierd" },
+                graphql = { "prettierd" },
+                javascript = { "prettierd" },
+                javascriptreact = { "prettierd" },
+                json = { "prettierd" },
                 lua = { "stylua" },
-                python = { "ruff-lsp" },
-                javascript = { { "prettierd", "prettier" } },
-                yaml = { { "prettierd", "prettier" } },
                 markdown = { { "prettierd", "prettier" } },
+                python = { "ruff-lsp" },
                 sh = { "shfmt" },
                 toml = { "taplo" },
+                typescript = { "prettierd" },
+                typescriptreact = { "prettierd" },
+                yaml = { { "prettierd", "prettier" } },
             },
             formatters = {
                 shfmt = {

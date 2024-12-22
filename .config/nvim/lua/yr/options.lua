@@ -1,8 +1,8 @@
 vim.opt.cursorline = true
+vim.opt.cursorcolumn = true
 vim.opt.ignorecase = true
 
 vim.opt.number = true
-vim.opt.relativenumber = false
 
 vim.opt.wrap = true
 
@@ -40,14 +40,15 @@ vim.g.netrw_banner = false
 vim.g.netrw_altv = true -- open splits to the right
 vim.g.netrw_preview = true -- preview split to the right
 vim.g.netrw_liststyle = 3 -- tree view
+vim.g.netrw_fastbrowse = 0 -- netrw as buffer
 
 local space = "·"
-vim.opt.list = false
+vim.opt.list = true
 vim.opt.listchars:append({
     -- tab = "⇥", -- this one conflicts with plugins for indent line
-    eol = "↵",
-    multispace = space,
-    lead = space,
+    -- eol = "↵",
+    -- multispace = space,
+    -- lead = space,
     trail = space,
     nbsp = space,
 })
@@ -67,6 +68,7 @@ if vim.fn.has("nvim-0.10") == 1 then
 else
     vim.opt.foldmethod = "indent"
 end
+
 vim.opt.fillchars = {
     vert = "│", -- alternatives ▕
     fold = " ",
