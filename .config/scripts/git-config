@@ -19,6 +19,18 @@ if [ -z "$3" ]; then
 else
     git config --local core.sshCommand "ssh -i $3"
 fi
+if [ -z "$4" ]; then
+    read -p "Enter your GPG Key ID: " GPG_KEY
+    if [ -z "$GPG_KEY" ]; then
+        echo "No GPG Key ID provided."
+    else
+        git config --local user.signingkey "$GPG_KEY"
+        git config --local commit.gpgsign true
+    fi
+else
+    git config --local user.signingkey "$GPG_KEY"
+    git config --local commit.gpgsign true
+fi
 
 git config --local user.name "$NAME"
 git config --local user.email "$EMAIL"
