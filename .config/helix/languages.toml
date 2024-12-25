@@ -1,0 +1,100 @@
+### languages
+
+# ### PYTHON ###
+[[language]]
+name = "python"
+scope = "source.python"
+injection-regex = "python"
+file-types = ["py"]
+shebangs = ["python"]
+comment-token = "#"
+roots = [
+  "pyproject.toml",
+  "main.py",
+  "setup.py",
+  "setup.cfg",
+  "requirements.txt",
+  "Pipfile",
+  "pyrightconfig.json",
+  "Poetry.lock",
+]
+language-servers = [
+  { name = "ruff-lsp", only-features = [
+    "format",
+    "diagnostics",
+    "code-action",
+  ] },
+  { name = "pyright", except-features = [
+    "format",
+  ] },
+]
+
+[language-server.ruff-lsp]
+command = "ruff-lsp"
+config.documentFormatting = true
+config.line-length = 100
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+config.reportMissingtypeStubs = false
+
+[[language.debugger.templates]]
+name = "source"
+request = "launch"
+completion = [{ name = "entrypoint", completion = "filename", default = "." }]
+args = { mode = "debug", program = "{0}" }
+
+[language.debugger]
+name = "debugpy"
+transport = "stdio"
+command = "python3"
+args = ["-m", "debugpy.adapter"]
+
+
+## YAML ###
+[[language]]
+name = "yaml"
+file-types = ["yaml", "yml"]
+formatter = { command = 'prettier', args = ["--parser", "yaml"] }
+auto-format = false
+
+[[language]]
+name = "json"
+auto-format = false
+
+### BASH
+[[language]]
+name = "bash"
+indent = { tab-width = 4, unit = "    " }
+formatter = { command = 'shfmt', args = ["-i", "4", "-ci"] }
+auto-format = false
+
+[[language]]
+name = "fish"
+formatter = { command = "fish_indent" }
+auto-format = false
+
+[[language]]
+name = "html"
+auto-format = false
+
+[[language]]
+name = "javascript"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = false
+
+[[language]]
+name = "typescript"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = false
+
+[[language]]
+name = "tsx"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = false
+
+[[language]]
+name = "markdown"
+formatter = { command = 'prettier', args = ["--parser", "markdown"] }
+auto-format = false
