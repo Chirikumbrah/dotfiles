@@ -1,4 +1,4 @@
-set autoindent expandtab tabstop=4 softtabstop=4 shiftwidth=4 smarttab
+set expandtab tabstop=4 softtabstop=4 shiftwidth=4 smarttab
 set backspace=indent,eol,start
 set cursorline cursorcolumn
 set gp=git\ grep\ -n
@@ -11,6 +11,7 @@ set noswapfile nowritebackup
 set number
 set path+=**
 set ruler
+set scrolloff=11
 set showcmd
 set smartcase
 set splitbelow splitright
@@ -25,7 +26,7 @@ let c_comment_strings=1 " Highlighting strings inside C comments.
 let g:netrw_banner=0        " disable annoying banner
 let g:netrw_liststyle=3     " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_fastbrowse = 0 " close NetRW after opening a file
 
 " Clear highlights with ESC
 map <silent> <esc> :noh<CR>
