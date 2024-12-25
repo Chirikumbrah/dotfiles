@@ -2,7 +2,9 @@ argocd
 bash-completion@2
 clipboard
 fzf
+git
 git-delta
+gnupg
 go
 helm
 int128/kubelogin/kubelogin
