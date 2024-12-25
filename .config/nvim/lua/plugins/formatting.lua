@@ -4,17 +4,6 @@ return {
     opts = {},
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
-    keys = {
-        {
-            -- Customize or remove this keymap to your liking
-            "<leader>=",
-            function()
-                require("conform").format({ async = true, lsp_format = "fallback" })
-            end,
-            mode = "",
-            desc = "Format buffer",
-        },
-    },
     config = function()
         require("conform").setup({
             formatters_by_ft = {

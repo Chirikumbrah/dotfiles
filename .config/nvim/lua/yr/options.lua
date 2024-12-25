@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 vim.opt.ignorecase = true
@@ -61,7 +63,7 @@ vim.opt.foldenable = false
 vim.opt.foldlevelstart = 1
 vim.g.markdown_folding = 1
 vim.opt.foldtext =
-    [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').' ... ' . '(' . (v:foldend - v:foldstart + 1) . ' lines)']]
+[[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').' ... ' . '(' . (v:foldend - v:foldstart + 1) . ' lines)']]
 if vim.fn.has("nvim-0.10") == 1 then
     vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
     vim.opt.foldmethod = "expr"
@@ -79,6 +81,17 @@ vim.opt.fillchars = {
     foldsep = "│",
     foldclose = "▸",
 }
+
+vim.diagnostic.config({
+    underline = true,
+    update_in_insert = false,
+    virtual_text = {
+        -- spacing = 4,
+        source = "if_many",
+        prefix = "●",
+    },
+    severity_sort = true,
+})
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0

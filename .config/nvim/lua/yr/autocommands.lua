@@ -26,14 +26,14 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     command = [[%s/\s\+$//e]],
 })
 
--- Find Files on startup
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        if vim.fn.argv(0) == "" then
-            require("telescope.builtin").find_files()
-        end
-    end,
-})
+-- -- Find Files on startup
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--     callback = function()
+--         if vim.fn.argv(0) == "" then
+--             require("telescope.builtin").find_files()
+--         end
+--     end,
+-- })
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
