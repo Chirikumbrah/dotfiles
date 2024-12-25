@@ -31,3 +31,5 @@
 	prompt = false
 [credential]
 	helper = store
+[gpg]
+	program = gpg
