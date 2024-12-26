@@ -7,7 +7,21 @@ return {
     config = function()
         -- Set up Mason and install set up language servers
         require("mason").setup()
-        require("mason-lspconfig").setup()
+        require("mason-lspconfig").setup({
+            ensure_installed = {
+                "bashls",
+                "clangd",
+                "docker_compose_language_service",
+                "dockerls",
+                "gopls",
+                "lua_ls",
+                "prettierd",
+                "ruff",
+                "shfmt",
+                "stylua",
+                "yamlls",
+            }
+        })
 
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
