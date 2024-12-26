@@ -6,18 +6,18 @@ end
 
 -- Detect Helm templates as helm filetype
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-  pattern = {"*/templates/*.y*ml", "*/templates/*.tpl"},
-  command = "set filetype=helm"
+    pattern = {"*/templates/*.y*ml", "*/templates/*.tpl"},
+    command = "set filetype=helm"
 })
 -- Define syntax and indentation for helm filetype
 vim.api.nvim_create_augroup("helm_syntax", { clear = true })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "helm",
-  callback = function()
-    vim.opt_local.syntax = "yaml"
-  end,
-  group = "helm_syntax"
+    pattern = "helm",
+    callback = function()
+        vim.opt_local.syntax = "yaml"
+    end,
+    group = "helm_syntax"
 })
 
 -- Remove Trailing whitespace
@@ -26,14 +26,34 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     command = [[%s/\s\+$//e]],
 })
 
--- -- Find Files on startup
--- vim.api.nvim_create_autocmd("VimEnter", {
---     callback = function()
---         if vim.fn.argv(0) == "" then
---             require("telescope.builtin").find_files()
---         end
---     end,
--- })
+-- Function to check if a floating dialog exists and if not
+-- then check for diagnostics under the cursor
+function OpenDiagnosticIfNoFloat()
+    for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+        if vim.api.nvim_win_get_config(winid).zindex then
+            return
+        end
+    end
+    -- THIS IS FOR BUILTIN LSP
+    vim.diagnostic.open_float(0, {
+        scope = "cursor",
+        focusable = false,
+        close_events = {
+            "CursorMoved",
+            "CursorMovedI",
+            "BufHidden",
+            "InsertCharPre",
+            "WinLeave",
+        },
+    })
+end
+-- Show diagnostics under the cursor when holding position
+vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
+vim.api.nvim_create_autocmd({ "CursorHold" }, {
+    pattern = "*",
+    command = "lua OpenDiagnosticIfNoFloat()",
+    group = "lsp_diagnostics_hold",
+})
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
