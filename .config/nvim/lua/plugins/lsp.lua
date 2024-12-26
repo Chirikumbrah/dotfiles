@@ -3,28 +3,29 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
-        -- Set up Mason and install set up language servers
-        require("mason").setup()
-        require("mason-lspconfig").setup({
+        require("mason-tool-installer").setup({
             ensure_installed = {
-                "bashls",
+                "bash-language-server",
                 "clangd",
-                "docker_compose_language_service",
-                "dockerls",
+                "docker-compose-language-service",
+                "dockerfile-language-server",
+                "gofumpt",
+                "goimports",
                 "gopls",
-                "lua_ls",
+                "lua-language-server",
                 "prettierd",
                 "ruff",
                 "shfmt",
                 "stylua",
-                "yamlls",
-            }
+                "yaml-language-server",
+            },
         })
-
+        require("mason").setup()
+        require("mason-lspconfig").setup()
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
         require("mason-lspconfig").setup_handlers({
             function(server_name)
                 require("lspconfig")[server_name].setup({
