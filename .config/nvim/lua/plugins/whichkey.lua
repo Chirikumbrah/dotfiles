@@ -15,6 +15,11 @@ return {
         { "<ESC>", vim.cmd.noh, desc = "Clear highlight", mode = "n" },
         { "gn", "<cmd>bnext<CR>", desc = "Go to next buffer", mode = "n" },
         { "gp", "<cmd>bprev<CR>", desc = "Go to previous buffer", mode = "n" },
+        { "<leader>y", '"+y', desc = "Copy to system clipboard", mode = { "n", "v" } },
+        { "<leader>p", '"+p', desc = "Paste after from system clipboard", mode = { "n", "v" } },
+        { "<leader>P", '"+P', desc = "Paste before from system clipboard", mode = { "n", "v" } },
+        { "<leader>t", [[<cmd>split | term<cr>A]], desc = "Open terminal in horizontal split", mode = "n" },
+        { "<leader><ESC>", '<C-\\><C-n>', desc = "Use <leader>ESC to enter in terminal normal mode", mode = "t" },
 
         ---- Telescope ----
         { "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Open file picker", mode = "n" },

@@ -21,6 +21,9 @@ vim.opt.laststatus = 3
 vim.opt.termguicolors = true
 vim.opt.incsearch = true
 
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
