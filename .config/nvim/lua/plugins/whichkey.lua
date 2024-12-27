@@ -58,7 +58,7 @@ return {
         { "<leader>h5", function() require("harpoon.ui").nav_file(5) end, desc = "Go to file 5", mode = "n", },
 
         ---- LSP ----
-        { "<leader>d",  "<cmd>Telescope diagnostics<cr>", desc = "Open diagnostic picker", mode = "n" },
+        { "<leader>d",  "<cmd>Telescope diagnostics<cr>", desc = "Open workspace diagnostics picker", mode = "n" },
         { "<leader>q", vim.diagnostic.setloclist, desc = "Add buffer diagnostics to the location list", mode = "n" },
         { "<leader>k", vim.lsp.buf.hover, desc = "Show docs for item under cursor", mode = "n" },
         { "<leader>a", vim.lsp.buf.code_action, desc = "Perform code action", mode = "n" },
