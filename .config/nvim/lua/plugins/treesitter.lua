@@ -16,6 +16,7 @@ return {
                 "markdown",
                 "python",
                 "requirements",
+                "tmux",
                 "toml",
                 "yaml",
             },
