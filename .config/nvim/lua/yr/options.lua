@@ -65,8 +65,6 @@ vim.wo.foldminlines = 1
 vim.opt.foldenable = false
 vim.opt.foldlevelstart = 1
 vim.g.markdown_folding = 1
-vim.opt.foldtext =
-    [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').' ... ' . '(' . (v:foldend - v:foldstart + 1) . ' lines)']]
 if vim.fn.has("nvim-0.10") == 1 then
     vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
     vim.opt.foldmethod = "expr"
