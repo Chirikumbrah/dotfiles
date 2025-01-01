@@ -15,6 +15,7 @@ return {
                 "lua",
                 "markdown",
                 "python",
+                "requirements",
                 "toml",
                 "yaml",
             },
