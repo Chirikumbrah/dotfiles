@@ -16,7 +16,8 @@ _source_if_exist() { [[ -r "$1" ]] && source "$1"; }
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 
-export EDITOR=nvim \
+export \
+    EDITOR=nvim \
     VISUAL=$EDITOR \
     BASH_SILENCE_DEPRECATION_WARNING=1 \
     XDG_CONFIG_HOME="$HOME/.config" \
@@ -50,22 +51,20 @@ __ps1() {
     venv=$(basename "$VIRTUAL_ENV")
     [[ -n "$branch" ]] && branch="$reset:$yellow$branch"
     [[ -n "$venv" ]] && venv="$cyan$venv$reset:"
-    PS1="$venv$green\u@\h$reset:$blue\w$branch\`$last_cmd_status\`$reset "
+    PS1="$venv$blue\w$branch\`$last_cmd_status\`$reset "
 }
 
 PROMPT_COMMAND="history -a ; __ps1"
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
-# ls
-alias l='ls --color=auto'
-alias ll='ls -halF'
-alias ls='ls -h --color=auto'
-
-# grep
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias \
+    l='ls --color=auto' \
+    ll='ls -halF' \
+    ls='ls -h --color=auto' \
+    grep='grep --color=auto' \
+    fgrep='fgrep --color=auto' \
+    egrep='egrep --color=auto'
 
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~~
 
