@@ -58,8 +58,10 @@ return {
         { "<leader>h5", function() require("harpoon.ui").nav_file(5) end, desc = "Go to file 5", mode = "n", },
 
         ---- LSP ----
-        { "<leader>d",  "<cmd>Telescope diagnostics<cr>", desc = "Open workspace diagnostics picker", mode = "n" },
-        { "<leader>q", vim.diagnostic.setloclist, desc = "Add buffer diagnostics to the location list", mode = "n" },
+        { "<leader>d", "<cmd>Telescope diagnostics<cr>", desc = "Open workspace diagnostics picker", mode = "n" },
+        { "<leader>s", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Open symbols picker", mode = "n" },
+        { "<leader>S", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Open workspace symbols picker", mode = "n" },
+        { "<leader>D", vim.diagnostic.open_float, desc = "Show diagnostic message under the cursor", mode = "n" },
         { "<leader>k", vim.lsp.buf.hover, desc = "Show docs for item under cursor", mode = "n" },
         { "<leader>a", vim.lsp.buf.code_action, desc = "Perform code action", mode = "n" },
         { "<leader>r", vim.lsp.buf.rename, desc = "Rename symbol", mode = "n" },
@@ -67,7 +69,7 @@ return {
         { "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic", mode = "n" },
         { "gd", vim.lsp.buf.definition, desc = "Go to definition", mode = "n" },
         { "gD", vim.lsp.buf.declaration, desc = "Go to declaration", mode = "n" },
-        { "gr", vim.lsp.buf.references, desc = "Go to references", mode = "n" },
+        { "gr", "<cmd>Telescope lsp_references<cr>", desc = "Go to references", mode = "n" },
         { "gi", vim.lsp.buf.implementation, desc = "Go to implementation", mode = "n" },
         { "gy", vim.lsp.buf.type_definition, desc = "Go to type definition", mode = "n" },
 
