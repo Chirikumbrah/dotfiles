@@ -62,13 +62,22 @@ PS1='$(__venv_info) %F{blue}%~${vcs_info_msg_0_} ${vim_mode} '
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ls
 alias \
     l='ls --color=auto' \
     ll='ls -halF' \
     ls='ls -h --color=auto' \
+# grep
+alias \
     grep='grep --color=auto' \
     fgrep='fgrep --color=auto' \
-    egrep='egrep --color=auto'
+    egrep='egrep --color=auto' \
+# git
+alias \
+    ga='git add ' \
+    gcm='git commit -m ' \
+    gd='git diff ' \
+    gs='git status' \
 
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~~
 
