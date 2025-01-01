@@ -56,7 +56,7 @@ function zle-line-finish { vim_mode=$vim_ins_mode }; zle -N zle-line-finish
 # Fixed by catching SIGINT (C-c), set vim_mode to INS and then repropagate the SIGINT, so if anything else depends on it, we will not break it
 # Thanks Ron! (see comments)
 function TRAPINT() { vim_mode=$vim_ins_mode; return $(( 128 + $1 )) }
-function __venv_info(){ venv="${VIRTUAL_ENV##*/}"; [[ -n "$venv" ]] && echo "%F{cyan}$venv%f" }
+function __venv_info(){ venv="${VIRTUAL_ENV##*/}"; [[ -n "$venv" ]] && echo "%F{magenta}$venv%f" }
 
 PS1='$(__venv_info) %F{blue}%~${vcs_info_msg_0_} ${vim_mode} '
 
