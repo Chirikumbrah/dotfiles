@@ -12,6 +12,7 @@ fish_variables
 .config/mdless
 .config/argocd
 
+.env
 local.docker-compose.yml
 docker-compose.local.yml
 
