@@ -11,6 +11,8 @@ setopt prompt_subst
 setopt auto_pushd
 bindkey -v
 bindkey -M menuselect '^[[Z' reverse-menu-complete
+bindkey "^N" history-beginning-search-forward
+bindkey "^P" history-beginning-search-backward
 zstyle ':completion:*' menu select
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -82,11 +84,9 @@ alias \
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~~
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    if [[ $commands[brew] ]]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-        FPATH="/opt/homebrew/share/zsh-completions":$FPATH
-        FPATH="/opt/homebrew/share/zsh/site-functions":$FPATH
-    fi
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    FPATH="/opt/homebrew/share/zsh-completions":$FPATH
+    FPATH="/opt/homebrew/share/zsh/site-functions":$FPATH
 fi
 
 autoload -Uz compinit
