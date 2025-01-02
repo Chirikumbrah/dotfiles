@@ -1,22 +1,14 @@
 # ~~~~~~~~~~~~~~~ Options ~~~~~~~~~~~~~~~~~~~~~~~~
-
 zmodload -i zsh/complist
 
-setopt extended_glob
-setopt null_glob
-setopt histignorealldups
-setopt sharehistory
-setopt histignorespace
-setopt prompt_subst
-setopt auto_pushd
-bindkey -v
+setopt extended_glob null_glob histignorealldups sharehistory histignorespace prompt_subst auto_pushd
+bindkey -v # VI mode
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 bindkey "^N" history-beginning-search-forward
 bindkey "^P" history-beginning-search-backward
 zstyle ':completion:*' menu select
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
-
 export \
     EDITOR=nvim \
     VISUAL=$EDITOR \
@@ -38,7 +30,6 @@ export \
     HIST_IGNORE="(&|ls|[bf]g|eb|gp|z|v|dot|exit|history)"
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
-
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git svn
 zstyle ':vcs_info:git*' formats " %F{yellow}%b"
@@ -63,7 +54,6 @@ function __venv_info(){ venv="${VIRTUAL_ENV##*/}"; [[ -n "$venv" ]] && echo "%F{
 PS1='$(__venv_info) %F{blue}%~${vcs_info_msg_0_} ${vim_mode} '
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
-
 # ls
 alias \
     l='ls --color=auto' \
@@ -82,7 +72,6 @@ alias \
     gs='git status' \
 
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~~
-
 if [[ "$OSTYPE" == "darwin"* ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
     FPATH="/opt/homebrew/share/zsh-completions":$FPATH
