@@ -25,26 +25,9 @@ return {
         { "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Open file picker", mode = "n" },
         { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Open buffer picker", mode = "n" },
         { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Open live grep", mode = "n" },
+        { "<leader>g", "<cmd>Telescope grep_string<cr>", desc = "Search word under cursor", mode = "n" },
         { "<leader>?", "<cmd>Telescope help_tags<cr>", desc = "Open command palette", mode = "n" },
         { "<leader>o", "<cmd>Telescope oldfiles<cr>", desc = "Open old files picker", mode = "n" },
-        {
-            "<leader>g",
-            desc = "Open git files picker",
-            mode = "n",
-            function()
-                local is_inside_work_tree = {}
-                local cwd = vim.fn.getcwd()
-                if is_inside_work_tree[cwd] == nil then
-                    vim.fn.system("git rev-parse --is-inside-work-tree")
-                    is_inside_work_tree[cwd] = vim.v.shell_error == 0
-                end
-                if is_inside_work_tree[cwd] then
-                    require("telescope.builtin").git_files({})
-                else
-                    require("telescope.builtin").find_files({})
-                end
-            end,
-        },
 
         ---- Harpoon ----
         { "<leader>hh", require("harpoon.ui").toggle_quick_menu, desc = "Open menu", mode = "n" },
