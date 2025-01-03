@@ -1,12 +1,16 @@
 # ~~~~~~~~~~~~~~~ Options ~~~~~~~~~~~~~~~~~~~~~~~~
 zmodload -i zsh/complist
-
+autoload edit-command-line; zle -N edit-command-line
 setopt extended_glob null_glob histignorealldups sharehistory histignorespace prompt_subst auto_pushd
+zstyle ':completion:*' menu select
+
+# ~~~~~~~~~~~~~~~ Bindings ~~~~~~~~~~~~~~~~~~~~~~~~
 bindkey -v # VI mode
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 bindkey "^N" history-beginning-search-forward
 bindkey "^P" history-beginning-search-backward
-zstyle ':completion:*' menu select
+bindkey "\ev" edit-command-line
+bindkey -M vicmd "\ev" edit-command-line
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 export \
