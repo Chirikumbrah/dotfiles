@@ -6,8 +6,8 @@ size = 17
 normal = { family = "UbuntuMono Nerd Font" }
 
 [terminal.shell]
-program = "/bin/zsh"
-args = ["-l", "-c", "tmux attach || tmux new-session -s $USER"]
+program = "/opt/homebrew/bin/tmux"
+args = ["new-session", "-A", "-s", "yr"]
 
 [window]
 decorations = "none"
