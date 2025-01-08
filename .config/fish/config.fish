@@ -27,7 +27,14 @@ set -gx XDG_CONFIG_HOME $HOME/.config
 # Set PATH
 set --universal fish_user_paths $fish_user_paths /opt/homebrew/bin "/Applications/Postgres.app/Contents/Versions/latest/bin" "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$HOME/.config/scripts" "$HOME/.cargo/bin" $HOME/.krew/bin
 
-# Initialize other apps
+abbr gs "git status"
+abbr gd "git diff"
+abbr ga 'git add'
+abbr gcm 'git commit -m'
+abbr gd 'git diff'
+abbr gs 'git status'
+
+# Initialize apps
 eval "$(/opt/homebrew/bin/brew shellenv)"
 zoxide init fish | source
 fzf --fish | source
