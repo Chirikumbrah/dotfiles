@@ -1,12 +1,15 @@
 argocd
 bash-completion@2
 clipboard
+docker-completion
+fish
 fzf
-git
 git-delta
 gnupg
 go
+helix
 helm
+hyperfine
 int128/kubelogin/kubelogin
 jq
 k9s
@@ -26,3 +29,5 @@ universal-ctags
 watch
 yq
 zoxide
+zsh-completions
+zsh-syntax-highlighting
