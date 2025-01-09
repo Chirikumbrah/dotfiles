@@ -10,10 +10,6 @@ if status is-interactive
         set -p fish_complete_path /opt/homebrew/share/fish/vendor_completions.d
     end
 
-    if test -d "$HOME/.config/fish/completions"
-        set -p fish_complete_path $HOME/.config/fish/completions
-    end
-
     # Disable welcome message
     set -U fish_greeting
 
@@ -38,4 +34,5 @@ if status is-interactive
     eval "$(/opt/homebrew/bin/brew shellenv)"
     zoxide init fish | source
     fzf --fish | source
+    docker completion fish | source
 end
