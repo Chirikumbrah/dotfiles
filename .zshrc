@@ -1,3 +1,5 @@
+[[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] && source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+
 # ~~~~~~~~~~~~~~~ Options ~~~~~~~~~~~~~~~~~~~~~~~~
 autoload edit-command-line; zle -N edit-command-line
 setopt extended_glob null_glob histignorealldups sharehistory histignorespace prompt_subst auto_pushd
@@ -23,22 +25,6 @@ export \
     SAVEHIST=100000 \
     HIST_IGNORE="(&|ls|[bf]g|gp|z|exit|history)"
 
-# ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
-__vi_ins="%(?.%F{green}(:.%F{red}%):)%f"
-__vi_cmd="%(?.%F{green}[¦.%F{red}]¦)%f"
-__vi_mode=$__vi_ins
-function zle-keymap-select { __vi_mode="${${KEYMAP/vicmd/${__vi_cmd}}/(main|viins)/${__vi_ins}}"; zle reset-prompt }; zle -N zle-keymap-select
-function zle-line-finish { __vi_mode=$__vi_ins }; zle -N zle-line-finish
-# Fix a bug when you C-c in CMD mode and you'd be prompted with CMD mode indicator, while in fact you would be in INS mode
-# Fixed by catching SIGINT (C-c), set __vi_mode to INS and then repropagate the SIGINT, so if anything else depends on it, we will not break it
-function TRAPINT() { __vi_mode=$__vi_ins; return $(( 128 + $1 )) }
-precmd() {
-    function { v="${VIRTUAL_ENV##*/}"; [[ -n "$v" ]] && __venv="%F{magenta}$v%f" } # get VENV
-    function { b=$(cat .git/HEAD 2>/dev/null); [[ -n "$b" ]] && { [[ "$b" =~ refs ]] && b=${b##*/} || b=${b:0:7}; __branch=" %F{yellow}$b%f" } } # get Git branch
-}
-
-PS1='${__venv} %F{blue}%~%F{yellow}${__branch} ${__vi_mode} '
-
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 # ls
 alias \
@@ -59,8 +45,15 @@ alias \
 
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~~
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    fpath+=( "/opt/homebrew/share/zsh-completions" )
+    [[ -r "/opt/homebrew/bin/brew" ]] \
+        && eval "$(/opt/homebrew/bin/brew shellenv)" \
+        || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" ; eval "$(/opt/homebrew/bin/brew shellenv)"
+    [[ -r "/opt/homebrew/share/zsh-completions" ]] \
+        && fpath+=( "/opt/homebrew/share/zsh-completions" ) \
+        || brew install zsh-completions ; fpath+=( "/opt/homebrew/share/zsh-completions" )
+    [[ -r "/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme" ]] \
+        && source "/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme" \
+        || brew install powerlevel10k ; source "/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme"
     path+=(
         "$HOME/.local/bin"
         "$HOME/.config/scripts"
@@ -74,7 +67,8 @@ fi
 autoload -Uz compinit
 for dump in ~/.zcompdump(N.mh+24); do compinit; done; compinit -C
 
-[[ -r "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 [[ $commands[zoxide] ]] && eval "$(zoxide init zsh)"
 [[ $commands[fzf] ]] && source <(fzf --zsh)
 [[ $commands[docker] ]] && source <(docker completion zsh)
+[[ -r "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+[[ -r "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
