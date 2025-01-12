@@ -2,7 +2,8 @@
 
 # ~~~~~~~~~~~~~~~ Options ~~~~~~~~~~~~~~~~~~~~~~~~
 autoload edit-command-line; zle -N edit-command-line
-setopt extended_glob null_glob histignorealldups sharehistory histignorespace prompt_subst auto_pushd
+setopt extended_glob null_glob histignorealldups sharehistory histignorespace prompt_subst
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Case insensitive completion
 zstyle ':completion:*' menu select
 
 # ~~~~~~~~~~~~~~~ Bindings ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -38,9 +39,10 @@ alias \
     egrep='egrep --color=auto' \
 # git
 alias \
-    ga='git add ' \
-    gcm='git commit -m ' \
-    gd='git diff ' \
+    ga='git add' \
+    gcl='git clone' \
+    gcm='git commit -m' \
+    gd='git diff' \
     gs='git status' \
 
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -71,4 +73,4 @@ for dump in ~/.zcompdump(N.mh+24); do compinit; done; compinit -C
 [[ $commands[fzf] ]] && source <(fzf --zsh)
 [[ $commands[docker] ]] && source <(docker completion zsh)
 [[ -r "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
-[[ -r "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
+[[ -r "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh" || p10k configure
