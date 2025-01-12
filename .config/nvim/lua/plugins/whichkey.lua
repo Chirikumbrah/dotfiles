@@ -1,5 +1,6 @@
 return {
     "folke/which-key.nvim",
+    dependencies = { "mbbill/undotree" },
     event = "VeryLazy",
     opts = {
         preset = "helix",
@@ -19,13 +20,28 @@ return {
         { "<leader>p", '"+p', desc = "Paste after from system clipboard", mode = { "n", "v" } },
         { "<leader>P", '"+P', desc = "Paste before from system clipboard", mode = { "n", "v" } },
         { "<leader>t", [[<cmd>split | term<cr>A]], desc = "Open terminal in horizontal split", mode = "n" },
-        { "<leader><ESC>", '<C-\\><C-n>', desc = "Use <leader>ESC to enter in terminal normal mode", mode = "t" },
+        { "<leader><ESC>", "<C-\\><C-n>", desc = "Use <leader>ESC to enter in terminal normal mode", mode = "t" },
 
         ---- Telescope ----
         { "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Open file picker", mode = "n" },
         { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Open buffer picker", mode = "n" },
-        { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Open live grep", mode = "n" },
-        { "<leader>g", "<cmd>Telescope grep_string<cr>", desc = "Search word under cursor", mode = "n" },
+        { "<leader>g", "<cmd>Telescope live_grep<cr>", desc = "Open live grep", mode = "n" },
+        {
+            "<leader>w",
+            function()
+                require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
+            end,
+            desc = "Search word under cursor",
+            mode = "n",
+        },
+        {
+            "<leader>W",
+            function()
+                require("telescope.builtin").grep_string({ search = vim.fn.expand("<cWORD>") })
+            end,
+            desc = "Search WORD under cursor",
+            mode = "n",
+        },
         { "<leader>?", "<cmd>Telescope help_tags<cr>", desc = "Open command palette", mode = "n" },
         { "<leader>o", "<cmd>Telescope oldfiles<cr>", desc = "Open old files picker", mode = "n" },
 
@@ -34,15 +50,55 @@ return {
         { "<leader>hn", require("harpoon.ui").nav_next, desc = "Go to next file", mode = "n" },
         { "<leader>hp", require("harpoon.ui").nav_prev, desc = "Go to previous file", mode = "n" },
         { "<leader>ha", require("harpoon.mark").add_file, desc = "Add file to harpoon", mode = "n" },
-        { "<leader>h1", function() require("harpoon.ui").nav_file(1) end, desc = "Go to file 1", mode = "n", },
-        { "<leader>h2", function() require("harpoon.ui").nav_file(2) end, desc = "Go to file 2", mode = "n", },
-        { "<leader>h3", function() require("harpoon.ui").nav_file(3) end, desc = "Go to file 3", mode = "n", },
-        { "<leader>h4", function() require("harpoon.ui").nav_file(4) end, desc = "Go to file 4", mode = "n", },
-        { "<leader>h5", function() require("harpoon.ui").nav_file(5) end, desc = "Go to file 5", mode = "n", },
+        {
+            "<leader>h1",
+            function()
+                require("harpoon.ui").nav_file(1)
+            end,
+            desc = "Go to file 1",
+            mode = "n",
+        },
+        {
+            "<leader>h2",
+            function()
+                require("harpoon.ui").nav_file(2)
+            end,
+            desc = "Go to file 2",
+            mode = "n",
+        },
+        {
+            "<leader>h3",
+            function()
+                require("harpoon.ui").nav_file(3)
+            end,
+            desc = "Go to file 3",
+            mode = "n",
+        },
+        {
+            "<leader>h4",
+            function()
+                require("harpoon.ui").nav_file(4)
+            end,
+            desc = "Go to file 4",
+            mode = "n",
+        },
+        {
+            "<leader>h5",
+            function()
+                require("harpoon.ui").nav_file(5)
+            end,
+            desc = "Go to file 5",
+            mode = "n",
+        },
 
         ---- LSP ----
         { "<leader>s", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Open symbols picker", mode = "n" },
-        { "<leader>S", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Open workspace symbols picker", mode = "n" },
+        {
+            "<leader>S",
+            "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+            desc = "Open workspace symbols picker",
+            mode = "n",
+        },
         { "<leader>D", vim.diagnostic.open_float, desc = "Show diagnostic message under the cursor", mode = "n" },
         { "<leader>k", vim.lsp.buf.hover, desc = "Show docs for item under cursor", mode = "n" },
         { "<leader>a", vim.lsp.buf.code_action, desc = "Perform code action", mode = "n" },
@@ -56,9 +112,16 @@ return {
         { "gy", vim.lsp.buf.type_definition, desc = "Go to type definition", mode = "n" },
 
         ---- Formatting ----
-        { "<leader>=", function() require("conform").format({ async = true, lsp_format = "fallback" }) end, mode = "", desc = "Format buffer", },
+        {
+            "<leader>=",
+            function()
+                require("conform").format({ async = true, lsp_format = "fallback" })
+            end,
+            mode = "n",
+            desc = "Format buffer",
+        },
 
         ---- Undotree ----
-        { "<leader>u", vim.cmd.UndotreeToggle, mode = "n"},
+        { "<leader>u", vim.cmd.UndotreeToggle, mode = "n", desc = "Toggle undotree" },
     },
 }
