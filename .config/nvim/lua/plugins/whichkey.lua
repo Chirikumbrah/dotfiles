@@ -41,7 +41,6 @@ return {
         { "<leader>h5", function() require("harpoon.ui").nav_file(5) end, desc = "Go to file 5", mode = "n", },
 
         ---- LSP ----
-        { "<leader>d", "<cmd>Telescope diagnostics<cr>", desc = "Open workspace diagnostics picker", mode = "n" },
         { "<leader>s", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Open symbols picker", mode = "n" },
         { "<leader>S", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Open workspace symbols picker", mode = "n" },
         { "<leader>D", vim.diagnostic.open_float, desc = "Show diagnostic message under the cursor", mode = "n" },
