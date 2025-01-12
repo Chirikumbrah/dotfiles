@@ -1,7 +1,7 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    config = function ()
+    config = function()
         local configs = require("nvim-treesitter.configs")
 
         configs.setup({
@@ -30,15 +30,15 @@ return {
                     if ok and stats and stats.size > max_filesize then
                         return true
                     end
-                end
+                end,
             },
             indent = {
                 enable = true,
                 disable = {
                     "yaml",
-                }
+                },
             },
             additional_vim_regex_highlighting = false,
         })
-    end
+    end,
 }
