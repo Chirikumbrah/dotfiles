@@ -57,5 +57,8 @@ return {
 
         ---- Formatting ----
         { "<leader>=", function() require("conform").format({ async = true, lsp_format = "fallback" }) end, mode = "", desc = "Format buffer", },
+
+        ---- Undotree ----
+        { "<leader>u", vim.cmd.UndotreeToggle, mode = "n"},
     },
 }
