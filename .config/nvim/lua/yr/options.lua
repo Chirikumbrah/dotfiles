@@ -85,8 +85,5 @@ vim.opt.fillchars = {
 
 vim.diagnostic.config({ virtual_text = false, severity_sort = true })
 
--- Fix markdown indentation settings
-vim.g.markdown_recommended_style = 0
-vim.g.mkdp_browser = "Brave Browser"
 
 vim.cmd.colorscheme("habamax")
