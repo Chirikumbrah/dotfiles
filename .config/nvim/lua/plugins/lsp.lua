@@ -8,7 +8,6 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
     },
     config = function()
         -- variables
@@ -30,7 +29,7 @@ return {
                 "goimports",
                 "gopls",
                 "lua-language-server",
-                "prettierd",
+                "prettier",
                 "pyright",
                 "ruff",
                 "beautysh",
@@ -51,22 +50,22 @@ return {
         })
         -- completion configs
         cmp.setup({
+            completion = { autocomplete = false },
             snippet = {
                 expand = function(args)
                     require("luasnip").lsp_expand(args.body)
                 end,
             },
             mapping = cmp.mapping.preset.insert({
-                ["<C-e>"] = function(fallback) if cmp.visible() then cmp.close() else cmp.complete() end end,
+                ["<C-Space>"] = function(fallback) if cmp.visible() then cmp.close() else cmp.complete() end end,
                 ["<C-d>"] = cmp.mapping.scroll_docs(4),
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-                ['<C-p>'] = cmp.mapping.select_prev_item(),
-                ['<C-n>'] = cmp.mapping.select_next_item(),
+                ["<C-n>"] = function(fallback) if cmp.visible() then cmp.select_next_item() else fallback() end end,
+                ["<C-p>"] = function(fallback) if cmp.visible() then cmp.select_prev_item() else fallback() end end,
             }),
             sources = {
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
-                { name = "buffer" },
             },
         })
     end,
