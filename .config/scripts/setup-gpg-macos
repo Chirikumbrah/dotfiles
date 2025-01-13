@@ -1,0 +1,16 @@
+#!/bin/bash
+
+brew install gpg2 gnupg pinentry-mac
+
+# Make the directory
+mkdir -p ~/.gnupg
+
+# Tells GPG which pinentry program to use
+echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
+
+# This tells gpg to use the gpg-agent
+echo 'use-agent' > ~/.gnupg/gpg.conf
+
+chmod 700 ~/.gnupg
+
+killall gpg-agent
