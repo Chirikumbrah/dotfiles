@@ -42,6 +42,7 @@ alias \
     ga='git add' \
     gcl='git clone' \
     gcm='git commit -m' \
+    gco='git checkout' \
     gd='git diff' \
     gs='git status' \
 
