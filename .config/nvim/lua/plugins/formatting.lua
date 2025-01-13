@@ -7,21 +7,21 @@ return {
     config = function()
         require("conform").setup({
             formatters_by_ft = {
-                css = { "prettierd" },
+                css = { "prettier" },
                 go = { "goimports", "gofmt" },
-                graphql = { "prettierd" },
-                javascript = { "prettierd" },
-                javascriptreact = { "prettierd" },
-                json = { "prettierd" },
+                graphql = { "prettier" },
+                javascript = { "prettier" },
+                javascriptreact = { "prettier" },
+                json = { "prettier" },
                 lua = { "stylua" },
-                markdown = { { "prettierd", "prettier" } },
+                markdown = { "prettier" },
                 python = { "ruff-lsp" },
                 sh = { "beautysh" },
                 zsh = { "beautysh" },
                 toml = { "taplo" },
-                typescript = { "prettierd" },
-                typescriptreact = { "prettierd" },
-                yaml = { { "prettierd", "prettier" } },
+                typescript = { "prettier" },
+                typescriptreact = { "prettier" },
+                yaml = { "prettier" },
             },
             formatters = {
                 shfmt = {
