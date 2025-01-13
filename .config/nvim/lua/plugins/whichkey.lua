@@ -1,14 +1,11 @@
 return {
     "folke/which-key.nvim",
-    dependencies = { "mbbill/undotree" },
+    dependencies = { "mbbill/undotree", lazy = true },
     event = "VeryLazy",
     opts = {
         preset = "helix",
         icons = {
             mappings = false,
-        },
-        spec = {
-            { "<leader>h", group = "Harpoon" },
         },
     },
     keys = {
@@ -16,90 +13,35 @@ return {
         { "<ESC>", vim.cmd.noh, desc = "Clear highlight", mode = "n" },
         { "gn", "<cmd>bnext<CR>", desc = "Go to next buffer", mode = "n" },
         { "gp", "<cmd>bprev<CR>", desc = "Go to previous buffer", mode = "n" },
+        { "<leader>e", "<cmd>25Lexplore<CR>", desc = "Open file browser", mode = "n" },
         { "<leader>y", '"+y', desc = "Copy to system clipboard", mode = { "n", "v" } },
         { "<leader>p", '"+p', desc = "Paste after from system clipboard", mode = { "n", "v" } },
         { "<leader>P", '"+P', desc = "Paste before from system clipboard", mode = { "n", "v" } },
         { "<leader>t", [[<cmd>split | term<cr>A]], desc = "Open terminal in horizontal split", mode = "n" },
         { "<leader><ESC>", "<C-\\><C-n>", desc = "Use <leader>ESC to enter in terminal normal mode", mode = "t" },
 
-        ---- Telescope ----
-        { "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Open file picker", mode = "n" },
-        { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Open buffer picker", mode = "n" },
-        { "<leader>g", "<cmd>Telescope live_grep<cr>", desc = "Open live grep", mode = "n" },
-        {
-            "<leader>w",
-            function()
-                require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
-            end,
-            desc = "Search word under cursor",
-            mode = "n",
-        },
-        {
-            "<leader>W",
-            function()
-                require("telescope.builtin").grep_string({ search = vim.fn.expand("<cWORD>") })
-            end,
-            desc = "Search WORD under cursor",
-            mode = "n",
-        },
-        { "<leader>?", "<cmd>Telescope help_tags<cr>", desc = "Open command palette", mode = "n" },
-        { "<leader>o", "<cmd>Telescope oldfiles<cr>", desc = "Open old files picker", mode = "n" },
+        ---- Fzf ----
+        { "<leader>f", require('fzf-lua').files, desc = "Open file picker", mode = "n" },
+        { "<leader>b", require('fzf-lua').buffers, desc = "Open buffer picker", mode = "n" },
+        { "<leader>g", require('fzf-lua').live_grep, desc = "Open live grep", mode = "n" },
+        { "<leader>w", require('fzf-lua').grep_cword, desc = "Search word under cursor", mode = "n", },
+        { "<leader>W", require('fzf-lua').grep_cWORD, desc = "Search WORD under cursor", mode = "n", },
+        { "<leader>?", require('fzf-lua').helptags, desc = "Open command palette", mode = "n" },
+        { "<leader>o", require('fzf-lua').oldfiles, desc = "Open old files picker", mode = "n" },
 
         ---- Harpoon ----
-        { "<leader>hh", require("harpoon.ui").toggle_quick_menu, desc = "Open menu", mode = "n" },
-        { "<leader>hn", require("harpoon.ui").nav_next, desc = "Go to next file", mode = "n" },
-        { "<leader>hp", require("harpoon.ui").nav_prev, desc = "Go to previous file", mode = "n" },
-        { "<leader>ha", require("harpoon.mark").add_file, desc = "Add file to harpoon", mode = "n" },
-        {
-            "<leader>h1",
-            function()
-                require("harpoon.ui").nav_file(1)
-            end,
-            desc = "Go to file 1",
-            mode = "n",
-        },
-        {
-            "<leader>h2",
-            function()
-                require("harpoon.ui").nav_file(2)
-            end,
-            desc = "Go to file 2",
-            mode = "n",
-        },
-        {
-            "<leader>h3",
-            function()
-                require("harpoon.ui").nav_file(3)
-            end,
-            desc = "Go to file 3",
-            mode = "n",
-        },
-        {
-            "<leader>h4",
-            function()
-                require("harpoon.ui").nav_file(4)
-            end,
-            desc = "Go to file 4",
-            mode = "n",
-        },
-        {
-            "<leader>h5",
-            function()
-                require("harpoon.ui").nav_file(5)
-            end,
-            desc = "Go to file 5",
-            mode = "n",
-        },
+        { "<leader>h", require("harpoon.ui").toggle_quick_menu, desc = "Open harpoon menu", mode = "n" },
+        { "<leader>x", require("harpoon.mark").add_file, desc = "Add file to harpoon", mode = "n" },
+        { "<leader>1", function() require("harpoon.ui").nav_file(1) end, desc = "Go to harpoon file 1", mode = "n", },
+        { "<leader>2", function() require("harpoon.ui").nav_file(2) end, desc = "Go to harpoon file 2", mode = "n", },
+        { "<leader>3", function() require("harpoon.ui").nav_file(3) end, desc = "Go to harpoon file 3", mode = "n", },
+        { "<leader>4", function() require("harpoon.ui").nav_file(4) end, desc = "Go to harpoon file 4", mode = "n", },
+        { "<leader>5", function() require("harpoon.ui").nav_file(5) end, desc = "Go to harpoon file 5", mode = "n", },
 
         ---- LSP ----
-        { "<leader>s", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Open symbols picker", mode = "n" },
-        {
-            "<leader>S",
-            "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-            desc = "Open workspace symbols picker",
-            mode = "n",
-        },
-        { "<leader>D", vim.diagnostic.open_float, desc = "Show diagnostic message under the cursor", mode = "n" },
+        { "<leader>s", require('fzf-lua').lsp_document_symbols, desc = "Open symbols picker", mode = "n" },
+        { "<leader>S", require('fzf-lua').lsp_live_workspace_symbols, desc = "Open workspace symbols picker", mode = "n" },
+        { "<leader>d", require('fzf-lua').lsp_workspace_diagnostics, desc = "Open diagnostics picker", mode = "n" },
         { "<leader>k", vim.lsp.buf.hover, desc = "Show docs for item under cursor", mode = "n" },
         { "<leader>a", vim.lsp.buf.code_action, desc = "Perform code action", mode = "n" },
         { "<leader>r", vim.lsp.buf.rename, desc = "Rename symbol", mode = "n" },
@@ -107,7 +49,7 @@ return {
         { "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic", mode = "n" },
         { "gd", vim.lsp.buf.definition, desc = "Go to definition", mode = "n" },
         { "gD", vim.lsp.buf.declaration, desc = "Go to declaration", mode = "n" },
-        { "gr", "<cmd>Telescope lsp_references<cr>", desc = "Go to references", mode = "n" },
+        { "gr", require('fzf-lua').lsp_references, desc = "Go to references", mode = "n" },
         { "gi", vim.lsp.buf.implementation, desc = "Go to implementation", mode = "n" },
         { "gy", vim.lsp.buf.type_definition, desc = "Go to type definition", mode = "n" },
 
