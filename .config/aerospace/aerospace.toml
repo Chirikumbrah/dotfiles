@@ -280,3 +280,8 @@ run = 'move-node-to-workspace 6'
 if.app-id = 'com.apple.Notes'
 run = 'move-node-to-workspace 6'
 
+
+# Workspace 8
+[[on-window-detected]]
+if.app-id = 'com.microsoft.rdc.macos'
+run = 'move-node-to-workspace 8'
