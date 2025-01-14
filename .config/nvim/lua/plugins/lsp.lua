@@ -8,6 +8,7 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
     },
     config = function()
         -- variables
@@ -57,7 +58,7 @@ return {
                 end,
             },
             mapping = cmp.mapping.preset.insert({
-                ["<C-Space>"] = function(fallback) if cmp.visible() then cmp.close() else cmp.complete() end end,
+                ["<C-k>"] = function(fallback) if cmp.visible() then cmp.close() else cmp.complete() end end,
                 ["<C-d>"] = cmp.mapping.scroll_docs(4),
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-n>"] = function(fallback) if cmp.visible() then cmp.select_next_item() else fallback() end end,
@@ -66,6 +67,7 @@ return {
             sources = {
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
+                { name = "buffer" },
             },
         })
     end,
