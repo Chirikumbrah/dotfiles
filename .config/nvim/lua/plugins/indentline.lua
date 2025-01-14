@@ -1,16 +1,7 @@
 return {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {},
+    "shellRaining/hlchunk.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
-        require("ibl").setup({
-            indent = {
-                char = "┃",
-                smart_indent_cap = true,
-            },
-            scope = {
-                show_start = false,
-            },
-        })
+        require("hlchunk").setup({ indent = { enable = true } })
     end,
 }
