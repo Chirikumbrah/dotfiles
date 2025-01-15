@@ -1,12 +1,10 @@
 return {
     "folke/which-key.nvim",
-    dependencies = { "mbbill/undotree", lazy = true },
+    dependencies = { { "mbbill/undotree", lazy = true } },
     event = "VeryLazy",
     opts = {
         preset = "helix",
-        icons = {
-            mappings = false,
-        },
+        icons = { mappings = false },
     },
     keys = {
         ---- NeoVim ----
@@ -21,27 +19,26 @@ return {
         { "<leader><ESC>", "<C-\\><C-n>", desc = "Use <leader>ESC to enter in terminal normal mode", mode = "t" },
 
         ---- Fzf ----
-        { "<leader>f", require('fzf-lua').files, desc = "Open file picker", mode = "n" },
-        { "<leader>b", require('fzf-lua').buffers, desc = "Open buffer picker", mode = "n" },
-        { "<leader>g", require('fzf-lua').live_grep, desc = "Open live grep", mode = "n" },
-        { "<leader>w", require('fzf-lua').grep_cword, desc = "Search word under cursor", mode = "n", },
-        { "<leader>W", require('fzf-lua').grep_cWORD, desc = "Search WORD under cursor", mode = "n", },
-        { "<leader>?", require('fzf-lua').helptags, desc = "Open command palette", mode = "n" },
-        { "<leader>o", require('fzf-lua').oldfiles, desc = "Open old files picker", mode = "n" },
+        { "<leader>f", require("fzf-lua").files, desc = "Open file picker", mode = "n" },
+        { "<leader>B", require("fzf-lua").buffers, desc = "Open buffer picker", mode = "n" },
+        { "<leader>/", require("fzf-lua").live_grep, desc = "Open live grep", mode = "n" },
+        { "<leader>w", require("fzf-lua").grep_cword, desc = "Search word under cursor", mode = "n" },
+        { "<leader>W", require("fzf-lua").grep_cWORD, desc = "Search WORD under cursor", mode = "n" },
+        { "<leader>?", require("fzf-lua").helptags, desc = "Open command palette", mode = "n" },
+        { "<leader>o", require("fzf-lua").oldfiles, desc = "Open old files picker", mode = "n" },
 
-        ---- Harpoon ----
-        { "<leader>h", require("harpoon.ui").toggle_quick_menu, desc = "Open harpoon menu", mode = "n" },
-        { "<leader>x", require("harpoon.mark").add_file, desc = "Add file to harpoon", mode = "n" },
-        { "<leader>1", function() require("harpoon.ui").nav_file(1) end, desc = "Go to harpoon file 1", mode = "n", },
-        { "<leader>2", function() require("harpoon.ui").nav_file(2) end, desc = "Go to harpoon file 2", mode = "n", },
-        { "<leader>3", function() require("harpoon.ui").nav_file(3) end, desc = "Go to harpoon file 3", mode = "n", },
-        { "<leader>4", function() require("harpoon.ui").nav_file(4) end, desc = "Go to harpoon file 4", mode = "n", },
-        { "<leader>5", function() require("harpoon.ui").nav_file(5) end, desc = "Go to harpoon file 5", mode = "n", },
+        ---- Snipe ----
+        { "<leader>b", require("snipe").open_buffer_menu, desc = "Go to buffer", mode = "n" },
 
         ---- LSP ----
-        { "<leader>s", require('fzf-lua').lsp_document_symbols, desc = "Open symbols picker", mode = "n" },
-        { "<leader>S", require('fzf-lua').lsp_live_workspace_symbols, desc = "Open workspace symbols picker", mode = "n" },
-        { "<leader>d", require('fzf-lua').lsp_workspace_diagnostics, desc = "Open diagnostics picker", mode = "n" },
+        { "<leader>s", require("fzf-lua").lsp_document_symbols, desc = "Open symbols picker", mode = "n" },
+        {
+            "<leader>S",
+            require("fzf-lua").lsp_live_workspace_symbols,
+            desc = "Open workspace symbols picker",
+            mode = "n",
+        },
+        { "<leader>d", require("fzf-lua").lsp_workspace_diagnostics, desc = "Open diagnostics picker", mode = "n" },
         { "<leader>k", vim.lsp.buf.hover, desc = "Show docs for item under cursor", mode = "n" },
         { "<leader>a", vim.lsp.buf.code_action, desc = "Perform code action", mode = "n" },
         { "<leader>r", vim.lsp.buf.rename, desc = "Rename symbol", mode = "n" },
@@ -49,7 +46,7 @@ return {
         { "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic", mode = "n" },
         { "gd", vim.lsp.buf.definition, desc = "Go to definition", mode = "n" },
         { "gD", vim.lsp.buf.declaration, desc = "Go to declaration", mode = "n" },
-        { "gr", require('fzf-lua').lsp_references, desc = "Go to references", mode = "n" },
+        { "gr", require("fzf-lua").lsp_references, desc = "Go to references", mode = "n" },
         { "gi", vim.lsp.buf.implementation, desc = "Go to implementation", mode = "n" },
         { "gy", vim.lsp.buf.type_definition, desc = "Go to type definition", mode = "n" },
 
