@@ -11,6 +11,7 @@ return {
         "hrsh7th/cmp-buffer",
     },
     config = function()
+        vim.diagnostic.config({ virtual_text = false, severity_sort = true })
         -- variables
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
