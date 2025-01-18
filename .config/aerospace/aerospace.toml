@@ -282,6 +282,10 @@ if.app-id = 'com.microsoft.rdc.macos'
 run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.ScreenContinuity'
+run = 'move-node-to-workspace 8'
+
+[[on-window-detected]]
 if.app-id = 'com.bitwarden.desktop'
 run = ['move-node-to-workspace 8']
 
