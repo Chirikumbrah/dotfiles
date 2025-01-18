@@ -20,10 +20,10 @@ vim.api.nvim_create_autocmd("FileType", {
     group = "helm_syntax",
 })
 
--- Remove Trailing whitespace
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    pattern = { "*" },
-    command = [[%s/\s\+$//e]],
+-- Detect *.conf as nginx filetype
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = { "*.conf" },
+    command = "set filetype=nginx",
 })
 
 -- Restore cursor position
