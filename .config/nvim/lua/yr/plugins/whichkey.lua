@@ -16,6 +16,7 @@ return {
         { "<leader>p", '"+p', desc = "Paste after from system clipboard", mode = { "n", "v" } },
         { "<leader>P", '"+P', desc = "Paste before from system clipboard", mode = { "n", "v" } },
         { "<leader>t", [[<cmd>split | term<cr>A]], desc = "Open terminal in horizontal split", mode = "n" },
+        { "<leader><BS>", [[<cmd>%s/\s\+$//e<cr><cmd>noh<cr>]], desc = "Remove trailing whitespace", mode = "n" },
         { "<leader><ESC>", "<C-\\><C-n>", desc = "Use <leader>ESC to enter in terminal normal mode", mode = "t" },
 
         ---- Fzf ----
@@ -51,14 +52,7 @@ return {
         { "gy", vim.lsp.buf.type_definition, desc = "Go to type definition", mode = "n" },
 
         ---- Formatting ----
-        {
-            "<leader>=",
-            function()
-                require("conform").format({ async = true, lsp_format = "fallback" })
-            end,
-            mode = "n",
-            desc = "Format buffer",
-        },
+        { "<leader>=", function() require("conform").format({ async = true, lsp_format = "fallback" }) end, mode = "n", desc = "Format buffer" },
 
         ---- Undotree ----
         { "<leader>u", vim.cmd.UndotreeToggle, mode = "n", desc = "Toggle undotree" },
