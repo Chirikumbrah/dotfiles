@@ -31,6 +31,11 @@ return {
         ---- Snipe ----
         { "<leader>b", require("snipe").open_buffer_menu, desc = "Go to buffer", mode = "n" },
 
+        ---- Gitsigns ----
+        { "]h", require("gitsigns").next_hunk, desc = "Go to next git hunk", mode = "n" },
+        { "[h", require("gitsigns").prev_hunk, desc = "Go to previous git hunk", mode = "n" },
+        { "<leader>h", require("gitsigns").stage_hunk, desc = "Stage hunk", mode = {"n", "v"}},
+
         ---- LSP ----
         { "<leader>s", require("fzf-lua").lsp_document_symbols, desc = "Open symbols picker", mode = "n" },
         {
