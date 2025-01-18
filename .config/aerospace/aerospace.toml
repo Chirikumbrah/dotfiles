@@ -218,11 +218,6 @@ run = ['layout floating', 'move-node-to-workspace 3']
 if.app-id = 'com.wireguard.macos'
 run = ['layout floating', 'move-node-to-workspace 3']
 
-[[on-window-detected]]
-if.app-id = 'com.bitwarden.desktop'
-run = ['move-node-to-workspace 3']
-
-
 # Workspace 4
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
@@ -285,3 +280,8 @@ run = 'move-node-to-workspace 6'
 [[on-window-detected]]
 if.app-id = 'com.microsoft.rdc.macos'
 run = 'move-node-to-workspace 8'
+
+[[on-window-detected]]
+if.app-id = 'com.bitwarden.desktop'
+run = ['move-node-to-workspace 8']
+
