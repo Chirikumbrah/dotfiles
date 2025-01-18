@@ -38,12 +38,7 @@ return {
 
         ---- LSP ----
         { "<leader>s", require("fzf-lua").lsp_document_symbols, desc = "Open symbols picker", mode = "n" },
-        {
-            "<leader>S",
-            require("fzf-lua").lsp_live_workspace_symbols,
-            desc = "Open workspace symbols picker",
-            mode = "n",
-        },
+        { "<leader>S", require("fzf-lua").lsp_live_workspace_symbols, desc = "Open workspace symbols picker", mode = "n", },
         { "<leader>d", require("fzf-lua").lsp_workspace_diagnostics, desc = "Open diagnostics picker", mode = "n" },
         { "<leader>k", vim.lsp.buf.hover, desc = "Show docs for item under cursor", mode = "n" },
         { "<leader>a", vim.lsp.buf.code_action, desc = "Perform code action", mode = "n" },
