@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
-vim.opt.ignorecase = true
 
 vim.opt.number = true
 
@@ -15,7 +14,6 @@ vim.g.matchparen_insert_timeout = 20
 vim.opt.termguicolors = true
 vim.opt.incsearch = true
 
-vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 vim.opt.tabstop = 4
