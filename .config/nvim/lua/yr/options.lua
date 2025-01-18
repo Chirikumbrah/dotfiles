@@ -38,18 +38,4 @@ vim.g.netrw_banner = false
 vim.g.netrw_liststyle = 3 -- tree view
 vim.g.netrw_fastbrowse = 0 -- netrw as buffer
 
-vim.opt.list = true
-vim.opt.listchars:append({ trail =  "·", nbsp =  "·" })
-
--- vim.opt.fillchars = {
---     vert = "│", -- alternatives ▕
---     fold = " ",
---     eob = " ", -- suppress ~ at EndOfBuffer
---     diff = "╱", -- alternatives = ⣿ ░ ─
---     msgsep = "‾",
---     foldopen = "▾",
---     foldsep = "│",
---     foldclose = "▸",
--- }
-
 vim.cmd.colorscheme("habamax")
