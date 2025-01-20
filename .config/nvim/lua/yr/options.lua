@@ -14,8 +14,6 @@ vim.g.matchparen_insert_timeout = 20
 vim.opt.termguicolors = true
 vim.opt.incsearch = true
 
-vim.opt.splitright = true
-
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
