@@ -7,17 +7,19 @@ return {
         opts = {
             ensure_installed = {
                 "bash-language-server",
+                "beautysh",
                 "clangd",
                 "docker-compose-language-service",
                 "dockerfile-language-server",
                 "gofumpt",
                 "goimports",
                 "gopls",
+                "helm-ls",
                 "lua-language-server",
+                "nginx-language-server",
                 "prettier",
                 "pyright",
                 "ruff",
-                "beautysh",
                 "stylua",
                 "yaml-language-server",
             },
@@ -55,7 +57,7 @@ return {
             vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
             vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
             -- start lsp on VeryLazy event
-            vim.cmd("MasonToolsInstallSync")
+            vim.cmd("MasonToolsInstall")
             vim.cmd("LspStart")
         end,
     },
