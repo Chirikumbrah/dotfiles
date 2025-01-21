@@ -27,9 +27,6 @@ return {
                 ["<C-d>"] = cmp.mapping.scroll_docs(4),
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
                 ["<Tab>"] = cmp.mapping.confirm(),
-                -- ["<C-n>"] = function(fallback) if cmp.visible() then cmp.select_next_item() else fallback() end end,
-                -- ["<C-p>"] = function(fallback) if cmp.visible() then cmp.select_prev_item() else fallback() end end,
-                -- ["<C-e>"] = function(fallback) if cmp.visible() then cmp.close() else cmp.complete() end end,
             }),
             sources = {
                 { name = "nvim_lsp" },
