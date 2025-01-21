@@ -1,4 +1,4 @@
--- OPTIONS
+-- OPTIONS --
 vim.g.mapleader = " "
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
@@ -24,13 +24,11 @@ vim.g.netrw_banner = false
 vim.g.netrw_liststyle = 3 -- tree view
 vim.g.netrw_fastbrowse = 0 -- netrw as buffer
 
--- COLORSCHEME
+-- COLORSCHEME --
 vim.cmd.colorscheme("habamax")
 
--- KEYMAPS
+-- KEYMAPS --
 vim.keymap.set("n", "<ESC>", vim.cmd.noh, { desc = "Clear highlight" })
--- vim.keymap.set("n", "gn", "<cmd>bnext<CR>", { desc = "Go to next buffer" })
--- vim.keymap.set("n", "gp", "<cmd>bprev<CR>", { desc = "Go to previous buffer" })
 vim.keymap.set("n", "<leader>e", "<cmd>25Lexplore<CR>", { desc = "Open file browser" })
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste after from system clipboard" })
@@ -39,7 +37,7 @@ vim.keymap.set("n", "<leader>t", [[<cmd>split | term<cr>A]], { desc = "Open term
 vim.keymap.set("n", "<leader><BS>", [[<cmd>%s/\s\+$//e<cr><cmd>noh<cr>]], { desc = "Remove trailing whitespace" })
 vim.keymap.set("t", "<leader><ESC>", "<C-\\><C-n>", { desc = "Enter normal mode in terminal" })
 
--- AUTOCOMMANDS
+-- AUTOCOMMANDS --
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { -- Detect Helm templates as helm filetype
     pattern = { "*/templates/*.y*ml", "*/templates/*.tpl" },
     command = "set filetype=helm",
@@ -57,7 +55,7 @@ vim.api.nvim_create_autocmd("TextYankPost", { -- Highlight on yank
     end,
 })
 
--- LAZY
+-- LAZY --
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     vim.fn.system({
@@ -70,9 +68,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup({
-    spec = "plugins",
+require("lazy").setup("plugins", {
     change_detection = { notify = false },
     performance = { rtp = { disabled_plugins = { "gzip", "tarPlugin", "tohtml", "tutor", "zipPlugin" } } },
 })
