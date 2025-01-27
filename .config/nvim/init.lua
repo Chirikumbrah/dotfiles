@@ -21,8 +21,6 @@ vim.opt.signcolumn = "yes"
 vim.opt.smoothscroll = true
 vim.opt.updatetime = 50
 vim.g.netrw_banner = false
-vim.g.netrw_liststyle = 3 -- tree view
-vim.g.netrw_fastbrowse = 0 -- netrw as buffer
 
 -- COLORSCHEME --
 vim.cmd.colorscheme("habamax")
