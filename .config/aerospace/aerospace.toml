@@ -218,6 +218,7 @@ run = ['layout floating', 'move-node-to-workspace 3']
 if.app-id = 'com.wireguard.macos'
 run = ['layout floating', 'move-node-to-workspace 3']
 
+
 # Workspace 4
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
@@ -227,18 +228,6 @@ run = ['move-node-to-workspace 4']
 if.app-id = 'com.insystem.reddyosx'
 run = ['move-node-to-workspace 4']
 
-[[on-window-detected]]
-if.app-id = 'com.apple.mail'
-run = 'move-node-to-workspace 4'
-
-[[on-window-detected]]
-if.app-id = 'ru.yandex.desktop.telemost'
-run = 'move-node-to-workspace 4'
-
-[[on-window-detected]]
-if.app-id = 'us.zoom.xos'
-run = 'move-node-to-workspace 4'
-
 
 # Workspace 5
 [[on-window-detected]]
@@ -247,6 +236,22 @@ run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.garageband9'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'com.carriez.rustdesk'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'ru.yandex.desktop.telemost'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
 run = 'move-node-to-workspace 5'
 
 
