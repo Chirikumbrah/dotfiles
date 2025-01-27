@@ -20,7 +20,8 @@ export \
     XDG_CONFIG_HOME="$HOME/.config" \
     GPG_TTY=$(tty) \
     VIRTUAL_ENV_DISABLE_PROMPT=1 \
-
+    FZF_DEFAULT_COMMAND='find . -type f ! -path ".git/*"' \
+    FZF_DEFAULT_OPTS="--preview '[ -d {} ] && ls -1a --color {}/ || cat -n {}'" \
     KEYTIMEOUT=1 \
     HISTSIZE=100000 \
     SAVEHIST=100000 \
@@ -29,14 +30,14 @@ export \
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 # ls
 alias \
-    l='ls --color=auto' \
+    l='ls --color' \
     ll='ls -halF' \
-    ls='ls -h --color=auto' \
+    ls='ls -h --color' \
 # grep
 alias \
-    grep='grep --color=auto' \
-    fgrep='fgrep --color=auto' \
-    egrep='egrep --color=auto' \
+    grep='grep --color' \
+    fgrep='fgrep --color' \
+    egrep='egrep --color' \
 # git
 alias \
     ga='git add' \
