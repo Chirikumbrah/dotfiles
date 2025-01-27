@@ -13,6 +13,7 @@ fish_variables
 .config/argocd
 
 .env
+.venv
 local.docker-compose.yml
 docker-compose.local.yml
 
