@@ -1,7 +1,5 @@
 argocd
-bash-completion@2
 clipboard
-docker-completion
 fish
 fzf
 git-delta
@@ -17,10 +15,10 @@ kubectx
 macos-trash
 mas
 md5sha1sum
-mdcat
 neovim
 node
-ripgrep
+pinentry-mac
+powerlevel10k
 sl
 stow
 tmux
@@ -30,4 +28,3 @@ watch
 yq
 zoxide
 zsh-completions
-zsh-syntax-highlighting
