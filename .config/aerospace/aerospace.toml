@@ -254,11 +254,7 @@ run = 'move-node-to-workspace 5'
 
 # Workspace 6
 [[on-window-detected]]
-if.app-id = 'com.eltima.Folx3'
-run = 'move-node-to-workspace 6'
-
-[[on-window-detected]]
-if.app-id = 'org.qbittorrent.qBittorrent'
+if.app-id = 'org.m0k.transmission'
 run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
