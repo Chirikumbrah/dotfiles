@@ -171,6 +171,9 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-id = 'com.wireguard.macos'
 run = ['layout floating']
+[[on-window-detected]]
+if.app-id = 'com.electron.ollama'
+run = ['layout floating']
 
 
 
@@ -192,14 +195,6 @@ run = 'move-node-to-workspace 2'
 
 # Workspace 3
 [[on-window-detected]]
-if.app-id = 'com.openai.chat'
-run = ['move-node-to-workspace 3']
-
-[[on-window-detected]]
-if.app-id = 'com.electron.ollama'
-run = ['layout floating', 'move-node-to-workspace 3']
-
-[[on-window-detected]]
 if.app-id = 'org.jkiss.dbeaver.core.product'
 run = 'move-node-to-workspace 3'
 
@@ -211,32 +206,16 @@ run = 'move-node-to-workspace 3'
 if.app-id = 'dev.kdrag0n.MacVirt'
 run = ['layout floating', 'move-node-to-workspace 3']
 
-[[on-window-detected]]
-if.app-id = 'com.cisco.anyconnect.gui'
-run = ['layout floating', 'move-node-to-workspace 3']
-
 
 # Workspace 4
 [[on-window-detected]]
-if.app-id = 'ru.keepcoder.Telegram'
-run = ['move-node-to-workspace 4']
-
-[[on-window-detected]]
-if.app-id = 'com.insystem.reddyosx'
+if.app-id = 'com.openai.chat'
 run = ['move-node-to-workspace 4']
 
 
 # Workspace 5
 [[on-window-detected]]
-if.app-id = 'com.apple.Music'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
 if.app-id = 'com.apple.garageband9'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'com.carriez.rustdesk'
 run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
@@ -253,10 +232,6 @@ run = 'move-node-to-workspace 5'
 
 
 # Workspace 6
-[[on-window-detected]]
-if.app-id = 'org.m0k.transmission'
-run = 'move-node-to-workspace 6'
-
 [[on-window-detected]]
 if.app-id = 'com.apple.Preview'
 run = 'move-node-to-workspace 6'
@@ -276,14 +251,38 @@ run = 'move-node-to-workspace 6'
 
 # Workspace 8
 [[on-window-detected]]
+if.app-id = 'ru.keepcoder.Telegram'
+run = ['move-node-to-workspace 8']
+
+[[on-window-detected]]
+if.app-id = 'com.insystem.reddyosx'
+run = ['move-node-to-workspace 8']
+
+
+# Workspace 9
+[[on-window-detected]]
 if.app-id = 'com.microsoft.rdc.macos'
-run = 'move-node-to-workspace 8'
+run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.ScreenContinuity'
-run = 'move-node-to-workspace 8'
+run = 'move-node-to-workspace 9'
+
+[[on-window-detected]]
+if.app-id = 'com.carriez.rustdesk'
+run = 'move-node-to-workspace 5'
+
+
+# Workspace 10
+[[on-window-detected]]
+if.app-id = 'org.m0k.transmission'
+run = 'move-node-to-workspace 10'
 
 [[on-window-detected]]
 if.app-id = 'com.bitwarden.desktop'
-run = ['move-node-to-workspace 8']
+run = ['move-node-to-workspace 10']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = 'move-node-to-workspace 10'
 
