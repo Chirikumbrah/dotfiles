@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { -- Detect Helm templa
     command = "set filetype=helm",
 })
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { -- Detect *.conf as nginx filetype
-    pattern = { "*.conf" },
+    pattern = { "*.conf", "*.conf.tmpl" },
     command = "set filetype=nginx",
 })
 vim.api.nvim_create_autocmd("BufReadPost", { -- Restore cursor position
