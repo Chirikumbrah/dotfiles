@@ -12,5 +12,15 @@ return {
         { "<leader>S", function() require("fzf-lua").lsp_live_workspace_symbols() end, desc = "Open workspace symbols picker", },
         { "<leader>d", function() require("fzf-lua").lsp_workspace_diagnostics() end, desc = "Open diagnostics picker" },
         { "gr", function() require("fzf-lua").lsp_references() end, desc = "Go to references" },
+        { "gd", function()
+            local params = vim.lsp.util.make_position_params()
+            vim.lsp.buf_request(0, "textDocument/definition", params, function(_, result)
+                if result and #result == 1 then
+                    vim.lsp.util.jump_to_location(result[1])
+                else
+                    require("fzf-lua").lsp_definitions() -- Fallback to picker
+                end
+            end)
+        end, desc = "Go to definition (jump if one, pick if multiple)" }
     },
 }

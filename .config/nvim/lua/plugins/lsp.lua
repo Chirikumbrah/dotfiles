@@ -52,7 +52,7 @@ return {
             vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename symbol" })
             vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
             vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+            -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
             vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
             vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
