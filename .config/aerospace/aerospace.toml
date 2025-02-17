@@ -223,10 +223,6 @@ if.app-id = 'com.apple.garageband9'
 run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
-if.app-id = 'ru.yandex.desktop.telemost'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
 if.app-id = 'us.zoom.xos'
 run = 'move-node-to-workspace 5'
 
@@ -274,7 +270,11 @@ run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
 if.app-id = 'com.carriez.rustdesk'
-run = 'move-node-to-workspace 5'
+run = 'move-node-to-workspace 9'
+
+[[on-window-detected]]
+if.app-id = 'ru.yandex.desktop.telemost'
+run = 'move-node-to-workspace 9'
 
 
 # Workspace 10
