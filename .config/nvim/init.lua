@@ -15,6 +15,7 @@ vim.opt.shiftround = true
 vim.opt.smartindent = true
 vim.opt.expandtab = true
 vim.opt.undofile = true
+vim.opt.list = true
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
