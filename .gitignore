@@ -15,6 +15,6 @@ fish_variables
 .env
 .venv
 local.docker-compose.yml
-docker-compose.local.yml
+*.local.*
 
 tags
