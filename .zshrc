@@ -6,12 +6,17 @@ setopt extended_glob null_glob histignorealldups sharehistory histignorespace pr
 # zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Case insensitive completion
 zstyle ':completion:*' menu select
 
+# ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
+function __fzf-urls-tmux { echo && [[ $commands[fzf-urls-tmux] ]] && fzf-urls-tmux ; zle reset-prompt }; zle -N __fzf-urls-tmux
+
 # ~~~~~~~~~~~~~~~ Bindings ~~~~~~~~~~~~~~~~~~~~~~~~
 bindkey -v # VI mode
 bindkey "^N" history-beginning-search-forward
 bindkey "^P" history-beginning-search-backward
 bindkey "\ev" edit-command-line
 bindkey -M vicmd "\ev" edit-command-line
+bindkey "\eu" __fzf-urls-tmux
+bindkey -M vicmd "\eu" __fzf-urls-tmux
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 export \
