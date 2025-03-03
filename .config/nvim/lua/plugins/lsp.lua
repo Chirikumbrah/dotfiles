@@ -47,7 +47,6 @@ return {
                 },
             })
             vim.diagnostic.config({ virtual_text = false, severity_sort = true })
-            vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, { desc = "Show docs for item under cursor" })
             vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { desc = "Perform code action" })
             vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename symbol" })
             vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
