@@ -7,11 +7,10 @@ normal = { family = "UbuntuMono Nerd Font" }
 
 [terminal.shell]
 program = "/bin/zsh"
-args = ["-l", "-c", "tmux new -A -s $USER || exec zsh"]
+args = ["-l", "-c", "tmux attach || tmux new -s $USER || exec zsh"]
 
 [window]
 decorations = "none"
 startup_mode = "Maximized"
 option_as_alt = "Both"
 padding = { x = 1, y = 0 }
-
