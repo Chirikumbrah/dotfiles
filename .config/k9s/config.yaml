@@ -6,14 +6,15 @@ k9s:
   readOnly: false
   noExitOnCtrlC: false
   ui:
-    enableMouse: false
+    enableMouse: true
     headless: false
-    logoless: false
+    logoless: true
     crumbsless: false
     reactive: false
     noIcons: false
     defaultsToFullScreen: false
-  skipLatestRevCheck: false
+    skin: transparent
+  skipLatestRevCheck: true
   disablePodCounting: false
   shellPod:
     image: busybox:1.35.0
@@ -28,7 +29,7 @@ k9s:
       labels: {}
   logger:
     tail: 100
-    buffer: 5000
+    buffer: 10000
     sinceSeconds: -1
     textWrap: false
     showTime: false
