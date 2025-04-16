@@ -9,6 +9,9 @@ normal = { family = "UbuntuMono Nerd Font" }
 program = "/bin/zsh"
 args = ["-l", "-c", "tmux attach || tmux new -s $USER || exec zsh"]
 
+[colors.primary]
+background = "#000000"
+
 [window]
 decorations = "none"
 startup_mode = "Maximized"
