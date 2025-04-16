@@ -25,6 +25,7 @@ vim.g.netrw_banner = false
 
 -- COLORSCHEME --
 vim.cmd.colorscheme("habamax")
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 
 -- KEYMAPS --
 vim.keymap.set("n", "<ESC>", vim.cmd.noh, { desc = "Clear highlight" })
