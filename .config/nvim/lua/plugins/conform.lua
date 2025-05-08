@@ -16,6 +16,7 @@ return {
             sh = { "beautysh" },
             zsh = { "beautysh" },
             toml = { "taplo" },
+            terraform = { "terraform_fmt" },
             typescript = { "prettier" },
             typescriptreact = { "prettier" },
             yaml = { "prettier" },

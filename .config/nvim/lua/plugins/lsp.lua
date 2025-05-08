@@ -18,6 +18,8 @@ return {
                 "lua-language-server",
                 "nginx-language-server",
                 "prettier",
+                "terraform-ls",
+                "snyk",
                 "pyright",
                 "ruff",
                 "stylua",
