@@ -3,11 +3,10 @@
 # ~~~~~~~~~~~~~~~ Options ~~~~~~~~~~~~~~~~~~~~~~~~
 autoload edit-command-line; zle -N edit-command-line
 setopt extended_glob null_glob histignorealldups sharehistory histignorespace prompt_subst
-# zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Case insensitive completion
 zstyle ':completion:*' menu select
 
-# ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
-function __fzf-urls-tmux { echo && [[ $commands[fzf-urls-tmux] ]] && fzf-urls-tmux ; zle reset-prompt }; zle -N __fzf-urls-tmux
+# # ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
+# function __fzf-urls-tmux { echo && [[ $commands[fzf-urls-tmux] ]] && fzf-urls-tmux ; zle reset-prompt }; zle -N __fzf-urls-tmux
 
 # ~~~~~~~~~~~~~~~ Bindings ~~~~~~~~~~~~~~~~~~~~~~~~
 bindkey -v # VI mode
@@ -15,8 +14,8 @@ bindkey "^N" history-beginning-search-forward
 bindkey "^P" history-beginning-search-backward
 bindkey "\ev" edit-command-line
 bindkey -M vicmd "\ev" edit-command-line
-bindkey "\eu" __fzf-urls-tmux
 bindkey -M vicmd "\eu" __fzf-urls-tmux
+# bindkey "\eu" __fzf-urls-tmux
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 export \
@@ -24,6 +23,8 @@ export \
     VISUAL=$EDITOR \
     XDG_CONFIG_HOME="$HOME/.config" \
     GPG_TTY=$(tty) \
+    CARGO_HOME=$HOME/.cargo \
+    GOPATH=$HOME/.go \
     VIRTUAL_ENV_DISABLE_PROMPT=1 \
     FZF_DEFAULT_COMMAND='find . -type f ! -path ".git/*"' \
     FZF_DEFAULT_OPTS="--preview '[ -d {} ] && ls -1a --color {}/ || cat -n {}'" \
@@ -37,12 +38,12 @@ export \
 alias \
     l='ls --color' \
     ll='ls -halF' \
-    ls='ls -h --color' \
+    ls='ls -h --color'
 # grep
 alias \
     grep='grep --color' \
     fgrep='fgrep --color' \
-    egrep='egrep --color' \
+    egrep='egrep --color'
 # git
 alias \
     ga='git add' \
@@ -50,7 +51,7 @@ alias \
     gcm='git commit -m' \
     gco='git checkout' \
     gd='git diff' \
-    gs='git status' \
+    gs='git status'
 
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~~
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -66,10 +67,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     path+=(
         "$HOME/.local/bin"
         "$HOME/.config/scripts"
-        "$HOME/.cargo/bin"
         "/Applications/Postgres.app/Contents/Versions/latest/bin"
         "/Library/Frameworks/Python.framework/Versions/3.12/bin"
         "$HOME/.orbstack/bin"
+        "$CARGO_HOME/bin"
+        "$GOPATH/bin"
     )
 fi
 
@@ -79,5 +81,5 @@ for dump in ~/.zcompdump(N.mh+24); do compinit; done; compinit -C
 [[ $commands[zoxide] ]] && eval "$(zoxide init zsh)"
 [[ $commands[fzf] ]] && source <(fzf --zsh)
 [[ $commands[docker] ]] && source <(docker completion zsh)
-[[ -r "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+[[ -r "$CARGO_HOME/env" ]] && source "$CARGO_HOME/env"
 [[ -r "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh" || p10k configure
