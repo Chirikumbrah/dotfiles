@@ -3,7 +3,8 @@ return {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         lazy = true,
         dependencies = { "williamboman/mason.nvim" },
-        cmd = "MasonToolsInstallSync",
+        event = "VeryLazy",
+        cmd = { "MasonToolsInstall", "MasonToolsInstallSync" },
         opts = {
             ensure_installed = {
                 "bash-language-server",
@@ -29,8 +30,7 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
-        event = "VeryLazy",
-        cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+        event = { "BufReadPost", "BufNewFile" },
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "williamboman/mason.nvim",
@@ -58,9 +58,6 @@ return {
             -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
             vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
-            -- start lsp on VeryLazy event
-            vim.cmd("MasonToolsInstall")
-            vim.cmd("LspStart")
         end,
     },
 }
