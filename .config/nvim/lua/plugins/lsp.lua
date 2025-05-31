@@ -32,18 +32,27 @@ return {
         "neovim/nvim-lspconfig",
         event = { "BufReadPost", "BufNewFile" },
         dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
+            "saghen/blink.cmp",
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
             "WhoIsSethDaniel/mason-tool-installer.nvim",
         },
         config = function()
+            local capabilities = {
+                textDocument = {
+                    foldingRange = {
+                        dynamicRegistration = false,
+                        lineFoldingOnly = true,
+                    },
+                },
+            }
+            capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
             require("mason").setup()
             require("mason-lspconfig").setup({
                 handlers = {
                     function(server_name)
                         require("lspconfig")[server_name].setup({
-                            capabilities = require("cmp_nvim_lsp").default_capabilities(),
+                            capabilities = capabilities,
                         })
                     end,
                 },
