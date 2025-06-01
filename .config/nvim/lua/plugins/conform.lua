@@ -12,7 +12,7 @@ return {
             json = { "prettier" },
             lua = { "stylua" },
             markdown = { "prettier" },
-            python = { "ruff-lsp" },
+            python = { "ruff_format", "ruff_organize_imports", "ruff_fix" },
             sh = { "beautysh" },
             zsh = { "beautysh" },
             toml = { "taplo" },

@@ -1,0 +1,36 @@
+return {
+    {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        lazy = true,
+        dependencies = { "williamboman/mason.nvim" },
+        event = "VeryLazy",
+        cmd = { "MasonToolsInstall", "MasonToolsInstallSync" },
+        opts = {
+            ensure_installed = {
+                "docker-compose-language-service",
+                "nginx-language-server",
+            },
+        },
+    },
+    {
+        "neovim/nvim-lspconfig",
+        event = { "BufReadPost", "BufNewFile" },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "WhoIsSethDaniel/mason-tool-installer.nvim",
+        },
+        config = function()
+            require("mason").setup()
+            require("mason-lspconfig").setup({
+                handlers = {
+                    function(server_name)
+                        require("lspconfig")[server_name].setup({})
+                    end,
+                },
+            })
+            -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+            -- vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
+        end,
+    },
+}
