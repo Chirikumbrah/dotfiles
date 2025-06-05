@@ -20,7 +20,9 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.smoothscroll = true
 vim.opt.updatetime = 50
-vim.g.netrw_banner = false
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
+-- vim.g.netrw_banner = false
 
 -- COLORSCHEME --
 vim.cmd.colorscheme("habamax")
@@ -28,11 +30,11 @@ vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 
 -- KEYMAPS --
 vim.keymap.set("n", "<ESC>", vim.cmd.noh, { desc = "Clear highlight" })
-vim.keymap.set("n", "<leader>e", "<cmd>25Lexplore<CR>", { desc = "Open file browser" })
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste after from system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste before from system clipboard" })
 vim.keymap.set("n", "<leader><BS>", [[<cmd>%s/\s\+$//e<cr><cmd>noh<cr>]], { desc = "Remove trailing whitespace" })
+-- vim.keymap.set("n", "<leader>e", "<cmd>25Lexplore<CR>", { desc = "Open file browser" })
 -- vim.keymap.set("i", "<c-space>", function()
 --     vim.lsp.completion.get()
 -- end)
@@ -89,5 +91,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", {
     change_detection = { notify = false },
-    performance = { rtp = { disabled_plugins = { "gzip", "tarPlugin", "tohtml", "tutor", "zipPlugin" } } },
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                "gzip",
+                "tarPlugin",
+                "tohtml",
+                "tutor",
+                "netrw",
+                "zipPlugin",
+            },
+        },
+    },
 })
