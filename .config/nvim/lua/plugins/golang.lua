@@ -1,5 +1,9 @@
 return {
     "olexsmir/gopher.nvim",
     ft = "go",
-    opts = {},
+    opts = {
+        gotag = {
+            transform = "camelcase",
+        },
+    },
 }
