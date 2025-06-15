@@ -6,7 +6,7 @@ return {
         icons = { mappings = false },
         spec = {
             { "gr", group = "+LSP/fzf-lua" },
-            { "<leader>g", group = "+gitsigns" }
-        }
+            { "<leader>g", group = "+gitsigns" },
+        },
     },
 }
