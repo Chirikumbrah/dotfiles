@@ -2,7 +2,8 @@ return {
     "ibhagwan/fzf-lua",
     keys = {
         { "<leader>/", function() require("fzf-lua").live_grep() end,                  desc = "Open live grep" },
-        { "<leader>?", function() require("fzf-lua").helptags() end,                   desc = "Open command palette" },
+        { "<leader>h", function() require("fzf-lua").helptags() end,                   desc = "Open command picker" },
+        { "<leader>k", function() require("fzf-lua").keymaps() end,                    desc = "Open keymaps picker" },
         { "<leader>S", function() require("fzf-lua").lsp_live_workspace_symbols() end, desc = "Open workspace symbols picker", },
         { "<leader>W", function() require("fzf-lua").grep_cWORD() end,                 desc = "Search WORD under cursor" },
         { "<leader>b", function() require("fzf-lua").buffers() end,                    desc = "Open buffer picker" },
