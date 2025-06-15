@@ -1,5 +1,7 @@
--- OPTIONS --
+-- OPTIONS -- {{{
 vim.g.mapleader = " "
+vim.opt.foldmethod = "marker"
+vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 vim.opt.number = true
@@ -23,23 +25,32 @@ vim.opt.updatetime = 50
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 -- vim.g.netrw_banner = false
+-- }}}
 
--- COLORSCHEME --
+-- COLORSCHEME {{{
 vim.cmd.colorscheme("habamax")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- }}}
 
--- KEYMAPS --
+-- KEYMAPS {{{
 vim.keymap.set("n", "<ESC>", vim.cmd.noh, { desc = "Clear highlight" })
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste after from system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste before from system clipboard" })
 vim.keymap.set("n", "<leader><BS>", [[<cmd>%s/\s\+$//e<cr><cmd>noh<cr>]], { desc = "Remove trailing whitespace" })
+vim.keymap.set("n", "]d", function()
+    vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Jump to next diagnostic" })
+vim.keymap.set("n", "[d", function()
+    vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Jump to previous diagnostic" })
 -- vim.keymap.set("n", "<leader>e", "<cmd>25Lexplore<CR>", { desc = "Open file browser" })
 -- vim.keymap.set("i", "<c-space>", function()
 --     vim.lsp.completion.get()
 -- end)
+-- }}}
 
--- LSP --
+-- LSP {{{
 vim.lsp.enable({
     "luals",
     "clangd",
@@ -52,20 +63,11 @@ vim.lsp.enable({
     "helmls",
     "yamlls",
 })
-vim.diagnostic.config({ virtual_lines = { current_line = true } })
+-- vim.diagnostic.config({ virtual_text = { current_line = true } })
+vim.diagnostic.config({ virtual_text = false, severity_sort = true })
+-- }}}
 
--- -- COMPLETIONS --
--- vim.api.nvim_create_autocmd("LspAttach", {
---     callback = function(ev)
---         local client = vim.lsp.get_client_by_id(ev.data.client_id)
---         if client:supports_method("textDocument/completion") then
---             vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
---         end
---     end,
--- })
--- vim.cmd("set completeopt+=menuone,noselect,popup")
-
--- AUTOCOMMANDS --
+-- AUTOCOMMANDS {{{
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { -- Detect Helm templates as helm filetype
     pattern = { "*/templates/*.y*ml", "*/templates/*.tpl", "Chart.y*ml" },
     command = "set filetype=helm",
@@ -75,8 +77,9 @@ vim.api.nvim_create_autocmd("TextYankPost", { -- Highlight on yank
         vim.highlight.on_yank({ higroup = "Visual", timeout = 400 })
     end,
 })
+-- }}}
 
--- LAZY --
+-- LAZY {{{
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     vim.fn.system({
@@ -104,3 +107,4 @@ require("lazy").setup("plugins", {
         },
     },
 })
+-- }}}
