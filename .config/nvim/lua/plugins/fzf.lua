@@ -9,7 +9,6 @@ return {
         { "<leader>b", function() require("fzf-lua").buffers() end,                    desc = "Open buffer picker" },
         { "<leader>d", function() require("fzf-lua").lsp_workspace_diagnostics() end,  desc = "Open diagnostics picker" },
         { "<leader>f", function() require("fzf-lua").files() end,                      desc = "Open file picker" },
-        { "<leader>o", function() require("fzf-lua").oldfiles() end,                   desc = "Open old files picker" },
         { "<leader>s", function() require("fzf-lua").lsp_document_symbols() end,       desc = "Open symbols picker" },
         { "<leader>w", function() require("fzf-lua").grep_cword() end,                 desc = "Search word under cursor" },
         { "gd",        function() require("fzf-lua").lsp_definitions() end,            desc = "Go to definition (jump if one, pick if multiple)" },
