@@ -3,6 +3,7 @@ bash-language-server
 beautysh
 clipboard
 dockerfile-language-server
+fd
 fzf
 git-delta
 gnupg
@@ -20,12 +21,14 @@ lua-language-server
 macos-trash
 mas
 md5sha1sum
+mtr
 neovim
 openldap
 pinentry-mac
 powerlevel10k
 prettier
 pyright
+ripgrep
 ruff
 sl
 stow
