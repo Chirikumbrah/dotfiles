@@ -209,8 +209,8 @@ later(function()
         pick.builtin.grep({ pattern = WORD })
     end
 
-    vim.keymap.set("n", "<Leader>f", ":Pick files<CR>", { desc = "Find Files", silent = true })
-    vim.keymap.set("n", "<Leader>b", ":Pick buffers<CR>", { desc = "Find Buffer", silent = true })
+    vim.keymap.set("n", "<Leader>f", ":Pick files<CR>", { desc = "Find files", silent = true })
+    vim.keymap.set("n", "<Leader>b", ":Pick buffers<CR>", { desc = "Find buffer", silent = true })
     vim.keymap.set("n", "<leader>w", grep_cword, { desc = "Search word under cursor", silent = true })
     vim.keymap.set("n", "<leader>W", grep_cWORD, { desc = "Search WORD under cursor", silent = true })
 end)
