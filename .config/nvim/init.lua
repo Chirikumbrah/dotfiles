@@ -59,7 +59,7 @@ end
 vim.cmd.colorscheme("habamax")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#5f5f5f", bg = "none" })
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#3f3f3f", bg = "none" })
 -- }}}
 
 -- KEYMAPS {{{
@@ -69,10 +69,10 @@ vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste after from syst
 vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste before from system clipboard" })
 vim.keymap.set("n", "<leader><BS>", [[<cmd>%s/\s\+$//e<cr><cmd>noh<cr>]], { desc = "Remove trailing whitespace" })
 vim.keymap.set("n", "]d", function()
-    vim.diagnostic.jump({ count = 1, float = true })
+    vim.diagnostic.jump({ count = 1, float = { border = "bold" } })
 end, { desc = "Jump to next diagnostic" })
 vim.keymap.set("n", "[d", function()
-    vim.diagnostic.jump({ count = -1, float = true })
+    vim.diagnostic.jump({ count = -1, float = { border = "bold" } })
 end, { desc = "Jump to previous diagnostic" })
 -- vim.keymap.set("n", "<leader>e", "<cmd>25Lexplore<CR>", { desc = "Open file browser" })
 -- vim.keymap.set("i", "<c-space>", function()
@@ -93,7 +93,6 @@ vim.lsp.enable({
     "helmls",
     "yamlls",
 })
--- vim.diagnostic.config({ virtual_text = { current_line = true } })
 vim.diagnostic.config({ virtual_text = false, severity_sort = true })
 -- }}}
 
