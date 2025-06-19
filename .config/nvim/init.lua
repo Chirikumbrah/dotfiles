@@ -22,7 +22,6 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.smoothscroll = true
 vim.opt.updatetime = 50
--- vim.g.netrw_banner = false
 -- }}}
 
 -- OPTIMIZATIONS {{{
@@ -63,21 +62,23 @@ vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#3f3f3f", bg = "none" })
 -- }}}
 
 -- KEYMAPS {{{
-vim.keymap.set("n", "<ESC>", vim.cmd.noh, { desc = "Clear highlight" })
-vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to system clipboard" })
-vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste after from system clipboard" })
-vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste before from system clipboard" })
-vim.keymap.set("n", "<leader><BS>", [[<cmd>%s/\s\+$//e<cr><cmd>noh<cr>]], { desc = "Remove trailing whitespace" })
-vim.keymap.set("n", "]d", function()
+local function map(mode, key, func, desc)
+    vim.keymap.set(mode, key, func, { desc = desc, silent = true })
+end
+
+map("n", "<ESC>", vim.cmd.noh, "Clear highlight")
+map({ "n", "v" }, "<leader>y", '"+y', "Copy to system clipboard")
+map({ "n", "v" }, "<leader>p", '"+p', "Paste after from system clipboard")
+map({ "n", "v" }, "<leader>P", '"+P', "Paste before from system clipboard")
+map("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], "Trim whitespace")
+
+map("n", "]d", function()
     vim.diagnostic.jump({ count = 1, float = { border = "bold" } })
-end, { desc = "Jump to next diagnostic" })
-vim.keymap.set("n", "[d", function()
+end, "Jump to next diagnostic")
+
+map("n", "[d", function()
     vim.diagnostic.jump({ count = -1, float = { border = "bold" } })
-end, { desc = "Jump to previous diagnostic" })
--- vim.keymap.set("n", "<leader>e", "<cmd>25Lexplore<CR>", { desc = "Open file browser" })
--- vim.keymap.set("i", "<c-space>", function()
---     vim.lsp.completion.get()
--- end)
+end, "Jump to previous diagnostic")
 -- }}}
 
 -- LSP {{{
@@ -97,11 +98,15 @@ vim.diagnostic.config({ virtual_text = false, severity_sort = true })
 -- }}}
 
 -- AUTOCOMMANDS {{{
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { -- Detect Helm templates as helm filetype
+local augroup = vim.api.nvim_create_augroup("yutocommands", { clear = true })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    group = augroup,
     pattern = { "*/templates/*.y*ml", "*/templates/*.tpl", "Chart.y*ml" },
     command = "set filetype=helm",
 })
 vim.api.nvim_create_autocmd("TextYankPost", { -- Highlight on yank
+    group = augroup,
     callback = function()
         vim.highlight.on_yank({ higroup = "Visual", timeout = 400 })
     end,
@@ -135,7 +140,8 @@ local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
 -- mini.clue {{{
 later(function()
-    require("mini.clue").setup({
+    local c = require("mini.clue")
+    c.setup({
         triggers = {
             -- Leader triggers
             { mode = "n", keys = "<Leader>" },
@@ -176,12 +182,12 @@ later(function()
 
         clues = {
             -- Enhance this by adding descriptions for <Leader> mapping groups
-            require("mini.clue").gen_clues.builtin_completion(),
-            require("mini.clue").gen_clues.g(),
-            require("mini.clue").gen_clues.marks(),
-            require("mini.clue").gen_clues.registers(),
-            require("mini.clue").gen_clues.windows(),
-            require("mini.clue").gen_clues.z(),
+            c.gen_clues.builtin_completion(),
+            c.gen_clues.g(),
+            c.gen_clues.marks(),
+            c.gen_clues.registers(),
+            c.gen_clues.windows(),
+            c.gen_clues.z(),
             { mode = "n", keys = "<Leader>f", desc = "+ Find" },
         },
         window = {
@@ -202,10 +208,9 @@ end)
 later(function()
     local files = require("mini.files")
     files.setup()
-
-    vim.keymap.set("n", "<leader>e", function()
+    map("n", "<leader>e", function()
         files.open()
-    end, { desc = "File browser" })
+    end, "File browser")
 end)
 -- }}}
 
@@ -213,7 +218,7 @@ end)
 later(function()
     add({
         source = "nvim-treesitter/nvim-treesitter",
-        -- run update after checkout
+        -- run update after checkou, t
         hooks = {
             post_checkout = function()
                 vim.cmd("TSUpdate")
@@ -270,9 +275,9 @@ later(function()
             },
         },
     })
-    vim.keymap.set("n", "<leader>=", function()
+    map("n", "<leader>=", function()
         conform.format({ async = true, lsp_format = "fallback" })
-    end, { desc = "Format buffer [conform]", silent = true })
+    end, "Format buffer")
 end)
 --}}}
 
@@ -318,18 +323,10 @@ end)
 later(function()
     add({ source = "lewis6991/gitsigns.nvim" })
     local g = require("gitsigns")
-    vim.keymap.set("n", "<leader>gn", function()
-        g.next_hunk()
-    end, { desc = "Go to next git hunk [gitsigns]" })
-    vim.keymap.set("n", "<leader>gp", function()
-        g.prev_hunk()
-    end, { desc = "Go to previous git hunk [gitsigns]" })
-    vim.keymap.set({ "n", "v" }, "<leader>gs", function()
-        g.stage_hunk()
-    end, { desc = "Stage hunk [gitsigns]" })
-    vim.keymap.set("n", "<leader>gl", function()
-        g.toggle_current_line_blame()
-    end, { desc = "Toggle current line blame [gitsigns]" })
+    map("n", "<leader>gn", g.next_hunk, "Go to next git hunk")
+    map("n", "<leader>gp", g.prev_hunk, "Go to previous git hunk")
+    map({ "n", "v" }, "<leader>gs", g.stage_hunk, "Stage hunk")
+    map("n", "<leader>gl", g.toggle_current_line_blame, "Toggle line blame")
 end)
 
 -- }}}
@@ -337,9 +334,10 @@ end)
 -- zen-mode {{{
 later(function()
     add({ source = "folke/zen-mode.nvim" })
-    vim.keymap.set("n", "<leader>z", function()
-        require("zen-mode").toggle()
-    end, { desc = "Toggle zen mode" })
+    local z = require("zen-mode")
+    map("n", "<leader>z", function()
+        z.toggle()
+    end, "Toggle zen mode")
 end)
 -- }}}
 
@@ -348,47 +346,19 @@ later(function()
     add({ source = "ibhagwan/fzf-lua" })
     local f = require("fzf-lua")
 
-    vim.keymap.set("n", "<leader>/", function()
-        f.live_grep()
-    end, { desc = "Live grep" })
-    vim.keymap.set("n", "<leader>W", function()
-        f.grep_cWORD()
-    end, { desc = "Search current WORD" })
-    vim.keymap.set("n", "<leader>b", function()
-        f.buffers()
-    end, { desc = "Buffer picker" })
-    vim.keymap.set("n", "<leader>d", function()
-        f.lsp_workspace_diagnostics()
-    end, { desc = "Diagnostics picker" })
-    vim.keymap.set("n", "<leader>f", function()
-        f.files()
-    end, { desc = "File picker" })
-    vim.keymap.set("n", "<leader>s", function()
-        f.lsp_document_symbols()
-    end, { desc = "Symbols picker" })
-    vim.keymap.set("n", "<leader>S", function()
-        f.lsp_live_workspace_symbols()
-    end, { desc = "Workspace symbols picker" })
-    vim.keymap.set("n", "<leader>w", function()
-        f.grep_cword()
-    end, { desc = "Search current word" })
-    vim.keymap.set("n", "<C-]>", function()
-        f.lsp_definitions()
-    end, { desc = "Go to definition (jump if one, pick if multiple)" })
-    vim.keymap.set("n", "gri", function()
-        f.lsp_implementations()
-    end, { desc = "vim.lsp.buf.implementation() [fzf-lua]" })
-    vim.keymap.set("n", "grr", function()
-        f.lsp_references()
-    end, { desc = "vim.lsp.buf.references() [fzf-lua]" })
-    vim.keymap.set("n", "<leader>h", function()
-        f.helptags()
-    end, { desc = "Command picker" })
-    vim.keymap.set("n", "<leader>k", function()
-        f.keymaps()
-    end, { desc = "Keymaps picker" })
-    vim.keymap.set("n", "<leader>o", function()
-        f.oldfiles()
-    end, { desc = "Old files picker" })
+    map("n", "<leader>/", f.live_grep, "Live grep")
+    map("n", "<leader>W", f.grep_cWORD, "Search current WORD")
+    map("n", "<leader>b", f.buffers, "Buffer picker")
+    map("n", "<leader>d", f.lsp_workspace_diagnostics, "Diagnostics picker")
+    map("n", "<leader>f", f.files, "File picker")
+    map("n", "<leader>s", f.lsp_document_symbols, "Symbols picker")
+    map("n", "<leader>S", f.lsp_live_workspace_symbols, "WS symbols picker")
+    map("n", "<leader>w", f.grep_cword, "Search current word")
+    map("n", "<C-]>", f.lsp_definitions, "Go to definition ")
+    map("n", "gri", f.lsp_implementations, "vim.lsp.buf.implementation() [fzf]")
+    map("n", "grr", f.lsp_references, "vim.lsp.buf.references() [fzf]")
+    map("n", "<leader>h", f.helptags, "Command picker")
+    map("n", "<leader>k", f.keymaps, "Keymaps picker")
+    map("n", "<leader>o", f.oldfiles, "Old files picker")
 end)
 -- }}}
