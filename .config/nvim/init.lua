@@ -67,11 +67,13 @@ local function map(mode, key, func, desc)
 end
 
 map("n", "<ESC>", vim.cmd.noh, "Clear highlight")
-map({ "n", "v" }, "<leader>y", '"+y', "Copy to system clipboard")
-map({ "n", "v" }, "<leader>p", '"+p', "Paste after from system clipboard")
-map({ "n", "v" }, "<leader>P", '"+P', "Paste before from system clipboard")
+map({ "n", "v" }, "<leader>y", '"+y', 'Copy to "+')
+map({ "n", "v" }, "<leader>p", '"+p', 'Paste after from "+')
+map({ "n", "v" }, "<leader>P", '"+P', 'Paste before from "+')
 map("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], "Trim whitespace")
 
+map("n", "<leader>d", vim.diagnostic.setqflist, "Show diagnostics")
+map("n", "<leader>S", vim.lsp.buf.document_symbol, "Show LSP symbols")
 map("n", "]d", function()
     vim.diagnostic.jump({ count = 1, float = { border = "bold" } })
 end, "Jump to next diagnostic")
@@ -109,6 +111,34 @@ vim.api.nvim_create_autocmd("TextYankPost", { -- Highlight on yank
     group = augroup,
     callback = function()
         vim.highlight.on_yank({ higroup = "Visual", timeout = 400 })
+    end,
+})
+
+-- close quickfix menu after selecting choice
+vim.api.nvim_create_autocmd("FileType", {
+    group = augroup,
+    pattern = { "qf" },
+    callback = function()
+        local wininfo = vim.fn.getwininfo(vim.api.nvim_get_current_win())[1]
+        if wininfo.loclist == 1 then
+            map("n", "<CR>", "<CR>:lclose<CR>", "")
+        else
+            map("n", "<CR>", "<CR>:cclose<CR>", "")
+        end
+    end,
+})
+-- close quickfix on q or ESC
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "qf",
+    callback = function()
+        local wininfo = vim.fn.getwininfo(vim.api.nvim_get_current_win())[1]
+        if wininfo.loclist == 1 then -- It's a Location List window
+            map("n", "q", ":lclose<CR>", "")
+            map("n", "<Esc>", ":lclose<CR>", "")
+        else
+            map("n", "q", ":cclose<CR>", "")
+            map("n", "<Esc>", ":cclose<CR>", "")
+        end
     end,
 })
 -- }}}
@@ -323,10 +353,10 @@ end)
 later(function()
     add({ source = "lewis6991/gitsigns.nvim" })
     local g = require("gitsigns")
-    map("n", "<leader>gn", g.next_hunk, "Go to next git hunk")
-    map("n", "<leader>gp", g.prev_hunk, "Go to previous git hunk")
-    map({ "n", "v" }, "<leader>gs", g.stage_hunk, "Stage hunk")
-    map("n", "<leader>gl", g.toggle_current_line_blame, "Toggle line blame")
+    map("n", "]h", g.next_hunk, "Jump to the next git hunk")
+    map("n", "[h", g.prev_hunk, "Jump to the previous git hunk")
+    map({ "n", "v" }, "<leader>s", g.stage_hunk, "Stage hunk")
+    map("n", "<leader>l", g.toggle_current_line_blame, "Toggle line blame")
 end)
 
 -- }}}
@@ -337,28 +367,41 @@ later(function()
     local z = require("zen-mode")
     map("n", "<leader>z", function()
         z.toggle()
-    end, "Toggle zen mode")
+    end, "Toggle Zen")
 end)
 -- }}}
 
--- fzf.lua {{{
+-- mini.pick {{{
 later(function()
-    add({ source = "ibhagwan/fzf-lua" })
-    local f = require("fzf-lua")
+    local pick = require("mini.pick")
+    pick.setup({})
 
-    map("n", "<leader>/", f.live_grep, "Live grep")
-    map("n", "<leader>W", f.grep_cWORD, "Search current WORD")
-    map("n", "<leader>b", f.buffers, "Buffer picker")
-    map("n", "<leader>d", f.lsp_workspace_diagnostics, "Diagnostics picker")
-    map("n", "<leader>f", f.files, "File picker")
-    map("n", "<leader>s", f.lsp_document_symbols, "Symbols picker")
-    map("n", "<leader>S", f.lsp_live_workspace_symbols, "WS symbols picker")
-    map("n", "<leader>w", f.grep_cword, "Search current word")
-    map("n", "<C-]>", f.lsp_definitions, "Go to definition ")
-    map("n", "gri", f.lsp_implementations, "vim.lsp.buf.implementation() [fzf]")
-    map("n", "grr", f.lsp_references, "vim.lsp.buf.references() [fzf]")
-    map("n", "<leader>h", f.helptags, "Command picker")
-    map("n", "<leader>k", f.keymaps, "Keymaps picker")
-    map("n", "<leader>o", f.oldfiles, "Old files picker")
+    local function grep_cword()
+        local word = vim.fn.expand("<cword>")
+        pick.builtin.grep({ pattern = word })
+    end
+
+    local function grep_cWORD()
+        local WORD = vim.fn.expand("<cWORD>")
+        pick.builtin.grep({ pattern = WORD })
+    end
+
+    map("n", "<Leader>f", "<CMD>Pick files<CR>", "Find files")
+    map("n", "<Leader>b", "<CMD>Pick buffers<CR>", "Find buffer")
+    map("n", "<Leader>/", "<CMD>Pick grep_live<CR>", "Live grep")
+    map("n", "<Leader>g", "<CMD>Pick grep<CR>", "Grep")
+    map("n", "<Leader>h", "<CMD>Pick help<CR>", "Find help")
+    map("n", "<leader>W", grep_cWORD, "Search current WORD")
+    map("n", "<leader>w", grep_cword, "Search current word")
 end)
+-- }}}
+
+-- startup time measure {{{
+local start_time = vim.fn.reltime()
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        local elapsed = vim.fn.reltimefloat(vim.fn.reltime(start_time))
+        print(string.format("Startup time: %.3f ms", elapsed * 1000))
+    end,
+})
 -- }}}
