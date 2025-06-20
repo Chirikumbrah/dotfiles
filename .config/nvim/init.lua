@@ -149,13 +149,10 @@ local path_package = vim.fn.stdpath("data") .. "/site/"
 local mini_path = path_package .. "pack/deps/start/mini.nvim"
 if not vim.loop.fs_stat(mini_path) then
     vim.cmd('echo "Installing `mini.nvim`" | redraw')
-    local clone_cmd = {
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/echasnovski/mini.nvim",
-        mini_path,
-    }
+    -- stylua: ignore start
+    local clone_cmd = { "git", "clone", "--filter=blob:none",
+        "https://github.com/echasnovski/mini.nvim", mini_path }
+    -- stylua: ignore end
     vim.fn.system(clone_cmd)
     vim.cmd("packadd mini.nvim | helptags ALL")
     vim.cmd('echo "Installed `mini.nvim`" | redraw')
@@ -203,6 +200,10 @@ later(function()
             { mode = "n", keys = "z" },
             { mode = "x", keys = "z" },
 
+            -- Surrounding
+            { mode = "n", keys = "s" },
+            { mode = "x", keys = "s" },
+
             -- `[` and `]` key
             { mode = "n", keys = "[" },
             { mode = "n", keys = "]" },
@@ -220,10 +221,7 @@ later(function()
             c.gen_clues.z(),
             { mode = "n", keys = "<Leader>f", desc = "+ Find" },
         },
-        window = {
-            delay = 300,
-            config = { width = "auto" },
-        },
+        window = { delay = 300, config = { width = "auto" } },
     })
 end)
 -- }}}
@@ -238,9 +236,9 @@ end)
 later(function()
     local files = require("mini.files")
     files.setup()
-    map("n", "<leader>e", function()
-        files.open()
-    end, "File browser")
+    -- stylua: ignore start
+    map("n", "<leader>e", function() files.open() end, "File browser")
+    -- stylua: ignore end
 end)
 -- }}}
 
@@ -248,12 +246,10 @@ end)
 later(function()
     add({
         source = "nvim-treesitter/nvim-treesitter",
-        -- run update after checkou, t
-        hooks = {
-            post_checkout = function()
-                vim.cmd("TSUpdate")
-            end,
-        },
+        -- run update after checkout
+        -- stylua: ignore start
+        hooks = { post_checkout = function() vim.cmd("TSUpdate") end },
+        -- stylua: ignore end
     })
     require("nvim-treesitter.configs").setup({
         auto_install = true,
@@ -261,7 +257,8 @@ later(function()
             enable = true,
             disable = function(lang, buf)
                 local max_filesize = 100 * 1024 -- 100 KB
-                local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+                local buf_name = vim.api.nvim_buf_get_name(buf)
+                local ok, stats = pcall(vim.loop.fs_stat, buf_name)
                 if ok and stats and stats.size > max_filesize then
                     return true
                 end
@@ -273,9 +270,7 @@ end)
 
 -- conform.nvim {{{
 later(function()
-    add({
-        source = "stevearc/conform.nvim",
-    })
+    add({ source = "stevearc/conform.nvim" })
     local conform = require("conform")
     conform.setup({
         formatters_by_ft = {
@@ -297,12 +292,8 @@ later(function()
             yaml = { "prettier" },
         },
         formatters = {
-            shfmt = {
-                prepend_args = { "-i", "4", "-ci" },
-            },
-            stylua = {
-                prepend_args = { "--indent-type", "Spaces" },
-            },
+            shfmt = { prepend_args = { "-i", "4", "-ci" } },
+            stylua = { prepend_args = { "--indent-type", "Spaces" } },
         },
     })
     map("n", "<leader>=", function()
@@ -318,19 +309,14 @@ later(function()
         depends = { "rafamadriz/friendly-snippets" },
         checkout = "1.*",
     })
+    -- stylua: ignore start
     require("blink.cmp").setup({
         fuzzy = { implementation = "lua" },
-        completion = {
-            menu = {
-                draw = {
-                    columns = {
-                        { "label", "label_description", "kind", gap = 1 },
-                    },
-                },
-            },
-        },
+        completion = { menu = { draw = { columns = {
+                { "label", "label_description", "kind", gap = 1 } } } } },
         signature = { enabled = true },
     })
+    -- stylua: ignore end
 end)
 
 -- }}}
@@ -349,16 +335,12 @@ later(function()
 end)
 -- }}}
 
--- gitsigns {{{
+-- mini.diff {{{
 later(function()
-    add({ source = "lewis6991/gitsigns.nvim" })
-    local g = require("gitsigns")
-    map("n", "]h", g.next_hunk, "Jump to the next git hunk")
-    map("n", "[h", g.prev_hunk, "Jump to the previous git hunk")
-    map({ "n", "v" }, "<leader>s", g.stage_hunk, "Stage hunk")
-    map("n", "<leader>l", g.toggle_current_line_blame, "Toggle line blame")
+    local g = require("mini.diff")
+    g.setup()
+    map("n", "<leader>o", g.toggle_overlay, "Togge Diff overlay")
 end)
-
 -- }}}
 
 -- zen-mode {{{
