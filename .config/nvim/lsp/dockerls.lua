@@ -1,5 +1,5 @@
 return {
     cmd = { "docker-langserver", "--stdio" },
     filetypes = { "dockerfile" },
-    root_markers = { "Dockerfile" },
+    root_markers = { "*dockerfile*", "*Dockerfile*" },
 }
