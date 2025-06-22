@@ -209,10 +209,21 @@ later(function()
         window = { delay = 300, config = { width = "auto" } },
     })
 
+    local hp = r("mini.hipatterns")
+    hp.setup({
+        highlighters = {
+            todo = {
+                pattern = "%f[%w]()TODO()%f[%W]",
+                group = "MiniHipatternsTodo",
+            },
+            hex_color = hp.gen_highlighter.hex_color(),
+        },
+    })
+
     r("mini.snippets").setup()
     r("mini.files").setup()
     r("mini.diff").setup()
-    r("mini.pick").setup({})
+    r("mini.pick").setup()
     r("mini.surround").setup()
 
     -- }}}
