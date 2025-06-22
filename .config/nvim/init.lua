@@ -11,33 +11,16 @@ vim.g.mapleader = " "
 vim.g.matchparen_insert_timeout = 20
 vim.g.matchparen_timeout = 20 -- https://vi.stackexchange.com/a/5318/7339
 
-local disabled_built_ins = {
-    "2html",
-    "getscript",
-    "getscriptPlugin",
-    "gzip",
-    "logipat",
-    "man",
-    "netrw",
-    "netrwFileHandlers",
-    "netrwPlugin",
-    "netrwSettings",
-    "remote_plugins",
-    "rrhelper",
-    "spellfile_plugin",
-    "tar",
-    "tarPlugin",
-    "tutor",
-    "tutor_mode_plugin",
-    "vimball",
-    "vimballPlugin",
-    "zip",
-    "zipPlugin",
-}
-
-for _, plugin in pairs(disabled_built_ins) do
+-- stylua: ignore start
+for _, plugin in ipairs({
+    "2html", "getscript", "getscriptPlugin", "gzip", "logipat", "man", "netrw",
+    "netrwFileHandlers", "netrwPlugin", "netrwSettings", "remote_plugins",
+    "rrhelper", "spellfile_plugin", "tar", "tarPlugin", "tutor",
+    "tutor_mode_plugin", "vimball", "vimballPlugin", "zip", "zipPlugin",
+}) do
     vim.g["loaded_" .. plugin] = 1
 end
+-- stylua: ignore end
 -- }}}
 
 -- COLORSCHEME {{{
@@ -127,6 +110,7 @@ later(function()
         auto_install = true,
         highlight = {
             enable = true,
+            ---@diagnostic disable-next-line: unused-local
             disable = function(lang, buf)
                 local max_filesize = 100 * 1024 -- 100 KB
                 local buf_name = vim.api.nvim_buf_get_name(buf)
@@ -280,30 +264,15 @@ later(function()
         end,
     })
 
-    vim.api.nvim_create_autocmd("FileType", { -- close quickfix menu on select
+    vim.api.nvim_create_autocmd("FileType", { -- close quickfix/locations list
         group = group,
-        pattern = { "qf" },
-        callback = function()
-            local wi = vim.fn.getwininfo(vim.api.nvim_get_current_win())[1]
-            if wi.loclist == 1 then
-                map("n", "<CR>", "<CR>:lclose<CR>", "")
-            else
-                map("n", "<CR>", "<CR>:cclose<CR>", "")
-            end
-        end,
-    })
-
-    vim.api.nvim_create_autocmd("FileType", { -- close quickfix on q or ESC
         pattern = "qf",
         callback = function()
             local wi = vim.fn.getwininfo(vim.api.nvim_get_current_win())[1]
-            if wi.loclist == 1 then -- It's a Location List window
-                map("n", "q", ":lclose<CR>", "")
-                map("n", "<Esc>", ":lclose<CR>", "")
-            else
-                map("n", "q", ":cclose<CR>", "")
-                map("n", "<Esc>", ":cclose<CR>", "")
-            end
+            local close = wi.loclist == 1 and ":lclose<CR>" or ":cclose<CR>"
+            map("n", "<CR>", "<CR>" .. close, "") -- <CR>: select -> close
+            map("n", "q", close, "") -- q and <Esc>: just close
+            map("n", "<Esc>", close, "")
         end,
     })
     -- }}}
