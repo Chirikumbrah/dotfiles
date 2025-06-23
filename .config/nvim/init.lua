@@ -266,10 +266,15 @@ later(function()
 
     vim.api.nvim_create_autocmd("FileType", { -- close quickfix/locations list
         group = group,
-        pattern = "qf",
+        pattern = { "qf", "help" },
         callback = function()
             local wi = vim.fn.getwininfo(vim.api.nvim_get_current_win())[1]
-            local close = wi.loclist == 1 and ":lclose<CR>" or ":cclose<CR>"
+            local close
+            if vim.bo.filetype == "help" then
+                close = ":q<CR>" -- close help window
+            else
+                close = wi.loclist == 1 and ":lclose<CR>" or ":cclose<CR>"
+            end
             map("n", "<CR>", "<CR>" .. close, "") -- <CR>: select -> close
             map("n", "q", close, "") -- q and <Esc>: just close
             map("n", "<Esc>", close, "")
