@@ -52,7 +52,7 @@ r("mini.deps").setup({ path = { package = path_package } })
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 -- }}}
 
--- OPTIONS -- {{{
+-- OPTIONS {{{
 vim.opt.colorcolumn = "80"
 vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
@@ -123,8 +123,7 @@ later(function()
     })
 
     add({ source = "stevearc/conform.nvim" })
-    local conform = r("conform")
-    conform.setup({
+    r("conform").setup({
         formatters_by_ft = {
             css = { "prettier" },
             go = { "goimports", "gofmt" },
@@ -154,8 +153,7 @@ later(function()
 
     add({ source = "folke/zen-mode.nvim" })
 
-    local mc = r("mini.clue")
-    mc.setup({
+    r("mini.clue").setup({
         triggers = {
             { mode = "n", keys = "<Leader>" }, -- Leader triggers
             { mode = "x", keys = "<Leader>" },
@@ -182,25 +180,24 @@ later(function()
         },
 
         clues = {
-            mc.gen_clues.builtin_completion(),
-            mc.gen_clues.g(),
-            mc.gen_clues.marks(),
-            mc.gen_clues.registers(),
-            mc.gen_clues.windows(),
-            mc.gen_clues.z(),
+            r("mini.clue").gen_clues.builtin_completion(),
+            r("mini.clue").gen_clues.g(),
+            r("mini.clue").gen_clues.marks(),
+            r("mini.clue").gen_clues.registers(),
+            r("mini.clue").gen_clues.windows(),
+            r("mini.clue").gen_clues.z(),
             { mode = "n", keys = "<Leader>f", desc = "+ Find" },
         },
         window = { delay = 300, config = { width = "auto" } },
     })
 
-    local hp = r("mini.hipatterns")
-    hp.setup({
+    r("mini.hipatterns").setup({
         highlighters = {
             todo = {
                 pattern = "%f[%w]()TODO()%f[%W]",
                 group = "MiniHipatternsTodo",
             },
-            hex_color = hp.gen_highlighter.hex_color(),
+            hex_color = r("mini.hipatterns").gen_highlighter.hex_color(),
         },
     })
 
@@ -209,7 +206,6 @@ later(function()
     r("mini.diff").setup()
     r("mini.pick").setup()
     r("mini.surround").setup()
-
     -- }}}
 
     -- KEYMAPS {{{
@@ -222,7 +218,6 @@ later(function()
     map("n", "]d", function()
         vim.diagnostic.jump({ count = 1, float = { border = "bold" } })
     end, "Next diagnostic")
-
     map("n", "[d", function()
         vim.diagnostic.jump({ count = -1, float = { border = "bold" } })
     end, "Previous diagnostic")
@@ -230,18 +225,18 @@ later(function()
         r("conform").format({ async = true, lsp_format = "fallback" })
     end, "Format")
     map("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], "Trim whitespace")
-    map("n", "<Leader>f", "<CMD>Pick files<CR>", "Files")
+    -- stylua: ignore start
+    map("n", "<Leader>f", function()
+        r("mini.pick").builtin.cli({ command = { "rg", "--files", "--hidden",
+            "--no-follow", "--color=never", "--glob", "!.git/*",
+            "--glob", "!node_modules/*", "--glob", "!vendor/*", }})
+    end, "Files")
     map("n", "<Leader>b", "<CMD>Pick buffers<CR>", "Buffers")
     map("n", "<Leader>/", "<CMD>Pick grep_live<CR>", "Live grep")
     map("n", "<Leader>g", "<CMD>Pick grep<CR>", "Grep")
     map("n", "<Leader>h", "<CMD>Pick help<CR>", "Help")
-    map("n", "<leader>W", function()
-        r("mini.pick").builtin.grep({ pattern = vim.fn.expand("<cWORD>") })
-    end, "Grep cWORD")
-    map("n", "<leader>w", function()
-        r("mini.pick").builtin.grep({ pattern = vim.fn.expand("<cword>") })
-    end, "Grep cword")
-    -- stylua: ignore start
+    map("n", "<leader>w", "<CMD>Pick grep pattern='<cword>'<CR>", "Grep cword")
+    map("n", "<leader>W", "<CMD>Pick grep pattern='<cWORD>'<CR>", "Grep cWORD")
     map("n", "<leader>e", function() r("mini.files").open() end, "Explorer")
     map("n", "<leader>o", r("mini.diff").toggle_overlay, "Toggle diff")
     map("n", "<leader>z", function() r("zen-mode").toggle() end, "Toggle Zen")
@@ -282,14 +277,4 @@ later(function()
     })
     -- }}}
 end)
--- }}}
-
--- startup time measure {{{
-local start_time = vim.fn.reltime()
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        local elapsed = vim.fn.reltimefloat(vim.fn.reltime(start_time))
-        print(string.format("Startup time: %.3f ms", elapsed * 1000))
-    end,
-})
 -- }}}
