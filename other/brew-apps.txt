@@ -3,7 +3,6 @@ bash-language-server
 beautysh
 clipboard
 dockerfile-language-server
-fd
 fzf
 git-delta
 gnupg
@@ -28,7 +27,6 @@ pinentry-mac
 powerlevel10k
 prettier
 pyright
-ripgrep
 ruff
 sl
 stow
