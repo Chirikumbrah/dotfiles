@@ -209,34 +209,38 @@ later(function()
     -- }}}
 
     -- KEYMAPS {{{
+    -- stylua: ignore start
     map("n", "<ESC>", vim.cmd.noh, "Clear highlight")
     map({ "n", "v" }, "<leader>y", '"+y', 'Copy to "+')
     map({ "n", "v" }, "<leader>p", '"+p', 'Paste after from "+')
     map({ "n", "v" }, "<leader>P", '"+P', 'Paste before from "+')
     map("n", "<leader>d", vim.diagnostic.setqflist, "Diagnostics")
     map("n", "<leader>S", vim.lsp.buf.document_symbol, "LSP symbols")
-    map("n", "]d", function()
-        vim.diagnostic.jump({ count = 1, float = { border = "bold" } })
-    end, "Next diagnostic")
-    map("n", "[d", function()
-        vim.diagnostic.jump({ count = -1, float = { border = "bold" } })
-    end, "Previous diagnostic")
+    for _, v in ipairs({ { "]d", 1, "Next" }, { "[d", -1, "Previous" } }) do
+        map("n", v[1], function()
+            vim.diagnostic.jump({ count = v[2], float = { border = "bold" } })
+        end, v[3] .. " diagnostic") end
     map("n", "<leader>=", function()
         r("conform").format({ async = true, lsp_format = "fallback" })
     end, "Format")
     map("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], "Trim whitespace")
-    -- stylua: ignore start
-    map("n", "<Leader>f", function()
-        r("mini.pick").builtin.cli({ command = { "rg", "--files", "--hidden",
-            "--no-follow", "--color=never", "--glob", "!.git/*",
-            "--glob", "!node_modules/*", "--glob", "!vendor/*", }})
-    end, "Files")
     map("n", "<Leader>b", "<CMD>Pick buffers<CR>", "Buffers")
-    map("n", "<Leader>/", "<CMD>Pick grep_live<CR>", "Live grep")
-    map("n", "<Leader>g", "<CMD>Pick grep<CR>", "Grep")
     map("n", "<Leader>h", "<CMD>Pick help<CR>", "Help")
-    map("n", "<leader>w", "<CMD>Pick grep pattern='<cword>'<CR>", "Grep cword")
-    map("n", "<leader>W", "<CMD>Pick grep pattern='<cWORD>'<CR>", "Grep cWORD")
+    map("n", "<Leader>f", function()
+        r("mini.pick").builtin.cli({ command = { "find", ".", "-type", "f",
+            "!", "-path", "./.git/*", "!", "-path", "./node_modules/*",
+            "!", "-path", "./vendor/*", }, }) end, "Files")
+    local function gp(pattern) return { "grep", "-rnI", pattern, ".",
+        "--exclude-dir=.git", "--exclude-dir=node_modules",
+        "--exclude-dir=vendor" } end
+    map("n", "<Leader>/", function()
+        r("mini.pick").builtin.cli({ command = gp("") }) end, "Live grep")
+    map("n", "<Leader>w", function()
+        r("mini.pick").builtin.cli({ command = gp(vim.fn.expand("<cword>")) })
+    end, "Grep cword")
+    map("n", "<Leader>W", function()
+        r("mini.pick").builtin.cli({ command = gp(vim.fn.expand("<cWORD>")) })
+    end, "Grep cWORD")
     map("n", "<leader>e", function() r("mini.files").open() end, "Explorer")
     map("n", "<leader>o", r("mini.diff").toggle_overlay, "Toggle diff")
     map("n", "<leader>z", function() r("zen-mode").toggle() end, "Toggle Zen")
