@@ -1,7 +1,7 @@
 -- HELPERS {{{
 local r = require
 
-local function map(mode, key, func, desc)
+local function km(mode, key, func, desc)
     vim.keymap.set(mode, key, func, { desc = desc, silent = true })
 end
 -- }}}
@@ -54,6 +54,7 @@ local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
 -- OPTIONS {{{
 vim.opt.colorcolumn = "80"
+vim.opt.completeopt = "menuone,noselect,fuzzy"
 vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
 vim.opt.expandtab = true
@@ -100,12 +101,15 @@ later(function()
     -- }}}
 
     -- PLUGINS {{{
-    add({
-        source = "nvim-treesitter/nvim-treesitter",
-        -- stylua: ignore start
-        hooks = { post_checkout = function() vim.cmd("TSUpdate") end },
-        -- stylua: ignore end
-    })
+    -- stylua: ignore start
+    add({ source = "nvim-treesitter/nvim-treesitter",
+        hooks = { post_checkout = function() vim.cmd("TSUpdate") end }})
+    -- stylua: ignore end
+    add({ source = "stevearc/conform.nvim" })
+    add({ source = "olexsmir/gopher.nvim" })
+    add({ source = "folke/zen-mode.nvim" })
+    add({ source = "ibhagwan/fzf-lua" })
+
     r("nvim-treesitter.configs").setup({
         auto_install = true,
         highlight = {
@@ -122,7 +126,6 @@ later(function()
         },
     })
 
-    add({ source = "stevearc/conform.nvim" })
     r("conform").setup({
         formatters_by_ft = {
             css = { "prettier" },
@@ -152,6 +155,8 @@ later(function()
     r("gopher").setup({ gotag = { transform = "camelcase" } })
 
     add({ source = "folke/zen-mode.nvim" })
+
+    add({ source = "ibhagwan/fzf-lua" })
 
     r("mini.clue").setup({
         triggers = {
@@ -204,46 +209,44 @@ later(function()
     r("mini.snippets").setup()
     r("mini.files").setup()
     r("mini.diff").setup()
-    r("mini.pick").setup()
     r("mini.surround").setup()
     -- }}}
 
     -- KEYMAPS {{{
+    km("n", "<ESC>", vim.cmd.noh, "Clear highlight")
+    km({ "n", "v" }, "<leader>y", '"+y', 'Copy to "+')
+    km({ "n", "v" }, "<leader>p", '"+p', 'Paste after from "+')
+    km({ "n", "v" }, "<leader>P", '"+P', 'Paste before from "+')
     -- stylua: ignore start
-    map("n", "<ESC>", vim.cmd.noh, "Clear highlight")
-    map({ "n", "v" }, "<leader>y", '"+y', 'Copy to "+')
-    map({ "n", "v" }, "<leader>p", '"+p', 'Paste after from "+')
-    map({ "n", "v" }, "<leader>P", '"+P', 'Paste before from "+')
-    map("n", "<leader>d", vim.diagnostic.setqflist, "Diagnostics")
-    map("n", "<leader>s", vim.lsp.buf.document_symbol, "LSP symbols")
     for _, v in ipairs({ { "]d", 1, "Next" }, { "[d", -1, "Previous" } }) do
-        map("n", v[1], function()
+        km("n", v[1], function()
             vim.diagnostic.jump({ count = v[2], float = { border = "bold" } })
         end, v[3] .. " diagnostic") end
-    map("n", "<leader>=", function()
+    km("n", "<leader>=", function()
         r("conform").format({ async = true, lsp_format = "fallback" })
     end, "Format")
-    map("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], "Trim whitespace")
-    map("n", "<Leader>b", "<CMD>Pick buffers<CR>", "Buffers")
-    map("n", "<Leader>h", "<CMD>Pick help<CR>", "Help")
-    map("n", "<Leader>f", function()
-        r("mini.pick").builtin.cli({ command = { "find", ".", "-type", "f",
-            "!", "-path", "./.git/*", "!", "-path", "./node_modules/*",
-            "!", "-path", "./vendor/*", }, }) end, "Files")
-    local function gp(pattern) return { "grep", "-rnI", pattern, ".",
-        "--exclude-dir=.git", "--exclude-dir=node_modules",
-        "--exclude-dir=vendor" } end
-    map("n", "<Leader>/", function()
-        r("mini.pick").builtin.cli({ command = gp("") }) end, "Live grep")
-    map("n", "<Leader>w", function()
-        r("mini.pick").builtin.cli({ command = gp(vim.fn.expand("<cword>")) })
-    end, "Grep cword")
-    map("n", "<Leader>W", function()
-        r("mini.pick").builtin.cli({ command = gp(vim.fn.expand("<cWORD>")) })
-    end, "Grep cWORD")
-    map("n", "<leader>e", function() r("mini.files").open() end, "Explorer")
-    map("n", "<leader>o", r("mini.diff").toggle_overlay, "Toggle diff")
-    map("n", "<leader>z", function() r("zen-mode").toggle() end, "Toggle Zen")
+    km("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], "Trim whitespace")
+    km("n", "<C-]>", function() r("fzf-lua").lsp_definitions()
+        end, "jump to the tag under cursor [fzf]")
+    km("n", "grr", function() r("fzf-lua").lsp_implementations()
+        end, "vim.lsp.buf.implementation() [fzf]")
+    km("n", "grr", function() r("fzf-lua").lsp_references()
+        end, "vim.lsp.buf.references() [fzf]")
+    km("n", "<Leader>S", function() r("fzf-lua").lsp_live_workspace_symbols()
+        end, "LSP workspace symbols")
+    km("n", "<Leader>s", function() r("fzf-lua").lsp_document_symbols()
+        end, "LSP symbols")
+    km("n", "<Leader>d", function() r("fzf-lua").lsp_workspace_diagnostics()
+        end, "Diagnostics")
+    km("n", "<Leader>b", function() r("fzf-lua").buffers() end, "Buffers")
+    km("n", "<Leader>h", function() r("fzf-lua").helptags() end, "Help")
+    km("n", "<Leader>f", function() r("fzf-lua").files() end, "Files")
+    km("n", "<Leader>/", function() r("fzf-lua").live_grep() end, "Live grep")
+    km("n", "<Leader>w", function() r("fzf-lua").grep_cword() end, "Grep cword")
+    km("n", "<Leader>W", function() r("fzf-lua").grep_cWORD() end, "Grep cWORD")
+    km("n", "<leader>e", function() r("mini.files").open() end, "Explorer")
+    km("n", "<leader>o", r("mini.diff").toggle_overlay, "Toggle diff")
+    km("n", "<leader>z", function() r("zen-mode").toggle() end, "Toggle Zen")
     -- stylua: ignore end
     -- }}}
 
@@ -274,9 +277,9 @@ later(function()
             else
                 close = wi.loclist == 1 and ":lclose<CR>" or ":cclose<CR>"
             end
-            map("n", "<CR>", "<CR>" .. close, "") -- <CR>: select -> close
-            map("n", "q", close, "") -- q and <Esc>: just close
-            map("n", "<Esc>", close, "")
+            km("n", "<CR>", "<CR>" .. close, "") -- <CR>: select -> close
+            km("n", "q", close, "") -- q and <Esc>: just close
+            km("n", "<Esc>", close, "")
         end,
     })
     -- }}}
