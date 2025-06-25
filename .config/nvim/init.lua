@@ -215,7 +215,7 @@ later(function()
     map({ "n", "v" }, "<leader>p", '"+p', 'Paste after from "+')
     map({ "n", "v" }, "<leader>P", '"+P', 'Paste before from "+')
     map("n", "<leader>d", vim.diagnostic.setqflist, "Diagnostics")
-    map("n", "<leader>S", vim.lsp.buf.document_symbol, "LSP symbols")
+    map("n", "<leader>s", vim.lsp.buf.document_symbol, "LSP symbols")
     for _, v in ipairs({ { "]d", 1, "Next" }, { "[d", -1, "Previous" } }) do
         map("n", v[1], function()
             vim.diagnostic.jump({ count = v[2], float = { border = "bold" } })
