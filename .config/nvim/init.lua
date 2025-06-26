@@ -49,7 +49,7 @@ end
 r("mini.deps").setup({ path = { package = path_package } })
 
 ---@diagnostic disable-next-line: undefined-global
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+local add, later = MiniDeps.add, MiniDeps.later
 -- }}}
 
 -- OPTIONS {{{
@@ -76,12 +76,6 @@ vim.opt.undofile = true
 vim.opt.updatetime = 50
 -- }}}
 
--- EXPLICIT LOAD {{{
-now(function()
-    r("mini.completion").setup()
-end)
--- }}}
-
 -- LAZY LOAD {{{
 later(function()
     -- LSP {{{
@@ -104,11 +98,13 @@ later(function()
     -- stylua: ignore start
     add({ source = "nvim-treesitter/nvim-treesitter",
         hooks = { post_checkout = function() vim.cmd("TSUpdate") end }})
-    -- stylua: ignore end
     add({ source = "stevearc/conform.nvim" })
     add({ source = "olexsmir/gopher.nvim" })
     add({ source = "folke/zen-mode.nvim" })
     add({ source = "ibhagwan/fzf-lua" })
+    add({ source = "saghen/blink.cmp",
+    depends = { "rafamadriz/friendly-snippets" }, })
+    -- stylua: ignore end
 
     r("nvim-treesitter.configs").setup({
         auto_install = true,
@@ -125,6 +121,12 @@ later(function()
             end,
         },
     })
+
+    -- stylua: ignore start
+    r("blink.cmp").setup({ completion = { menu = { draw = {
+        columns={{"label","label_description","kind",gap=1}}}}},
+        fuzzy = { implementation = "lua" }, signature = { enabled = true }})
+    -- stylua: ignore end
 
     r("conform").setup({
         formatters_by_ft = {
