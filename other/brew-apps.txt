@@ -8,6 +8,7 @@ git-delta
 gnupg
 gofumpt
 goimports
+gomodifytags
 gopls
 hashicorp/tap/vault
 helm
