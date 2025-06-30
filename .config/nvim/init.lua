@@ -49,7 +49,7 @@ end
 r("mini.deps").setup({ path = { package = path_package } })
 
 ---@diagnostic disable-next-line: undefined-global
-local add, later = MiniDeps.add, MiniDeps.later
+local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
 -- }}}
 
 -- OPTIONS {{{
@@ -76,8 +76,8 @@ vim.opt.undofile = true
 vim.opt.updatetime = 50
 -- }}}
 
--- LAZY LOAD {{{
-later(function()
+-- EXPLICIT LOAD {{{
+now(function()
     -- LSP {{{
     vim.lsp.enable({
         "luals",
@@ -94,18 +94,14 @@ later(function()
     vim.diagnostic.config({ virtual_text = false, severity_sort = true })
     -- }}}
 
-    -- PLUGINS {{{
-    -- stylua: ignore start
-    add({ source = "nvim-treesitter/nvim-treesitter",
-        hooks = { post_checkout = function() vim.cmd("TSUpdate") end }})
-    add({ source = "stevearc/conform.nvim" })
-    add({ source = "olexsmir/gopher.nvim" })
-    add({ source = "folke/zen-mode.nvim" })
-    add({ source = "ibhagwan/fzf-lua" })
-    add({ source = "saghen/blink.cmp",
-    depends = { "rafamadriz/friendly-snippets" }, })
-    -- stylua: ignore end
-
+    add({
+        source = "nvim-treesitter/nvim-treesitter",
+        hooks = {
+            post_checkout = function()
+                vim.cmd("TSUpdate")
+            end,
+        },
+    })
     r("nvim-treesitter.configs").setup({
         auto_install = true,
         highlight = {
@@ -121,10 +117,24 @@ later(function()
             end,
         },
     })
+end)
+-- }}}
+
+-- LAZY LOAD {{{
+later(function()
+    -- PLUGINS {{{
+    -- stylua: ignore start
+    add({ source = "stevearc/conform.nvim" })
+    add({ source = "olexsmir/gopher.nvim" })
+    add({ source = "folke/zen-mode.nvim" })
+    add({ source = "ibhagwan/fzf-lua" })
+    add({ source = "saghen/blink.cmp",
+    depends = { "rafamadriz/friendly-snippets" }, })
+    -- stylua: ignore end
 
     -- stylua: ignore start
     r("blink.cmp").setup({ completion = { menu = { draw = {
-        columns={{"label","label_description","kind",gap=1}}}}},
+        columns={ {"label","label_description","kind",gap=1} } } } },
         fuzzy = { implementation = "lua" }, signature = { enabled = true }})
     -- stylua: ignore end
 
