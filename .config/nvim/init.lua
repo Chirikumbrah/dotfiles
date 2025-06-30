@@ -78,6 +78,40 @@ vim.opt.updatetime = 50
 
 -- EXPLICIT LOAD {{{
 now(function()
+    -- AUTOCOMMANDS {{{
+    local group = vim.api.nvim_create_augroup("own", { clear = true })
+
+    vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+        group = group,
+        pattern = { "*/templates/*.y*ml", "*/templates/*.tpl", "Chart.y*ml" },
+        command = "set filetype=helm",
+    })
+
+    vim.api.nvim_create_autocmd("TextYankPost", { -- Highlight on yank
+        group = group,
+        callback = function()
+            vim.highlight.on_yank({ higroup = "Visual", timeout = 400 })
+        end,
+    })
+
+    vim.api.nvim_create_autocmd("FileType", { -- close quickfix/locations list
+        group = group,
+        pattern = { "qf", "help" },
+        callback = function()
+            local wi = vim.fn.getwininfo(vim.api.nvim_get_current_win())[1]
+            local close
+            if vim.bo.filetype == "help" then
+                close = ":q<CR>" -- close help window
+            else
+                close = wi.loclist == 1 and ":lclose<CR>" or ":cclose<CR>"
+            end
+            km("n", "<CR>", "<CR>" .. close, "") -- <CR>: select -> close
+            km("n", "q", close, "") -- q and <Esc>: just close
+            km("n", "<Esc>", close, "")
+        end,
+    })
+    -- }}}
+
     -- LSP {{{
     vim.lsp.enable({
         "luals",
@@ -260,40 +294,6 @@ later(function()
     km("n", "<leader>o", r("mini.diff").toggle_overlay, "Toggle diff")
     km("n", "<leader>z", function() r("zen-mode").toggle() end, "Toggle Zen")
     -- stylua: ignore end
-    -- }}}
-
-    -- AUTOCOMMANDS {{{
-    local group = vim.api.nvim_create_augroup("own", { clear = true })
-
-    vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-        group = group,
-        pattern = { "*/templates/*.y*ml", "*/templates/*.tpl", "Chart.y*ml" },
-        command = "set filetype=helm",
-    })
-
-    vim.api.nvim_create_autocmd("TextYankPost", { -- Highlight on yank
-        group = group,
-        callback = function()
-            vim.highlight.on_yank({ higroup = "Visual", timeout = 400 })
-        end,
-    })
-
-    vim.api.nvim_create_autocmd("FileType", { -- close quickfix/locations list
-        group = group,
-        pattern = { "qf", "help" },
-        callback = function()
-            local wi = vim.fn.getwininfo(vim.api.nvim_get_current_win())[1]
-            local close
-            if vim.bo.filetype == "help" then
-                close = ":q<CR>" -- close help window
-            else
-                close = wi.loclist == 1 and ":lclose<CR>" or ":cclose<CR>"
-            end
-            km("n", "<CR>", "<CR>" .. close, "") -- <CR>: select -> close
-            km("n", "q", close, "") -- q and <Esc>: just close
-            km("n", "<Esc>", close, "")
-        end,
-    })
     -- }}}
 end)
 -- }}}
