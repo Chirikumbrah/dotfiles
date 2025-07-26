@@ -54,7 +54,6 @@ local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
 
 -- OPTIONS {{{
 vim.opt.colorcolumn = "80"
-vim.opt.completeopt = "menuone,noselect,fuzzy"
 vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
 vim.opt.expandtab = true
@@ -110,6 +109,21 @@ now(function()
             km("n", "<Esc>", close, "")
         end,
     })
+
+    vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(ev)
+            local client = vim.lsp.get_client_by_id(ev.data.client_id)
+            if client:supports_method("textDocument/completion") then
+                -- stylua: ignore start
+                local vc = vim.lsp.completion
+                vc.enable(true, client.id, ev.buf, { autotrigger = true })
+                vim.opt.completeopt = { "menu", "menuone", "noinsert",
+                    "popup", "fuzzy" }
+                km("i", "<C-Space>", function() vc.get() end)
+                -- stylua: ignore end
+            end
+        end,
+    })
     -- }}}
 
     -- LSP {{{
@@ -162,14 +176,14 @@ later(function()
     add({ source = "olexsmir/gopher.nvim" })
     add({ source = "folke/zen-mode.nvim" })
     add({ source = "ibhagwan/fzf-lua" })
-    add({ source = "saghen/blink.cmp",
-    depends = { "rafamadriz/friendly-snippets" }, })
+    -- add({ source = "saghen/blink.cmp",
+    -- depends = { "rafamadriz/friendly-snippets" }, })
     -- stylua: ignore end
 
     -- stylua: ignore start
-    r("blink.cmp").setup({ completion = { menu = { draw = {
-        columns={ {"label","label_description","kind",gap=1} } } } },
-        fuzzy = { implementation = "lua" }, signature = { enabled = true }})
+    -- r("blink.cmp").setup({ completion = { menu = { draw = {
+    --     columns={ {"label","label_description","kind",gap=1} } } } },
+    --     fuzzy = { implementation = "lua" }, signature = { enabled = true }})
     -- stylua: ignore end
 
     r("conform").setup({
@@ -252,7 +266,6 @@ later(function()
         },
     })
 
-    r("mini.snippets").setup()
     r("mini.files").setup()
     r("mini.diff").setup()
     r("mini.surround").setup()
