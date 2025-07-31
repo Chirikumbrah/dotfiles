@@ -53,7 +53,8 @@ local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
 -- }}}
 
 -- OPTIONS {{{
-vim.opt.colorcolumn = "80"
+vim.opt.autoread = true
+vim.opt.colorcolumn = "100"
 vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
 vim.opt.expandtab = true
@@ -62,6 +63,7 @@ vim.opt.incsearch = true
 vim.opt.list = true
 vim.opt.number = true
 vim.opt.path:append("**")
+vim.opt.iskeyword:append("-")
 vim.opt.scrolloff = 8
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 4
