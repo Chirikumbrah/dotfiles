@@ -177,7 +177,7 @@ later(function()
     add({ source = "stevearc/conform.nvim" })
     add({ source = "olexsmir/gopher.nvim" })
     add({ source = "folke/zen-mode.nvim" })
-    add({ source = "ibhagwan/fzf-lua" })
+    -- add({ source = "ibhagwan/fzf-lua" })
     -- add({ source = "saghen/blink.cmp",
     -- depends = { "rafamadriz/friendly-snippets" }, })
     -- stylua: ignore end
@@ -213,12 +213,7 @@ later(function()
         },
     })
 
-    add({ source = "olexsmir/gopher.nvim" })
     r("gopher").setup({ gotag = { transform = "camelcase" } })
-
-    add({ source = "folke/zen-mode.nvim" })
-
-    add({ source = "ibhagwan/fzf-lua" })
 
     r("mini.clue").setup({
         triggers = {
@@ -271,6 +266,8 @@ later(function()
     r("mini.files").setup()
     r("mini.diff").setup()
     r("mini.surround").setup()
+    r("mini.pick").setup()
+    r("mini.extra").setup()
     -- }}}
 
     -- KEYMAPS {{{
@@ -278,37 +275,26 @@ later(function()
     km({ "n", "v" }, "<leader>y", '"+y', 'Copy to "+')
     km({ "n", "v" }, "<leader>p", '"+p', 'Paste after from "+')
     km({ "n", "v" }, "<leader>P", '"+P', 'Paste before from "+')
+    km("n", "<leader>s", vim.lsp.buf.document_symbol, "LSP symbols")
     -- stylua: ignore start
     for _, v in ipairs({ { "]d", 1, "Next" }, { "[d", -1, "Previous" } }) do
         km("n", v[1], function()
             vim.diagnostic.jump({ count = v[2], float = { border = "bold" } })
         end, v[3] .. " diagnostic") end
-    km("n", "<leader>=", function()
-        r("conform").format({ async = true, lsp_format = "fallback" })
+    km("n", "<leader>=", function() r("conform").format({ async = true, lsp_format = "fallback" })
     end, "Format")
     km("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], "Trim whitespace")
-    km("n", "<C-]>", function() r("fzf-lua").lsp_definitions()
-        end, "jump to the tag under cursor [fzf]")
-    km("n", "grr", function() r("fzf-lua").lsp_implementations()
-        end, "vim.lsp.buf.implementation() [fzf]")
-    km("n", "grr", function() r("fzf-lua").lsp_references()
-        end, "vim.lsp.buf.references() [fzf]")
-    km("n", "<Leader>S", function() r("fzf-lua").lsp_live_workspace_symbols()
-        end, "LSP workspace symbols")
-    km("n", "<Leader>s", function() r("fzf-lua").lsp_document_symbols()
-        end, "LSP symbols")
-    km("n", "<Leader>d", function() r("fzf-lua").lsp_workspace_diagnostics()
-        end, "Diagnostics")
-    km("n", "<Leader>b", function() r("fzf-lua").buffers() end, "Buffers")
-    km("n", "<Leader>h", function() r("fzf-lua").helptags() end, "Help")
-    km("n", "<Leader>f", function() r("fzf-lua").files() end, "Files")
-    km("n", "<Leader>/", function() r("fzf-lua").live_grep() end, "Live grep")
-    km("n", "<Leader>w", function() r("fzf-lua").grep_cword() end, "Grep cword")
-    km("n", "<Leader>W", function() r("fzf-lua").grep_cWORD() end, "Grep cWORD")
+    local pb, pe = r("mini.pick").builtin, r("mini.extra").pickers
+    km("n", "<Leader>b", function() pb.buffers() end, "Buffers")
+    km("n", "<Leader>h", function() pb.help() end, "Help")
+    km("n", "<Leader>f", function() pb.files() end, "Files")
+    km("n", "<Leader>/", function() pb.grep_live() end, "Live grep")
+    km("n", "<leader>w", function() pb.grep({pattern = vim.fn.expand("<cword>")}) end, "Grep cword")
+    km("n", "<leader>W", function() pb.grep({pattern = vim.fn.expand("<cWORD>")}) end, "Grep cWORD")
+    km("n", "<leader>d", function() pe.diagnostic() end, "Diagnostics")
     km("n", "<leader>e", function() r("mini.files").open() end, "Explorer")
     km("n", "<leader>o", r("mini.diff").toggle_overlay, "Toggle diff")
     km("n", "<leader>z", function() r("zen-mode").toggle() end, "Toggle Zen")
-    -- stylua: ignore end
     -- }}}
 end)
 -- }}}
