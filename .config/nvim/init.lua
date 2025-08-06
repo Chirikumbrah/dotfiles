@@ -177,7 +177,7 @@ later(function()
     add({ source = "stevearc/conform.nvim" })
     add({ source = "olexsmir/gopher.nvim" })
     add({ source = "folke/zen-mode.nvim" })
-    -- add({ source = "ibhagwan/fzf-lua" })
+    add({ source = "ibhagwan/fzf-lua" })
     -- add({ source = "saghen/blink.cmp",
     -- depends = { "rafamadriz/friendly-snippets" }, })
     -- stylua: ignore end
@@ -266,8 +266,6 @@ later(function()
     r("mini.files").setup()
     r("mini.diff").setup()
     r("mini.surround").setup()
-    r("mini.pick").setup()
-    r("mini.extra").setup()
     -- }}}
 
     -- KEYMAPS {{{
@@ -284,14 +282,17 @@ later(function()
     km("n", "<leader>=", function() r("conform").format({ async = true, lsp_format = "fallback" })
     end, "Format")
     km("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], "Trim whitespace")
-    local pb, pe = r("mini.pick").builtin, r("mini.extra").pickers
-    km("n", "<Leader>b", function() pb.buffers() end, "Buffers")
-    km("n", "<Leader>h", function() pb.help() end, "Help")
-    km("n", "<Leader>f", function() pb.files() end, "Files")
-    km("n", "<Leader>/", function() pb.grep_live() end, "Live grep")
-    km("n", "<leader>w", function() pb.grep({pattern = vim.fn.expand("<cword>")}) end, "Grep cword")
-    km("n", "<leader>W", function() pb.grep({pattern = vim.fn.expand("<cWORD>")}) end, "Grep cWORD")
-    km("n", "<leader>d", function() pe.diagnostic() end, "Diagnostics")
+
+    local fzf = r("fzf-lua")
+    km("n", "<Leader>S", function() fzf.lsp_live_workspace_symbols() end, "LSP workspace symbols")
+    km("n", "<Leader>d", function() fzf.lsp_workspace_diagnostics() end, "Diagnostics")
+    km("n", "<Leader>b", function() fzf.buffers() end, "Buffers")
+    km("n", "<Leader>h", function() fzf.helptags() end, "Help")
+    km("n", "<Leader>f", function() fzf.files() end, "Files")
+    km("n", "<Leader>/", function() fzf.live_grep() end, "Live grep")
+    km("n", "<Leader>w", function() fzf.grep_cword() end, "Grep cword")
+    km("n", "<Leader>W", function() fzf.grep_cWORD() end, "Grep cWORD")
+
     km("n", "<leader>e", function() r("mini.files").open() end, "Explorer")
     km("n", "<leader>o", r("mini.diff").toggle_overlay, "Toggle diff")
     km("n", "<leader>z", function() r("zen-mode").toggle() end, "Toggle Zen")
