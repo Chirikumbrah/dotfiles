@@ -178,6 +178,7 @@ later(function()
     add({ source = "olexsmir/gopher.nvim" })
     add({ source = "folke/zen-mode.nvim" })
     add({ source = "ibhagwan/fzf-lua" })
+    add({ source = "folke/which-key.nvim" })
     -- add({ source = "saghen/blink.cmp",
     -- depends = { "rafamadriz/friendly-snippets" }, })
     -- stylua: ignore end
@@ -187,6 +188,12 @@ later(function()
     --     columns={ {"label","label_description","kind",gap=1} } } } },
     --     fuzzy = { implementation = "lua" }, signature = { enabled = true }})
     -- stylua: ignore end
+
+    r("which-key").setup({
+        preset = "helix",
+        icons = { mappings = false },
+        spec = { { "gr", group = "+LSP/fzf-lua" } },
+    })
 
     r("conform").setup({
         formatters_by_ft = {
@@ -214,44 +221,6 @@ later(function()
     })
 
     r("gopher").setup({ gotag = { transform = "camelcase" } })
-
-    r("mini.clue").setup({
-        triggers = {
-            { mode = "n", keys = "<Leader>" }, -- Leader triggers
-            { mode = "x", keys = "<Leader>" },
-            { mode = "i", keys = "<C-x>" }, -- Built-in completion
-            { mode = "n", keys = "g" }, -- `g` key
-            { mode = "x", keys = "g" },
-            { mode = "n", keys = "'" }, -- Marks
-            { mode = "n", keys = "`" },
-            { mode = "x", keys = "'" },
-            { mode = "x", keys = "`" },
-            { mode = "n", keys = '"' }, -- Registers
-            { mode = "x", keys = '"' },
-            { mode = "i", keys = "<C-r>" },
-            { mode = "c", keys = "<C-r>" },
-            { mode = "n", keys = "<C-w>" }, -- Window commands
-            { mode = "n", keys = "z" }, -- `z` key
-            { mode = "x", keys = "z" },
-            { mode = "n", keys = "s" }, -- Surrounding
-            { mode = "x", keys = "s" },
-            { mode = "n", keys = "[" }, -- `[` and `]` key
-            { mode = "n", keys = "]" },
-            { mode = "x", keys = "[" },
-            { mode = "x", keys = "]" },
-        },
-
-        clues = {
-            r("mini.clue").gen_clues.builtin_completion(),
-            r("mini.clue").gen_clues.g(),
-            r("mini.clue").gen_clues.marks(),
-            r("mini.clue").gen_clues.registers(),
-            r("mini.clue").gen_clues.windows(),
-            r("mini.clue").gen_clues.z(),
-            { mode = "n", keys = "<Leader>f", desc = "+ Find" },
-        },
-        window = { delay = 300, config = { width = "auto" } },
-    })
 
     r("mini.hipatterns").setup({
         highlighters = {
