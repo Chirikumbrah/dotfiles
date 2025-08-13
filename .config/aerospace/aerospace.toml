@@ -13,11 +13,11 @@ on-focus-changed = 'move-mouse window-lazy-center'
 
 [gaps]
 inner.horizontal = 0
-inner.vertical =   0
-outer.left =       0
-outer.bottom =     0
-outer.top =        0
-outer.right =      0
+inner.vertical = 0
+outer.left = 0
+outer.bottom = 0
+outer.top = 0
+outer.right = 0
 
 [mode.main.binding]
 
@@ -45,8 +45,8 @@ alt-shift-e = 'exec-and-forget open -a /System/Library/CoreServices/Finder.app'
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
-alt-s = 'layout v_accordion' # 'layout stacking' in i3
-alt-w = 'layout h_accordion' # 'layout tabbed' in i3
+alt-s = 'layout v_accordion'               # 'layout stacking' in i3
+alt-w = 'layout h_accordion'               # 'layout tabbed' in i3
 alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
 
 alt-o = 'layout floating tiling'
@@ -131,7 +131,10 @@ alt-r = 'mode main'
 esc = ['reload-config', 'mode main']
 q = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+f = [
+  'layout floating tiling',
+  'mode main',
+] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
@@ -176,7 +179,6 @@ if.app-id = 'com.electron.ollama'
 run = ['layout floating']
 
 
-
 # Workspace 1
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
@@ -214,6 +216,11 @@ run = ['move-node-to-workspace 4']
 
 [[on-window-detected]]
 if.app-id = 'com.parallels.desktop.console'
+run = ['move-node-to-workspace 4']
+
+
+[[on-window-detected]]
+if.app-id = 'com.ru.dolphin.anty'
 run = ['move-node-to-workspace 4']
 
 
@@ -293,4 +300,3 @@ run = ['move-node-to-workspace 10']
 [[on-window-detected]]
 if.app-id = 'com.apple.Music'
 run = 'move-node-to-workspace 10'
-
