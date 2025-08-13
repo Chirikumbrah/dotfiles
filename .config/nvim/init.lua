@@ -252,6 +252,7 @@ later(function()
     km("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], "Trim whitespace")
 
     local fzf = r("fzf-lua")
+    km("n", "grr", fzf.lsp_references, "LSP references")
     km("n", "<leader>s", fzf.lsp_document_symbols, "LSP symbols")
     km("n", "<Leader>S", fzf.lsp_live_workspace_symbols, "LSP workspace symbols")
     km("n", "<Leader>d", fzf.lsp_workspace_diagnostics, "Diagnostics")
