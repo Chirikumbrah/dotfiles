@@ -63,7 +63,7 @@ vim.opt.incsearch = true
 vim.opt.list = true
 vim.opt.number = true
 vim.opt.path:append("**")
-vim.opt.iskeyword:append("-")
+-- vim.opt.iskeyword:append("-")
 vim.opt.scrolloff = 8
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 4
