@@ -2,8 +2,7 @@
     && . "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 
 autoload edit-command-line; zle -N edit-command-line
-setopt extended_glob null_glob histignorealldups sharehistory histignorespace \
-    prompt_subst
+setopt extended_glob null_glob histignorealldups sharehistory histignorespace prompt_subst
 zstyle ':completion:*' menu select
 
 bindkey -M vicmd "\ev" edit-command-line; bindkey -v "\ev" edit-command-line \
@@ -16,9 +15,8 @@ export EDITOR=nvim VISUAL=$EDITOR XDG_CONFIG_HOME="$HOME/.config" \
     HISTSIZE=100000 SAVEHIST=100000 KEYTIMEOUT=1 \
     VIRTUAL_ENV_DISABLE_PROMPT=1 HIST_IGNORE="(&|ls|[bf]g|gp|z|exit|history)"
 
-alias l='ls --color' ll='ls -halF' ls='ls -h --color' grep='grep --color' \
-    ga='git add'  gcl='git clone' gcm='git commit -m' gco='git checkout' \
-    gd='git diff' gs='git status' gl='git log'
+alias ll='ls -halF' ls='ls -h --color' grep='grep --color' ga='git add' gl='git log' \
+    gcl='git clone' gcm='git commit -m' gco='git checkout' gd='git diff' gs='git status'
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     [[ -r "/opt/homebrew/bin/brew" ]] || /bin/bash -c "$(curl -fsSL \
