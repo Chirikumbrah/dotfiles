@@ -5,6 +5,7 @@ fish_variables
 .config/nvim/lazy-lock.json
 .config/nvim/.luarc.json
 .config/tmux/sessions
+.config/containers
 .*_history*
 .zcomp*
 .netrwhist
