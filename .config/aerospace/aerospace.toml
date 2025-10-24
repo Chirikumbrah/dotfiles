@@ -109,6 +109,7 @@ alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 [workspace-to-monitor-force-assignment]
+6 = 'secondary'
 7 = 'secondary'
 8 = 'secondary'
 9 = 'secondary'
