@@ -12,6 +12,8 @@ fish_variables
 .config/helm
 .config/mdless
 .config/argocd
+charts/
+*.lock
 
 .env
 .venv
