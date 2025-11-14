@@ -164,9 +164,6 @@ run = 'layout floating'
 if.app-id = 'com.apple.calculator'
 run = 'layout floating'
 [[on-window-detected]]
-if.app-id = 'com.apple.iCal'
-run = 'layout floating'
-[[on-window-detected]]
 if.app-id = 'org.openvpn.client.app'
 run = ['layout floating']
 [[on-window-detected]]
@@ -223,9 +220,12 @@ run = ['move-node-to-workspace 4']
 if.app-id = 'com.parallels.desktop.console'
 run = ['move-node-to-workspace 4']
 
-
 [[on-window-detected]]
 if.app-id = 'com.ru.dolphin.anty'
+run = ['move-node-to-workspace 4']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iCal'
 run = ['move-node-to-workspace 4']
 
 
@@ -237,14 +237,6 @@ run = 'move-node-to-workspace 5'
 [[on-window-detected]]
 if.app-id = 'com.arobas-music.guitarpro8'
 run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'us.zoom.xos'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'ru.yandex.desktop.telemost'
-run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
@@ -284,6 +276,14 @@ run = ['move-node-to-workspace 8']
 
 
 # Workspace 9
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run = 'move-node-to-workspace 9'
+
+[[on-window-detected]]
+if.app-id = 'ru.yandex.desktop.telemost'
+run = 'move-node-to-workspace 9'
+
 [[on-window-detected]]
 if.app-id = 'com.microsoft.rdc.macos'
 run = 'move-node-to-workspace 9'
