@@ -217,6 +217,10 @@ if.app-id = 'com.openai.chat'
 run = ['move-node-to-workspace 4']
 
 [[on-window-detected]]
+if.app-id = 'ai.perplexity.mac'
+run = ['move-node-to-workspace 4']
+
+[[on-window-detected]]
 if.app-id = 'com.parallels.desktop.console'
 run = ['move-node-to-workspace 4']
 
