@@ -269,6 +269,11 @@ if.app-id = 'com.g5532446.Balance'
 run = 'move-node-to-workspace 6'
 
 
+[[on-window-detected]]
+if.app-id = 'com.fabian.hasse.haushaltsbuch'
+run = 'move-node-to-workspace 6'
+
+
 # Workspace 8
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
