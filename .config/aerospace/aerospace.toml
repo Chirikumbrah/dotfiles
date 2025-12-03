@@ -233,6 +233,11 @@ if.app-id = 'com.apple.iCal'
 run = ['move-node-to-workspace 4']
 
 
+[[on-window-detected]]
+if.app-id = 'com.apple.weather'
+run = ['move-node-to-workspace 4']
+
+
 # Workspace 5
 [[on-window-detected]]
 if.app-id = 'com.apple.garageband9'
