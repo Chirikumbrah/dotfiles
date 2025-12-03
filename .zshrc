@@ -12,7 +12,7 @@ export EDITOR=nvim VISUAL=$EDITOR XDG_CONFIG_HOME="$HOME/.config" \
     GPG_TTY=$(tty) CARGO_HOME=$HOME/.cargo GOPATH=$HOME/.go \
     FZF_DEFAULT_COMMAND='find . -type f ! -path ".git/*"' \
     FZF_DEFAULT_OPTS="--preview '[ -d {} ] && ls -1a --color {}/ || cat -n {}'"\
-    HISTSIZE=100000 SAVEHIST=100000 KEYTIMEOUT=1 \
+    HISTSIZE=100000 SAVEHIST=100000 KEYTIMEOUT=1 CLIPBOARD_NOGUI=1 \
     VIRTUAL_ENV_DISABLE_PROMPT=1 HIST_IGNORE="(&|ls|[bf]g|gp|z|exit|history)"
 
 alias ll='ls -halF' ls='ls -h --color' grep='grep --color' ga='git add' gl='git log' \
