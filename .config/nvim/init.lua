@@ -130,8 +130,8 @@ now(function()
     -- LSP {{{
     -- stylua: ignore start
     vim.lsp.enable({
-        "luals", "clangd", "gopls", "ruff", "pyright", "bashls", "dockerls", "terraformls",
-        "helmls", "yamlls", "jsonls",
+        "luals", "clangd", "gopls", "ruff", "pyright", "bashls", "terraformlsp", "terraformls",
+        "helmls", "yamlls", "jsonls", "marksman", "dockerls"
     })
     -- stylua: ignore end
     vim.diagnostic.config({ virtual_text = false, severity_sort = true })
