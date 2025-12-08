@@ -102,29 +102,11 @@ now(function()
                 close = wi.loclist == 1 and ":lclose<CR>" or ":cclose<CR>"
             end
             km("n", "<CR>", "<CR>" .. close, "") -- <CR>: select -> close
-            km("n", "q", close, "")              -- q and <Esc>: just close
+            km("n", "q", close, "") -- q and <Esc>: just close
             km("n", "<Esc>", close, "")
         end,
     })
 
-    vim.api.nvim_create_autocmd("LspAttach", {
-        group = group,
-        callback = function(args)
-            local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-            if client:supports_method("textDocument/completion") then
-                -- Optional: trigger autocompletion on EVERY keypress. May be slow!
-                local chars = {}
-                for i = 32, 126 do
-                    table.insert(chars, string.char(i))
-                end
-                -- stylua: ignore start
-                vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-                vim.opt.completeopt:append({ "menuone", "noselect", "popup", "fuzzy" })
-                km("i", "<C-Space>", function() vim.lsp.completion.get() end)
-                -- stylua: ignore end
-            end
-        end,
-    })
     -- }}}
 
     -- LSP {{{
@@ -167,7 +149,9 @@ end)
 later(function()
     -- PLUGINS {{{
     -- stylua: ignore start
-    -- add({ source = "stevearc/conform.nvim" })
+    add({ source = "saghen/blink.cmp",
+        depends = { "rafamadriz/friendly-snippets" }, })
+    add({ source = "stevearc/conform.nvim" })
     add({ source = "olexsmir/gopher.nvim" })
     add({ source = "folke/zen-mode.nvim" })
     add({ source = "ibhagwan/fzf-lua" })
@@ -175,37 +159,39 @@ later(function()
     -- stylua: ignore end
 
     -- stylua: ignore start
-
-    require("which-key").setup({
-        preset = "helix",
-        icons = { mappings = false },
+    require("which-key").setup({ preset = "helix", icons = { mappings = false },
         spec = { { "gr", group = "+LSP/fzf-lua" } },
     })
 
-    -- require("conform").setup({
-    --     formatters_by_ft = {
-    --         css = { "prettier" },
-    --         go = { "goimports", "gofmt" },
-    --         graphql = { "prettier" },
-    --         javascript = { "prettier" },
-    --         javascriptreact = { "prettier" },
-    --         json = { "prettier" },
-    --         lua = { "stylua" },
-    --         markdown = { "prettier" },
-    --         python = { "ruff_format", "ruff_organize_imports", "ruff_fix" },
-    --         sh = { "beautysh" },
-    --         zsh = { "beautysh" },
-    --         toml = { "taplo" },
-    --         terraform = { "terraform_fmt" },
-    --         typescript = { "prettier" },
-    --         typescriptreact = { "prettier" },
-    --         yaml = { "prettier" },
-    --     },
-    --     formatters = {
-    --         shfmt = { prepend_args = { "-i", "4", "-ci" } },
-    --         stylua = { prepend_args = { "--indent-type", "Spaces" } },
-    --     },
-    -- })
+    require("blink.cmp").setup({ completion = { menu = { draw = {
+        columns={{"label","label_description","kind",gap=1}}}}},
+        fuzzy = { implementation = "lua" }, signature = { enabled = true }})
+    -- stylua: ignore end
+
+    require("conform").setup({
+        formatters_by_ft = {
+            css = { "prettier" },
+            go = { "goimports", "gofmt" },
+            graphql = { "prettier" },
+            javascript = { "prettier" },
+            javascriptreact = { "prettier" },
+            json = { "prettier" },
+            lua = { "stylua" },
+            markdown = { "prettier" },
+            python = { "ruff_format", "ruff_organize_imports", "ruff_fix" },
+            sh = { "beautysh" },
+            zsh = { "beautysh" },
+            toml = { "taplo" },
+            terraform = { "terraform_fmt" },
+            typescript = { "prettier" },
+            typescriptreact = { "prettier" },
+            yaml = { "prettier" },
+        },
+        formatters = {
+            shfmt = { prepend_args = { "-i", "4", "-ci" } },
+            stylua = { prepend_args = { "--indent-type", "Spaces" } },
+        },
+    })
 
     require("gopher").setup({ gotag = { transform = "camelcase" } })
 
@@ -223,9 +209,13 @@ later(function()
             vim.diagnostic.jump({ count = v[2], float = { border = "bold" } })
         end, v[3] .. " diagnostic")
     end
-    -- km("n", "<leader>=", function() require("conform").format({
-    --     async = true, lsp_format = "fallback" }) end, "Format")
-    km("n", "<leader>=", function() vim.lsp.buf.format({ async = true }) end, "Format buffer")
+    km("n", "<leader>=", function()
+        require("conform").format({
+            async = true,
+            lsp_format = "fallback",
+        })
+    end, "Format buffer")
+    -- km("n", "<leader>=", function() vim.lsp.buf.format({ async = true }) end, "Format buffer")
     km("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], "Trim whitespace")
 
     local fzf = require("fzf-lua")
