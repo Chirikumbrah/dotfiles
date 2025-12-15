@@ -18,6 +18,15 @@ export EDITOR=nvim VISUAL=$EDITOR XDG_CONFIG_HOME="$HOME/.config" \
 alias ll='ls -halF' ls='ls -h --color' grep='grep --color' ga='git add' gl='git log' \
     gcl='git clone' gcm='git commit -m' gco='git checkout' gd='git diff' gs='git status'
 
+_lazy_load() {
+    local cmd=$1 loader=$2
+    eval "_${cmd}_completion_loader() {
+    unfunction _${cmd}_completion_loader
+    eval \"$loader\"
+    }"
+    compdef _${cmd}_completion_loader "$cmd"
+}
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
     [[ -r "/opt/homebrew/bin/brew" ]] || /bin/bash -c "$(curl -fsSL \
         https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -36,10 +45,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do compinit; done; compinit -C
+ZSH_COMPDUMP=${ZDOTDIR:-$HOME}/.zcompdump
+[[ ${ZSH_COMPDUMP}(#qN.mh+24) ]] && compinit -d "$ZSH_COMPDUMP" || compinit -C -d "$ZSH_COMPDUMP"
 
 [[ $commands[zoxide] ]] && eval "$(zoxide init zsh)"
+[[ $commands[docker] ]] && _lazy_load docker '. <(docker completion zsh)'
+_lazy_load terraform 'autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform'
 [[ $commands[fzf] ]] && . <(fzf --zsh)
-[[ $commands[docker] ]] && . <(docker completion zsh)
 [[ -r "$CARGO_HOME/env" ]] && . "$CARGO_HOME/env"
 [[ -r "$HOME/.p10k.zsh" ]] && . "$HOME/.p10k.zsh" || p10k configure
