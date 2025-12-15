@@ -164,9 +164,6 @@ run = 'layout floating'
 if.app-id = 'com.apple.calculator'
 run = 'layout floating'
 [[on-window-detected]]
-if.app-id = 'org.openvpn.client.app'
-run = ['layout floating']
-[[on-window-detected]]
 if.app-id = 'ca.psiphon.Psiphon'
 run = ['layout floating']
 [[on-window-detected]]
@@ -208,6 +205,11 @@ run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'dev.kdrag0n.MacVirt'
+run = ['layout floating', 'move-node-to-workspace 3']
+
+
+[[on-window-detected]]
+if.app-id = 'org.openvpn.client.app'
 run = ['layout floating', 'move-node-to-workspace 3']
 
 
