@@ -190,6 +190,10 @@ later(function()
         formatters = {
             shfmt = { prepend_args = { "-i", "4", "-ci" } },
             stylua = { prepend_args = { "--indent-type", "Spaces" } },
+            prettier = {
+                options = { ft_parsers = { yaml = "yaml" } },
+                prepend_args = { "--tab-width", "2", "--no-semi", "--use-tabs=false", "$FILENAME" },
+            },
         },
     })
 
@@ -210,10 +214,7 @@ later(function()
         end, v[3] .. " diagnostic")
     end
     km("n", "<leader>=", function()
-        require("conform").format({
-            async = true,
-            lsp_format = "fallback",
-        })
+        require("conform").format({ async = true, timeout = 500, lsp_format = "fallback" })
     end, "Format buffer")
     -- km("n", "<leader>=", function() vim.lsp.buf.format({ async = true }) end, "Format buffer")
     km("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], "Trim whitespace")

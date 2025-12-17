@@ -6,7 +6,7 @@ return {
     -- https://github.com/redhat-developer/vscode-redhat-telemetry#how-to-disable-telemetry-reporting
     redhat = { telemetry = { enabled = false } },
     yaml = {
-      format = { enable = true, printWidth = 100 }, -- enable formatting support
+      format = { enable = false, printWidth = 100 }, -- enable formatting support
       validate = true,
     },
   },
