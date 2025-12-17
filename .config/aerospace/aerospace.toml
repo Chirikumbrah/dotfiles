@@ -172,6 +172,9 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-id = 'com.electron.ollama'
 run = ['layout floating']
+[[on-window-detected]]
+if.app-id = 'cc.ffitch.shottr'
+run = ['layout floating']
 
 
 # Workspace 1
