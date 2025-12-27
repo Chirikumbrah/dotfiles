@@ -39,6 +39,7 @@ outer.right = 0
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 alt-enter = 'exec-and-forget open /Applications/Alacritty.app'
 alt-shift-e = 'exec-and-forget open -a /System/Library/CoreServices/Finder.app'
+alt-space = 'exec-and-forget open -a /System/Library/CoreServices/Finder.app'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
