@@ -16,7 +16,8 @@ export EDITOR=nvim VISUAL=$EDITOR XDG_CONFIG_HOME="$HOME/.config" \
     VIRTUAL_ENV_DISABLE_PROMPT=1 HIST_IGNORE="(&|ls|[bf]g|gp|z|exit|history)"
 
 alias ll='ls -halF' ls='ls -h --color' grep='grep --color' ga='git add' gl='git log' \
-    gcl='git clone' gcm='git commit -m' gco='git checkout' gd='git diff' gs='git status'
+    gcl='git clone' gcm='git commit -m' gco='git checkout' gd='git diff' gs='git status' \
+    brew-dump='brew bundle dump --file=~/.config/homebrew/Brewfile --force'
 
 _lazy_load() {
     local cmd=$1 loader=$2
