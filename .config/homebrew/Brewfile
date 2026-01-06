@@ -22,13 +22,16 @@ brew "gomodifytags"
 brew "gopls"
 brew "helm"
 brew "helm-ls"
+brew "iproute2mac"
 brew "jq"
 brew "k9s"
 brew "kubectx"
 brew "lua-language-server"
 brew "macos-trash"
+brew "mage"
+brew "marksman"
 brew "mas"
-brew "md5sha1sum"
+brew "md5sha1sum", link: true
 brew "mtr"
 brew "neovim"
 brew "nmap"
@@ -45,9 +48,11 @@ brew "skopeo"
 brew "sl"
 brew "stow"
 brew "stylua"
+brew "talosctl"
 brew "taplo"
 brew "terraform"
 brew "terraform-ls"
+brew "terraform-lsp"
 brew "tmux"
 brew "tree"
 brew "universal-ctags"
@@ -63,6 +68,8 @@ brew "int128/kubelogin/kubelogin"
 cask "aerospace"
 cask "alacritty"
 cask "appcleaner"
+cask "balenaetcher"
+cask "batfi"
 cask "brave-browser"
 cask "chatgpt"
 cask "cyberduck"
@@ -74,22 +81,23 @@ cask "kindavim"
 cask "maccy"
 cask "meta"
 cask "notion"
-cask "ollama-app"
 cask "openvpn-connect"
 cask "orbstack"
 cask "pearcleaner"
 cask "rar"
 cask "rustdesk"
+cask "shottr"
 cask "transmission"
 cask "xld"
 cask "zoom"
 mas "Balance", id: 1606536498
 mas "Bitwarden", id: 1352778147
-mas "Dark Reader for Safari", id: 1438243180
+mas "Budget Flow", id: 1640091876
 mas "Folder Preview", id: 6698876601
 mas "GarageBand", id: 682658836
 mas "Ghostery Privacy Ad Blocker", id: 6504861501
 mas "Metronome", id: 1629209970
 mas "Microsoft Remote Desktop", id: 1295203466
+mas "Perplexity", id: 6714467650
 mas "Simplenote", id: 692867256
 mas "Telegram", id: 747648890
