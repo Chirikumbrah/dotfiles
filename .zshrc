@@ -17,7 +17,8 @@ export EDITOR=nvim VISUAL=$EDITOR XDG_CONFIG_HOME="$HOME/.config" \
 
 alias ll='ls -halF' ls='ls -h --color' grep='grep --color' ga='git add' gl='git log' \
     gcl='git clone' gcm='git commit -m' gco='git checkout' gd='git diff' gs='git status' \
-    brew-dump='brew bundle dump --file=~/.config/homebrew/Brewfile --force'
+    brew-dump='brew bundle dump --file=~/.config/homebrew/Brewfile --force' \
+    gacm='git add .; git add -A; git commit -m'
 
 _lazy_load() {
     local cmd=$1 loader=$2
