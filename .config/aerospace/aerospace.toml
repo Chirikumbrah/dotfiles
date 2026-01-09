@@ -260,6 +260,14 @@ run = 'move-node-to-workspace 5'
 if.app-id = 'com.apple.systempreferences'
 run = 'move-node-to-workspace 5'
 
+[[on-window-detected]]
+if.app-id = 'org.freac.freac'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'com.nightbirdsevolve.Meta'
+run = 'move-node-to-workspace 5'
+
 
 # Workspace 6
 [[on-window-detected]]
@@ -281,7 +289,6 @@ run = 'move-node-to-workspace 6'
 [[on-window-detected]]
 if.app-id = 'com.g5532446.Balance'
 run = 'move-node-to-workspace 6'
-
 
 [[on-window-detected]]
 if.app-id = 'com.fabian.hasse.haushaltsbuch'
