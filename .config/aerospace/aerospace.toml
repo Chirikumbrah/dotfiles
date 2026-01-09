@@ -287,7 +287,7 @@ run = 'move-node-to-workspace 6'
 
 # Workspace 8
 [[on-window-detected]]
-if.app-id = 'ru.keepcoder.Telegram'
+if.app-name-regex-substring = 'telegram'
 run = ['move-node-to-workspace 8']
 
 [[on-window-detected]]
