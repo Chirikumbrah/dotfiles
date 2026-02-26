@@ -10,6 +10,7 @@ default-root-container-orientation = 'auto'
 key-mapping.preset = 'qwerty'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = 'move-mouse window-lazy-center'
+automatically-unhide-macos-hidden-apps = true
 
 [gaps]
 inner.horizontal = 0
@@ -109,6 +110,9 @@ alt-shift-0 = 'move-node-to-workspace 10 --focus-follows-window'
 alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
+cmd-h = []     # Disable "hide application"
+cmd-alt-h = [] # Disable "hide others"
+
 [workspace-to-monitor-force-assignment]
 6 = 'secondary'
 7 = 'secondary'
@@ -181,15 +185,18 @@ run = ['layout floating']
 # Workspace 1
 [[on-window-detected]]
 if.app-id = 'org.chromium.Chromium'
-run = ['layout floating', 'move-node-to-workspace 1']
+check-further-callbacks = true
+run = ['layout floating', 'fullscreen', 'move-node-to-workspace 1']
 
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
-run = ['layout floating', 'move-node-to-workspace 1']
+check-further-callbacks = true
+run = ['layout floating', 'fullscreen', 'move-node-to-workspace 1']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
-run = ['layout floating', 'move-node-to-workspace 1']
+check-further-callbacks = true
+run = ['layout floating', 'fullscreen', 'move-node-to-workspace 1']
 
 
 # Workspace 2
