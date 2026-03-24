@@ -1,0 +1,112 @@
+[general]
+hide_overlay_in_screen_share = true
+passthrough_unbounded_keys = true
+mode_exit_keys = ["Escape", "Ctrl+C"]
+
+[hotkeys]
+"Cmd+Escape" = "recursive_grid --action left_click"
+"Option+Escape" = "recursive_grid --action middle_click"
+"Cmd+Shift+S" = "scroll"
+
+[mode_indicator.ui]
+font_size = 4
+border_radius = 50
+border_color_light = "#00000000"
+border_color_dark = "#00000000"
+border_width = 0
+padding_x = -1
+padding_y = -1
+indicator_x_offset = 10
+indicator_y_offset = -20
+
+[mode_indicator.scroll]
+enabled = true
+text = " "
+background_color_light = "#FF00CF55"
+background_color_dark = "#FF00CF55"
+
+[mode_indicator.recursive_grid]
+enabled = true
+text = " "
+background_color_light = "#FFFFAA22"
+background_color_dark = "#FFFFAA22"
+
+[sticky_modifiers.ui]
+indicator_y_offset = 20
+indicator_x_offset = 0
+border_width = 0
+background_color_light = "#FFFFAA22"
+background_color_dark = "#FFFFAA22"
+
+[action.key_bindings]
+left_click = "Return"
+right_click = "Shift+Return"
+middle_click = "Shift+M"
+mouse_down = "Shift+D"
+mouse_up = "Shift+U"
+move_mouse_up = "Up"
+move_mouse_down = "Down"
+move_mouse_left = "Left"
+move_mouse_right = "Right"
+
+[scroll.key_bindings]
+scroll_up = ["Ctrl+K"]
+scroll_down = ["Ctrl+J"]
+scroll_left = ["Ctrl+H"]
+scroll_right = ["Ctrl+L"]
+page_up = ["Ctrl+U"]
+page_down = ["Ctrl+D"]
+go_top = ["Ctrl+T"]
+go_bottom = ["Ctrl+B"]
+
+[scroll.custom_hotkeys]
+"," = "recursive_grid --action left_click"
+"." = "recursive_grid"
+
+[recursive_grid]
+reset_key = ","
+
+grid_cols = 5
+grid_rows = 5
+keys = "qwertasdfgcv nmyuiophjkl;"
+
+min_size = 10
+max_depth = 10
+
+[recursive_grid.ui]
+line_color_light = "#FFFF0000"
+text_color_light = "#00000000"
+highlight_color_light = "#22FFFFFF"
+line_color_dark = "#FFFF0000"
+text_color_dark = "#FFFF0000"
+highlight_color_dark = "#22FFFFFF"
+line_width = 1
+font_size = 15
+label_font_size = 11
+font_family = "UbuntuMono Nerd Font"
+label_background = false                       # Add rounded backgrounds behind cell labels
+sub_key_preview = false                        # Draw miniature key grid inside each cell
+sub_key_preview_font_size = 11
+sub_key_preview_autohide_multiplier = 1.5
+sub_key_preview_text_color_light = "#FFFF0000"
+sub_key_preview_text_color_dark = "#FFFF0000"
+
+
+[recursive_grid.custom_hotkeys]
+"Ctrl+J" = "action scroll_down"
+"Ctrl+K" = "action scroll_up"
+"Ctrl+H" = "action scroll_left"
+"Ctrl+L" = "action scroll_right"
+"Ctrl+U" = "action page_up"
+"Ctrl+D" = "action page_down"
+"Ctrl+T" = "action go_top"
+"Ctrl+B" = "action go_bottom"
+
+[smooth_cursor]
+move_mouse_enabled = true
+steps = 50
+max_duration = 200
+duration_per_pixel = 0.1
+
+[systray]
+enabled = false
