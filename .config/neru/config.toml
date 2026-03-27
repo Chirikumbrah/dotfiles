@@ -6,7 +6,7 @@ mode_exit_keys = ["Escape", "Ctrl+C"]
 [hotkeys]
 "Cmd+Escape" = "recursive_grid --action left_click"
 "Option+Escape" = "recursive_grid --action middle_click"
-"Cmd+Shift+S" = "scroll"
+"Cmd+Ctrl+S" = "scroll"
 
 [mode_indicator.ui]
 font_size = 4
