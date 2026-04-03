@@ -26,7 +26,6 @@ let mapleader = " "
 let c_comment_strings=1 " Highlighting strings inside C comments.
 let g:netrw_banner=0        " disable annoying banner
 let g:netrw_liststyle=3     " tree view
-let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_fastbrowse = 0 " close NetRW after opening a file
 
 
