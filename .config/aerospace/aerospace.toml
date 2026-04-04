@@ -349,3 +349,7 @@ run = 'move-node-to-workspace 10'
 [[on-window-detected]]
 if.app-id = 'com.apple.Passwords'
 run = 'move-node-to-workspace 10'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.AppStore'
+run = 'move-node-to-workspace 10'
