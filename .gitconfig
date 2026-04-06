@@ -20,15 +20,13 @@
     pager = "less -RF --mouse"
     line-numbers = true
 [merge]
-	tool = "nvim_difftool"
+	tool = "vimdiff"
 [mergetool]
 	keepBackup = false
 	prompt = false
-	tool = "nvim_difftool"
-[difftool "nvim_difftool"]
-  cmd = nvim -c \"packadd nvim.difftool\" -d \"$LOCAL\" \"$REMOTE\"
+	tool = "vimdiff"
 [diff]
-  tool = nvim_difftool
+	tool = "vimdiff"
 [difftool]
 	prompt = false
 [credential]
