@@ -9,10 +9,6 @@ hidutil property --set '
     {
       "HIDKeyboardModifierMappingSrc": 0xC000000CF,
       "HIDKeyboardModifierMappingDst": 0x70000006B
-    },
-    {
-      "HIDKeyboardModifierMappingSrc": 0x10000009B,
-      "HIDKeyboardModifierMappingDst": 0x70000006C
     }
   ]
 }'
