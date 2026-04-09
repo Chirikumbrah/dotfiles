@@ -1,5 +1,8 @@
 -- OPTIONS
 vim.g.mapleader = " "
+vim.g.undotree_WindowLayout = 4
+vim.g.undotree_shortIndicators = 1
+vim.g.undotree_SetFocusWhenToggle = 1
 vim.opt.autocomplete = true
 vim.opt.autoread = true
 vim.opt.colorcolumn = "100"
@@ -30,7 +33,6 @@ vim.opt.wildoptions:append({ "fuzzy" })
 vim.opt.winborder = "bold"
 
 -- COLORSCHEME
-vim.cmd("syntax off")
 vim.cmd.colorscheme("habamax")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
@@ -44,7 +46,6 @@ vim.lsp.enable({
 
 -- PLUGINS
 vim.pack.add({
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
     { src = "https://github.com/rafamadriz/friendly-snippets" },
     { src = "https://github.com/stevearc/conform.nvim" },
     { src = "https://github.com/olexsmir/gopher.nvim" },
@@ -54,7 +55,7 @@ vim.pack.add({
     { src = "https://github.com/nvim-mini/mini.files" },
     { src = "https://github.com/nvim-mini/mini.diff" },
 })
-vim.cmd.packadd("cfilter")
+-- vim.cmd.packadd("cfilter")
 vim.cmd.packadd("nvim.undotree")
 
 require("which-key").setup({
@@ -68,7 +69,7 @@ local function km(m, k, f, d) vim.keymap.set(m, k, f, { desc = d, silent = true 
 km({ "n", "v" }, "<leader>y", '"+y', 'Copy to "+')
 km({ "n", "v" }, "<leader>p", '"+p', 'Paste after from "+')
 km({ "n", "v" }, "<leader>P", '"+P', 'Paste before from "+')
-km({ "n", "v" }, "<leader>u", "<cmd>Undotree<cr>", "Undotree")
+km({ "n", "v" }, "<leader>u", vim.cmd.Undotree, "Undotree")
 km("n", "<leader>=", function()
     require("conform").setup({
         formatters_by_ft = {
@@ -138,9 +139,8 @@ vim.api.nvim_create_autocmd("FileType", {
         end
         local ok, parser = pcall(vim.treesitter.get_parser, 0, ft)
         if ok and parser then
+            vim.cmd("syntax off")
             vim.treesitter.start()
-        else
-            vim.cmd("syntax enable")
         end
     end,
 })
