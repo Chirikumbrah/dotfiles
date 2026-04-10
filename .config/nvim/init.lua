@@ -3,7 +3,6 @@ vim.g.mapleader = " "
 vim.g.undotree_WindowLayout = 4
 vim.g.undotree_shortIndicators = 1
 vim.g.undotree_SetFocusWhenToggle = 1
--- vim.opt.autocomplete = true
 vim.opt.autoread = true
 vim.opt.colorcolumn = "100"
 vim.opt.confirm = true
@@ -31,6 +30,8 @@ vim.opt.undofile = true
 vim.opt.updatetime = 50
 vim.opt.wildoptions:append({ "fuzzy" })
 vim.opt.winborder = "bold"
+vim.opt.complete = "o,.,w,b,u,t"
+vim.opt.completeopt = "menu,menuone,popup,fuzzy,noinsert"
 
 -- COLORSCHEME
 vim.cmd.colorscheme("habamax")
@@ -60,12 +61,11 @@ vim.pack.add({
 vim.cmd.packadd("nvim.undotree")
 
 require("tree-sitter-manager").setup({
-    ensure_installed = { "dockerfile", "bash", "lua", "python", "go", "javascript", "json", "terraform" } })
-
-require("which-key").setup({
-    preset = "helix",
-    icons = { mappings = false },
+    ensure_installed = { "dockerfile", "bash", "lua", "python", "go", "javascript", "json", "yaml",
+        "terraform", "helm" }
 })
+
+require("which-key").setup({ preset = "helix", icons = { mappings = false } })
 
 -- KEYMAPS
 local function km(m, k, f, d) vim.keymap.set(m, k, f, { desc = d, silent = true }) end
@@ -95,14 +95,12 @@ km("n", "<leader>=", function()
         },
         formatters = {
             shfmt = { prepend_args = { "-i", "4", "-ci" } },
-            -- stylua = { prepend_args = { "--indent-type", "Spaces" } },
             prettier = {
                 options = { ft_parsers = { yaml = "yaml" } },
                 prepend_args = { "--tab-width", "2", "--no-semi", "--use-tabs=false", "$FILENAME" },
             },
         },
     })
-
     require("conform").format({ async = true, timeout = 500, lsp_format = "fallback" })
 end, "Format buffer")
 km("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], "Trim whitespace")
@@ -120,44 +118,18 @@ km("n", "<Leader>W", require("fzf-lua").grep_cWORD, "Grep cWORD")
 km("n", "<leader>e", require("mini.files").open, "Explorer")
 
 -- AUTOCOMMANDS
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+local ac = vim.api.nvim_create_autocmd
+ac({ "BufRead", "BufNewFile" }, {
     pattern = { "*/templates/*.y*ml", "*/templates/*.tpl", "Chart.y*ml" },
     command = "set filetype=helm",
 })
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function() vim.hl.on_yank({ timeout = 400 }) end,
-})
+ac("TextYankPost", { callback = function() vim.hl.on_yank({ timeout = 400 }) end, })
 
-vim.api.nvim_create_autocmd("FileType", {
+ac("FileType", {
     callback = function()
-        local ft = vim.bo.filetype
-        if ft == "go" then
-            local ok, gopher = pcall(require, "gopher")
-            if ok and not gopher._setup_done then
-                gopher.setup({ gotag = { transform = "camelcase" } })
-                gopher._setup_done = true
-            end
-        end
-    end,
+        if vim.bo.filetype == "go" then require("gopher").setup({ gotag = { transform = "camelcase" } }) end
+    end
 })
 
-
-vim.api.nvim_create_autocmd("BufReadPost", {
-    callback = function()
-        if vim.fn.finddir(".git", ".;") ~= "" then
-            if not package.loaded["mini.diff"] then require("mini.diff").setup() end
-        end
-    end,
-})
-
-vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(args)
-        local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-        if client:supports_method("textDocument/completion") then
-            vim.o.complete = "o,.,w,b,u,t"
-            vim.o.completeopt = "menu,menuone,popup,fuzzy,noinsert"
-            vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-        end
-    end,
-})
+ac("BufReadPost", { callback = function() require("mini.diff").setup() end })
