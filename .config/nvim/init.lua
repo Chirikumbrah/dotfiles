@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 vim.g.undotree_WindowLayout = 4
 vim.g.undotree_shortIndicators = 1
 vim.g.undotree_SetFocusWhenToggle = 1
-vim.opt.autocomplete = true
+-- vim.opt.autocomplete = true
 vim.opt.autoread = true
 vim.opt.colorcolumn = "100"
 vim.opt.confirm = true
@@ -46,6 +46,7 @@ vim.lsp.enable({
 
 -- PLUGINS
 vim.pack.add({
+    { src = "https://github.com/romus204/tree-sitter-manager.nvim" },
     { src = "https://github.com/rafamadriz/friendly-snippets" },
     { src = "https://github.com/stevearc/conform.nvim" },
     { src = "https://github.com/olexsmir/gopher.nvim" },
@@ -55,8 +56,11 @@ vim.pack.add({
     { src = "https://github.com/nvim-mini/mini.files" },
     { src = "https://github.com/nvim-mini/mini.diff" },
 })
--- vim.cmd.packadd("cfilter")
+
 vim.cmd.packadd("nvim.undotree")
+
+require("tree-sitter-manager").setup({
+    ensure_installed = { "dockerfile", "bash", "lua", "python", "go", "javascript", "json", "terraform" } })
 
 require("which-key").setup({
     preset = "helix",
@@ -107,8 +111,8 @@ km("n", "<leader>s", require("fzf-lua").lsp_document_symbols, "LSP symbols")
 km("n", "<Leader>S", require("fzf-lua").lsp_live_workspace_symbols, "LSP workspace symbols")
 km("n", "<Leader>d", require("fzf-lua").lsp_workspace_diagnostics, "Diagnostics")
 km("n", "<Leader>h", require("fzf-lua").helptags, "Help")
-km("n", "<Leader>f", require("fzf-lua").files, "Files")
-km("n", "<Leader>b", require("fzf-lua").buffers, "Buffers")
+km("n", "<Leader><leader>", require("fzf-lua").files, "Files")
+-- km("n", "<Leader>b", require("fzf-lua").buffers, "Buffers")
 km("n", "<Leader>/", require("fzf-lua").live_grep, "Live grep")
 km("n", "<Leader>w", require("fzf-lua").grep_cword, "Grep cword")
 km("n", "<Leader>W", require("fzf-lua").grep_cWORD, "Grep cWORD")
@@ -133,17 +137,11 @@ vim.api.nvim_create_autocmd("FileType", {
             if ok and not gopher._setup_done then
                 gopher.setup({ gotag = { transform = "camelcase" } })
                 gopher._setup_done = true
-            elseif not ok then
-                vim.notify("gopher.nvim not installed", vim.log.levels.WARN)
             end
-        end
-        local ok, parser = pcall(vim.treesitter.get_parser, 0, ft)
-        if ok and parser then
-            vim.cmd("syntax off")
-            vim.treesitter.start()
         end
     end,
 })
+
 
 vim.api.nvim_create_autocmd("BufReadPost", {
     callback = function()

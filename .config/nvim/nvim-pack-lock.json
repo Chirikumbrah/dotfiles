@@ -9,7 +9,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "4deeecf611c0beba6455e6cf06e2c051a6169dd4",
+      "rev": "eee072d89ccdc0a4627bf67d0757d2e4981c7292",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gopher.nvim": {
@@ -27,6 +27,10 @@
     "nvim-lspconfig": {
       "rev": "c588db330592fa477a70d2fee6ba20a57194bdc3",
       "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "tree-sitter-manager.nvim": {
+      "rev": "794c1953baac1bcccd5865def8f1bf908119bf1e",
+      "src": "https://github.com/romus204/tree-sitter-manager.nvim"
     },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
