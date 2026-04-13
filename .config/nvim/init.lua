@@ -105,6 +105,7 @@ km("n", "<leader>=", function()
 end, "Format buffer")
 km("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], "Trim whitespace")
 
+km("n", "grr", require("fzf-lua").lsp_references, "LSP references")
 km("n", "<leader>s", require("fzf-lua").lsp_document_symbols, "LSP symbols")
 km("n", "<Leader>S", require("fzf-lua").lsp_live_workspace_symbols, "LSP workspace symbols")
 km("n", "<Leader>d", require("fzf-lua").lsp_workspace_diagnostics, "Diagnostics")
