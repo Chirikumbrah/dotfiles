@@ -157,9 +157,6 @@ alt-shift-l = ['join-with right', 'mode main']
 if.app-name-regex-substring = 'Finder'
 run = 'layout floating'
 [[on-window-detected]]
-if.app-id = 'io.ente.auth.mac'
-run = 'layout floating'
-[[on-window-detected]]
 if.app-id = 'is.gtmetronome'
 run = 'layout floating'
 [[on-window-detected]]
@@ -349,6 +346,10 @@ run = 'move-node-to-workspace 10'
 [[on-window-detected]]
 if.app-id = 'com.apple.Passwords'
 run = 'move-node-to-workspace 10'
+
+[[on-window-detected]]
+if.app-id = 'io.ente.auth.mac'
+run = ['layout floating', 'move-node-to-workspace 10']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.AppStore'
