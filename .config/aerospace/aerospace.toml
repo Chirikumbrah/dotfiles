@@ -215,9 +215,13 @@ run = 'move-node-to-workspace 3'
 if.app-id = 'dev.kdrag0n.MacVirt'
 run = ['layout floating', 'move-node-to-workspace 3']
 
-
 [[on-window-detected]]
 if.app-id = 'org.openvpn.client.app'
+run = ['layout floating', 'move-node-to-workspace 3']
+
+
+[[on-window-detected]]
+if.app-id = 'net.tunnelblick.tunnelblick '
 run = ['layout floating', 'move-node-to-workspace 3']
 
 
