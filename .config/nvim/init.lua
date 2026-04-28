@@ -42,7 +42,7 @@ vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#3f3f3f", bg = "none" })
 -- LSP
 vim.lsp.enable({
     "basedpyright", "bashls", "clangd", "dockerls", "gopls", "helm_ls", "jsonls", "lua_ls",
-    "marksman", "ruff", "terraformls", "terraform_lsp", "yamlls",
+    "marksman", "ruff", "terraformls", "tflint", "yamlls",
 })
 
 -- PLUGINS
@@ -62,7 +62,7 @@ vim.cmd.packadd("nvim.undotree")
 
 require("tree-sitter-manager").setup({
     ensure_installed = { "dockerfile", "bash", "lua", "python", "go", "javascript", "json", "yaml",
-        "terraform", "helm" }
+        "helm" }
 })
 
 require("which-key").setup({ preset = "helix", icons = { mappings = false } })
