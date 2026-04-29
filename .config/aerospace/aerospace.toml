@@ -348,6 +348,10 @@ if.app-id = 'com.apple.Music'
 run = 'move-node-to-workspace 10'
 
 [[on-window-detected]]
+if.app-id = 'org.Petrichor'
+run = 'move-node-to-workspace 10'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.Passwords'
 run = 'move-node-to-workspace 10'
 
