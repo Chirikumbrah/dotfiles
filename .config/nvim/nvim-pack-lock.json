@@ -8,17 +8,9 @@
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
-    "fzf-lua": {
-      "rev": "eee072d89ccdc0a4627bf67d0757d2e4981c7292",
-      "src": "https://github.com/ibhagwan/fzf-lua"
-    },
     "gopher.nvim": {
       "rev": "27ba078f14dd39fcd5e8a57d7009cdd77450ebbb",
       "src": "https://github.com/olexsmir/gopher.nvim"
-    },
-    "mini.clue": {
-      "rev": "43bd6cf1c3ccdea46d403c32dbc4629fa6afa09d",
-      "src": "https://github.com/nvim-mini/mini.clue"
     },
     "mini.diff": {
       "rev": "ab11575a6c147ecfba894d676d0c93e855021d34",
@@ -43,10 +35,6 @@
     "tree-sitter-manager.nvim": {
       "rev": "794c1953baac1bcccd5865def8f1bf908119bf1e",
       "src": "https://github.com/romus204/tree-sitter-manager.nvim"
-    },
-    "which-key.nvim": {
-      "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
-      "src": "https://github.com/folke/which-key.nvim"
     }
   }
 }

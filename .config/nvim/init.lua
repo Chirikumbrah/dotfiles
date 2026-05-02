@@ -51,13 +51,11 @@ vim.pack.add({
     { src = "https://github.com/rafamadriz/friendly-snippets" },
     { src = "https://github.com/stevearc/conform.nvim" },
     { src = "https://github.com/olexsmir/gopher.nvim" },
-    { src = "https://github.com/folke/which-key.nvim" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/nvim-mini/mini.files" },
     { src = "https://github.com/nvim-mini/mini.diff" },
     { src = "https://github.com/nvim-mini/mini.pick" },
     { src = "https://github.com/nvim-mini/mini.extra" },
-    { src = "https://github.com/nvim-mini/mini.clue" },
 })
 
 vim.cmd.packadd("nvim.undotree")
@@ -67,10 +65,8 @@ require("tree-sitter-manager").setup({
         "helm" }
 })
 
-require("which-key").setup({ preset = "helix", icons = { mappings = false } })
 require("mini.pick").setup()
 require("mini.extra").setup()
--- require("mini.clue").setup({ window = { delay = 0 } })
 
 -- KEYMAPS
 local function km(m, k, f, d) vim.keymap.set(m, k, f, { desc = d, silent = true }) end
