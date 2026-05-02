@@ -51,11 +51,13 @@ vim.pack.add({
     { src = "https://github.com/rafamadriz/friendly-snippets" },
     { src = "https://github.com/stevearc/conform.nvim" },
     { src = "https://github.com/olexsmir/gopher.nvim" },
-    { src = "https://github.com/ibhagwan/fzf-lua" },
     { src = "https://github.com/folke/which-key.nvim" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/nvim-mini/mini.files" },
     { src = "https://github.com/nvim-mini/mini.diff" },
+    { src = "https://github.com/nvim-mini/mini.pick" },
+    { src = "https://github.com/nvim-mini/mini.extra" },
+    { src = "https://github.com/nvim-mini/mini.clue" },
 })
 
 vim.cmd.packadd("nvim.undotree")
@@ -66,6 +68,9 @@ require("tree-sitter-manager").setup({
 })
 
 require("which-key").setup({ preset = "helix", icons = { mappings = false } })
+require("mini.pick").setup()
+require("mini.extra").setup()
+-- require("mini.clue").setup({ window = { delay = 0 } })
 
 -- KEYMAPS
 local function km(m, k, f, d) vim.keymap.set(m, k, f, { desc = d, silent = true }) end
@@ -105,16 +110,16 @@ km("n", "<leader>=", function()
 end, "Format buffer")
 km("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], "Trim whitespace")
 
-km("n", "grr", require("fzf-lua").lsp_references, "LSP references")
-km("n", "<leader>s", require("fzf-lua").lsp_document_symbols, "LSP symbols")
-km("n", "<Leader>S", require("fzf-lua").lsp_live_workspace_symbols, "LSP workspace symbols")
-km("n", "<Leader>d", require("fzf-lua").lsp_workspace_diagnostics, "Diagnostics")
-km("n", "<Leader>h", require("fzf-lua").helptags, "Help")
-km("n", "<Leader><leader>", require("fzf-lua").files, "Files")
--- km("n", "<Leader>b", require("fzf-lua").buffers, "Buffers")
-km("n", "<Leader>/", require("fzf-lua").live_grep, "Live grep")
-km("n", "<Leader>w", require("fzf-lua").grep_cword, "Grep cword")
-km("n", "<Leader>W", require("fzf-lua").grep_cWORD, "Grep cWORD")
+km("n", "grr", function() MiniExtra.pickers.lsp({ scope = "references" }) end, "LSP references")
+km("n", "<leader>s", function() MiniExtra.pickers.lsp({ scope = "document_symbol" }) end, "LSP symbols")
+km("n", "<Leader>S", function() MiniExtra.pickers.lsp({ scope = "workspace_symbol_live" }) end, "LSP ws symbols live")
+km("n", "<Leader>k", MiniExtra.pickers.keymaps, "Keymaps")
+km("n", "<Leader>d", MiniExtra.pickers.diagnostic, "Diagnostics")
+km("n", "<Leader>h", MiniPick.builtin.help, "Help")
+km("n", "<Leader><leader>", MiniPick.builtin.files, "Files")
+km("n", "<Leader>/", MiniPick.builtin.grep_live, "Grep live")
+km("n", "<Leader>w", function() vim.cmd("Pick grep pattern='<cword>'") end, "Grep cword")
+km("n", "<Leader>W", function() vim.cmd("Pick grep pattern='<cWORD>'") end, "Grep cWORD")
 
 km("n", "<leader>e", require("mini.files").open, "Explorer")
 
