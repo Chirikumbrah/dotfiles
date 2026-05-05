@@ -14,7 +14,8 @@ export EDITOR=nvim VISUAL=$EDITOR XDG_CONFIG_HOME="$HOME/.config" \
     FZF_DEFAULT_OPTS="--preview '[ -d {} ] && ls -1a --color {}/ || cat -n {}'"\
     HISTSIZE=100000 SAVEHIST=100000 KEYTIMEOUT=1 CLIPBOARD_NOGUI=1 \
     VIRTUAL_ENV_DISABLE_PROMPT=1 HIST_IGNORE="(&|ls|[bf]g|gp|z|exit|history)" \
-    KUBECONFIG=~/.kube/config:~/Projects/mine/homelab/terraform/generated/kubeconfig
+    KUBECONFIG=~/.kube/config:~/Projects/mine/homelab/terraform/generated/kubeconfig \
+    TALOSCONFIG=~/Projects/mine/homelab/terraform/generated/talosconfig
 
 alias ll='ls -halF' ls='ls -h --color' grep='grep --color' ga='git add' gl='git log' \
     gcl='git clone' gcm='git commit -m' gco='git checkout' gd='git diff' gs='git status' \
