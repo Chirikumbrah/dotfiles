@@ -191,6 +191,11 @@ check-further-callbacks = true
 run = ['layout floating', 'fullscreen', 'move-node-to-workspace 1']
 
 [[on-window-detected]]
+if.app-id = 'net.imput.helium'
+check-further-callbacks = true
+run = ['layout floating', 'fullscreen', 'move-node-to-workspace 1']
+
+[[on-window-detected]]
 if.app-id = 'com.apple.Safari'
 check-further-callbacks = true
 run = ['layout floating', 'fullscreen', 'move-node-to-workspace 1']
