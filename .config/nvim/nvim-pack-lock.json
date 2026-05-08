@@ -8,6 +8,10 @@
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
+    "fzf-lua": {
+      "rev": "33fe4b6f0c817c4d99a7baeea82c4d17e57efd64",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
     "gopher.nvim": {
       "rev": "27ba078f14dd39fcd5e8a57d7009cdd77450ebbb",
       "src": "https://github.com/olexsmir/gopher.nvim"
@@ -16,17 +20,9 @@
       "rev": "ab11575a6c147ecfba894d676d0c93e855021d34",
       "src": "https://github.com/nvim-mini/mini.diff"
     },
-    "mini.extra": {
-      "rev": "bc4e872500fd6d2ce252604e0ffa100f64f02280",
-      "src": "https://github.com/nvim-mini/mini.extra"
-    },
     "mini.files": {
       "rev": "e8db416c9f5dbce70f5501da28263d45c0a4df6b",
       "src": "https://github.com/nvim-mini/mini.files"
-    },
-    "mini.pick": {
-      "rev": "437d44eb57312f23e6b931704694fc294922cd88",
-      "src": "https://github.com/nvim-mini/mini.pick"
     },
     "nvim-lspconfig": {
       "rev": "c588db330592fa477a70d2fee6ba20a57194bdc3",
