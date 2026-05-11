@@ -55,13 +55,15 @@ vim.pack.add({
     { src = "https://github.com/nvim-mini/mini.files" },
     { src = "https://github.com/nvim-mini/mini.diff" },
     { src = "https://github.com/ibhagwan/fzf-lua" },
+    { src = "https://github.com/qvalentin/helm-ls.nvim" },
 })
 
 vim.cmd.packadd("nvim.undotree")
 
 require("tree-sitter-manager").setup({
     ensure_installed = { "dockerfile", "bash", "lua", "python", "go", "javascript", "json", "yaml",
-        "helm" }
+        "helm" },
+    auto_install = false
 })
 
 -- KEYMAPS
@@ -117,11 +119,6 @@ km("n", "<leader>e", require("mini.files").open, "Explorer")
 
 -- AUTOCOMMANDS
 local ac = vim.api.nvim_create_autocmd
-ac({ "BufRead", "BufNewFile" }, {
-    pattern = { "*/templates/*.y*ml", "*/templates/*.tpl" },
-    command = "set filetype=helm",
-})
-
 ac("TextYankPost", { callback = function() vim.hl.on_yank({ timeout = 400 }) end, })
 
 ac("FileType", {
@@ -130,4 +127,9 @@ ac("FileType", {
     end
 })
 
-ac("BufReadPost", { callback = function() require("mini.diff").setup() end })
+ac("BufReadPost", {
+    callback = function()
+        require("mini.diff").setup()
+        require("helm-ls").setup()
+    end
+})

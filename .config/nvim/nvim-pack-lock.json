@@ -16,6 +16,10 @@
       "rev": "27ba078f14dd39fcd5e8a57d7009cdd77450ebbb",
       "src": "https://github.com/olexsmir/gopher.nvim"
     },
+    "helm-ls.nvim": {
+      "rev": "20df43509b02a3ce3c6b3eee254d6e2bffa9a370",
+      "src": "https://github.com/qvalentin/helm-ls.nvim"
+    },
     "mini.diff": {
       "rev": "ab11575a6c147ecfba894d676d0c93e855021d34",
       "src": "https://github.com/nvim-mini/mini.diff"
