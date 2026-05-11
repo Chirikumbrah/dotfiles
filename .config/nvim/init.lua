@@ -118,7 +118,7 @@ km("n", "<leader>e", require("mini.files").open, "Explorer")
 -- AUTOCOMMANDS
 local ac = vim.api.nvim_create_autocmd
 ac({ "BufRead", "BufNewFile" }, {
-    pattern = { "*/templates/*.y*ml", "*/templates/*.tpl", "Chart.y*ml" },
+    pattern = { "*/templates/*.y*ml", "*/templates/*.tpl" },
     command = "set filetype=helm",
 })
 
