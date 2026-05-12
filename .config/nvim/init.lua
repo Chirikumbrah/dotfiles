@@ -63,7 +63,7 @@ vim.cmd.packadd("nvim.undotree")
 require("tree-sitter-manager").setup({
     ensure_installed = { "dockerfile", "bash", "lua", "python", "go", "javascript", "json", "yaml",
         "helm" },
-    auto_install = false
+    auto_install = true
 })
 
 -- KEYMAPS
