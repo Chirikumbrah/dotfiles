@@ -4,7 +4,7 @@ vim.g.undotree_WindowLayout = 4
 vim.g.undotree_shortIndicators = 1
 vim.g.undotree_SetFocusWhenToggle = 1
 vim.opt.autoread = true
-vim.opt.colorcolumn = "100"
+vim.opt.colorcolumn = "110"
 vim.opt.confirm = true
 vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
@@ -39,6 +39,15 @@ vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#3f3f3f", bg = "none" })
 
+-- FILETYPES
+vim.filetype.add({
+    pattern = {
+        [".*/templates/.*%.tpl"] = "helm",
+        [".*/templates/.*%.ya?ml"] = "helm",
+        ["helmfile.*%.ya?ml"] = "helm",
+    },
+})
+
 -- LSP
 vim.lsp.enable({
     "basedpyright", "bashls", "clangd", "dockerls", "gopls", "helm_ls", "jsonls", "lua_ls",
@@ -47,7 +56,8 @@ vim.lsp.enable({
 
 -- PLUGINS
 vim.pack.add({
-    { src = "https://github.com/romus204/tree-sitter-manager.nvim" },
+    { src = "https://github.com/neovim-treesitter/treesitter-parser-registry" },
+    { src = "https://github.com/neovim-treesitter/nvim-treesitter" },
     { src = "https://github.com/rafamadriz/friendly-snippets" },
     { src = "https://github.com/stevearc/conform.nvim" },
     { src = "https://github.com/olexsmir/gopher.nvim" },
@@ -55,16 +65,9 @@ vim.pack.add({
     { src = "https://github.com/nvim-mini/mini.files" },
     { src = "https://github.com/nvim-mini/mini.diff" },
     { src = "https://github.com/ibhagwan/fzf-lua" },
-    { src = "https://github.com/qvalentin/helm-ls.nvim" },
 })
 
 vim.cmd.packadd("nvim.undotree")
-
-require("tree-sitter-manager").setup({
-    ensure_installed = { "dockerfile", "bash", "lua", "python", "go", "javascript", "json", "yaml",
-        "helm" },
-    auto_install = true
-})
 
 -- KEYMAPS
 local function km(m, k, f, d) vim.keymap.set(m, k, f, { desc = d, silent = true }) end
@@ -124,12 +127,14 @@ ac("TextYankPost", { callback = function() vim.hl.on_yank({ timeout = 400 }) end
 ac("FileType", {
     callback = function()
         if vim.bo.filetype == "go" then require("gopher").setup({ gotag = { transform = "camelcase" } }) end
+        pcall(vim.treesitter.start)
     end
 })
 
 ac("BufReadPost", {
     callback = function()
         require("mini.diff").setup()
-        require("helm-ls").setup()
+        require("nvim-treesitter").install({ "dockerfile", "bash", "lua", "python", "go", "javascript",
+            "json", "yaml", "helm", "gotmpl" })
     end
 })

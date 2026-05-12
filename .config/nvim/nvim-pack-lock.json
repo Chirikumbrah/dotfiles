@@ -1,7 +1,7 @@
 {
   "plugins": {
     "conform.nvim": {
-      "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
+      "rev": "dca1a190aa85f9065979ef35802fb77131911106",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "friendly-snippets": {
@@ -9,7 +9,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "33fe4b6f0c817c4d99a7baeea82c4d17e57efd64",
+      "rev": "97376e364f51f1b5ae3efaa3eb2e929430ca8419",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gopher.nvim": {
@@ -21,20 +21,24 @@
       "src": "https://github.com/qvalentin/helm-ls.nvim"
     },
     "mini.diff": {
-      "rev": "ab11575a6c147ecfba894d676d0c93e855021d34",
+      "rev": "117c301374ab8546891e2b34f63885ea83527432",
       "src": "https://github.com/nvim-mini/mini.diff"
     },
     "mini.files": {
-      "rev": "e8db416c9f5dbce70f5501da28263d45c0a4df6b",
+      "rev": "f9f0ccbef0fd24eaddc8675accca83fa1f310c3f",
       "src": "https://github.com/nvim-mini/mini.files"
     },
     "nvim-lspconfig": {
-      "rev": "c588db330592fa477a70d2fee6ba20a57194bdc3",
+      "rev": "451d4ef9abd4f0f08e379ef0d55d1c391b6125a7",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
-    "tree-sitter-manager.nvim": {
-      "rev": "794c1953baac1bcccd5865def8f1bf908119bf1e",
-      "src": "https://github.com/romus204/tree-sitter-manager.nvim"
+    "nvim-treesitter": {
+      "rev": "df7489eeea351bece7fd0f9c825be5cb6a1438f0",
+      "src": "https://github.com/neovim-treesitter/nvim-treesitter"
+    },
+    "treesitter-parser-registry": {
+      "rev": "6eb15358bb9fc88f0d3401d8538d56652e9bdf3c",
+      "src": "https://github.com/neovim-treesitter/treesitter-parser-registry"
     }
   }
 }
