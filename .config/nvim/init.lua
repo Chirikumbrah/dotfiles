@@ -115,9 +115,9 @@ km("n", "<Leader>h", require("fzf-lua").helptags, "Help")
 km("n", "<Leader><leader>", require("fzf-lua").files, "Files")
 km("n", "<Leader>k", require("fzf-lua").keymaps, "Keymaps")
 -- km("n", "<Leader>b", require("fzf-lua").buffers, "Buffers")
-km("n", "<Leader>/", require("fzf-lua").live_grep, "Live grep")
-km("n", "<Leader>w", require("fzf-lua").grep_cword, "Grep cword")
-km("n", "<Leader>W", require("fzf-lua").grep_cWORD, "Grep cWORD")
+km("n", "<Leader>/", function() require("fzf-lua").live_grep({ hidden = true }) end, "Live grep")
+km("n", "<Leader>w", function() require("fzf-lua").grep_cword({ hidden = true }) end, "Grep cword")
+km("n", "<Leader>W", function() require("fzf-lua").grep_cWORD({ hidden = true }) end, "Grep cWORD")
 
 km("n", "<Leader>g", require("mini.diff").toggle_overlay, "Show Diff")
 
