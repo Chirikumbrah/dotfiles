@@ -1,31 +1,24 @@
 -- OPTIONS
 vim.g.mapleader = " "
-vim.g.undotree_WindowLayout = 4
-vim.g.undotree_shortIndicators = 1
-vim.g.undotree_SetFocusWhenToggle = 1
-vim.opt.autoread = true
-vim.opt.colorcolumn = "110"
-vim.opt.confirm = true
 vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
 vim.opt.expandtab = true
-vim.opt.grepprg = "rg --vimgrep --no-messages --smart-case"
+vim.opt.grepprg = "grep -HRIn $* ."
 vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.list = true
 vim.opt.number = true
-vim.opt.path:append("**")
-vim.opt.scrolloff = 8
+vim.opt.path:append({ "**", ".*/**", "**/.*/**" })
+vim.opt.iskeyword:append("-")
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 4
 vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.smoothscroll = true
+vim.opt.smoothscroll = true
 vim.opt.softtabstop = 4
-vim.opt.statusline = "[%n] %<%f %h%w%m%r%=%-14.(%l,%c%V%) %P"
 vim.opt.tabstop = 4
-vim.opt.termguicolors = true
 vim.opt.undofile = true
 vim.opt.updatetime = 50
 vim.opt.wildoptions:append({ "fuzzy" })
@@ -33,13 +26,11 @@ vim.opt.winborder = "bold"
 vim.opt.complete = "o,.,w,b,u,t"
 vim.opt.completeopt = "menu,menuone,popup,fuzzy,noinsert"
 
--- COLORSCHEME
 vim.cmd.colorscheme("habamax")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#3f3f3f", bg = "none" })
 
--- FILETYPES
 vim.filetype.add({
     pattern = {
         [".*/templates/.*%.tpl"] = "helm",
@@ -48,13 +39,9 @@ vim.filetype.add({
     },
 })
 
--- LSP
-vim.lsp.enable({
-    "basedpyright", "bashls", "clangd", "dockerls", "gopls", "helm_ls", "jsonls", "lua_ls",
-    "marksman", "ruff", "terraformls", "tflint", "yamlls",
-})
+vim.lsp.enable({ "basedpyright", "bashls", "clangd", "dockerls", "gopls", "helm_ls", "jsonls", "lua_ls", "marksman",
+    "ruff", "terraformls", "tflint", "yamlls", })
 
--- PLUGINS
 vim.pack.add({
     { src = "https://github.com/neovim-treesitter/treesitter-parser-registry" },
     { src = "https://github.com/neovim-treesitter/nvim-treesitter" },
@@ -64,80 +51,53 @@ vim.pack.add({
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/nvim-mini/mini.files" },
     { src = "https://github.com/nvim-mini/mini.diff" },
-    { src = "https://github.com/ibhagwan/fzf-lua" },
 })
 
-vim.cmd.packadd("nvim.undotree")
-
--- KEYMAPS
-local function km(m, k, f, d) vim.keymap.set(m, k, f, { desc = d, silent = true }) end
-
-km({ "n", "v" }, "<leader>y", '"+y', 'Copy to "+')
-km({ "n", "v" }, "<leader>p", '"+p', 'Paste after from "+')
-km({ "n", "v" }, "<leader>P", '"+P', 'Paste before from "+')
-km({ "n", "v" }, "<leader>u", vim.cmd.Undotree, "Undotree")
-km("n", "<leader>=", function()
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = 'Copy to "+' })
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = 'Paste after from "+' })
+vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = 'Paste before from "+' })
+vim.keymap.set({ "n", "v" }, "<leader>u", vim.cmd.Undotree, { desc = "Undotree" })
+vim.keymap.set("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], { desc = "Trim whitespace" })
+vim.keymap.set("n", "<Leader>/", ":copen | :silent :grep ", { desc = "Grep" })
+vim.keymap.set("n", "<leader>s", vim.lsp.buf.document_symbol, { desc = "LSP symbols" })
+vim.keymap.set("n", "<Leader>S", vim.lsp.buf.workspace_symbol, { desc = "LSP workspace symbols" })
+vim.keymap.set("n", "<Leader>d", function() vim.diagnostic.setloclist({ open = true }) end, { desc = "Diagnostics" })
+vim.keymap.set("n", "<leader>q", "<cmd>silent! ccl | silent! lcl<cr>", { desc = "Close qf/loc window" })
+vim.keymap.set("n", "<Leader>g", require("mini.diff").toggle_overlay, { desc = "Show Diff" })
+vim.keymap.set("n", "<leader>e", require("mini.files").open, { desc = "Explorer" })
+vim.keymap.set("n", "<leader>=", function()
     require("conform").setup({
         formatters_by_ft = {
             css = { "prettier" },
             go = { "goimports", "gofmt" },
-            graphql = { "prettier" },
             javascript = { "prettier" },
             javascriptreact = { "prettier" },
-            json = { "prettier" },
-            markdown = { "prettier" },
             python = { "ruff_format", "ruff_organize_imports", "ruff_fix" },
             sh = { "beautysh" },
             zsh = { "beautysh" },
             toml = { "taplo" },
-            terraform = { "terraform_fmt" },
             typescript = { "prettier" },
             typescriptreact = { "prettier" },
-            yaml = { "prettier" },
         },
-        formatters = {
-            shfmt = { prepend_args = { "-i", "4", "-ci" } },
-            prettier = {
-                options = { ft_parsers = { yaml = "yaml" } },
-                prepend_args = { "--tab-width", "2", "--no-semi", "--use-tabs=false", "$FILENAME" },
-            },
-        },
+        formatters = { shfmt = { prepend_args = { "-i", "4", "-ci" } } },
     })
     require("conform").format({ async = true, timeout = 500, lsp_format = "fallback" })
-end, "Format buffer")
-km("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], "Trim whitespace")
+end, { desc = "Format buffer" })
 
-km("n", "grr", require("fzf-lua").lsp_references, "LSP references")
-km("n", "<leader>s", require("fzf-lua").lsp_document_symbols, "LSP symbols")
-km("n", "<Leader>S", require("fzf-lua").lsp_live_workspace_symbols, "LSP workspace symbols")
-km("n", "<Leader>d", require("fzf-lua").lsp_workspace_diagnostics, "Diagnostics")
-km("n", "<Leader>h", require("fzf-lua").helptags, "Help")
-km("n", "<Leader><leader>", require("fzf-lua").files, "Files")
-km("n", "<Leader>k", require("fzf-lua").keymaps, "Keymaps")
--- km("n", "<Leader>b", require("fzf-lua").buffers, "Buffers")
-km("n", "<Leader>/", function() require("fzf-lua").live_grep({ hidden = true }) end, "Live grep")
-km("n", "<Leader>w", function() require("fzf-lua").grep_cword({ hidden = true }) end, "Grep cword")
-km("n", "<Leader>W", function() require("fzf-lua").grep_cWORD({ hidden = true }) end, "Grep cWORD")
+vim.api.nvim_create_autocmd("TextYankPost", { callback = function() vim.hl.on_yank({ timeout = 400 }) end, })
 
-km("n", "<Leader>g", require("mini.diff").toggle_overlay, "Show Diff")
-
-km("n", "<leader>e", require("mini.files").open, "Explorer")
-
--- AUTOCOMMANDS
-local ac = vim.api.nvim_create_autocmd
-ac("TextYankPost", { callback = function() vim.hl.on_yank({ timeout = 400 }) end, })
-
-ac("FileType", {
+vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         if vim.bo.filetype == "go" then require("gopher").setup({ gotag = { transform = "camelcase" } }) end
         pcall(vim.treesitter.start)
     end
 })
 
-ac("BufReadPost", {
+vim.api.nvim_create_autocmd("BufReadPost", {
     callback = function()
         require("mini.diff").setup()
-        require("nvim-treesitter").install({ "dockerfile", "bash", "lua", "python", "go", "javascript",
-            "json", "yaml", "helm", "gotmpl" })
+        vim.cmd.packadd("nvim.undotree")
+        require("nvim-treesitter").install({ "dockerfile", "bash", "lua", "python", "go", "javascript", "json", "yaml",
+            "helm", "gotmpl" })
     end
 })
