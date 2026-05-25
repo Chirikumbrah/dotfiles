@@ -17,10 +17,8 @@ export EDITOR=nvim VISUAL=$EDITOR XDG_CONFIG_HOME="$HOME/.config" \
     KUBECONFIG=~/.kube/config:~/Projects/mine/homelab/terraform/generated/kubeconfig \
     TALOSCONFIG=~/Projects/mine/homelab/terraform/generated/talosconfig
 
-alias ll='ls -halF' ls='ls -h --color' grep='grep --color' ga='git add' gl='git log' \
-    gcl='git clone' gcm='git commit -m' gco='git checkout' gd='git diff' gs='git status' \
-    brew-dump='brew bundle dump --file=~/.config/homebrew/Brewfile --force' \
-    gacm='git add .; git add -A; git commit -m'
+alias ll='ls -halF' ls='ls -h --color' grep='grep --color' \
+    brew-dump='brew bundle dump --file=~/.config/homebrew/Brewfile --force'
 
 _lazy_load() {
     local cmd=$1 loader=$2
@@ -32,19 +30,12 @@ _lazy_load() {
 }
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    [[ -r "/opt/homebrew/bin/brew" ]] || /bin/bash -c "$(curl -fsSL \
-        https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    [[ -r "/opt/homebrew/share/zsh-completions" ]] \
-        || brew install zsh-completions
     fpath+=( "/opt/homebrew/share/zsh-completions" )
-    [[ -r "/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme" ]] \
-        || brew install powerlevel10k
     . "/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme"
-    path+=( "$HOME/.local/bin" "$HOME/.config/scripts"
-        "/Applications/Postgres.app/Contents/Versions/latest/bin"
+    path+=( "$HOME/.local/bin" "$HOME/.config/scripts" "$HOME/.orbstack/bin"
+        "/Applications/Postgres.app/Contents/Versions/latest/bin" "$CARGO_HOME/bin"
         "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$GOPATH/bin"
-        "$HOME/.orbstack/bin" "$CARGO_HOME/bin"
     )
 fi
 
