@@ -9,7 +9,6 @@ vim.opt.incsearch = true
 vim.opt.list = true
 vim.opt.number = true
 vim.opt.path:append({ "**", ".*/**", "**/.*/**" })
-vim.opt.iskeyword:append("-")
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 4
 vim.opt.signcolumn = "yes"
