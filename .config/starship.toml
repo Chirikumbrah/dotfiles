@@ -1,0 +1,56 @@
+add_newline = false
+command_timeout = 10000
+
+[line_break]
+disabled = true
+
+[aws]
+disabled = true
+
+[terraform]
+disabled = true
+
+[lua]
+disabled = true
+
+[python]
+disabled = false
+
+[c]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[rust]
+disabled = true
+
+[cmake]
+disabled = true
+
+[java]
+disabled = true
+
+[gradle]
+disabled = true
+
+[kotlin]
+disabled = true
+
+[perl]
+disabled = true
+
+[package]
+disabled = true
+
+[os]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[username]
+disabled = true
+
+[battery]
+disabled = true

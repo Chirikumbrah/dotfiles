@@ -1,6 +1,3 @@
-[[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] \
-    && . "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-
 autoload edit-command-line; zle -N edit-command-line
 setopt extended_glob null_glob histignorealldups sharehistory histignorespace prompt_subst
 zstyle ':completion:*' menu select
@@ -32,7 +29,6 @@ _lazy_load() {
 if [[ "$OSTYPE" == "darwin"* ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
     fpath+=( "/opt/homebrew/share/zsh-completions" )
-    . "/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme"
     path+=( "$HOME/.local/bin" "$HOME/.config/scripts" "$HOME/.orbstack/bin"
         "/Applications/Postgres.app/Contents/Versions/latest/bin" "$CARGO_HOME/bin"
         "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$GOPATH/bin"
@@ -49,4 +45,4 @@ _lazy_load terraform 'autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform'
 [[ $commands[fzf] ]] && . <(fzf --zsh)
 [[ -r "$CARGO_HOME/env" ]] && . "$CARGO_HOME/env"
-[[ -r "$HOME/.p10k.zsh" ]] && . "$HOME/.p10k.zsh" || p10k configure
+[[ $commands[starship] ]] && eval "$(starship init zsh)"
