@@ -20,10 +20,6 @@
       "rev": "117c301374ab8546891e2b34f63885ea83527432",
       "src": "https://github.com/nvim-mini/mini.diff"
     },
-    "mini.files": {
-      "rev": "f9f0ccbef0fd24eaddc8675accca83fa1f310c3f",
-      "src": "https://github.com/nvim-mini/mini.files"
-    },
     "nvim-lspconfig": {
       "rev": "451d4ef9abd4f0f08e379ef0d55d1c391b6125a7",
       "src": "https://github.com/neovim/nvim-lspconfig"

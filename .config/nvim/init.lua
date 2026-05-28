@@ -50,7 +50,6 @@ vim.pack.add({
     { src = "https://github.com/stevearc/conform.nvim" },
     { src = "https://github.com/olexsmir/gopher.nvim" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
-    { src = "https://github.com/nvim-mini/mini.files" },
     { src = "https://github.com/nvim-mini/mini.diff" },
 })
 
@@ -65,7 +64,6 @@ vim.keymap.set("n", "<Leader>S", vim.lsp.buf.workspace_symbol, { desc = "LSP wor
 vim.keymap.set("n", "<Leader>d", function() vim.diagnostic.setloclist({ open = true }) end, { desc = "Diagnostics" })
 vim.keymap.set("n", "<leader>q", "<cmd>silent! ccl | silent! lcl<cr>", { desc = "Close qf/loc window" })
 vim.keymap.set("n", "<Leader>g", require("mini.diff").toggle_overlay, { desc = "Show Diff" })
-vim.keymap.set("n", "<leader>e", require("mini.files").open, { desc = "Explorer" })
 vim.keymap.set("n", "<leader>=", function()
     require("conform").setup({
         formatters_by_ft = {
