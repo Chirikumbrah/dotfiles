@@ -13,7 +13,7 @@ args = ["-l", "-c", "tmux attach || tmux new -s y || exec zsh"]
 background = "#000000"
 
 [window]
-decorations = "Buttonless"
+decorations = "None"
 startup_mode = "Maximized"
 option_as_alt = "Both"
 padding = { x = 2, y = 2 }
