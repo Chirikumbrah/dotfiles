@@ -68,7 +68,7 @@ alt-shift-p = ['focus-monitor prev', 'move-mouse window-force-center']
 
 alt-r = 'mode resize'
 
-alt-f = 'fullscreen'
+alt-ctrl-f = 'fullscreen'
 
 # alt-c = 'center window'
 
