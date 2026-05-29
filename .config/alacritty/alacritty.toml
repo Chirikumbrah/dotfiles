@@ -6,8 +6,8 @@ size = 17
 normal = { family = "UbuntuMono Nerd Font" }
 
 [terminal.shell]
-program = "/bin/zsh"
-args = ["-l", "-c", "tmux attach || tmux new -s y || exec zsh"]
+program = "bash"
+args = ["-l", "-c", "tmux attach || tmux new -s y || exec bash"]
 
 [colors.primary]
 background = "#000000"

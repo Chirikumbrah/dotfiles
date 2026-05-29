@@ -8,4 +8,5 @@ README.md
 other
 
 .inputrc
-.bash.*
+.zshrc
+.zprofile
