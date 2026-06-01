@@ -44,12 +44,6 @@ alt-space = 'exec-and-forget open -a /System/Library/CoreServices/Finder.app'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-alt-slash = 'layout tiles horizontal vertical'
-alt-comma = 'layout accordion horizontal vertical'
-
-alt-s = 'layout v_accordion'               # 'layout stacking' in i3
-alt-w = 'layout h_accordion'               # 'layout tabbed' in i3
-alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
 
 alt-o = 'layout floating tiling'
 alt-t = 'layout tiling'
