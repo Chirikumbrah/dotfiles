@@ -5,13 +5,11 @@ autoload edit-command-line; zle -N edit-command-line
 setopt extended_glob null_glob histignorealldups sharehistory histignorespace prompt_subst
 zstyle ':completion:*' menu select
 
-bindkey -M vicmd "\ev" edit-command-line; bindkey -v "\ev" edit-command-line \
+bindkey -M vicmd "^X^E" edit-command-line; bindkey -v "^X^E" edit-command-line \
     "^N" history-beginning-search-forward "^P" history-beginning-search-backward
 
 export EDITOR=nvim VISUAL=$EDITOR XDG_CONFIG_HOME="$HOME/.config" \
     GPG_TTY=$(tty) CARGO_HOME=$HOME/.cargo GOPATH=$HOME/.go \
-    FZF_DEFAULT_COMMAND='find . -type f ! -path ".git/*"' \
-    FZF_DEFAULT_OPTS="--preview '[ -d {} ] && ls -1a --color {}/ || cat -n {}'"\
     HISTSIZE=100000 SAVEHIST=100000 KEYTIMEOUT=1 CLIPBOARD_NOGUI=1 \
     VIRTUAL_ENV_DISABLE_PROMPT=1 HIST_IGNORE="(&|ls|[bf]g|gp|z|exit|history)" \
     KUBECONFIG=~/.kube/config:~/Projects/mine/homelab/terraform/generated/kubeconfig \
