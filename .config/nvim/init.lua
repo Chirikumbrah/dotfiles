@@ -51,6 +51,7 @@ vim.pack.add({
     { src = "https://github.com/olexsmir/gopher.nvim" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/nvim-mini/mini.diff" },
+    { src = "https://github.com/ibhagwan/fzf-lua" },
 })
 
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = 'Copy to "+' })
@@ -58,10 +59,15 @@ vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = 'Paste after from "+' 
 vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = 'Paste before from "+' })
 vim.keymap.set({ "n", "v" }, "<leader>u", vim.cmd.Undotree, { desc = "Undotree" })
 vim.keymap.set("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], { desc = "Trim whitespace" })
-vim.keymap.set("n", "<Leader>/", ":copen | :silent :grep ", { desc = "Grep" })
-vim.keymap.set("n", "<leader>s", vim.lsp.buf.document_symbol, { desc = "LSP symbols" })
-vim.keymap.set("n", "<Leader>S", vim.lsp.buf.workspace_symbol, { desc = "LSP workspace symbols" })
-vim.keymap.set("n", "<Leader>d", function() vim.diagnostic.setloclist({ open = true }) end, { desc = "Diagnostics" })
+vim.keymap.set("n", "grr", require("fzf-lua").lsp_references, { desc = "LSP references" })
+vim.keymap.set("n", "<leader>s", require("fzf-lua").lsp_document_symbols, { desc = "LSP symbols" })
+vim.keymap.set("n", "<Leader>S", require("fzf-lua").lsp_live_workspace_symbols, { desc = "LSP workspace symbols" })
+vim.keymap.set("n", "<Leader>d", require("fzf-lua").lsp_workspace_diagnostics, { desc = "Diagnostics" })
+vim.keymap.set("n", "<Leader>h", require("fzf-lua").helptags, { desc = "Help" })
+vim.keymap.set("n", "<Leader><leader>", require("fzf-lua").files, { desc = "Files" })
+vim.keymap.set("n", "<Leader>/", require("fzf-lua").live_grep, { desc = "Live grep" })
+vim.keymap.set("n", "<Leader>w", require("fzf-lua").grep_cword, { desc = "Grep cword" })
+vim.keymap.set("n", "<Leader>W", require("fzf-lua").grep_cWORD, { desc = "Grep cWORD" })
 vim.keymap.set("n", "<leader>q", "<cmd>silent! ccl | silent! lcl<cr>", { desc = "Close qf/loc window" })
 vim.keymap.set("n", "<Leader>g", require("mini.diff").toggle_overlay, { desc = "Show Diff" })
 vim.keymap.set("n", "<leader>=", function()
