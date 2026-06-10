@@ -13,6 +13,7 @@ vim.opt.shiftround = true
 vim.opt.shiftwidth = 4
 vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
+vim.opt.swapfile = false
 vim.opt.smartindent = true
 vim.opt.smoothscroll = true
 vim.opt.smoothscroll = true
