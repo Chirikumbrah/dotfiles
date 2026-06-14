@@ -286,6 +286,10 @@ if.app-id = 'notion.id'
 run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
 if.app-id = 'com.automattic.SimplenoteMac'
 run = 'move-node-to-workspace 6'
 
