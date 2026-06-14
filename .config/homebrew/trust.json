@@ -1,0 +1,16 @@
+{
+  "trustedformulae": [
+    "blendle/blendle/kns",
+    "hashicorp/tap/terraform",
+    "hashicorp/tap/vault",
+    "int128/kubelogin/kubelogin"
+  ],
+  "trustedtaps": [
+    "felixkratz/formulae",
+    "hashicorp/tap",
+    "int128/kubelogin",
+    "mediosz/tap",
+    "nikitabobko/tap",
+    "y3owk1n/tap"
+  ]
+}
