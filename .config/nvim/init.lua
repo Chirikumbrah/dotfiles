@@ -51,6 +51,8 @@ vim.pack.add({
     { src = "https://github.com/stevearc/conform.nvim" },
     { src = "https://github.com/olexsmir/gopher.nvim" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
+    { src = "https://github.com/mason-org/mason.nvim" },
+    { src = "https://github.com/owallb/mason-auto-install.nvim" },
     { src = "https://github.com/nvim-mini/mini.diff" },
     { src = "https://github.com/ibhagwan/fzf-lua" },
 })
@@ -106,5 +108,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
         vim.cmd.packadd("nvim.undotree")
         require("nvim-treesitter").install({ "dockerfile", "bash", "lua", "python", "go", "javascript", "json", "yaml",
             "helm", "gotmpl" })
+        require("mason").setup()
+        require("mason-auto-install").setup { packages = { "basedpyright", "bash-language-server", "clangd",
+            "docker-language-server", "json-lsp", "gofumpt", "goimports", "golangci-lint", "gopls", "helm-ls",
+            "lua-language-server", "marksman", "prettier", "ruff", "taplo", "terraform-ls", "tflint", "yaml-language-server", "beautysh" },
+        }
     end
 })

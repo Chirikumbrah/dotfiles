@@ -20,6 +20,14 @@
       "rev": "20df43509b02a3ce3c6b3eee254d6e2bffa9a370",
       "src": "https://github.com/qvalentin/helm-ls.nvim"
     },
+    "mason-auto-install.nvim": {
+      "rev": "f1138b65d9d03f2c752c1b00a4c26ceede82ccb6",
+      "src": "https://github.com/owallb/mason-auto-install.nvim"
+    },
+    "mason.nvim": {
+      "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
+      "src": "https://github.com/mason-org/mason.nvim"
+    },
     "mini.diff": {
       "rev": "117c301374ab8546891e2b34f63885ea83527432",
       "src": "https://github.com/nvim-mini/mini.diff"
