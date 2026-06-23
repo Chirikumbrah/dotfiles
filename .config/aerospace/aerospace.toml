@@ -351,7 +351,7 @@ if.app-id = 'com.apple.Music'
 run = 'move-node-to-workspace 10'
 
 [[on-window-detected]]
-if.app-id = 'org.Petrichor'
+if.app-id = 'com.swinsian.Swinsian'
 run = 'move-node-to-workspace 10'
 
 [[on-window-detected]]
