@@ -163,9 +163,6 @@ run = 'layout floating'
 if.app-id = 'ca.psiphon.Psiphon'
 run = ['layout floating']
 [[on-window-detected]]
-if.app-id = 'com.wireguard.macos'
-run = ['layout floating']
-[[on-window-detected]]
 if.app-id = 'com.electron.ollama'
 run = ['layout floating']
 [[on-window-detected]]
@@ -218,6 +215,9 @@ run = ['layout floating', 'move-node-to-workspace 3']
 if.app-id = 'org.openvpn.client.app'
 run = ['layout floating', 'move-node-to-workspace 3']
 
+[[on-window-detected]]
+if.app-id = 'com.wireguard.macos'
+run = ['layout floating', 'move-node-to-workspace 3']
 
 [[on-window-detected]]
 if.app-id = 'net.tunnelblick.tunnelblick '
