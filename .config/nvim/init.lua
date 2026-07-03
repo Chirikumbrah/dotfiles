@@ -111,7 +111,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
             "helm", "gotmpl" })
         require("mason").setup()
         require("mason-auto-install").setup { packages = { "basedpyright", "bash-language-server", "clangd",
-            "docker-language-server", "json-lsp", "gofumpt", "goimports", "golangci-lint", "gopls", "helm-ls",
+            "docker-language-server", "json-lsp", "gofumpt", "goimports", "golangci-lint", "gopls", "helm-ls", "shellcheck",
             "lua-language-server", "marksman", "prettier", "ruff", "taplo", "terraform-ls", "tflint", "yaml-language-server", "beautysh" },
         }
     end
