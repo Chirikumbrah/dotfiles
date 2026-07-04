@@ -67,9 +67,7 @@ vim.keymap.set("n", "<leader>s", require("fzf-lua").lsp_document_symbols, { desc
 vim.keymap.set("n", "<Leader>S", require("fzf-lua").lsp_live_workspace_symbols, { desc = "LSP workspace symbols" })
 vim.keymap.set("n", "<Leader>d", vim.diagnostic.setqflist, { desc = "Workspace Diagnostics" })
 vim.keymap.set("n", "<Leader><leader>", require("fzf-lua").files, { desc = "Files" })
-vim.keymap.set("n", "<Leader>/", require("fzf-lua").live_grep, { desc = "Live grep" })
-vim.keymap.set("n", "<Leader>w", require("fzf-lua").grep_cword, { desc = "Grep cword" })
-vim.keymap.set("n", "<Leader>W", require("fzf-lua").grep_cWORD, { desc = "Grep cWORD" })
+vim.keymap.set("n", "<Leader>/", ":copen | :silent :grep ", { desc = "Grep" })
 vim.keymap.set("n", "<Leader>g", require("mini.diff").toggle_overlay, { desc = "Show Diff" })
 vim.keymap.set("n", "<leader>=", function()
     require("conform").setup({
