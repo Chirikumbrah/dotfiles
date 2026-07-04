@@ -63,7 +63,13 @@ vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = 'Paste after from "+' 
 vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = 'Paste before from "+' })
 vim.keymap.set({ "n", "v" }, "<leader>u", vim.cmd.Undotree, { desc = "Undotree" })
 vim.keymap.set("n", "<leader>t", [[<cmd>%s/\s\+$//e | noh<cr>]], { desc = "Trim whitespace" })
-vim.keymap.set("n", "<leader>s", require("fzf-lua").lsp_document_symbols, { desc = "LSP symbols" })
+vim.keymap.set("n", "<leader>s", function()
+    vim.lsp.buf.document_symbol({
+        on_list = function(o)
+            vim.fn.setqflist(o.items); vim.cmd.copen()
+        end
+    })
+end, { desc = "LSP symbols" })
 vim.keymap.set("n", "<Leader>S", require("fzf-lua").lsp_live_workspace_symbols, { desc = "LSP workspace symbols" })
 vim.keymap.set("n", "<Leader>d", vim.diagnostic.setqflist, { desc = "Workspace Diagnostics" })
 vim.keymap.set("n", "<Leader><leader>", require("fzf-lua").files, { desc = "Files" })
