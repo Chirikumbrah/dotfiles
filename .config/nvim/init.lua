@@ -46,8 +46,7 @@ vim.lsp.enable({ "basedpyright", "bashls", "clangd", "dockerls", "gopls", "helm_
     "ruff", "terraformls", "tflint", "yamlls", })
 
 vim.pack.add({
-    { src = "https://github.com/neovim-treesitter/treesitter-parser-registry" },
-    { src = "https://github.com/neovim-treesitter/nvim-treesitter" },
+    { src = "https://github.com/romus204/tree-sitter-manager.nvim" },
     { src = "https://github.com/rafamadriz/friendly-snippets" },
     { src = "https://github.com/olexsmir/gopher.nvim" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
@@ -93,13 +92,7 @@ function _G.Format()
     return 0
 end
 
-vim.api.nvim_create_autocmd("BufReadPost", {
-    callback = function()
-        require("mini.diff").setup()
-        vim.cmd.packadd("nvim.undotree")
-        require("nvim-treesitter").install({ "dockerfile", "bash", "lua", "python", "go", "javascript", "json", "yaml",
-            "helm", "gotmpl" })
-        require("mason").setup()
+require("tree-sitter-manager").setup({auto_install = false})
         require("mason-auto-install").setup { packages = { "basedpyright", "bash-language-server", "clangd",
             "docker-language-server", "json-lsp", "gofumpt", "goimports", "golangci-lint", "gopls", "helm-ls", "shellcheck",
             "lua-language-server", "marksman", "prettier", "ruff", "taplo", "terraform-ls", "tflint", "yaml-language-server", "beautysh" },
