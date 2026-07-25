@@ -53,7 +53,6 @@ vim.pack.add({
     { src = "https://github.com/mason-org/mason.nvim" },
     { src = "https://github.com/owallb/mason-auto-install.nvim" },
     { src = "https://github.com/nvim-mini/mini.diff" },
-    { src = "https://github.com/ibhagwan/fzf-lua" },
 })
 
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = 'Copy to "+' })
@@ -68,9 +67,9 @@ vim.keymap.set("n", "<leader>s", function()
         end
     })
 end, { desc = "LSP symbols" })
-vim.keymap.set("n", "<Leader>S", require("fzf-lua").lsp_live_workspace_symbols, { desc = "LSP workspace symbols" })
+vim.keymap.set("n", "<Leader>S", function() vim.lsp.buf.workspace_symbol() end, { desc = "Find LSP workspace symbols" })
 vim.keymap.set("n", "<Leader>d", vim.diagnostic.setqflist, { desc = "Workspace Diagnostics" })
-vim.keymap.set("n", "<Leader><leader>", require("fzf-lua").files, { desc = "Files" })
+vim.keymap.set("n", "<Leader><leader>", ":fin ", { desc = "Find file" })
 vim.keymap.set("n", "<Leader>/", ":copen | :silent :grep ", { desc = "Grep" })
 vim.keymap.set("n", "<Leader>g", require("mini.diff").toggle_overlay, { desc = "Show Diff" })
 
