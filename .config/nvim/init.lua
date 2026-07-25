@@ -1,9 +1,9 @@
--- OPTIONS
 vim.g.mapleader = " "
 vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.grepprg = "grep -HRIn $* ."
+vim.o.formatexpr = "v:lua.Format()"
 vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.list = true
@@ -49,7 +49,6 @@ vim.pack.add({
     { src = "https://github.com/neovim-treesitter/treesitter-parser-registry" },
     { src = "https://github.com/neovim-treesitter/nvim-treesitter" },
     { src = "https://github.com/rafamadriz/friendly-snippets" },
-    { src = "https://github.com/stevearc/conform.nvim" },
     { src = "https://github.com/olexsmir/gopher.nvim" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/mason-org/mason.nvim" },
@@ -75,24 +74,6 @@ vim.keymap.set("n", "<Leader>d", vim.diagnostic.setqflist, { desc = "Workspace D
 vim.keymap.set("n", "<Leader><leader>", require("fzf-lua").files, { desc = "Files" })
 vim.keymap.set("n", "<Leader>/", ":copen | :silent :grep ", { desc = "Grep" })
 vim.keymap.set("n", "<Leader>g", require("mini.diff").toggle_overlay, { desc = "Show Diff" })
-vim.keymap.set("n", "<leader>=", function()
-    require("conform").setup({
-        formatters_by_ft = {
-            css = { "prettier" },
-            go = { "goimports", "gofmt" },
-            javascript = { "prettier" },
-            javascriptreact = { "prettier" },
-            python = { "ruff_format", "ruff_organize_imports", "ruff_fix" },
-            sh = { "beautysh" },
-            zsh = { "beautysh" },
-            toml = { "taplo" },
-            typescript = { "prettier" },
-            typescriptreact = { "prettier" },
-        },
-        formatters = { shfmt = { prepend_args = { "-i", "4", "-ci" } } },
-    })
-    require("conform").format({ async = true, timeout = 500, lsp_format = "fallback" })
-end, { desc = "Format buffer" })
 
 vim.api.nvim_create_autocmd("TextYankPost", { callback = function() vim.hl.on_yank({ timeout = 400 }) end, })
 
@@ -102,6 +83,15 @@ vim.api.nvim_create_autocmd("FileType", {
         pcall(vim.treesitter.start)
     end
 })
+
+function _G.Format()
+    local s, e = vim.v.lnum, vim.v.lnum + vim.v.count - 1
+    local r = vim.system({ "prettier", "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+        { stdin = table.concat(vim.api.nvim_buf_get_lines(0, s - 1, e, false), "\n") .. "\n", text = true }):wait()
+    if r.code == 0 then vim.api.nvim_buf_set_lines(0, s - 1, e, false, vim.split(r.stdout, "\n", { trimempty = true })) else
+        vim.lsp.buf.format() end
+    return 0
+end
 
 vim.api.nvim_create_autocmd("BufReadPost", {
     callback = function()
