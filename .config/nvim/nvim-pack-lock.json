@@ -1,20 +1,8 @@
 {
   "plugins": {
-    "friendly-snippets": {
-      "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
-      "src": "https://github.com/rafamadriz/friendly-snippets"
-    },
-    "fzf-lua": {
-      "rev": "988416cc782dfe28bff3f0da9b8c943b236cd86a",
-      "src": "https://github.com/ibhagwan/fzf-lua"
-    },
     "gopher.nvim": {
       "rev": "27ba078f14dd39fcd5e8a57d7009cdd77450ebbb",
       "src": "https://github.com/olexsmir/gopher.nvim"
-    },
-    "helm-ls.nvim": {
-      "rev": "20df43509b02a3ce3c6b3eee254d6e2bffa9a370",
-      "src": "https://github.com/qvalentin/helm-ls.nvim"
     },
     "mason-auto-install.nvim": {
       "rev": "f1138b65d9d03f2c752c1b00a4c26ceede82ccb6",
