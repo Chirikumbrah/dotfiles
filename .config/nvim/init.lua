@@ -3,6 +3,7 @@ vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.grepprg = "grep -HRIn $* ."
+vim.opt.grepformat = "%f:%l:%m"
 vim.o.formatexpr = "v:lua.Format()"
 vim.opt.ignorecase = true
 vim.opt.incsearch = true
