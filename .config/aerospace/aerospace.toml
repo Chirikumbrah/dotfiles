@@ -1,367 +1,191 @@
-after-login-command = []
-after-startup-command = []
 start-at-login = true
-enable-normalization-flatten-containers = true
-enable-normalization-opposite-orientation-for-nested-containers = true
-non-empty-workspaces-root-containers-layout-on-startup = 'smart'
-accordion-padding = 30
-default-root-container-layout = 'tiles'
-default-root-container-orientation = 'auto'
-key-mapping.preset = 'qwerty'
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+config-version = 2
 on-focus-changed = 'move-mouse window-lazy-center'
 automatically-unhide-macos-hidden-apps = true
-
-[gaps]
-inner.horizontal = 0
-inner.vertical = 0
-outer.left = 0
-outer.bottom = 0
-outer.top = 0
-outer.right = 0
+focus-follows-mouse.enabled = false
+auto-reload-config = true
 
 [mode.main.binding]
+    alt-enter = 'exec-and-forget open /Applications/Alacritty.app'
+    ctrl-enter = 'exec-and-forget open /Applications/Alacritty.app'
+    alt-shift-e = 'exec-and-forget open -a /System/Library/CoreServices/Finder.app'
+    alt-space = 'exec-and-forget open -a /System/Library/CoreServices/Finder.app'
+    f16 = 'exec-and-forget ~/.config/scripts/system/macos-mic/toggle.sh'
 
-# All possible keys:
-# - Letters.        a, b, c, ..., z
-# - Numbers.        0, 1, 2, ..., 9
-# - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
-# - F-keys.         f1, f2, ..., f20
-# - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon, backtick,
-#                   leftSquareBracket, rightSquareBracket, space, enter, esc, backspace, tab
-# - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
-#                   keypadMinus, keypadMultiply, keypadPlus
-# - Arrows.         left, down, up, right
+    alt-o = 'layout floating tiling'
+    alt-t = 'layout tiling'
 
-# All possible modifiers: cmd, alt, ctrl, shift
+    alt-h = 'focus left'
+    alt-j = 'focus down'
+    alt-k = 'focus up'
+    alt-l = 'focus right'
 
-# All possible commands: https://nikitabobko.github.io/AeroSpace/commands
+    alt-n = 'workspace next'
+    alt-p = 'workspace prev'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-alt-enter = 'exec-and-forget open /Applications/Alacritty.app'
-alt-shift-e = 'exec-and-forget open -a /System/Library/CoreServices/Finder.app'
-alt-space = 'exec-and-forget open -a /System/Library/CoreServices/Finder.app'
+    ctrl-shift-n = ['focus-monitor next', 'move-mouse window-force-center']
+    ctrl-shift-p = ['focus-monitor prev', 'move-mouse window-force-center']
 
+    alt-r = 'mode resize'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#layout
+    ctrl-cmd-f = 'fullscreen'
+    ctrl-shift-f = 'macos-native-fullscreen'
 
-alt-o = 'layout floating tiling'
-alt-t = 'layout tiling'
+    # alt-c = 'center window'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+    ctrl-cmd-h = 'move left'
+    ctrl-cmd-j = 'move down'
+    ctrl-cmd-k = 'move up'
+    ctrl-cmd-l = 'move right'
 
-alt-n = 'workspace next'
-alt-p = 'workspace prev'
+    ctrl-shift-semicolon = 'mode service'
 
-alt-shift-n = ['focus-monitor next', 'move-mouse window-force-center']
-alt-shift-p = ['focus-monitor prev', 'move-mouse window-force-center']
+    ctrl-1 = 'workspace --auto-back-and-forth 1-web'
+    ctrl-2 = 'workspace --auto-back-and-forth 2-cli'
+    ctrl-3 = 'workspace --auto-back-and-forth 3-dev'
+    ctrl-4 = 'workspace --auto-back-and-forth 4-ofc'
+    ctrl-7 = 'workspace --auto-back-and-forth 7-doc'
+    ctrl-8 = 'workspace --auto-back-and-forth 8-msg'
+    ctrl-9 = 'workspace --auto-back-and-forth 9-con'
+    ctrl-0 = 'workspace --auto-back-and-forth 0-etc'
 
-alt-r = 'mode resize'
+    ctrl-cmd-1 = 'move-node-to-workspace 1-web --focus-follows-window'
+    ctrl-cmd-2 = 'move-node-to-workspace 2-cli --focus-follows-window'
+    ctrl-cmd-3 = 'move-node-to-workspace 3-dev --focus-follows-window'
+    ctrl-cmd-4 = 'move-node-to-workspace 4-ofc --focus-follows-window'
+    ctrl-cmd-7 = 'move-node-to-workspace 7-doc --focus-follows-window'
+    ctrl-cmd-8 = 'move-node-to-workspace 8-msg --focus-follows-window'
+    ctrl-cmd-9 = 'move-node-to-workspace 9-con --focus-follows-window'
+    ctrl-cmd-0 = 'move-node-to-workspace 0-etc --focus-follows-window'
 
-alt-ctrl-f = 'fullscreen'
+    ctrl-backtick = 'workspace-back-and-forth' # ctrl + `
+    ctrl-shift-backtick = 'move-workspace-to-monitor --wrap-around next' # ctrl + shift + `
 
-# alt-c = 'center window'
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#move
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-shift-semicolon = 'mode service'
-
-alt-shift-f = 'macos-native-fullscreen'
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
-alt-0 = 'workspace 10'
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
-alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
-alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
-alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
-alt-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
-alt-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
-alt-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
-alt-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
-alt-shift-9 = 'move-node-to-workspace 9 --focus-follows-window'
-alt-shift-0 = 'move-node-to-workspace 10 --focus-follows-window'
-
-alt-tab = 'workspace-back-and-forth'
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
-
-cmd-h = []     # Disable "hide application"
-cmd-alt-h = [] # Disable "hide others"
+    cmd-h = []     # Disable "hide application"
+    cmd-alt-h = [] # Disable "hide others"
 
 [workspace-to-monitor-force-assignment]
-6 = 'secondary'
-7 = 'secondary'
-8 = 'secondary'
-9 = 'secondary'
-10 = 'secondary'
+    7-doc = 'secondary'
+    8-msg = 'secondary'
+    9-con = 'secondary'
+    0-etc = 'secondary'
 
 [mode.resize.binding]
-h = 'resize width +50'
-j = 'resize height -50'
-k = 'resize height +50'
-l = 'resize width -50'
-b = 'balance-sizes'
-q = 'mode main'
-enter = 'mode main'
-esc = 'mode main'
-alt-r = 'mode main'
+    h = 'resize width +50'
+    j = 'resize height -50'
+    k = 'resize height +50'
+    l = 'resize width -50'
+    b = 'balance-sizes'
+    q = 'mode main'
+    enter = 'mode main'
+    esc = 'mode main'
+    alt-r = 'mode main'
 
-# 'service' binding mode declaration.
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-esc = ['reload-config', 'mode main']
-q = ['reload-config', 'mode main']
-r = ['flatten-workspace-tree', 'mode main'] # reset layout
-f = [
-  'layout floating tiling',
-  'mode main',
-] # Toggle between floating and tiling layout
-backspace = ['close-all-windows-but-current', 'mode main']
+    esc = ['reload-config', 'mode main']
+    q = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main'] # reset layout
+    f = [ 'layout floating tiling', 'mode main', ] # Toggle between floating and tiling layout
+    backspace = ['close-all-windows-but-current', 'mode main']
 
-# sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-#s = ['layout sticky tiling', 'mode main']
+    # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
+    #s = ['layout sticky tiling', 'mode main']
 
-alt-shift-h = ['join-with left', 'mode main']
-alt-shift-j = ['join-with down', 'mode main']
-alt-shift-k = ['join-with up', 'mode main']
-alt-shift-l = ['join-with right', 'mode main']
-
+    alt-shift-h = ['join-with left', 'mode main']
+    alt-shift-j = ['join-with down', 'mode main']
+    alt-shift-k = ['join-with up', 'mode main']
+    alt-shift-l = ['join-with right', 'mode main']
 
 # Floating windows
 [[on-window-detected]]
-if.app-name-regex-substring = 'Finder'
-run = 'layout floating'
+    if = 'test %{app-name} = Finder'
+    run = 'layout floating'
 [[on-window-detected]]
-if.app-id = 'is.gtmetronome'
-run = 'layout floating'
+    if = """test %{app-bundle-id} = is.gtmetronome \
+        || test %{app-bundle-id} = de.naiv.MacOSTuner \
+        || test %{app-bundle-id} = com.apple.calculator \
+        || test %{app-bundle-id} = ca.psiphon.Psiphon \
+        || test %{app-bundle-id} = com.electron.ollama \
+        || test %{app-bundle-id} = cc.ffitch.shottr"""
+    run = ['layout floating']
+
+# Workspace 1 — Browsers
 [[on-window-detected]]
-if.app-id = 'de.naiv.MacOSTuner'
-run = 'layout floating'
+    if = """test %{app-bundle-id} = org.chromium.Chromium \
+        || test %{app-bundle-id} = com.brave.Browser \
+        || test %{app-bundle-id} = net.imput.helium \
+        || test %{app-bundle-id} = com.apple.Safari"""
+    check-further-callbacks = true
+    run = ['layout floating', 'fullscreen', 'move-node-to-workspace 1-web']
+
+# Workspace 2 — Terminal
 [[on-window-detected]]
-if.app-id = 'com.apple.calculator'
-run = 'layout floating'
+    if = 'test %{app-bundle-id} = org.alacritty'
+    run = 'move-node-to-workspace 2-cli'
+
+# Workspace 3 — AI / dev / VPN / система
 [[on-window-detected]]
-if.app-id = 'ca.psiphon.Psiphon'
-run = ['layout floating']
+    if = """test %{app-bundle-id} = com.openai.chat \
+        || test %{app-bundle-id} = ai.perplexity.mac \
+        || test %{app-bundle-id} = com.parallels.desktop.console \
+        || test %{app-bundle-id} = com.ru.dolphin.anty \
+        || test %{app-bundle-id} = com.apple.iCal \
+        || test %{app-bundle-id} = com.apple.weather \
+        || test %{app-bundle-id} = org.jkiss.dbeaver.core.product \
+        || test %{app-bundle-id} = tabularis \
+        || test %{app-bundle-id} = io.httpie.desktop \
+        || test %{app-bundle-id} = dev.kdrag0n.MacVirt \
+        || test %{app-bundle-id} = org.openvpn.client.app \
+        || test %{app-bundle-id} = com.viscosityvpn.Viscosity \
+        || test %{app-bundle-id} = com.wireguard.macos \
+        || test %{app-bundle-id} = net.tunnelblick.tunnelblick"""
+    run = ['move-node-to-workspace 3-dev']
+
+# Workspace 4 — Office / Art / Mail
 [[on-window-detected]]
-if.app-id = 'com.electron.ollama'
-run = ['layout floating']
+    if = """test %{app-bundle-id} = com.apple.garageband9 \
+        || test %{app-bundle-id} = com.arobas-music.guitarpro8 \
+        || test %{app-bundle-id} = com.apple.mail \
+        || test %{app-bundle-id} = com.apple.systempreferences \
+        || test %{app-bundle-id} = org.freac.freac \
+        || test %{app-bundle-id} = com.nightbirdsevolve.Meta \
+        || test %{app-bundle-id} = com.microsoft.Word \
+        || test %{app-bundle-id} = com.microsoft.Powerpoint \
+        || test %{app-bundle-id} = com.apple.ActivityMonitor \
+        || test %{app-bundle-id} = com.microsoft.Excel"""
+    run = 'move-node-to-workspace 4-ofc'
+
+# Workspace 7 — Notes / Documents / Utils
 [[on-window-detected]]
-if.app-id = 'cc.ffitch.shottr'
-run = ['layout floating']
+    if = """test %{app-bundle-id} = com.apple.Preview \
+        || test %{app-bundle-id} = notion.id \
+        || test %{app-bundle-id} = md.obsidian \
+        || test %{app-bundle-id} = com.automattic.SimplenoteMac \
+        || test %{app-bundle-id} = com.apple.Notes \
+        || test %{app-bundle-id} = com.g5532446.Balance \
+        || test %{app-bundle-id} = com.fabian.hasse.haushaltsbuch \
+        || test %{app-bundle-id} = org.m0k.transmission \
+        || test %{app-bundle-id} = com.bitwarden.desktop \
+        || test %{app-bundle-id} = com.apple.Music \
+        || test %{app-bundle-id} = com.swinsian.Swinsian \
+        || test %{app-bundle-id} = com.apple.Passwords \
+        || test %{app-bundle-id} = io.ente.auth.mac \
+        || test %{app-bundle-id} = com.apple.AppStore"""
+    run = 'move-node-to-workspace 7-doc'
 
-
-# Workspace 1
+# Workspace 8 — Messengers
 [[on-window-detected]]
-if.app-id = 'org.chromium.Chromium'
-check-further-callbacks = true
-run = ['layout floating', 'fullscreen', 'move-node-to-workspace 1']
+    if = """test %{app-bundle-id} = ru.keepcoder.Telegram \
+        || test %{app-bundle-id} = com.insystem.reddyosx"""
+    run = ['move-node-to-workspace 8-msg']
 
+# Workspace 9 — Calls / Remote
 [[on-window-detected]]
-if.app-id = 'com.brave.Browser'
-check-further-callbacks = true
-run = ['layout floating', 'fullscreen', 'move-node-to-workspace 1']
-
-[[on-window-detected]]
-if.app-id = 'net.imput.helium'
-check-further-callbacks = true
-run = ['layout floating', 'fullscreen', 'move-node-to-workspace 1']
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Safari'
-check-further-callbacks = true
-run = ['layout floating', 'fullscreen', 'move-node-to-workspace 1']
-
-
-# Workspace 2
-[[on-window-detected]]
-if.app-id = 'org.alacritty'
-run = 'move-node-to-workspace 2'
-
-
-# Workspace 3
-[[on-window-detected]]
-if.app-id = 'org.jkiss.dbeaver.core.product'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'io.httpie.desktop'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'dev.kdrag0n.MacVirt'
-run = ['layout floating', 'move-node-to-workspace 3']
-
-[[on-window-detected]]
-if.app-id = 'org.openvpn.client.app'
-run = ['layout floating', 'move-node-to-workspace 3']
-
-[[on-window-detected]]
-if.app-id = 'com.wireguard.macos'
-run = ['layout floating', 'move-node-to-workspace 3']
-
-[[on-window-detected]]
-if.app-id = 'net.tunnelblick.tunnelblick '
-run = ['layout floating', 'move-node-to-workspace 3']
-
-
-# Workspace 4
-[[on-window-detected]]
-if.app-id = 'com.openai.chat'
-run = ['move-node-to-workspace 4']
-
-[[on-window-detected]]
-if.app-id = 'ai.perplexity.mac'
-run = ['move-node-to-workspace 4']
-
-[[on-window-detected]]
-if.app-id = 'com.parallels.desktop.console'
-run = ['move-node-to-workspace 4']
-
-[[on-window-detected]]
-if.app-id = 'com.ru.dolphin.anty'
-run = ['move-node-to-workspace 4']
-
-[[on-window-detected]]
-if.app-id = 'com.apple.iCal'
-run = ['move-node-to-workspace 4']
-
-[[on-window-detected]]
-if.app-id = 'com.apple.weather'
-run = ['move-node-to-workspace 4']
-
-
-# Workspace 5
-[[on-window-detected]]
-if.app-id = 'com.apple.garageband9'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'com.arobas-music.guitarpro8'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.mail'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.systempreferences'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'org.freac.freac'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'com.nightbirdsevolve.Meta'
-run = 'move-node-to-workspace 5'
-
-
-# Workspace 6
-[[on-window-detected]]
-if.app-id = 'com.apple.Preview'
-run = 'move-node-to-workspace 6'
-
-[[on-window-detected]]
-if.app-id = 'notion.id'
-run = 'move-node-to-workspace 6'
-
-[[on-window-detected]]
-if.app-id = 'md.obsidian'
-run = 'move-node-to-workspace 6'
-
-[[on-window-detected]]
-if.app-id = 'com.automattic.SimplenoteMac'
-run = 'move-node-to-workspace 6'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Notes'
-run = 'move-node-to-workspace 6'
-
-[[on-window-detected]]
-if.app-id = 'com.g5532446.Balance'
-run = 'move-node-to-workspace 6'
-
-[[on-window-detected]]
-if.app-id = 'com.fabian.hasse.haushaltsbuch'
-run = 'move-node-to-workspace 6'
-
-
-# Workspace 8
-[[on-window-detected]]
-if.app-name-regex-substring = 'telegram'
-run = ['move-node-to-workspace 8']
-
-[[on-window-detected]]
-if.app-id = 'com.insystem.reddyosx'
-run = ['move-node-to-workspace 8']
-
-
-# Workspace 9
-[[on-window-detected]]
-if.app-id = 'us.zoom.xos'
-run = 'move-node-to-workspace 9'
-
-[[on-window-detected]]
-if.app-id = 'ru.yandex.desktop.telemost'
-run = 'move-node-to-workspace 9'
-
-[[on-window-detected]]
-if.app-id = 'com.microsoft.rdc.macos'
-run = 'move-node-to-workspace 9'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.ScreenContinuity'
-run = 'move-node-to-workspace 9'
-
-[[on-window-detected]]
-if.app-id = 'com.carriez.rustdesk'
-run = 'move-node-to-workspace 9'
-
-# Workspace 10
-[[on-window-detected]]
-if.app-id = 'org.m0k.transmission'
-run = 'move-node-to-workspace 10'
-
-[[on-window-detected]]
-if.app-id = 'com.bitwarden.desktop'
-run = ['move-node-to-workspace 10']
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Music'
-run = 'move-node-to-workspace 10'
-
-[[on-window-detected]]
-if.app-id = 'com.swinsian.Swinsian'
-run = 'move-node-to-workspace 10'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Passwords'
-run = 'move-node-to-workspace 10'
-
-[[on-window-detected]]
-if.app-id = 'io.ente.auth.mac'
-run = ['layout floating', 'move-node-to-workspace 10']
-
-[[on-window-detected]]
-if.app-id = 'com.apple.AppStore'
-run = 'move-node-to-workspace 10'
+    if = """test %{app-bundle-id} = us.zoom.xos \
+        || test %{app-bundle-id} = ru.yandex.desktop.telemost \
+        || test %{app-bundle-id} = com.microsoft.rdc.macos \
+        || test %{app-bundle-id} = com.apple.ScreenContinuity \
+        || test %{app-bundle-id} = com.resilio.Sync \
+        || test %{app-bundle-id} = org.localsend.localsendApp \
+        || test %{app-bundle-id} = com.carriez.rustdesk"""
+    run = 'move-node-to-workspace 9-con'

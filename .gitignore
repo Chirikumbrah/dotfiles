@@ -17,9 +17,11 @@ charts/
 
 .env
 .venv
-local.docker-compose.yml
-*.local.*
+*.local*
 local.*
 *.http
+.terraform/*
+.terraform*
 
 tags
+yandex-cloud/
