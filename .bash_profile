@@ -1,1 +1,3 @@
-[ -f $HOME/.bashrc ] && . $HOME/.bashrc
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
