@@ -3,7 +3,8 @@
     "blendle/blendle/kns",
     "hashicorp/tap/terraform",
     "hashicorp/tap/vault",
-    "int128/kubelogin/kubelogin"
+    "int128/kubelogin/kubelogin",
+    "janosmiko/tap/lfk"
   ],
   "trustedtaps": [
     "felixkratz/formulae",
@@ -12,5 +13,8 @@
     "mediosz/tap",
     "nikitabobko/tap",
     "y3owk1n/tap"
+  ],
+  "trustedcasks": [
+    "tabularisdb/tabularis/tabularis"
   ]
 }

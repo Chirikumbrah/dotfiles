@@ -1,102 +1,165 @@
-tap "blendle/blendle"
-tap "felixkratz/formulae"
-tap "hashicorp/tap"
-tap "int128/kubelogin"
-tap "mediosz/tap"
-tap "nikitabobko/tap"
-tap "y3owk1n/tap"
+tap "blendle/blendle", trusted: true
+tap "hashicorp/tap", trusted: true
+tap "int128/kubelogin", trusted: true
+tap "janosmiko/tap", trusted: true
+tap "mediosz/tap", trusted: true
+tap "nikitabobko/tap", trusted: true
+tap "tabularisdb/tabularis", "https://github.com/TabularisDB/homebrew-tabularis", trusted: true
+tap "y3owk1n/tap", trusted: true
+# GitOps Continuous Delivery for Kubernetes
 brew "argocd"
-brew "node"
-brew "basedpyright"
+# Improved shell history for zsh, bash, fish and nushell
+brew "atuin"
+# Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Programmable completion for Bash 4.2+
 brew "bash-completion@2"
-brew "bash-language-server"
+# Preexec and precmd functions for Bash (like Zsh)
+brew "bash-preexec"
+# Bash beautifier
 brew "beautysh"
+# CLI to install, manage & troubleshoot Kubernetes clusters running Cilium
 brew "cilium-cli"
+# Cut, copy, and paste anything, anywhere, all from the terminal
 brew "clipboard"
-brew "cmatrix"
-brew "cowsay"
-brew "dockerfile-language-server"
-brew "fastfetch"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Quickly rewrite git repository history
 brew "git-filter-repo"
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# Open source programming language to build simple/reliable/efficient software
 brew "go"
-brew "gofumpt"
-brew "goimports"
-brew "golangci-lint"
-brew "gomodifytags"
-brew "gopls"
+# Kubernetes package manager
 brew "helm"
-brew "helm-ls"
+# CLI wrapper for basic network utilities on macOS - ip command
 brew "iproute2mac"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# Kubernetes CLI To Manage Your Clusters In Style!
 brew "k9s"
+# Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
+# Kubernetes command-line interface
 brew "kubernetes-cli"
-brew "lua-language-server"
+# Move files and folders to the trash
 brew "macos-trash"
+# Make/rake-like build tool using Go
 brew "mage"
-brew "marksman"
+# Mac App Store command-line interface
 brew "mas"
+# Hash utilities
 brew "md5sha1sum", link: true
+# Deep clean and optimize your Mac
 brew "mole"
+# 'traceroute' and 'ping' in a single tool
 brew "mtr"
+# NCurses Disk Usage
 brew "ncdu"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Cross-platform realtime network diagnostics TUI
+brew "netwatch"
+# Port scanning utility for large networks
 brew "nmap"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Open source suite of directory software
 brew "openldap"
+# Pinentry for GPG on Mac
 brew "pinentry-mac"
-brew "prettier"
+# Theme for zsh
+brew "powerlevel10k"
+# Perl-powered file rename script with many helpful built-ins
 brew "rename"
-brew "ruff"
-brew "shellcheck"
-brew "shfmt"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Work with remote images registries
 brew "skopeo"
+# Prints a steam locomotive if you type sl instead of ls
 brew "sl"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
-brew "stylua"
+# CLI for out-of-band management of Kubernetes nodes created by Talos
 brew "talosctl"
-brew "taplo"
-brew "terraform-ls"
-brew "tflint"
+# Terminal multiplexer
 brew "tmux"
+# Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Parser generator tool
 brew "tree-sitter-cli"
+# Maintained ctags implementation
 brew "universal-ctags"
-brew "vscode-langservers-extracted"
-brew "w3m"
+# Executes a program periodically, showing output fullscreen
 brew "watch"
-brew "yaml-language-server"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Additional completion definitions for zsh
 brew "zsh-completions"
+# Quick Kubernetes Namespace and Context Switchers
 brew "blendle/blendle/kns"
+# Terraform
 brew "hashicorp/tap/terraform"
+# Vault
 brew "hashicorp/tap/vault"
+# A kubectl plugin for Kubernetes OpenID Connect authentication
 brew "int128/kubelogin/kubelogin"
+# AeroSpace is an i3-like tiling window manager for macOS
 cask "nikitabobko/tap/aerospace"
+# GPU-accelerated terminal emulator
 cask "alacritty"
+# Android SDK component
 cask "android-platform-tools"
+# Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
-cask "claude-code"
+# Web browser focusing on privacy
+cask "brave-browser"
+# Server and cloud storage browser
 cask "cyberduck"
+# Desktop client for Ente Auth
 cask "ente-auth"
 cask "font-ubuntu-mono-nerd-font"
+# Audio converter and CD ripper
 cask "freac"
-cask "helium-browser"
+# Testing client for REST, GraphQL, and HTTP APIs
 cask "httpie-desktop"
+# Open-source cross-platform alternative to AirDrop
+cask "localsend"
+# Tag editor for digital music
 cask "meta"
+# Desktop sync client for Nextcloud software products
 cask "nextcloud"
+# Client program for the OpenVPN Access Server
+cask "openvpn-connect"
+# Replacement for Docker Desktop
 cask "orbstack"
-cask "petrichor"
+# Archive manager for data compression and backups
 cask "rar"
-cask "rustdesk"
+# Screenshot measurement and annotation tool
 cask "shottr"
+# Music player
+cask "swinsian"
+# Real time file synchronisation software
 cask "syncthing-app"
+# Lightweight, developer-focused database management tool
+cask "tabularisdb/tabularis/tabularis"
+# Desktop client for Telegram messenger
+cask "telegram-desktop"
+# Open-source BitTorrent client
 cask "transmission"
+# Free and open-source OpenVPN client
 cask "tunnelblick"
+# Video communication and virtual meeting platform
 cask "zoom"
 mas "Bitwarden", id: 1352778147
 mas "Folder Preview", id: 6698876601
@@ -105,3 +168,4 @@ mas "Metronome", id: 1629209970
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Simplenote", id: 692867256
 mas "Telegram", id: 747648890
+mas "WireGuard", id: 1451685025
