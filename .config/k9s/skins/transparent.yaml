@@ -13,6 +13,8 @@ k9s:
     sectionColor: default
   dialog:
     bgColor: default
+    labelFgColor: default
+    fieldFgColor: default
   frame:
     crumbs:
       bgColor: default
