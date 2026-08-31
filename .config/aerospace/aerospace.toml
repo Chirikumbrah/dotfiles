@@ -1,3 +1,7 @@
+after-startup-command = [
+    "exec-and-forget ~/.config/scripts/system/macos-key-remap",
+    "exec-and-forget ~/.config/scripts/system/macos-load-ssh-keys"
+]
 start-at-login = true
 config-version = 2
 on-focus-changed = 'move-mouse window-lazy-center'
