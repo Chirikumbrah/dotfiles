@@ -29,7 +29,7 @@ vim.lsp.enable({ "basedpyright", "bashls", "clangd", "dockerls", "gopls", "helm_
 vim.pack.add(vim.tbl_map(function(repo)
   return { src = "https://github.com/" .. repo }
 end, { "romus204/tree-sitter-manager.nvim", "olexsmir/gopher.nvim", "neovim/nvim-lspconfig", "mason-org/mason.nvim",
-  "owallb/mason-auto-install.nvim", "nvim-mini/mini.diff", "ibhagwan/fzf-lua",
+  "owallb/mason-auto-install.nvim", "nvim-mini/mini.diff", "nvim-mini/mini.pick",
 }))
 
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
@@ -40,8 +40,9 @@ vim.keymap.set("n", "<leader>s", vim.lsp.buf.document_symbol, { silent = true })
 vim.keymap.set("n", "<leader>S", vim.lsp.buf.workspace_symbol, { silent = true })
 vim.keymap.set("n", "<leader>d", vim.diagnostic.setqflist, { silent = true })
 vim.keymap.set("n", "<leader>g", require("mini.diff").toggle_overlay, { silent = true })
-vim.keymap.set("n", "<leader><leader>", require("fzf-lua").files, { silent = true })
-vim.keymap.set("n", "<leader>/", require("fzf-lua").grep, { silent = true })
+vim.keymap.set("n", "<leader>/", ":Pick grep_live<cr>", { silent = true })
+vim.keymap.set("n", "<leader><leader>",
+  function() MiniPick.builtin.cli({ command = { 'rg', '--glob', '!.git/*', '--files', '-.' } }) end, { silent = true })
 
 vim.api.nvim_create_autocmd("TextYankPost", { callback = function() vim.hl.on_yank({ timeout = 400 }) end, })
 vim.api.nvim_create_autocmd("FileType", {
@@ -51,7 +52,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 require("tree-sitter-manager").setup({ auto_install = true, ensure_installed = { "gotmpl" } })
-for _, mod in ipairs({ "mini.diff", "mason" }) do require(mod).setup() end
+for _, mod in ipairs({ "mini.diff", "mini.pick", "mason" }) do require(mod).setup() end
 require("mason-auto-install").setup { packages = { "basedpyright", "bash-language-server", "clangd",
   "docker-language-server", "json-lsp", "gopls", "helm-ls", "yaml-language-server",
   "lua-language-server", "marksman", "prettier", "ruff", "taplo", "terraform-ls", "tflint", },
