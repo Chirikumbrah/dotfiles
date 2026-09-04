@@ -41,7 +41,8 @@ vim.keymap.set("n", "<leader>S", vim.lsp.buf.workspace_symbol, { silent = true }
 vim.keymap.set("n", "<leader>d", vim.diagnostic.setqflist, { silent = true })
 vim.keymap.set("n", "<leader>g", require("mini.diff").toggle_overlay, { silent = true })
 vim.keymap.set("n", "<leader>/", ":Pick grep_live<cr>", { silent = true })
-vim.keymap.set("n", "<leader><leader>", ":Pick files<cr>", { silent = true })
+vim.keymap.set("n", "<leader><leader>",
+  function() MiniPick.builtin.cli({ command = { 'rg', '--glob', '!.git/*', '--files', '-.' } }) end, { silent = true })
 
 vim.api.nvim_create_autocmd("TextYankPost", { callback = function() vim.hl.on_yank({ timeout = 400 }) end, })
 vim.api.nvim_create_autocmd("FileType", {
