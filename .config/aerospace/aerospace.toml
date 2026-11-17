@@ -137,6 +137,7 @@ auto-reload-config = true
         || test %{app-bundle-id} = com.apple.weather \
         || test %{app-bundle-id} = org.jkiss.dbeaver.core.product \
         || test %{app-bundle-id} = tabularis \
+        || test %{app-bundle-id} = io.addlayer.dbine \
         || test %{app-bundle-id} = io.httpie.desktop \
         || test %{app-bundle-id} = dev.kdrag0n.MacVirt \
         || test %{app-bundle-id} = org.openvpn.client.app \
