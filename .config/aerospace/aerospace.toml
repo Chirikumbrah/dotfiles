@@ -143,6 +143,7 @@ auto-reload-config = true
         || test %{app-bundle-id} = org.openvpn.client.app \
         || test %{app-bundle-id} = com.viscosityvpn.Viscosity \
         || test %{app-bundle-id} = com.wireguard.macos \
+        || test %{app-bundle-id} = com.happ.www \
         || test %{app-bundle-id} = net.tunnelblick.tunnelblick"""
     run = ['move-node-to-workspace 3-dev']
 
